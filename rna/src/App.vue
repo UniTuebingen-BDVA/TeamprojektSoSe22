@@ -3,6 +3,7 @@
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import HelloWorld from './components/HelloWorld.vue'
 import test from './components/test.vue'
+//import NavBar from './components/Navbar.vue'
 </script>
 
 <template>

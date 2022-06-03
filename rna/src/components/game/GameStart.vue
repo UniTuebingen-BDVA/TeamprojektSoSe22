@@ -4,16 +4,10 @@
     </div>
 </template>
 <script>
-    import GameStart from './GameStart.vue'
 export default {
     
 }
-
 </script>
-
-props: {
-    Test: {type: String, default: "test"}
-}
 <style lang="">
     
 </style>

@@ -7,7 +7,7 @@ props: {
 }
 
 <style scoped>
-a {
-  color: #42b983;
+h1 {
+    color: red;
 }
 </style>
