@@ -2,20 +2,24 @@
     <div class="nHeader">
         <a href="./index.html">Teaching Nussinov</a> <!-- Links to front page -->
         <div class="nPages">
-            <a href="">Teaching Part</a> <!-- Add Link here-->
-            <a href="">Gaming Part</a> <!-- Add Link here -->
+            <a href="">Teaching</a> <!-- Add Link here-->
+            <a href="">Gaming</a> <!-- Add Link here -->
         </div>
     </div>
 </template>
 
 <style scoped>
-    @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+    
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap');
     .nHeader{
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
         display: flex;
         justify-content: flex-start;
         background-color: #e3e3e3;
-        width: 100%;
-        height: 115px;
+        height: 48px;
         align-items: center;
         font-family: 'Open Sans';
     }
@@ -26,18 +30,17 @@
     }
     .nHeader > a{
         margin-left: 50px;
-        width: 50%;
-        font-size: 38px;
-        color: #333333;
-        font-weight: 1000;
+        margin-right: 500px;
+        font-size: 25px;
+        color: #434343;
+        font-weight: 700;
         text-decoration: none;
     }
     .nPages > a{
-        margin-right: 50px;
-        margin-left: 50px;
-        padding: 50px;
-        font-size: 28px;
-        font-weight: 50;
+        margin-left: 75px;
+        padding: 25px;
+        font-size: 20px;
+        font-weight: 300;
         color: #444444;
         text-decoration: none;
     }
