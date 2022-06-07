@@ -19,7 +19,7 @@ defineProps<{
     .nButton{
         background-color: #ffffff;
         width: auto;
-        height: auto;
+        height: 40px;
         border-color: #a51e37;
         border-width: 2px;
         border-style: solid;
@@ -30,7 +30,7 @@ defineProps<{
     .nButton > a {
         text-decoration: none;
         color: #a51e37;
-        font-size: 36px;
+        font-size: 20px;
         padding: 10px;
         font-weight: 550;
     }
