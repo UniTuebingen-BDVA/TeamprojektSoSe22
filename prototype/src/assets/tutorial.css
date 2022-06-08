@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+.tBody{
+    display: block;
+    margin: 5% auto;
+}
+.tutorialBox{
+    border-width: 3px;
+    border-color: #925c14; /*change to gold-brown*/
+    border-radius: 10px;
+    border-style: solid;
+    padding: 1%;
+    background-color: #f3f3f3;
+
+    display: block;
+    width: 65%;
+    margin: 3% auto;
+
+    font-family: 'Open Sans';
+    font-size: 1.2em;
+}
+
+.tutorialBox > p {
+    margin: 0.25em 0;
+}
+
+.dpMatrix{
+    display: block;
+    margin: auto;
+    max-width: 35%;
+    min-width: auto;
+    
+    border-collapse: collapse;
+    text-align: center;
+    background-color: #f3f3f3;
+    border-spacing: 0;
+    opacity: 0.7;
+    table-layout: fixed;
+}
+
+.dpMatrix td,
+.dpMatrix th{
+    border: 1px solid #a0a0a0;
+    min-width: 1.5em;
+    min-height: 1.5em;
+}
+
+.dpMatrix th,
+.dpMatrix tr > td:first-of-type {
+    font-family: Arial,"Helvetica Narrow",sans-serif;
+    font-size: 1.2em;
+    font-weight: bold;
+}
