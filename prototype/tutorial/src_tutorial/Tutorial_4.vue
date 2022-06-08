@@ -5,7 +5,7 @@
 
 <template>
   <NussinovHeader></NussinovHeader>
-  <div class="tBody">
+  <div class="tutorialBody">
     <NussinovButton text="Skip Tutorial" link=""></NussinovButton>
     <div class="tutorialBox">
       <p>Remember, you need this </p>
