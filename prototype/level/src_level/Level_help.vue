@@ -8,8 +8,8 @@
   <div class="nBody">
     <div class="nPlay">
       <div class="nFormula">
-        <h3>Step 1: Try to fill in the first cell of the matrix.</h3>
-        <img class ="nImage" src="/src/assets/table1.1.png">
+        <h3>Compare these values.</h3>
+        <img class ="nImage" src="/src/assets/table_help.png">
       </div>
       <div class="nFormula">
         <p>Remember that you need this: </p>
@@ -17,11 +17,8 @@
       </div>
     </div>
     <div class="nButton">
-      <div class="nButton_Help">
-        <NussinovButton text="Need help?" link="./index_level_help.html"></NussinovButton>
-      </div>
       <div class="nButton_Next">
-      <NussinovButton text="Next" link="./index_level_right.html"></NussinovButton>
+        <NussinovButton text="Next" link="./index_level1_1.html"></NussinovButton>
       </div>
     </div>
   </div>
@@ -41,7 +38,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 25em;
+    gap: 30em;
   }
   .nText{
     display: flex;
@@ -67,17 +64,14 @@
     gap: 30em;
   }
   .nButton_Next {
-    margin-left: 50%;
-    margin-top: 8em;
-  }
-  .nButton_Help {
-    margin-top: 8em;
-    margin-left: 0;
+    margin-left: 85%;
+    margin-top: 10%;
   }
   .nImage {
     height: 20em;
     width: 25em;
     align: left;
+    margin-top: 10%;
   }
   .nImage_formula {
     height: 13em;
@@ -91,3 +85,4 @@
   }
 
 </style>
+

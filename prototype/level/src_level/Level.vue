@@ -9,7 +9,7 @@
     <h1>Select your level:</h1>
     <div class="nText">
       <div class="nParagraph">
-        <NussinovButton text="Level 1" link=""></NussinovButton> <!-- add link -->
+        <NussinovButton text="Level 1" link="./index_level1.html"></NussinovButton>
         <p>Starter Level: short and easy structures. In this level you have a helper.</p>   
       </div>
       <div class="nParagraph">
@@ -31,8 +31,8 @@
     justify-content: space-between;
     font-family: 'Open Sans';
     flex-direction: column;
-    margin-top: 60px;
-    margin-left: 42px;
+    margin-top: 3em;
+    margin-left: 2em;
   }
   .nText{
     display: flex;
@@ -41,23 +41,24 @@
     justify-content: space-evenly;
     font-family: 'Open Sans';
     align-items: left;
-    padding-left: 75px;
+    padding-left: 10em;
     letter-spacing: 0.3em;
-    line-height: 50px;
+    line-height: 4em;
   }
   .nParagraph {
-    width: 350px;
-    height: 200px;
+    width: 25em;
+    height: 5em;
     font-family: 'Open Sans';
     color: #a51e37;
+    margin-top: 5em;
   }
   .nText > h1{
     color: black;
-    font-size: 46px;
+    font-size: 5em;
     font-weight: 100;
   }
   .nText > p{
-    font-size: 24px;
+    font-size: 3em;
     font-weight: 100;
     color: #a51e37;
   }

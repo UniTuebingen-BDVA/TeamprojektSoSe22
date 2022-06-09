@@ -7,22 +7,23 @@
   <NussinovHeader></NussinovHeader>
   <div class="nBody">
     <div class="nPlay">
-      <div class="nFormula">
-        <h3>Step 1: Try to fill in the first cell of the matrix.</h3>
-        <img class ="nImage" src="/src/assets/table1.1.png">
-      </div>
-      <div class="nFormula">
-        <p>Remember that you need this: </p>
-        <img class="nImage_formula" src="/src/assets/formula.png">
-      </div>
+        <div class="nFormula">
+            <p id="wrong">Wrong answer. Try it again!</p>
+            <h3>Step 2: Try to fill in the next two cells of the matrix.</h3>
+            <img class ="nImage" src="/src/assets/table1.2.png">
+        </div>
+        <div class="nFormula">
+            <p>Remember that you need this: </p>
+            <img class="nImage_formula" src="/src/assets/formula.png">
+        </div>
     </div>
     <div class="nButton">
-      <div class="nButton_Help">
-        <NussinovButton text="Need help?" link="./index_level_help.html"></NussinovButton>
-      </div>
-      <div class="nButton_Next">
-      <NussinovButton text="Next" link="./index_level_right.html"></NussinovButton>
-      </div>
+        <div class="nButton_Help">
+            <NussinovButton text="Need help?" link="./index_level_help.html"></NussinovButton>
+        </div>
+        <div class="nButton_End">
+        <NussinovButton text="End" link="./index_score.html"></NussinovButton>
+        </div>
     </div>
   </div>
 </template>
@@ -34,7 +35,7 @@
     justify-content: space-between;
     font-family: 'Open Sans';
     flex-direction: column;
-    margin-top: 5em;
+    margin-top: 3em;
     margin-left: 2em;
   }
   .nPlay {
@@ -57,7 +58,7 @@
   .nText > p{
     font-size: 8em;
     font-weight: 100;
-    color: black;
+    color: lightgreen;
     align: right;
   }
   .nButton {
@@ -66,12 +67,12 @@
     justify-content: flex-start;
     gap: 30em;
   }
-  .nButton_Next {
+  .nButton_End {
     margin-left: 50%;
-    margin-top: 8em;
+    margin-top: 5em;
   }
   .nButton_Help {
-    margin-top: 8em;
+    margin-top: 5em;
     margin-left: 0;
   }
   .nImage {
@@ -89,5 +90,11 @@
     flex-direction: column;
     align-items: right;
   }
+  #wrong {
+    color: #A51E37;
+    font-weight: bold;
+    font-size: 1.5em;
 
-</style>
+  }     
+  
+  </style>

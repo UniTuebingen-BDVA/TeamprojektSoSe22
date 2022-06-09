@@ -14,7 +14,7 @@
     </div>
     <img class ="nImage" src="/src/assets/table.png">
     <div class="nButton">
-      <NussinovButton text="Start" link=""></NussinovButton>
+      <NussinovButton text="Start" link="./index_Level1_1.html"></NussinovButton>
     </div>
     
   </div>
@@ -27,8 +27,8 @@
     justify-content: space-between;
     font-family: 'Open Sans';
     flex-direction: column;
-    margin-top: 60px;
-    margin-left: 42px;
+    margin-top: 5em;
+    margin-left: 2em;
   }
   .nText{
     display: flex;
@@ -37,24 +37,24 @@
     justify-content: space-evenly;
     font-family: 'Open Sans';
     align: left;
-    padding-left: 75px;
+    padding-left: 10em;
     letter-spacing: 0.3em;
-    line-height: 50px;
+    line-height: 5em;
   }
   .nText > p{
-    font-size: 24px;
+    font-size: 8em;
     font-weight: 100;
     color: #a51e37;
   }
   .nButton {
-    margin-left: 650px;
-    margin-top: 30px;
+    margin-left: 65%;
+    
   }
   .nImage {
-    height: 300px;
-    width: 350px;
+    height: 20em;
+    width: 25em;
     align: left;
-    margin-top: 20px; 
+    margin-top: 1em; 
   }
   .structure{
     display: flex;
@@ -64,11 +64,11 @@
   }
   #border {
     background-color: lightgrey;
-    width: 150px;
-    height: 28px;
+    width: 10em;
+    height: 2em;
     text-align: center;
-    border-radius: 10px;
-    margin: 15px;
+    border-radius: 2em;
+    margin: 3em;
   }
 
 </style>
