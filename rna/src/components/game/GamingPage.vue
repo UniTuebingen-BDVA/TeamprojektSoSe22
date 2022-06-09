@@ -1,19 +1,17 @@
-<template lang="">
-    <div>
-        
+<template>
+    <div class="game-page">
+        <GameStart />
     </div>
 </template>
-<script>
-    import GameStart from './GameStart.vue'
-export default {
-    
-}
+<script setup>
+import GameStart from './GameStart.vue';
 
 </script>
 
-props: {
-    Test: {type: String, default: "test"}
-}
-<style lang="">
-    
+<style scoped>
+    .game-page {
+        padding-top: 80px;
+        max-width: 1200px;
+        margin: 0 auto 0 auto;
+    }
 </style>
