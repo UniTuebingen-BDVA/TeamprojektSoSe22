@@ -14,6 +14,7 @@
         padding: 0 1em 0 1em;
         font-size: 14pt;
         align-content: center;
+        cursor: pointer;
     }
     .nav-button:hover {
         color: var(--uni-color-red);
