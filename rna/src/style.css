@@ -5,6 +5,9 @@
     --uni-color-red-highlight: rgb(200,80,60);
     --uni-color-gold-highlight: rgb(215,180,105);
     --uni-color-black-highlight: rgb(65,90,140);
+    --uni-color-red-hover: rgb(122, 22, 41);
+    --uni-color-gold-hover: rgb(145, 105, 70);
+    --uni-color-black-hover: rgb(86, 92, 101);
     --uni-font: 'Open Sans',Arial,Helvetica;
     --uni-font-color: var(--uni-color-black);
     --uni-font-color-muted: rgb(86, 92, 101);
