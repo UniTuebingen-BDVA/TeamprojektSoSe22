@@ -2,6 +2,7 @@
 
 import NavBar from './components/Navbar.vue'
 import GamingPage from './components/game/GamingPage.vue';
+import EndScreen from './components/game/EndScreen.vue';
 </script>
 
 <template>
@@ -9,6 +10,9 @@ import GamingPage from './components/game/GamingPage.vue';
   <!-- ToDo: Landing Page -->
   <!-- ToDo: Learning Page -->
   <GamingPage />
+  
+  <EndScreen />
+  
 </template>
 
 <style>

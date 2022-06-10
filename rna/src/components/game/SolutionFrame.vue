@@ -23,8 +23,7 @@
 
 <style scoped>
     .solution-frame{
-        border: 4px;
-        border-color: var(--uni-color-gold);
+        
     }
 
     p{
