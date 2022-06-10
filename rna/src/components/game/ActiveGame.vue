@@ -19,9 +19,6 @@
         margin: 0 auto;
         padding: 2em 0;
         width: 100%;
-/*         display: flex;
-        flex-flow: column wrap;
-        justify-content: center; */
     }
     .turn-in-btn {
         height: 40px;
