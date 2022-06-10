@@ -1,21 +1,33 @@
-<template>
-    <div class="nSolutionFrame"></div>
+<template >
+    <div class="solution-frame">
+        
+    </div>
 
-    <div class="nSolutionTable"></div>
+    <div class="solution-frame-table">
+        
+    </div>
 
-    <p>Nussinov Algorithmus</p>
+    <div>
+        <p>Nussinov Algorithmus</p>
+    </div>
+
 
 </template>
 
 
-<style>
-    .nSolutionFrame, .nSolutionTable{
-        height: 200px;
-        width: 300px;
-        color: rgb(80, 170, 200);
-        border-color: rgb(50, 65, 75);
-        border-width: 2px;
-        border-style: solid;
-        margin-bottom: 10px;
+<script setup>
+
+</script>
+
+
+
+<style scoped>
+    .solution-frame{
+        
+    }
+
+    p{
+        font-weight: 800;
+        font-size: 14pt;
     }
 </style>
