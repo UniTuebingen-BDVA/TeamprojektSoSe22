@@ -1,30 +1,24 @@
-<script>
-
-</script>
-
-
-<template>
-    <div class="nSolutionFrame">
-
+<template >
+    <div class="yours-frame">
+        
     </div>
 
-    
-
-    <div class="nSolutionTable">
-
+    <div class="yours-frame-table">
+        
     </div>
-
 
     <div>
         <p>Deine Lösung</p>
     </div>
-    
-    
 </template>
 
 
+<script setup>
+</script>
+
+
+
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
     .nSolutionFrame, .nSolutionTable{
         height: 200px;
         width: 300px;
@@ -36,7 +30,7 @@
     }
     
     p{
-        font-family: 'Open Sans';
-        float: left;
+        font-weight: 800;
+        font-size: 14pt;
     }
 </style>

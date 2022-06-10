@@ -1,11 +1,16 @@
+<script setup>
+    import GeneralButton from '../GeneralButton.vue';
+</script>
+
 <template>
     <div class="nText">
         <h1>Trage dich in der HighScore-Tabelle ein: </h1>
+    </div>
 
         <div class="nEintrag">
-            <p class="nName">Name:</p>
+            <p>Name:</p>
             <input class="nInput" type="text">
-            <button type="button" class="nButton">Senden</button>
+            <GeneralButton class="general-buttons" :primary-color="'black'" :filled="true" :text="'Abgeben'"/>
         </div>
 
         <table class="nTabelle">
@@ -15,43 +20,34 @@
                 <th>xx mehr Verbindungen</th>
             </tr>
             <tr>
-                <td>a</td>
-                <td>b</td>
-                <td>c</td>
+                <td>    </td>
+                <td>    </td>
+                <td>    </td>
             </tr>
             <tr>
-                <td>x</td>
-                <td>y</td>
-                <td>z</td>
+                <td>    </td>
+                <td>    </td>
+                <td>    </td>
             </tr>
         </table>
 
-         <button type="button" class="nButton">Nochmal</button>
+        
+        <div class="AbButton">
+        <GeneralButton class="general-buttons" :primary-color="'black'" :filled="true" :text="'Nochmal'"/>
+        </div>
 
 
-    </div>
+    
 
 
 </template>
 
-<script></script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-    .nButton{
-        background-color: #ffffff;
-        width: auto;
+    .general-buttons {
         height: 40px;
-        border-color: #a51e37;
-        border-width: 2px;
-        border-style: solid;
-        color: #a51e37;
-        font-family: 'Open Sans';
-        align-self: baseline;
-    }
-    
-    .nName{
-        float: left;
+        width: 140px
+
     }
 
     table, th, td {
@@ -61,7 +57,31 @@
         margin-top: 20px;
         border: 1px solid black;
         border-collapse: collapse;
+        font-weight: 800;
+        font-size: 14pt;
     }
+
+    p{
+        font-weight: 800;
+        font-size: 14pt;
+    }
+
+    h1{
+        font-weight: 800;
+        font-size: 16pt;
+        text-align: center;
+    }
+
+    .nEintrag{
+        display: flex;
+        justify-content: center;
+        padding: 2em 1em 2em 1em;
+    }
+    .AbButton{
+        display: flex;
+        justify-content: center;
+    }
+    
     
     
 </style>
