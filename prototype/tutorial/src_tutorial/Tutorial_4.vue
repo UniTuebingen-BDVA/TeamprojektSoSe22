@@ -6,7 +6,7 @@
 <template>
   <NussinovHeader></NussinovHeader>
   <div class="tutorialBody">
-    <NussinovButton text="Skip Tutorial" link=""></NussinovButton>
+    <NussinovButton text="Skip Tutorial" link="../../level/index_level.html"></NussinovButton>
     <div class="tutorialBox">
       <p>Remember, you need this </p>
       <img src="../../src/assets/nussinov-cases-highlight.PNG">
@@ -90,7 +90,7 @@
       <p>Finished!</p>
       <img src="../../src/assets/tutorial-sequence.PNG">
       </div>
-    <NussinovButton text="Next &#x2192;" link=""></NussinovButton>  
+    <NussinovButton text="Next &#x2192;" link="../../level/index_level.html"></NussinovButton>  
   </div>
   
 </template>

@@ -6,7 +6,7 @@
 <template>
   <NussinovHeader></NussinovHeader>
   <div class="tutorialBody">
-    <NussinovButton text="Skip Tutorial" link=""></NussinovButton>
+    <NussinovButton text="Skip Tutorial" link="../../level/index_level.html"></NussinovButton>
     <div class="tutorialBox">
       <p>Nussinov is an algorithm.</p>
       <p>A very nice algorithm.</p>

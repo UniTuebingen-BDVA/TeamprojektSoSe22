@@ -9,12 +9,11 @@
     <div class="nText">
       <h1>Welcome to <br> Serious Game  for <span>Nussinov</span></h1>
       <p>Learn the key ideas of dynamic programming algorithms <br> and how to use the Nussinov algorithm predict correct RNA-structures</p><br>
-      <NussinovButton text="Start Tutorial" link=""></NussinovButton> <!-- add link -->
+      <NussinovButton text="Start Tutorial" link="tutorial/1.html"></NussinovButton> <!-- add link -->
     </div>
     <img class = "nImage" src="./assets/rna-example.png">
   </div>
 </template>
-
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Open+Sans'); /*May move all imports to central CSS file?*/
   .nBody{
