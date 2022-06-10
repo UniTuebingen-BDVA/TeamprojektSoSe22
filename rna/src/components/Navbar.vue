@@ -7,6 +7,7 @@
             </span>
         </div>
         <div class="navigation">
+            <NaVButton class="nav-button" :name="'Einführung'"/>
             <NaVButton class="nav-button" :name="'Spielen'"/>
             <NaVButton class="nav-button" :name="'Lernen'"/>
         </div>
@@ -25,6 +26,7 @@
         position: fixed;
         display: flex;
         padding: 0 1em 0 1em;
+        background-color: white;
         box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
         justify-content: space-between;
     }
