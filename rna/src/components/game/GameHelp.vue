@@ -1,8 +1,6 @@
 <template>
     <div class="help-page">
-        <div class="close" v-on:click="$emit('closed',true)">
-            <img src="../../assets/icon_close.svg"/>
-        </div>
+        Here goes help text
     </div>
 </template>
 <script setup>
@@ -11,18 +9,9 @@
 <style scoped>
     .help-page {
         height: 100%;
-        width: 100%;
-        position: relative;
-    }
-    .close {
+        width: 80%;
         position: absolute;
-        top: 0;
-        right: 0;
-        height: 20px;
-        cursor: pointer;
+        top: 0
     }
-    .close > img {
-        height: 100%;
-        object-fit: contain;
-    }
+
 </style>

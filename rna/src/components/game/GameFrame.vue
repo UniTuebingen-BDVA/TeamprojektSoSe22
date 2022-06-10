@@ -3,8 +3,9 @@
         <div class="game">
 
         </div>
-        <div class="help" v-on:click="showHelp" @close="showHelp">
-            <img src="../../assets/icon_help.svg" />
+        <div class="help" v-on:click="showHelp">
+            <img v-if="!helpActive"  src="../../assets/icon_help.svg" />
+            <img v-if="helpActive"  src="../../assets/icon_close.svg" />
         </div>
         <GameHelp v-if="helpActive"/>
     </div>
@@ -14,7 +15,7 @@
     import GameHelp from './GameHelp.vue';
 
     const helpActive = ref(false);
-
+    const close = () => console.log("hey");
     const showHelp = () => helpActive.value = !helpActive.value;
 </script>
 <style scoped>
