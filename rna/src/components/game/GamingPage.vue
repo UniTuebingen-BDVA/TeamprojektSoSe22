@@ -1,7 +1,7 @@
 <template>
     <div class="game-page">
-        <ActiveGame v-if="!gameend" @stateChange="switchGameState"/>
-        <EndScreen v-if="gameend"/>
+        <ActiveGame v-if="!gameend" @stateChange="endGame"/>
+        <EndScreen v-if="gameend" @stateChange="restartGame"/>
     </div>
 </template>
 <script setup>
@@ -14,7 +14,8 @@ import EndScreen from './EndScreen.vue';
 const gameend = ref(false);
 const bsp = ref("Nope");
 
-const switchGameState = ()=> gameend.value = true;
+const endGame = ()=> gameend.value = true;
+const restartGame = ()=> gameend.value = false;
 
 </script>
 
