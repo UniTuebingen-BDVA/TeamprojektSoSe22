@@ -10,9 +10,6 @@ import EndScreen from './components/game/EndScreen.vue';
   <!-- ToDo: Landing Page -->
   <!-- ToDo: Learning Page -->
   <GamingPage />
-  
-  <EndScreen />
-  
 </template>
 
 <style>
