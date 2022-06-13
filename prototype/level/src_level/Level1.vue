@@ -1,4 +1,3 @@
-<!-- border anpassen -->
 <script setup lang="ts">
   import NussinovButton from '/src/components/NussinovButton.vue';
   import NussinovHeader from '/src/components/NussinovHeader.vue';

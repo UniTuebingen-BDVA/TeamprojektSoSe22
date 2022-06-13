@@ -57,13 +57,10 @@
     color: black;
     align: right;
   }
-  .nButton {
-    display: flex;
+  .nButton_Next {
+  display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 30em;
-  }
-  .nButton_Next {
     margin-left: 85%;
     margin-top: 10%;
   }
