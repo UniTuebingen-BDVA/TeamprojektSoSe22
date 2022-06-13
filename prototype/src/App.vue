@@ -9,37 +9,38 @@
     <div class="nText">
       <h1>Welcome to <br> Serious Game  for <span>Nussinov</span></h1>
       <p>Learn the key ideas of dynamic programming algorithms <br> and how to use the Nussinov algorithm predict correct RNA-structures</p><br>
-      <NussinovButton text="Start Tutorial" link="tutorial/1.html"></NussinovButton> <!-- add link -->
+      <NussinovButton text="Start Tutorial" link="tutorial/1.html"></NussinovButton>
     </div>
     <img class = "nImage" src="./assets/rna-example.png">
   </div>
 </template>
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Open+Sans'); /*May move all imports to central CSS file?*/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
   .nBody{
-    margin-top: 50px;
+    margin-top: 5%;
     display: flex;
+    flex-wrap: nowrap;
     justify-content: space-between;
   }
 
   .nImage{
-    width: 35%;
-    position: fixed;
-    right: 0px;
+    max-width: 40%;
+    min-width: 30%;
+    width: auto;
+    height: auto;
   }
   
   .nText{
+    margin-top: 5%;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
     font-family: 'Open Sans';
-    align-items: left;
+    align-items: flex-start;
     width: 50%;
     height: 100%;
-    position: absolute;
-    left: 0px;
-    padding-left: 75px;
+    padding-left: 10%;
     letter-spacing: 0.3em;
     line-height: 35px;
   }
