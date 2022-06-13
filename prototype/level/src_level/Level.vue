@@ -32,7 +32,6 @@
     font-family: 'Open Sans';
     flex-direction: column;
     margin-top: 3em;
-    margin-left: 2em;
   }
   .nText{
     display: flex;
@@ -41,13 +40,15 @@
     justify-content: space-evenly;
     font-family: 'Open Sans';
     align-items: left;
-    padding-left: 10em;
+    /* padding-left: 10em; */
     letter-spacing: 0.3em;
     line-height: 4em;
   }
   .nParagraph {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     width: 25em;
-    height: 5em;
     font-family: 'Open Sans';
     color: #a51e37;
     margin-top: 5em;
@@ -56,6 +57,10 @@
     color: black;
     font-size: 5em;
     font-weight: 100;
+    margin-left: 2em;
+  }
+  h1 {
+    margin-left: 1.5em;
   }
   .nText > p{
     font-size: 3em;
