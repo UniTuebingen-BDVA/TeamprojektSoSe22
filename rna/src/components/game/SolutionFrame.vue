@@ -1,14 +1,13 @@
 <template >
-    <div class="solution-frame">
+    
+    <div class="frame">
         
-    </div>
-
-    <div class="solution-frame-table">
         
-    </div>
+        <div class="solution-frame"></div>
 
-    <div>
-        <p>Nussinov Algorithmus</p>
+        <div class="solution-frame-table"></div>
+
+    
     </div>
 
 
@@ -22,12 +21,17 @@
 
 
 <style scoped>
-    .solution-frame{
-        
-    }
+.frame{
+    width: 600px;
+    height: 550px;
+    border-style: solid;
+    border-color: var(--uni-color-black);
+    border-width: 1px;
+}
+    
 
-    p{
-        font-weight: 800;
-        font-size: 14pt;
-    }
+p{
+    font-weight: 800;
+    font-size: 14pt;
+}
 </style>

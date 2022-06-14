@@ -1,15 +1,15 @@
 <template >
-    <div class="yours-frame">
+    
+    <div class="frame">
         
+        <div class="yours-frame"></div>
+
+        <div class="yours-frame-table"></div>
+    
+
     </div>
 
-    <div class="yours-frame-table">
-        
-    </div>
 
-    <div>
-        <p>Deine Lösung</p>
-    </div>
 </template>
 
 
@@ -19,18 +19,21 @@
 
 
 <style scoped>
-    .nSolutionFrame, .nSolutionTable{
-        height: 200px;
-        width: 300px;
-        color: rgb(80, 170, 200);
-        border-color: rgb(50, 65, 75);
-        border-width: 2px;
-        border-style: solid;
-        margin-bottom: 10px;
-    }
+
+.frame{
+    width: 600px;
+    height: 550px;
+    margin-right: 10px;
+    border-style: solid;
+    border-color: var(--uni-color-black);
+    border-width: 1px;
+}
+
+
+
     
-    p{
-        font-weight: 800;
-        font-size: 14pt;
-    }
+p{
+    font-weight: 800;
+    font-size: 14pt;
+}
 </style>

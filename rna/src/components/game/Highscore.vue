@@ -1,5 +1,5 @@
 <script setup>
-    import GeneralButton from '../GeneralButton.vue';
+    import UniButton from '../UniButton.vue';
 </script>
 
 <template>
@@ -8,62 +8,59 @@
     </div>
 
         <div class="nEintrag">
-            <p>Name:</p>
-            <input class="nInput" type="text">
-            <GeneralButton class="general-buttons" :primary-color="'black'" :filled="true" :text="'Abgeben'"/>
-        </div>
-
-        <table class="nTabelle">
-            <tr>
-                <th>Name</th>
-                <th>Übereinstimmung</th>
-                <th>xx mehr Verbindungen</th>
-            </tr>
-            <tr>
-                <td>    </td>
-                <td>    </td>
-                <td>    </td>
-            </tr>
-            <tr>
-                <td>    </td>
-                <td>    </td>
-                <td>    </td>
-            </tr>
-        </table>
-
-        
-        <div class="AbButton">
-        <GeneralButton class="general-buttons" :primary-color="'black'" :filled="true" :text="'Nochmal'"/>
-        </div>
-
-
     
+            <input class="nInput" type="text" placeholder="Dein Name">
+            <UniButton class="general-buttons" :primary-color="'black'" :filled="true" :text="'Senden'"/>
+        </div>
 
+
+        <div class="highscore">
+
+            <table>
+
+                HighScore-Tabelle
+
+            </table>
+
+        </div>
 
 </template>
 
 
 <style scoped>
-    .general-buttons {
-        height: 40px;
-        width: 140px
-
-    }
-
+    
     table, th, td {
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 20px;
         margin-top: 20px;
         border: 1px solid black;
+        border-radius: 4px;
         border-collapse: collapse;
         font-weight: 800;
         font-size: 14pt;
     }
 
-    p{
+    .highscore{
+        width: 600px;
+        height: 350px;
+        background-color: rgb(226, 229, 230);
+        border-style: solid;
+        border-width: 1px;
+        border-color: var(--uni-color-gold);
+        margin: auto;
+        padding: 10px;
+        overflow: scroll;
+        margin-top: 20px;
+    }
+
+    .name{
         font-weight: 800;
         font-size: 14pt;
+        margin-right: 10px;
+        width: 10%;
+        height: 35px;
+        text-align: left;
     }
 
     h1{
@@ -75,11 +72,26 @@
     .nEintrag{
         display: flex;
         justify-content: center;
-        padding: 2em 1em 2em 1em;
+        margin-right: 5px;
     }
+
     .AbButton{
         display: flex;
         justify-content: center;
+    }
+
+    .nInput{
+        margin-right: 10px;
+        width: 10%;
+        height: 35px;
+        background-color: rgb(226, 229, 230);
+        border: 2px solid rgb(50,65,75);;
+        border-radius: 2px;
+    }
+
+    .general-buttons {
+        height: 40px;
+        width: 140px;
     }
     
     

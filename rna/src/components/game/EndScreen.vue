@@ -9,8 +9,10 @@ import UniButton from '../UniButton.vue';
 
 <template>
     <div class="EndScreen">
-        <p>Deine Lösung stimmt zu xx% mit der Vorhersage überein!</p>
-        <p>Du konntest sogar xx Verbindungen mehr finden</p>
+        <p>Deine Lösung stimmt zu </p>
+            <div class="accordance">...%</div> 
+        <p>mit dem Algorithmus überein</p>
+        
     </div>
 
     
@@ -35,7 +37,7 @@ import UniButton from '../UniButton.vue';
     <Highscore />
 
     <div class="AbButton">
-        <UniButton :primary-color="'black'" :filled="true" :text="'Nochmal'" class="general-buttons" v-on:click="$emit('stateChange', false)"/>
+        <UniButton :primary-color="'red'" :filled="true" :text="'Nochmal'" class="general-buttons" v-on:click="$emit('stateChange', false)"/>
     </div>
     
 </template>
@@ -47,10 +49,17 @@ import UniButton from '../UniButton.vue';
 
 .EndScreen{
     font-weight: 800;
-    font-size: 14pt;
+    font-size: 20pt;
     text-align: center;
     width: auto;
+    justify-content: space-between;
 }
+
+.accordance{
+    color: var(--uni-color-gold);
+}
+
+
 
 .general-buttons {
         height: 40px;
@@ -61,6 +70,7 @@ import UniButton from '../UniButton.vue';
 .AbButton{
     display: flex;
     justify-content: center;
+    margin-top: 20px;
 }
 
 .frames{
@@ -72,7 +82,7 @@ p{
     display: flex;
     justify-content: center;
     font-weight: 800;
-    font-size: 14pt;
+    font-size: 16pt;
 }
     
 </style>
