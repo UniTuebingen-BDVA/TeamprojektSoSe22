@@ -34,4 +34,10 @@ defineProps<{
         padding: 10px;
         font-weight: 550;
     }
+    .nButton:hover{
+        background-color: #a51e37;
+    }
+    a:hover{
+        color: #ffffff;
+    }
 </style>
