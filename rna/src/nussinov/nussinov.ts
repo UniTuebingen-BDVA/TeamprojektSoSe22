@@ -1,4 +1,31 @@
 /**
+ * Class for Nussinov implementation
+ * @param {string} input_sequence - RNA Sequence to use for the Nussinov algorithm
+ */
+class nussinov{
+    sequence: string;
+    sequence_length: number;
+    matrix: number[][];
+    max_score: number;
+    calculations: any[];
+    backtrace: any[][];
+    secondary_structure: string[];
+
+    constructor(public input_sequence: string) {
+        // Set Sequence
+        this.sequence = input_sequence;
+        this.sequence_length = input_sequence.length;
+        // Construct Matrix
+        this.matrix = make2dArray(input_sequence.length,7);
+        this.max_score = 0;
+        this.calculations = [];
+        // Construct result parameter
+        this.backtrace = make2dArray(input_sequence.length,7);
+        this.secondary_structure = initialize_sec_struct(input_sequence.length);
+    }
+}
+
+/**
  * Funktion to create a 2d Array
  * @param {number} size - size of the 2d Array
  * @param {number} val - value for diagonal axis
@@ -31,7 +58,7 @@ function initialize_sec_struct(len:number):string[]{
 }
 
 /**
- * //TODO
+ * //TODO ???
  * @param matrix_a ???
  * @return ???
  */
@@ -39,31 +66,17 @@ function duplicate(matrix_a){
     return matrix_a.map(function(arr) {return arr.slice();});
 }
 
-class nussinov{
-    sequence: string;
-    sequence_length: number;
-    matrix: number[][];
-    max_score: number;
-    calculations: any[];
-    backtrace: any[][];
-    secondary_structure: string[];
-
-    constructor(public input_sequence: string) {
-        this.sequence = input_sequence;
-        this.sequence_length = input_sequence.length;
-        this.matrix = make2dArray(input_sequence.length,7);
-        this.max_score = 0;
-        this.calculations = [];
-        this.backtrace = make2dArray(input_sequence.length,7);
-        this.secondary_structure = initialize_sec_struct(input_sequence.length);
-    }
-
-}
-
-function get_score(nuss: nussinov, pos_i: number, pos_j: number){
+/**
+ * Implementation of the Nussinov algorithm
+ * @param {nussinov} nuss - Nussinov object as input
+ * @param {number} pos_i - first position in Matrix
+ * @param {number} pos_j - second position in Matrix
+ */
+function get_score(nuss: nussinov, pos_i: number, pos_j: number):void{
     const map = new Map();
     let cords = [];
     let values = [];
+
     //Case 1
     let value = nuss.matrix[pos_i + 1][pos_j];
     if(!map.has(value)){
@@ -71,6 +84,7 @@ function get_score(nuss: nussinov, pos_i: number, pos_j: number){
         map.set(value, cords);
         values.push(value);
     }
+
     //Case 2
     value = nuss.matrix[pos_i][pos_j - 1];
     if(map.has(value)){
@@ -113,6 +127,7 @@ function get_score(nuss: nussinov, pos_i: number, pos_j: number){
             values.push(value);
         }
     }
+
     let max = Math.max.apply(null, values);
     nuss.matrix[pos_i][pos_j] = max;
 
@@ -121,7 +136,13 @@ function get_score(nuss: nussinov, pos_i: number, pos_j: number){
     nuss.backtrace[pos_i][pos_j] = map.get(max);
 }
 
-function is_canonical(base_i: string, base_j: string){
+/**
+ * Check for canonical Basepair
+ * @param {string} base_i - basepair one
+ * @param {string} base_j - basepair two
+ * @return {boolean}
+ */
+function is_canonical(base_i: string, base_j: string):boolean{
     switch(base_i){
         case "A":
             return base_j === "U";
@@ -136,7 +157,11 @@ function is_canonical(base_i: string, base_j: string){
     }
 }
 
-function calculate_matrix(nuss: nussinov){
+/**
+ * Create stepwise calculation matrix
+ * @param {nussinov} nuss - Input Nussinov object
+ */
+function calculate_matrix(nuss: nussinov):void {
     for (let i = 1; i < nuss.sequence_length; i++){
         nuss.matrix[i][i-1] = 0;
     }
@@ -156,17 +181,25 @@ function calculate_matrix(nuss: nussinov){
     nuss.max_score = nuss.matrix[0][nuss.sequence_length-1];
 }
 
-function backtrace(nuss: nussinov, pos_i, pos_j){
+/**
+ * Calculate Backtrace Matrix
+ * @param {nussinov} nuss - Nussinov Object
+ * @param {number} pos_i - first position in Matrix
+ * @param {number} pos_j - second position in Matrix
+ */
+function backtrace(nuss: nussinov, pos_i:number, pos_j:number):void{
     let new_pos = nuss.backtrace[pos_i][pos_j][0];
     if(pos_i < pos_j){
         if(new_pos.length == 4){
-            console.log("Bifurcation");
+            // DEBUG
+            // console.log("Bifurcation");
             backtrace(nuss, new_pos[0], new_pos[1]);
             backtrace(nuss, new_pos[2], new_pos[3]);
         }
 
         if(new_pos[0] === pos_i+1 && new_pos[1] === pos_j-1){
-            console.log("This case");
+            // DEBUG
+            // console.log("This case");
             nuss.secondary_structure[pos_i] = "(";
             nuss.secondary_structure[pos_j] = ")";
             backtrace(nuss, new_pos[0], new_pos[1]);
@@ -177,34 +210,16 @@ function backtrace(nuss: nussinov, pos_i, pos_j){
 
 }
 
-function calculate_nussinov(sequence: string){
+/**
+ * Apply Nussinov on Input sequence
+ * @param {string} sequence - Sequence to apply nussinov
+ * @return {nussinov} - Return a Nussinov Object
+ */
+function calculate_nussinov(sequence: string):nussinov{
     let nuss = new nussinov(sequence);
     calculate_matrix(nuss);
     backtrace(nuss, 0, nuss.sequence_length-1);
     return nuss;
 }
-
-// from stackoverflow, for debugging
-/*
-function createTable(tableData) {
-    let table = document.createElement('table');
-    let tableBody = document.createElement('tbody');
-
-    tableData.forEach(function(rowData) {
-        let row = document.createElement('tr');
-
-        rowData.forEach(function(cellData) {
-            let cell = document.createElement('td');
-            cell.appendChild(document.createTextNode(cellData));
-            row.appendChild(cell);
-        });
-
-        tableBody.appendChild(row);
-    });
-
-    table.appendChild(tableBody);
-    document.body.appendChild(table)
-}
-*/
 
 module.exports = { make2dArray, initialize_sec_struct };
