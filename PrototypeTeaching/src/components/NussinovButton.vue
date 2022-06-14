@@ -26,6 +26,7 @@ defineProps<{
         color: #a51e37;
         font-family: 'Open Sans';
         align-self: baseline;
+        transition: background-color .3s;
     }
     .nButton > a {
         text-decoration: none;
@@ -33,6 +34,7 @@ defineProps<{
         font-size: 20px;
         padding: 10px;
         font-weight: 550;
+        transition: color .3s;
     }
     .nButton:hover{
         background-color: #a51e37;
