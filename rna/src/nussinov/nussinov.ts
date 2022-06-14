@@ -222,4 +222,4 @@ function calculate_nussinov(sequence: string):nussinov{
     return nuss;
 }
 
-module.exports = { make2dArray, initialize_sec_struct };
+module.exports = { make2dArray, initialize_sec_struct, calculate_nussinov };
