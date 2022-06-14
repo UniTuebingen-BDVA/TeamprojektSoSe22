@@ -1,29 +1,47 @@
-function make2dArray(d, val) {
-    let arr = new Array(d);
-    for(let i = 0; i < d; i++) {
-        arr[i] = new Array(d);
-        for(let j = 0; j < d; j++) {
+/**
+ * Funktion to create a 2d Array
+ * @param {number} size - size of the 2d Array
+ * @param {number} val - value for diagonal axis
+ * @return {number[][]} Return 2d Matrix of size with val on diagonal axis
+ */
+function make2dArray(size:number, val:number):number[][] {
+    let arr:number[][] = new Array(size);
+
+    for(let i = 0; i < size; i++) {
+        arr[i] = new Array(size);
+        for(let j = 0; j < size; j++) {
             arr[i][j] = val;
         }
     }
     return arr;
 }
 
-function initialize_sec_struc(len){
-    let arr = [];
+/**
+ * Initialize Dot-Bracket secondary structure String as Array
+ * @param {number} len - Length of secondary structure String
+ * @return {string[]} Returns Dot-Bracket secondary structure String as Array
+ */
+function initialize_sec_struct(len:number):string[]{
+    let arr:string[] = [];
+
     for(let i = 0; i < len; i++){
         arr[i] = ".";
     }
     return arr;
 }
 
+/**
+ * //TODO
+ * @param matrix_a ???
+ * @return ???
+ */
 function duplicate(matrix_a){
     return matrix_a.map(function(arr) {return arr.slice();});
 }
 
 class nussinov{
     sequence: string;
-    sequence_lenght: number;
+    sequence_length: number;
     matrix: number[][];
     max_score: number;
     calculations: any[];
@@ -32,12 +50,12 @@ class nussinov{
 
     constructor(public input_sequence: string) {
         this.sequence = input_sequence;
-        this.sequence_lenght = input_sequence.length;
+        this.sequence_length = input_sequence.length;
         this.matrix = make2dArray(input_sequence.length,7);
         this.max_score = 0;
         this.calculations = [];
         this.backtrace = make2dArray(input_sequence.length,7);
-        this.secondary_structure = initialize_sec_struc(input_sequence.length);
+        this.secondary_structure = initialize_sec_struct(input_sequence.length);
     }
 
 }
@@ -119,23 +137,23 @@ function is_canonical(base_i: string, base_j: string){
 }
 
 function calculate_matrix(nuss: nussinov){
-    for (let i = 1; i < nuss.sequence_lenght; i++){
+    for (let i = 1; i < nuss.sequence_length; i++){
         nuss.matrix[i][i-1] = 0;
     }
-    for (let i = 0; i < nuss.sequence_lenght; i++){
+    for (let i = 0; i < nuss.sequence_length; i++){
         nuss.matrix[i][i] = 0;
     }
 
     let a = duplicate(nuss.matrix);
     nuss.calculations.push(a);
 
-    for (let n = 1; n < nuss.sequence_lenght; n++){
-        for (let j = n; j < nuss.sequence_lenght; j++){
+    for (let n = 1; n < nuss.sequence_length; n++){
+        for (let j = n; j < nuss.sequence_length; j++){
             let i = j - n;
             get_score(nuss, i, j);
         }
     }
-    nuss.max_score = nuss.matrix[0][nuss.sequence_lenght-1];
+    nuss.max_score = nuss.matrix[0][nuss.sequence_length-1];
 }
 
 function backtrace(nuss: nussinov, pos_i, pos_j){
@@ -162,7 +180,7 @@ function backtrace(nuss: nussinov, pos_i, pos_j){
 function calculate_nussinov(sequence: string){
     let nuss = new nussinov(sequence);
     calculate_matrix(nuss);
-    backtrace(nuss, 0, nuss.sequence_lenght-1);
+    backtrace(nuss, 0, nuss.sequence_length-1);
     return nuss;
 }
 
@@ -188,3 +206,5 @@ function createTable(tableData) {
     document.body.appendChild(table)
 }
 */
+
+module.exports = { make2dArray, initialize_sec_struct };
