@@ -12,7 +12,6 @@ import ActiveGame from './ActiveGame.vue';
 import EndScreen from './EndScreen.vue';
 
 const gameend = ref(false);
-const bsp = ref("Nope");
 
 const endGame = ()=> gameend.value = true;
 const restartGame = ()=> gameend.value = false;

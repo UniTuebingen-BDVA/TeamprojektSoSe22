@@ -2,7 +2,7 @@
 
 import NavBar from './components/Navbar.vue'
 import GamingPage from './components/game/GamingPage.vue';
-import EndScreen from './components/game/EndScreen.vue';
+
 </script>
 
 <template>

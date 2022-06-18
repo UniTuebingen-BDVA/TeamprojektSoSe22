@@ -15,7 +15,6 @@
     import GameHelp from './GameHelp.vue';
 
     const helpActive = ref(false);
-    const close = () => console.log("hey");
     const showHelp = () => helpActive.value = !helpActive.value;
 </script>
 <style scoped>
