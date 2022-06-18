@@ -38,9 +38,9 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        font-size: 16px;
-        font-weight: 700;
-        transition: all .2s ease-in;
+        font-size: 20px;
+        font-weight: 550;
+        transition: color .3s/* all .2s ease-in */;
         cursor: pointer;
         box-sizing: border-box;
         -moz-box-sizing: border-box;
@@ -73,7 +73,7 @@
     .inverted-red {
         border-color: var(--uni-color-red);
         border-style: solid;
-        border-width: 1px;
+        border-width: 2px;
         color: var(--uni-color-red);
     }
     .inverted-red:hover {
