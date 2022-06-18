@@ -1,6 +1,13 @@
+<script setup lang="ts">
+  import Logo from '../components/Logo.vue';
+</script>
+
 <template>
     <div class="nHeader">
-        <a href="/index.html">Teaching Nussinov</a>
+        <logo></logo>
+        <div class="nTitle">
+            <a href="/index.html">Teaching Nussinov</a>
+        </div>
         <div class="nPages">
             <a href="/src/pages/Tutorial/TutorialTextPage.html">Teaching</a> <!-- Add Link here-->
             <a href="">Gaming</a> <!-- Add Link here -->
@@ -22,6 +29,7 @@
         align-items: center;
         font-family: 'Open Sans';
         box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+        padding: 5px;
     }
     .nPages{
         display: flex;
@@ -29,9 +37,10 @@
         align-items: center;
         width: 20%;
     }
-    .nHeader > a{
+    .nTitle {
         width: 80%;
-        margin-left: 2%;
+    }
+    .nTitle > a{
         font-size: 2em;
         color: #434343;
         font-weight: 700;
