@@ -47,7 +47,7 @@
   flex-direction: row;
   justify-content: space-evenly;
   font-family: 'Open Sans';
-  align: left;
+  align-self: flex-start;
   padding-left: 10em;
   letter-spacing: 0.3em;
   line-height: 5em;
@@ -62,7 +62,7 @@
   font-size: 8em;
   font-weight: 100;
   color: lightgreen;
-  align: right;
+  align-self: flex-end;
 }
 .nButtons {
   display: flex;
@@ -73,22 +73,23 @@
 .nImage {
   height: 20em;
   width: 25em;
-  align: left;
+  align-self: flex-start;
 }
 .nImage_formula {
   height: 13em;
   width: 35em;
-  align: right;
+  align-self: flex-end;
 }
 .nFormula {
   display: flex;
   flex-direction: column;
-  align-items: right;
+  align-items: flex-start;
+  justify-content: baseline;
 }
 .nTable {
   display: flex;
   flex-direction: column;
-  align-items: left;
+  align-items: flex-start;
 }
 
 </style>

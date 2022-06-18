@@ -10,7 +10,6 @@ defineProps<{
         <a v-bind:href="link">
             {{text}}
         </a>
-        
     </button>
 </template>
 
