@@ -11,6 +11,9 @@
     --uni-font: 'Open Sans',Arial,Helvetica;
     --uni-font-color: var(--uni-color-black);
     --uni-font-color-muted: rgb(86, 92, 101);
+    --font-size-paragraph: 1.2em;
+    --font-size-h1: 40px;
+    --font-size-h2: 2.5em;
 }
 body {
     margin: 0 !important;
