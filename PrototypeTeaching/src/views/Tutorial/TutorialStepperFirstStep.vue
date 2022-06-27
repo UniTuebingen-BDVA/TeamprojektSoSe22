@@ -106,7 +106,7 @@
         margin: auto;
     }
     .arr{
-        color: #a51e37;
+        color: var(--uni-color-red);
         top: 0.6em;
         position: relative;
     }

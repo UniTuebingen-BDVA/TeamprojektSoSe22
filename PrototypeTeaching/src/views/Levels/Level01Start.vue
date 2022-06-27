@@ -26,7 +26,7 @@
   .nBody{
     display: flex;
     justify-content: space-between;
-    font-family: 'Open Sans';
+    font-family: var(--uni-font);
     flex-direction: column;
     margin-top: 5em;
     margin-left: 2em;

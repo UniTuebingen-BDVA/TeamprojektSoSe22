@@ -34,7 +34,7 @@
 .nBody{
   display: flex;
   justify-content: space-between;
-  font-family: 'Open Sans';
+  font-family: var(--uni-font);
   flex-direction: column;
   margin-top: 3em;
   margin-left: 2em;
@@ -78,7 +78,7 @@
   align-items: left;
 }
 #wrong {
-  color: #A51E37;
+  color: var(--uni-color-red);
   font-weight: bold;
   font-size: 1.5em;
 } 

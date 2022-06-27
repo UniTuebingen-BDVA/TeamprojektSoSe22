@@ -16,29 +16,29 @@ defineProps<{
 <style scoped>
     @import url('https://fonts.googleapis.com/css?family=Open+Sans');
     .nButton{
-        background-color: #ffffff;
+        background-color: var(--uni-color-white);
         width: auto;
-        height: 40px;
-        border-color: #a51e37;
-        border-width: 2px;
+        height: 3em;
+        border-color: var(--uni-color-red);
+        border-width: 0.125em;
         border-style: solid;
-        color: #a51e37;
-        font-family: 'Open Sans';
+        color: var(--uni-color-red);
+        font-family: var(--uni-font);
         align-self: baseline;
         transition: background-color .3s;
     }
     .nButton > a {
         text-decoration: none;
-        color: #a51e37;
-        font-size: 20px;
-        padding: 10px;
+        color: var(--uni-color-red);
+        font-size: 1.5em;
+        padding: 0.5em;
         font-weight: 550;
         transition: color .3s;
     }
     .nButton:hover{
-        background-color: #a51e37;
+        background-color: var(--uni-color-red);
     }
     a:hover{
-        color: #ffffff;
+        color: var(--uni-color-white);
     }
 </style>

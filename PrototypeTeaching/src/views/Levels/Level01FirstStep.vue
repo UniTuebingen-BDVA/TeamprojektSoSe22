@@ -33,7 +33,7 @@ import NussinovHeader from '../../components/NussinovHeader.vue';
 .nBody{
   display: flex;
   justify-content: space-between;
-  font-family: 'Open Sans';
+  font-family: var(--uni-font);
   flex-direction: column;
   margin-top: 3em;
   margin-left: 2em;
