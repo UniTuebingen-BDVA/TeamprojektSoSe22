@@ -9,7 +9,7 @@ import Level_wrong from './views/Levels/LevelWrong.vue';
 import Level_help from './views/Levels/LevelHelp.vue';
 import score from './views/Levels/LevelScore.vue';
 
-import Tutorial_1 from './views/Tutorial/TutorialText.vue';
+import Tutorial_1 from './views/Tutorial/TutorialBiologicalBackground.vue';
 import Tutorial_2 from './views/Tutorial/TutorialStepperStart.vue';
 import Tutorial_3 from './views/Tutorial/TutorialStepperFirstStep.vue';
 import Tutorial_4 from './views/Tutorial/TutorialStepperEnd.vue';

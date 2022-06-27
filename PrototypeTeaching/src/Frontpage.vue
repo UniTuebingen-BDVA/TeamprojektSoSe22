@@ -12,7 +12,7 @@
       <p>Learn the key ideas of dynamic programming algorithms <br> and how to use the Nussinov algorithm predict correct RNA-structures</p><br>
       <div class="nButton">
         <!-- <NussinovButton text="Start Tutorial" link="/src/pages/Tutorial/TutorialTextPage.html"></NussinovButton> -->
-        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Start Tutorial'" :link="'src/pages/Tutorial/TutorialTextPage.html'"/>
+        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Start Tutorial'" :link="'src/pages/Tutorial/TutorialBiologicalBackgroundPage.html'"/>
       </div>
     </div>
     <img class = "nImage" src="./assets/rna-example.png">
