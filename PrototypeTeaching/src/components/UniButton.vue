@@ -31,6 +31,7 @@
         }
     } 
 </script>
+
 <style scoped>
     .button {
         text-align: center;
@@ -104,3 +105,4 @@
         color: white;
     }
 </style>
+

@@ -1,5 +1,6 @@
 <script setup lang="ts">
-  import NussinovButton from './components/NussinovButton.vue';
+  // import NussinovButton from './components/NussinovButton.vue';
+  import UniButton from './components/UniButton.vue';
   import NussinovHeader from './components/NussinovHeader.vue';
 </script>
 
@@ -9,7 +10,10 @@
     <div class="nText">
       <h1>Welcome to <br> Serious Game  for <span>Nussinov</span></h1>
       <p>Learn the key ideas of dynamic programming algorithms <br> and how to use the Nussinov algorithm predict correct RNA-structures</p><br>
-      <NussinovButton text="Start Tutorial" link="/src/pages/Tutorial/TutorialTextPage.html"></NussinovButton>
+      <div class="nButton">
+        <!-- <NussinovButton text="Start Tutorial" link="/src/pages/Tutorial/TutorialTextPage.html"></NussinovButton> -->
+        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Start Tutorial'" :link="'src/pages/Tutorial/TutorialTextPage.html'"/>
+      </div>
     </div>
     <img class = "nImage" src="./assets/rna-example.png">
   </div>
@@ -58,5 +62,9 @@
     font-size: 17px;
     font-weight: 100;
     color: #999999;
+  }
+
+  .nButton{
+    letter-spacing: 0;
   }
 </style>

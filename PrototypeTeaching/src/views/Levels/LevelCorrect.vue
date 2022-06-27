@@ -1,5 +1,6 @@
 <script setup lang="ts">
-  import NussinovButton from '../../components/NussinovButton.vue';
+  // import NussinovButton from '../../components/NussinovButton.vue';
+  import UniButton from '../../components/UniButton.vue';
   import NussinovHeader from '../../components/NussinovHeader.vue';
 </script>
 
@@ -19,8 +20,10 @@
         </div>
       </div>
       <div class="nButtons">
-        <NussinovButton text="Need help?" link="../../pages/Levels/LevelHelpPage.html"></NussinovButton>
-        <NussinovButton text="Next" link="../../pages/Levels/LevelWrongPage.html"></NussinovButton>
+        <!-- <NussinovButton text="Need help?" link="../../pages/Levels/LevelHelpPage.html"></NussinovButton> -->
+        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Need help?'" :link="'../../pages/Levels/LevelHelpPage.html'"/>
+        <!-- <NussinovButton text="Next" link="../../pages/Levels/LevelWrongPage.html"></NussinovButton> -->
+        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next'" :link="'../../pages/Levels/LevelWrongPage.html'"/>
       </div>
     </div>
   </div>
@@ -42,28 +45,11 @@
   flex-direction: column;
   justify-content: flex-start;
 }
-.nText{
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-evenly;
-  font-family: 'Open Sans';
-  align: left;
-  padding-left: 10em;
-  letter-spacing: 0.3em;
-  line-height: 5em;
-} 
 .nTableFormula {
   display:flex;
   flex-direction: row;
   justify-content: space-around;
  }
-.nText > p{
-  font-size: 8em;
-  font-weight: 100;
-  color: lightgreen;
-  align: right;
-}
 .nButtons {
   display: flex;
   flex-direction: row;
@@ -76,8 +62,8 @@
   align: left;
 }
 .nImage_formula {
-  height: 13em;
-  width: 35em;
+  height: 11em;
+  width: 40em;
   align: right;
 }
 .nFormula {
@@ -91,7 +77,7 @@
   align-items: left;
 }
 #right {
-  color: lightgreen;
+  color: #22E040;
   font-weight: bold;
   font-size: 1.5em;
 }

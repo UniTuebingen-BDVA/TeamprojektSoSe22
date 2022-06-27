@@ -1,5 +1,6 @@
 <script setup lang="ts">
-  import NussinovButton from '../../components/NussinovButton.vue';
+  // import NussinovButton from '../../components/NussinovButton.vue';
+  import UniButton from '../../components/UniButton.vue';
   import NussinovHeader from '../../components/NussinovHeader.vue';
 </script>
 
@@ -13,7 +14,8 @@
     </div>
     <img class ="nImage" src="../../assets/table.png">
     <div class="nButton">
-      <NussinovButton text="Start" link="../../pages/Levels/Level01FirstStepPage.html"></NussinovButton>
+      <!-- <NussinovButton text="Start" link="../../pages/Levels/Level01FirstStepPage.html"></NussinovButton> -->
+      <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Start'" :link="'../../pages/Levels/Level01FirstStepPage.html'"/>
     </div>
     
   </div>
@@ -28,22 +30,6 @@
     flex-direction: column;
     margin-top: 5em;
     margin-left: 2em;
-  }
-  .nText{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-evenly;
-    font-family: 'Open Sans';
-    align: left;
-    padding-left: 10em;
-    letter-spacing: 0.3em;
-    line-height: 5em;
-  }
-  .nText > p{
-    font-size: 8em;
-    font-weight: 100;
-    color: #a51e37;
   }
   .nButton {
     margin-left: 65%;

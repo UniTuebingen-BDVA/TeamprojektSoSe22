@@ -21,3 +21,9 @@ body {
 html {
     padding: 0 !important;
 }
+.teachingButton {
+    width: auto;
+    height: 40px;
+    font-family: var(--uni-font);
+    padding: 10px;
+} 

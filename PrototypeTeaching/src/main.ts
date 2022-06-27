@@ -14,6 +14,7 @@ import Tutorial_2 from './views/Tutorial/TutorialStepperStart.vue';
 import Tutorial_3 from './views/Tutorial/TutorialStepperFirstStep.vue';
 import Tutorial_4 from './views/Tutorial/TutorialStepperEnd.vue';
 import './common/tutorial.css';
+import './common/style.css';
 
 createApp(App).mount('#app');
 
