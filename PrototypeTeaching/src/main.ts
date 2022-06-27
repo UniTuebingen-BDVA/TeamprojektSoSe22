@@ -1,5 +1,5 @@
 import { createApp } from 'vue';
-import App from './App.vue';
+import Frontpage from './Frontpage.vue';
 
 import Level from './views/Levels/LevelStart.vue';
 import Level1 from './views/Levels/Level01Start.vue';
@@ -16,7 +16,7 @@ import Tutorial_4 from './views/Tutorial/TutorialStepperEnd.vue';
 import './common/tutorial.css';
 import './common/style.css';
 
-createApp(App).mount('#app');
+createApp(Frontpage).mount('#app');
 
 createApp(Level).mount('#level');
 createApp(Level1).mount('#level1');
