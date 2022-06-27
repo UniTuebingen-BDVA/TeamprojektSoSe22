@@ -1,8 +1,8 @@
 <template lang="">
     <div class="game-start-menu">
-        <UniButton class="start-buttons" :primary-color="'red'" :filled="true" :text="'Leicht'"/>
-        <UniButton class="start-buttons" :primary-color="'red'" :filled="false" :text="'Mittel'"/>
-        <UniButton class="start-buttons" :primary-color="'gold'" :filled="true" :text="'Schwer'"/>
+        <UniButton class="start-buttons" :primary-color="'red'" :filled="true" :text="'Easy'"/>
+        <UniButton class="start-buttons" :primary-color="'red'" :filled="false" :text="'Medium'"/>
+        <UniButton class="start-buttons" :primary-color="'gold'" :filled="true" :text="'Hard'"/>
     </div>
 </template>
 <script setup>

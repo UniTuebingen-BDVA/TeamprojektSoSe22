@@ -3,7 +3,7 @@
         <GameStart/>
         <GameFrame />
         <div class="turn-in">
-            <UniButton :primary-color="'red'" :filled="true" :text="'Abgeben'" class="turn-in-btn" v-on:click="$emit('stateChange',true)"/>
+            <UniButton :primary-color="'red'" :filled="true" :text="'Submit'" class="turn-in-btn" v-on:click="$emit('stateChange',true)"/>
         </div>
     </div>
 </template>
