@@ -30,7 +30,7 @@
 .nBody{
     display: flex;
     justify-content: space-between;
-    font-family: 'Open Sans';
+    font-family: var(--uni-font);
     flex-direction: column;
     margin-top: 5em;
     margin-left: 2em;
@@ -38,7 +38,7 @@
 }
 
 .nBox {
-    background-color: white;
+    background-color: var(--uni-color-white);
     width: 20em;
     height: 10em;
     box-shadow: 1em 1.5em 1.5em rgb(0, 0, 0, 0.2);

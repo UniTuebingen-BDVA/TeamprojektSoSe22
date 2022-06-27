@@ -7,14 +7,14 @@
     float: right;
 }
 .tutorialBox{
-    border-width: 3px;
-    border-color: #925c14; /*change to gold-brown*/
-    border-radius: 10px;
+    border-width: 0.15em;
+    border-color: var(--uni-color-gold);
+    border-radius: 0.6em;
     border-style: solid;
     padding: 1%;
     background-color: #f3f3f3;
     margin: 3% auto;
-    font-family: 'Open Sans';
+    font-family: var(--uni-font);
     font-size: 1.2em;
 }
 .tutorialBox > p {

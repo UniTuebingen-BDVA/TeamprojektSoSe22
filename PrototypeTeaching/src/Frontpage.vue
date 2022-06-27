@@ -40,26 +40,26 @@
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: center;
-    font-family: 'Open Sans';
+    font-family: var(--uni-font);
     align-items: flex-start;
     width: 50%;
     height: 100%;
     padding-left: 10%;
     letter-spacing: 0.3em;
-    line-height: 35px;
+    line-height: 2.1875em; /* 35px */
   }
 
   .nText > h1{
     color: #333333;
-    font-size: 40px;
+    font-size: 2.5em; /* 40px */
     font-weight: 100;
   }
   .nText > h1 > span{
-    color: #a51e37;
+    color: var(--uni-color-red);
     font-weight: 600;
   }
   .nText > p{
-    font-size: 17px;
+    font-size: 1.0625em; /* 17px */
     font-weight: 100;
     color: #999999;
   }

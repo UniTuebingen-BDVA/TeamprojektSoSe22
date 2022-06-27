@@ -33,7 +33,7 @@
   .nBody{
     display: flex;
     justify-content: space-between;
-    font-family: 'Open Sans';
+    font-family: var(--uni-font);
     flex-direction: column;
     margin-top: 3em;
   }
@@ -42,7 +42,7 @@
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-evenly;
-    font-family: 'Open Sans';
+    font-family: var(--uni-font);
     align-items: left;
     /* padding-left: 10em; */
     letter-spacing: 0.3em;
@@ -53,13 +53,13 @@
     flex-direction: column;
     justify-content: flex-start;
     width: 25em;
-    font-family: 'Open Sans';
-    color: #a51e37;
+    font-family: var(--uni-font);
+    color: var(--uni-color-red);
     margin-top: 5em;
     letter-spacing: 0;
   }
   .nText > h1{
-    color: black;
+    color: var(--uni-color-black);
     font-size: 5em;
     font-weight: 100;
     margin-left: 2em;
@@ -70,7 +70,7 @@
   .nText > p{
     font-size: 3em;
     font-weight: 100;
-    color: #a51e37;
+    color: var(--uni-color-red);
   }
 
 </style>

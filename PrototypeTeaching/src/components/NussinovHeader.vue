@@ -27,7 +27,7 @@
         background-color: #e3e3e3;
         height: 7.5%;
         align-items: center;
-        font-family: 'Open Sans';
+        font-family: var(--uni-font);
         box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
         padding: 5px;
     }
@@ -56,6 +56,6 @@
     }
 
     a:hover{
-        color: #a51e37;
+        color: var(--uni-color-red);
     }
 </style>
