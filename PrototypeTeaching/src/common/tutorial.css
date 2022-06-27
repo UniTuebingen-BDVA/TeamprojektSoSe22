@@ -3,9 +3,10 @@
     width: 65%;
     margin: 10% auto;
 }
-.tutorialBody .nButton:nth-of-type(2){
+.tutorialBody .teachingButton:nth-last-of-type(1){
     float: right;
 }
+
 .tutorialBox{
     border-width: 0.15em;
     border-color: var(--uni-color-gold);

@@ -1,16 +1,26 @@
 <template>
-    <div :class="getStyle(filled, primaryColor) +' button'" :href="link">
+    <div :class="getStyle(filled, primaryColor) +' button'" @click=openLink(link)>
         {{text}}
     </div>
 </template>
-<script setup>
+<script lang="ts">
+    function openLink(link:string|undefined){
+        if (link === undefined){
+            window.location.href = ".";
+        } else {
+            window.location.href=link;
+        }
+        
+    }
+</script>
+<script setup lang="ts">
     const props = defineProps({
         filled: Boolean,
         primaryColor: String,
         text: String,
         link: String
     })
-    function getStyle(filled, primaryColor){
+    function getStyle(filled:boolean, primaryColor:string|undefined){
         if(filled && primaryColor == "red"){
             return "filled-red";
         }
@@ -24,12 +34,12 @@
             return "inverted-red";
         }
         if(!filled && primaryColor == "gold"){
-            return "iverted-gold";
+            return "inverted-gold";
         }
         if(!filled && primaryColor == "black"){
             return "inverted-black";
         }
-    } 
+    }
 </script>
 
 <style scoped>
