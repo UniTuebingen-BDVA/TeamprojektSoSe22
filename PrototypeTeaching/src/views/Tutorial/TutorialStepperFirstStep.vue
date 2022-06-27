@@ -91,7 +91,7 @@
       </table>
       </div>
     <!-- <NussinovButton text="Next &#x2192;" link="../../pages/Tutorial/TutorialStepperEndPage.html"></NussinovButton>  -->
-    <UniButton :filled ="true" :primary-color="'red'" :text="'Next &#x2192;'" :link="'../../pages/Tutorial/TutorialStepperEndPage.html'"/>
+    <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next &#x2192;'" :link="'../../pages/Tutorial/TutorialStepperEndPage.html'"/>
   </div>
   
 </template>

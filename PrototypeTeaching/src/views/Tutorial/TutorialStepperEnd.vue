@@ -8,7 +8,7 @@
   <NussinovHeader></NussinovHeader>
   <div class="tutorialBody">
     <!-- <NussinovButton text="Skip Tutorial" link="../../pages/Levels/LevelStartPage.html"></NussinovButton> -->
-    <UniButton :filled ="true" :primary-color="'red'" :text="'Skip Tutorial'" :link="'../../pages/Levels/LevelStartPage.html'"/>
+    <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Skip Tutorial'" :link="'../../pages/Levels/LevelStartPage.html'"/>
     <div class="tutorialBox">
       <p>Remember, you need this </p>
       <img src="../../assets/nussinov-cases-highlight.PNG">

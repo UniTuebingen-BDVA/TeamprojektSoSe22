@@ -22,7 +22,7 @@ html {
     padding: 0 !important;
 }
 .teachingButton {
-    width: auto;
+    width: max-content;
     height: 40px;
     font-family: var(--uni-font);
     padding: 10px;
