@@ -1,12 +1,12 @@
 <script setup>
 
-import NavBar from './components/Navbar.vue'
+import NussinovHeader from './components/NussinovHeader.vue'
 import GamingPage from './components/game/GamingPage.vue';
 
 </script>
 
 <template>
-  <NavBar />
+  <NussinovHeader />
   <!-- ToDo: Landing Page -->
   <!-- ToDo: Learning Page -->
   <GamingPage />
