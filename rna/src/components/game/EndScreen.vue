@@ -9,9 +9,9 @@ import UniButton from '../UniButton.vue';
 
 <template>
     <div class="EndScreen">
-        <p>Deine Lösung stimmt zu </p>
+        <p>Your solution matches </p>
             <div class="accordance">...%</div> 
-        <p>mit dem Algorithmus überein</p>
+        <p>with the algorithm.</p>
         
     </div>
 
@@ -20,14 +20,14 @@ import UniButton from '../UniButton.vue';
     <div class="frames">
         <div>
         <YoursFrame />
-        <p>Deine Lösung</p>
+        <p>Your solution</p>
         </div>
         
         
         
         <div>
         <SolutionFrame />
-        <p>Nussinov Algorithmus</p>
+        <p>Nussinov Algorithm</p>
         </div>
         
         
@@ -37,7 +37,7 @@ import UniButton from '../UniButton.vue';
     <Highscore />
 
     <div class="AbButton">
-        <UniButton :primary-color="'red'" :filled="true" :text="'Nochmal'" class="general-buttons" v-on:click="$emit('stateChange', false)"/>
+        <UniButton :primary-color="'red'" :filled="true" :text="'Again'" class="general-buttons" v-on:click="$emit('stateChange', false)"/>
     </div>
     
 </template>

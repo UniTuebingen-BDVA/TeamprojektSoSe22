@@ -25,8 +25,10 @@
     width: 600px;
     height: 550px;
     border-style: solid;
-    border-color: var(--uni-color-black);
-    border-width: 1px;
+    border-color: var(--uni-color-gold);
+    border-width: 3px;
+    border-radius: 10px;
+    background-color: #f3f3f3;
 }
     
 

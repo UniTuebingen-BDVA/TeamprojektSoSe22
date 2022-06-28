@@ -4,21 +4,24 @@
 
 <template>
     <div class="nText">
-        <h1>Trage dich in der HighScore-Tabelle ein: </h1>
+        <h1>Subscribe to the HighScore table: </h1>
     </div>
 
         <div class="nEintrag">
     
-            <input class="nInput" type="text" placeholder="Dein Name">
-            <UniButton class="general-buttons" :primary-color="'black'" :filled="true" :text="'Senden'"/>
+            <input class="nInput" type="text" placeholder="your name">
+            <UniButton class="general-buttons" :primary-color="'red'" :filled="false" :text="'Send'"/>
         </div>
 
 
         <div class="highscore">
-
+            
+            <h1>HighScore</h1>
+            
+            
             <table>
 
-                HighScore-Tabelle
+                
 
             </table>
 
@@ -44,9 +47,10 @@
     .highscore{
         width: 600px;
         height: 350px;
-        background-color: rgb(226, 229, 230);
+        background-color: #f3f3f3;
         border-style: solid;
-        border-width: 1px;
+        border-width: 3px;
+        border-radius: 10px;
         border-color: var(--uni-color-gold);
         margin: auto;
         padding: 10px;
@@ -84,9 +88,11 @@
         margin-right: 10px;
         width: 10%;
         height: 35px;
-        background-color: rgb(226, 229, 230);
-        border: 2px solid rgb(50,65,75);;
-        border-radius: 2px;
+        background-color: #f3f3f3;
+        border-color: var(--uni-color-black);
+        border-style: solid;
+        border-width: 2px;
+        border-radius: 10px;
     }
 
     .general-buttons {

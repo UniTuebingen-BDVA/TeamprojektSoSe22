@@ -23,8 +23,10 @@
         width: 100%;
         padding: 0 1em 0 1em;
         border-style: solid;
-        border-color: var(--uni-color-black);
-        border-width: 1px;
+        border-color: var(--uni-color-gold);
+        border-width: 3px;
+        border-radius: 10px;
+        background-color: #f3f3f3;
         position: relative;
     }
     .game {
