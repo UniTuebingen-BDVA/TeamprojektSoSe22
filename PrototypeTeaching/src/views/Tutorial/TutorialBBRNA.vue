@@ -36,11 +36,16 @@
     flex-wrap: nowrap;
     justify-content: space-between;
   }
+
+  .twoColumns > p{
+    display: block;
+    width: 50%;
+  }
   .nImage{
     margin-left: auto;
     margin-right: auto;
-    width: 80%;
-    height: 80%;
+    width: 45%;
+    height: 45%;
     mix-blend-mode: multiply;
   }
 

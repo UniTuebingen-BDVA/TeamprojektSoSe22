@@ -19,6 +19,7 @@
     @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap');
     .nHeader{
         position: fixed;
+        z-index: 1000;
         top: 0;
         right: 0;
         left: 0;
