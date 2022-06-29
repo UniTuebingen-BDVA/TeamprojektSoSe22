@@ -27,7 +27,6 @@ import UniButton from "../../components/UniButton.vue";
           style="max-width: 12%"
           src="../../assets/TutorialMatrix_Traceback.gif"
         />
-        />
       </p>
       <p>
         To annotate base pairs one can use the
