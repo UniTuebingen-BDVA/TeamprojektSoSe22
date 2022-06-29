@@ -21,9 +21,9 @@
       <img class="nImage" src="../../assets/rna-structure-motifs.jpg">
       Great job reading everything! Now we can continue with the nussinov algorithm.
     </div>
-    <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next &#x2192;'" :link="'../../pages/Tutorial/TutorialStepperStartPage.html'"/>
+    <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next &#x2192;'" :link="'../../pages/Tutorial/TutorialIntroductionPage.html'"/>
   </div>
-  
+
 </template>
 
 <style scoped>

@@ -43,3 +43,37 @@
     font-size: 1.2em;
     font-weight: bold;
 }
+
+a{
+    color: rgb(165,30,55);
+    text-decoration: none;
+}
+
+a:hover{
+    color: rgb(122, 22, 41);
+}
+
+.ul_tut{
+    list-style: none;
+}
+
+.li_tut{
+    font-size: 1.1em;
+    font-weight: normal;
+    text-align: center;
+    float:left;
+    margin:0 80px auto;
+}
+
+.container {
+    /*-webkit-box-align: center;*/
+    /*-ms-flex-align: center;*/
+    /*align-items: center;*/
+    /*-webkit-box-pack: center;*/
+    /*-ms-flex-pack: center;*/
+    /*justify-content: center;*/
+    /*display: -webkit-box;*/
+    /*display: -ms-flexbox;*/
+    display: flex;
+    height: 100%;
+}
