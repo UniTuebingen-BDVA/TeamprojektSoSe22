@@ -45,12 +45,12 @@
 }
 
 a{
-    color: rgb(165,30,55);
+    color: var(--uni-color-red);
     text-decoration: none;
 }
 
 a:hover{
-    color: rgb(122, 22, 41);
+    color: var(--uni-color-red-hover);
 }
 
 .ul_tut{
