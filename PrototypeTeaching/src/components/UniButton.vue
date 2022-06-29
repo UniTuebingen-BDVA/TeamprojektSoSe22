@@ -89,7 +89,7 @@
     }
     .inverted-red:hover {
         background-color: var(--uni-color-red);
-        border: none;
+        /*border: none;*/
         color: white;
     }
     .inverted-gold {
@@ -100,7 +100,7 @@
     }
     .inverted-gold:hover {
         background-color: var(--uni-color-gold);
-        border: none;
+        /*border: none;*/
         color: white;
     }
     .inverted-black {
@@ -111,7 +111,7 @@
     }
     .inverted-black:hover {
         background-color: var(--uni-color-black);
-        border: none;
+        /*border: none;*/
         color: white;
     }
 </style>
