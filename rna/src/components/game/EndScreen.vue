@@ -9,9 +9,9 @@ import UniButton from '../UniButton.vue';
 
 <template>
     <div class="EndScreen">
-        <p>Your solution matches </p>
+        <h2>Your solution matches </h2>
             <div class="accordance">...%</div> 
-        <p>with the algorithm.</p>
+        <h2>with the algorithm.</h2>
         
     </div>
 
@@ -20,14 +20,14 @@ import UniButton from '../UniButton.vue';
     <div class="frames">
         <div>
         <YoursFrame />
-        <p>Your solution</p>
+        <h2>Your solution</h2>
         </div>
         
         
         
         <div>
         <SolutionFrame />
-        <p>Nussinov Algorithm</p>
+        <h2>Nussinov Algorithm</h2>
         </div>
         
         
@@ -37,7 +37,7 @@ import UniButton from '../UniButton.vue';
     <Highscore />
 
     <div class="AbButton">
-        <UniButton :primary-color="'red'" :filled="true" :text="'Again'" class="general-buttons" v-on:click="$emit('stateChange', false)"/>
+        <UniButton :primary-color="'red'" :filled="true" :text="'Retry?'" class="general-buttons" v-on:click="$emit('stateChange', false)"/>
     </div>
     
 </template>
@@ -48,8 +48,7 @@ import UniButton from '../UniButton.vue';
 <style scoped>
 
 .EndScreen{
-    font-weight: 800;
-    font-size: 20pt;
+    
     text-align: center;
     width: auto;
     justify-content: space-between;
@@ -57,6 +56,7 @@ import UniButton from '../UniButton.vue';
 
 .accordance{
     color: var(--uni-color-gold);
+    font-size: 2.5em;
 }
 
 
@@ -78,11 +78,11 @@ import UniButton from '../UniButton.vue';
     justify-content: center;
 }
 
-p{
+h2{
     display: flex;
     justify-content: center;
-    font-weight: 800;
-    font-size: 16pt;
+    
+    
 }
     
 </style>
