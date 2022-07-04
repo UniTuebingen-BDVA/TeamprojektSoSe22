@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+.tutorialBody{
+    width: 65%;
+    margin: 10% auto;
+}
+.tutorialBody .teachingButton:nth-last-of-type(1){
+    float: right;
+}
+
+.tutorialBox{
+    border-width: 0.15em;
+    border-color: var(--uni-color-gold);
+    border-radius: 0.6em;
+    border-style: solid;
+    padding: 1%;
+    background-color: #f3f3f3;
+    margin: 3% auto;
+    font-family: var(--uni-font);
+    font-size: 1.2em;
+}
+.tutorialBox > p {
+    margin: 0.25em 0;
+}
+.dpMatrix{
+    margin: auto;
+    max-width: 35%;
+    min-width: auto;
+    border-collapse: collapse;
+    text-align: center;
+    background-color: #f3f3f3;
+    border-spacing: 0;
+    opacity: 0.7;
+}
+.dpMatrix td,
+.dpMatrix th{
+    border: 1px solid #a0a0a0;
+    min-width: 1.5em;
+    min-height: 1.5em;
+}
+.dpMatrix th,
+.dpMatrix tr > td:first-of-type {
+    font-family: Arial,"Helvetica Narrow",sans-serif;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+a{
+    color: var(--uni-color-red);
+    text-decoration: none;
+}
+
+a:hover{
+    color: var(--uni-color-red-hover);
+}
+
+.ul_tut{
+    list-style: none;
+}
+
+.li_tut{
+    font-size: 1.1em;
+    font-weight: normal;
+    text-align: center;
+    float:left;
+    margin:0 80px auto;
+}
+
+.container {
+    /*-webkit-box-align: center;*/
+    /*-ms-flex-align: center;*/
+    /*align-items: center;*/
+    /*-webkit-box-pack: center;*/
+    /*-ms-flex-pack: center;*/
+    /*justify-content: center;*/
+    /*display: -webkit-box;*/
+    /*display: -ms-flexbox;*/
+    display: flex;
+    height: 100%;
+}
