@@ -3,7 +3,6 @@
 <meta charset="utf-8">
 
 <!-- Load d3.js -->
-<!--<script src="https://d3js.org/d3.v7.js"></script>-->
 <script src="../../node_modules/d3/dist/d3.min.js"></script>
 
 <!-- Create a div where the graph will take place -->
@@ -24,7 +23,7 @@
             // set path from sequence[i] to sequence[i+1]
             let new_link = {"source": i,
                             "target": i+1,
-                            "type": "old"}
+                            "type": "old"};
             data.links.push(new_link)
             if(i == sequence.length - 1){
                 data.links.pop()
@@ -54,21 +53,24 @@
     }
 
     // set the dimensions and margins of the graph
-    const margin = {top: 10, right: 30, bottom: 30, left: 40},
-    width = 1200 - margin.left - margin.right,
-    height = 800 - margin.top - margin.bottom;
+    const margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 500 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
 
-    // append the svg object to the body of the page
+    // Initialize svg
     const svg = d3.select("#rna_seq")
-    .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform",
-            `translate(${margin.left}, ${margin.top})`);
-    
-    sequence = "CACGCUGAACGUACU";
-    dot_bracket = ".(((.(..))))(.)";
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .attr("style", "outline: thin solid black;")
+        .append("g")
+        .attr("transform",
+                `translate(${margin.left}, ${margin.top}) scale(0.7)`);
+
+    //sequence = "CACGCUGAACGUACU";
+    //dot_bracket = ".(((.(..))))(.)";
+    sequence = "AGGAGACAGUUGGUUGAGAC";
+    dot_bracket = ".(....(.)((.)((.))))"
     let data = createGraphData(sequence, dot_bracket);
 
     // Initialize the links
@@ -76,10 +78,10 @@
         .selectAll("line")
         .data(data.links)
         .join("line")
-        .attr("stroke", "grey")
-        .style("stroke-width", "4px")
-        //.style("stroke", d => color(d.type))
+        .attr("stroke", d => d.type=="old" ? "grey" : "red")
+        .style("stroke-width", "8px");
 
+    // Initialize the nodes
     const node = svg.selectAll(".node")
         .data(data.nodes)
         .enter().append("g");
@@ -94,16 +96,16 @@
         .attr("stroke", "black");
 
     // Let's list the force we wanna apply on the network
-    const simulation = d3.forceSimulation(data.nodes)                 // Force algorithm is applied to data.nodes
-        .force("link", d3.forceLink()                               // This force provides links between nodes
-                .id(function(d) { return d.id; })                     // This provide  the id of a node
-                .links(data.links)                                    // and this the list of links
+    const simulation = d3.forceSimulation(data.nodes)                 
+        .force("link", d3.forceLink()                               
+                .id(function(d) { return d.id; })                     
+                .links(data.links)                                 
                 )
-        .force("charge", d3.forceManyBody().strength(-400))         // This adds repulsion between nodes. Play with the -400 for the repulsion strength
-        .force("center", d3.forceCenter(width / 2, height / 2))     // This force attracts nodes to the center of the svg area
-        .force("x", d3.forceX())
-        .force("y", d3.forceY())
-        .force('collide', d3.forceCollide(d => 65))
+        .force("charge", d3.forceManyBody()
+                            .strength(0)
+                            .distanceMax(60))         
+        .force("center", d3.forceCenter(width / 2, height / 2))     
+        .force('collide', d3.forceCollide(d => 40))
         .on("end", ticked);
 
     // This function is run at each iteration of the force algorithm, updating the nodes position.
