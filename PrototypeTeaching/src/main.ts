@@ -9,16 +9,16 @@ import Level_wrong from './views/Levels/LevelWrong.vue';
 import Level_help from './views/Levels/LevelHelp.vue';
 import score from './views/Levels/LevelScore.vue';
 
-import Tutorial_BB_1 from './views/Tutorial/TutorialBBRNA.vue';
-import Tutorial_BB_2 from './views/Tutorial/TutorialBBRNATypes.vue';
-import Tutorial_BB_3 from './views/Tutorial/TutorialBBRNASecondaryStructure.vue';
-import Tutorial_2 from './views/Tutorial/TutorialStepperStart.vue';
-import Tutorial_3 from './views/Tutorial/TutorialStepperFirstStep.vue';
-import Tutorial_4 from './views/Tutorial/TutorialStepperEnd.vue';
-import Tutorial_Introduction from './views/Tutorial/TutorialIntroduction.vue';
-import Tutorial_Initialization from './views/Tutorial/TutorialInitialization.vue';
-import Tutorial_Recursion from './views/Tutorial/TutorialRecursion.vue';
-import Tutorial_Traceback from './views/Tutorial/TutorialTraceback.vue';
+import Tutorial_BB_1 from './views/Tutorial/BioBackgroundRNA1.vue';
+import Tutorial_BB_2 from './views/Tutorial/BioBackgroundRNA3.vue';
+import Tutorial_BB_3 from './views/Tutorial/BioBackgroundRNA2.vue';
+import Tutorial_2 from './views/Tutorial/NussinovStepperStart.vue';
+import Tutorial_3 from './views/Tutorial/NussinovStepperFirst.vue';
+import Tutorial_4 from './views/Tutorial/NussinovStepperEnd.vue';
+import Tutorial_Introduction from './views/Tutorial/NussinovIntroduction.vue';
+import Tutorial_Initialization from './views/Tutorial/NussinovInitialization.vue';
+import Tutorial_Recursion from './views/Tutorial/NussinovRecursion.vue';
+import Tutorial_Traceback from './views/Tutorial/NussinovTraceback.vue';
 
 import './common/tutorial.css';
 import './common/style.css';

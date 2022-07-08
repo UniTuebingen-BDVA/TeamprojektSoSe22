@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import NussinovButton from "../../components/NussinovButton.vue";
+// import NussinovButton from "../../components/NussinovButton.vue";
 import NussinovHeader from "../../components/NussinovHeader.vue";
 import UniButton from "../../components/UniButton.vue";
 </script>
@@ -12,7 +12,7 @@ import UniButton from "../../components/UniButton.vue";
       :filled="false"
       :primary-color="'red'"
       :text="'Skip Tutorial'"
-      :link="'../../pages/Levels/LevelStartPage.html'"
+      :link="'../../pages/Levels/LevelStart.html'"
     />
     <div class="tutorialBox">
       <h3>Welcome to the Nussinov Tutorial:</h3>
@@ -22,7 +22,7 @@ import UniButton from "../../components/UniButton.vue";
       </p>
       <p>
         If you already know the algorithm, just click on
-        <a href="../../pages/Levels/LevelStartPage.html">Skip Tutorial</a> this
+        <a href="../../pages/Levels/LevelStart.html">Skip Tutorial</a> this
         will take you directly to the exercises.
       </p>
       <br />
@@ -36,7 +36,7 @@ import UniButton from "../../components/UniButton.vue";
       <div class="container">
         <ul class="ul_tut">
           <li class="li_tut">
-            <a href="../../pages/Tutorial/TutorialInitializationPage.html"
+            <a href="../../pages/Tutorial/NussinovInitialization.html"
               >The initialization</a
             ><br />
             <img
@@ -48,7 +48,7 @@ import UniButton from "../../components/UniButton.vue";
             />
           </li>
           <li class="li_tut">
-            <a href="../../pages/Tutorial/TutorialRecursionPage.html"
+            <a href="../../pages/Tutorial/NussinovRecursion.html"
               >The recursion</a
             ><br />
             <img
@@ -60,7 +60,7 @@ import UniButton from "../../components/UniButton.vue";
             />
           </li>
           <li class="li_tut">
-            <a href="../../pages/Tutorial/TutorialTracebackPage.html"
+            <a href="../../pages/Tutorial/NussinovTraceback.html"
               >The traceback</a
             ><br />
             <img
@@ -79,7 +79,7 @@ import UniButton from "../../components/UniButton.vue";
       :filled="false"
       :primary-color="'red'"
       :text="'Next &#x2192;'"
-      :link="'../../pages/Tutorial/TutorialInitializationPage.html'"
+      :link="'../../pages/Tutorial/NussinovInitialization.html'"
     />
   </div>
 </template>

@@ -11,7 +11,7 @@
     <div class="nText">
       <div class="nParagraph">
         <!-- <NussinovButton text="Level 1" link="../../pages/Levels/Level01StartPage.html"></NussinovButton> -->
-        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Level1'" :link="'../../pages/Levels/Level01StartPage.html'"/>
+        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Level1'" :link="'../../pages/Levels/Level01Start.html'"/>
         <p>Starter Level: short and easy structures. In this level you have a helper.</p>   
       </div>
       <div class="nParagraph">

@@ -6,7 +6,7 @@
 <template>
   <NussinovHeader></NussinovHeader>
   <div class="tutorialBody">
-    <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Skip Tutorial'" :link="'../../pages/Levels/LevelStartPage.html'"/>
+    <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Skip Tutorial'" :link="'../../pages/Levels/LevelStart.html'"/>
     <div class="tutorialBox">
       <p>
         Welcome to our little tutorial about RNA secondary structures and the nussinov algorithm! <br>
@@ -24,7 +24,7 @@
         </p>
       </div>
     </div>
-    <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next &#x2192;'" :link="'../../pages/Tutorial/TutorialBBRNATypesPage.html'"/>
+    <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next &#x2192;'" :link="'../../pages/Tutorial/BioBackgroundRNA3.html'"/>
   </div>
   
 </template>

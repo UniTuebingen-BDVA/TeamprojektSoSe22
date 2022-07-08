@@ -6,7 +6,7 @@
 <template>
   <NussinovHeader></NussinovHeader>
   <div class="tutorialBody">
-    <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Skip Tutorial'" :link="'../../pages/Levels/LevelStartPage.html'"/>
+    <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Skip Tutorial'" :link="'../../pages/Levels/LevelStart.html'"/>
     <div class="tutorialBox">
       <p>
         So, what is RNA used for? <br>
@@ -21,7 +21,7 @@
         growing polypeptide chain, following the sequence given by the mRNA.</li>
       </ol>
     </div>
-    <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next &#x2192;'" :link="'../../pages/Tutorial/TutorialBBRNASecondaryStructurePage.html'"/>
+    <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next &#x2192;'" :link="'../../pages/Tutorial/BioBackgroundRNA2.html'"/>
   </div>
   
 </template>

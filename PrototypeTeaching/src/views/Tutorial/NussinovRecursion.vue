@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import NussinovButton from "../../components/NussinovButton.vue";
+// import NussinovButton from "../../components/NussinovButton.vue";
 import NussinovHeader from "../../components/NussinovHeader.vue";
 import UniButton from "../../components/UniButton.vue";
 </script>
@@ -12,7 +12,7 @@ import UniButton from "../../components/UniButton.vue";
       :filled="false"
       :primary-color="'red'"
       :text="'Skip Tutorial'"
-      :link="'../../pages/Levels/LevelStartPage.html'"
+      :link="'../../pages/Levels/LevelStart.html'"
     />
     <div class="tutorialBox">
       <h3>Recursion</h3>
@@ -123,7 +123,7 @@ import UniButton from "../../components/UniButton.vue";
       :filled="false"
       :primary-color="'red'"
       :text="'Next &#x2192;'"
-      :link="'../../pages/Tutorial/TutorialTracebackPage.html'"
+      :link="'../../pages/Tutorial/NussinovTraceback.html'"
     />
   </div>
 </template>

@@ -20,9 +20,9 @@ import NussinovHeader from '../../components/NussinovHeader.vue';
       </div>
       <div class="nButtons">
         <!-- <NussinovButton text="Need help?" link="../../pages/Levels/LevelHelpPage.html"></NussinovButton> -->
-        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Need help?'" :link="'../../pages/Levels/LevelHelpPage.html'"/>
+        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Need help?'" :link="'../../pages/Levels/LevelHelp.html'"/>
         <!-- <NussinovButton text="Next" link="../../pages/Levels/LevelCorrectPage.html"></NussinovButton> -->
-        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next'" :link="'../../pages/Levels/LevelCorrectPage.html'"/>
+        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next'" :link="'../../pages/Levels/LevelCorrect.html'"/>
       </div>
     </div>
   </div>
