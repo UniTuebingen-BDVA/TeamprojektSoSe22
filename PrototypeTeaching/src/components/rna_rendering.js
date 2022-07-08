@@ -44,8 +44,8 @@ function createGraphData(sequence, dot_bracket){
 }
 // set the dimensions and margins of the graph
 const margin = {top: 20, right: 20, bottom: 30, left: 40},
-width = 500 - margin.left - margin.right,
-height = 500 - margin.top - margin.bottom;
+width = 400 - margin.left - margin.right,
+height = 400 - margin.top - margin.bottom;
 
 // Initialize svg
 const svg = d3.select("#rna_seq")
@@ -59,8 +59,8 @@ const svg = d3.select("#rna_seq")
 
 //sequence = "CACGCUGAACGUACU";
 //dot_bracket = ".(((.(..))))(.)";
-sequence = "AGGAGACAGUUGGUUGAGAC";
-dot_bracket = ".(....(.)((.)((.))))"
+const sequence = "AGGAGACAGUUGGUUGAGAC";
+const dot_bracket = ".(....(.)((.)((.))))";
 let data = createGraphData(sequence, dot_bracket);
 
 // Initialize the links
