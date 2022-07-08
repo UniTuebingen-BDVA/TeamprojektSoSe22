@@ -23,7 +23,8 @@
 
             // set path from sequence[i] to sequence[i+1]
             let new_link = {"source": i,
-                            "target": i+1}
+                            "target": i+1,
+                            "type": "old"}
             data.links.push(new_link)
             if(i == sequence.length - 1){
                 data.links.pop()
@@ -38,7 +39,8 @@
                     } else if (dot_bracket[j] == ")"){
                         if (k == 0){
                             new_link = {"source": i,
-                                        "target": j};
+                                        "target": j,
+                                        "type": "new"};
                             data.links.push(new_link)
                             break;
                         } else {
@@ -74,7 +76,9 @@
         .selectAll("line")
         .data(data.links)
         .join("line")
-        .style("stroke", "#aaa")
+        .attr("stroke", "grey")
+        .style("stroke-width", "4px")
+        //.style("stroke", d => color(d.type))
 
     const node = svg.selectAll(".node")
         .data(data.nodes)
@@ -89,29 +93,17 @@
         .text(d => d.name)
         .attr("stroke", "black");
 
-    // Initialize the nodes
-    /* const node = svg
-        .selectAll("circle")
-        .data(data.nodes)
-        .join("circle")
-        .attr("r", 20)
-        .style("fill", "#69b3a2")
-    
-    node.append("text")
-        .attr("x", 30 + 4)
-        .attr("y", "0.31em")
-        .text("test")
-        .attr("stroke", "black")
-        .attr("stroke-width", 3); */
-
     // Let's list the force we wanna apply on the network
     const simulation = d3.forceSimulation(data.nodes)                 // Force algorithm is applied to data.nodes
         .force("link", d3.forceLink()                               // This force provides links between nodes
                 .id(function(d) { return d.id; })                     // This provide  the id of a node
                 .links(data.links)                                    // and this the list of links
-        )
+                )
         .force("charge", d3.forceManyBody().strength(-400))         // This adds repulsion between nodes. Play with the -400 for the repulsion strength
         .force("center", d3.forceCenter(width / 2, height / 2))     // This force attracts nodes to the center of the svg area
+        .force("x", d3.forceX())
+        .force("y", d3.forceY())
+        .force('collide', d3.forceCollide(d => 65))
         .on("end", ticked);
 
     // This function is run at each iteration of the force algorithm, updating the nodes position.
