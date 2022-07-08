@@ -1,0 +1,136 @@
+<!-- Code from d3-graph-gallery.com -->
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<!-- Load d3.js -->
+<!--<script src="https://d3js.org/d3.v7.js"></script>-->
+<script src="../../node_modules/d3/dist/d3.min.js"></script>
+
+<!-- Create a div where the graph will take place -->
+<div id="rna_seq"></div>
+
+<script>
+    function createGraphData(sequence, dot_bracket){
+        let data = {"nodes": [],
+                    "links": []};
+            
+        let n = 0; // might use n = 1 instead
+        for (let i = 0; i < sequence.length; i++){
+            // create node with sequence[i]
+            let new_node = {"id": i,
+                            "name": sequence[i]}
+            data.nodes.push(new_node)
+
+            // set path from sequence[i] to sequence[i+1]
+            let new_link = {"source": i,
+                            "target": i+1}
+            data.links.push(new_link)
+            if(i == sequence.length - 1){
+                data.links.pop()
+            }
+            
+            // finds bracket partner by "eliminating" closing brackets, until matching closing bracket is found
+            if (dot_bracket[i] == "("){
+                let k = 0;
+                for (let j = i+1; j < dot_bracket.length; j++){
+                    if(dot_bracket[j] == "("){
+                        k++;
+                    } else if (dot_bracket[j] == ")"){
+                        if (k == 0){
+                            new_link = {"source": i,
+                                        "target": j};
+                            data.links.push(new_link)
+                            break;
+                        } else {
+                            k--;
+                        }
+                    }
+                }
+            }
+        }
+        return data;
+    }
+
+    // set the dimensions and margins of the graph
+    const margin = {top: 10, right: 30, bottom: 30, left: 40},
+    width = 1200 - margin.left - margin.right,
+    height = 800 - margin.top - margin.bottom;
+
+    // append the svg object to the body of the page
+    const svg = d3.select("#rna_seq")
+    .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform",
+            `translate(${margin.left}, ${margin.top})`);
+    
+    sequence = "CACGCUGAACGUACU";
+    dot_bracket = ".(((.(..))))(.)";
+    let data = createGraphData(sequence, dot_bracket);
+
+    // Initialize the links
+    const link = svg
+        .selectAll("line")
+        .data(data.links)
+        .join("line")
+        .style("stroke", "#aaa")
+
+    const node = svg.selectAll(".node")
+        .data(data.nodes)
+        .enter().append("g");
+    
+    const circle = node.append("circle")
+        .attr("r", 20)
+        .style("fill", "#69b3a2");
+    
+    const label = node.append("svg:text")
+        .attr("text-anchor", "middle")
+        .text(d => d.name)
+        .attr("stroke", "black");
+
+    // Initialize the nodes
+    /* const node = svg
+        .selectAll("circle")
+        .data(data.nodes)
+        .join("circle")
+        .attr("r", 20)
+        .style("fill", "#69b3a2")
+    
+    node.append("text")
+        .attr("x", 30 + 4)
+        .attr("y", "0.31em")
+        .text("test")
+        .attr("stroke", "black")
+        .attr("stroke-width", 3); */
+
+    // Let's list the force we wanna apply on the network
+    const simulation = d3.forceSimulation(data.nodes)                 // Force algorithm is applied to data.nodes
+        .force("link", d3.forceLink()                               // This force provides links between nodes
+                .id(function(d) { return d.id; })                     // This provide  the id of a node
+                .links(data.links)                                    // and this the list of links
+        )
+        .force("charge", d3.forceManyBody().strength(-400))         // This adds repulsion between nodes. Play with the -400 for the repulsion strength
+        .force("center", d3.forceCenter(width / 2, height / 2))     // This force attracts nodes to the center of the svg area
+        .on("end", ticked);
+
+    // This function is run at each iteration of the force algorithm, updating the nodes position.
+    function ticked() {
+        link
+            .attr("x1", function(d) { return d.source.x; })
+            .attr("y1", function(d) { return d.source.y; })
+            .attr("x2", function(d) { return d.target.x; })
+            .attr("y2", function(d) { return d.target.y; });
+
+        circle.attr("cx", function (d) { return d.x; })
+        .attr("cy", function (d) {
+            return d.y;
+        });
+
+        label.attr("x", function (d) { return d.x; })
+        .attr("y", function (d) {
+            return d.y;
+        });
+    }
+
+</script>
