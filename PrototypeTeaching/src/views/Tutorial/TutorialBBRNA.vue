@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import UniButton from '../../components/UniButton.vue';
   import NussinovHeader from '../../components/NussinovHeader.vue';
+  import RNAStructure from '../../components/RNAStructure.vue';
 </script>
 
 <template>
@@ -23,6 +24,7 @@
           RNA on the other hand has only a single, helical strand and contains the nucleotide uracil instead of thymine. The other bases are staying the same.
         </p>
       </div>
+      <RNAStructure :length=10></RNAStructure>
     </div>
     <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next &#x2192;'" :link="'../../pages/Tutorial/TutorialBBRNATypesPage.html'"/>
   </div>
