@@ -1,14 +1,15 @@
 import * as d3 from "d3";
+import {meaningfulSeq} from "../common/RNA_Generator";
+import {calculate_nussinov} from "../common/nussinov";
 
 function createGraphData(sequence, dot_bracket){
     let data = {"nodes": [],
                 "links": []};
         
-    let n = 0; // might use n = 1 instead
     for (let i = 0; i < sequence.length; i++){
         // create node with sequence[i]
         let new_node = {"id": i,
-                        "name": sequence[i]}
+                        "name": sequence[i] + i}
         data.nodes.push(new_node)
 
         // set path from sequence[i] to sequence[i+1]
@@ -57,10 +58,13 @@ const svg = d3.select("#rna_seq")
     .attr("transform",
             `translate(${margin.left}, ${margin.top}) scale(0.7)`);
 
-//sequence = "CACGCUGAACGUACU";
-//dot_bracket = ".(((.(..))))(.)";
-const sequence = "AGGAGACAGUUGGUUGAGAC";
-const dot_bracket = ".(....(.)((.)((.))))";
+const sequence = meaningfulSeq(10);
+const dot_bracket = calculate_nussinov(sequence).secondary_structure;
+
+// const sequence = "CACGCUGAACGUACU";
+//const dot_bracket = ".(((.(..))))(.)";
+//const sequence = "AGGAGACAGUUGGUUGAGAC";
+//const dot_bracket = ".(....(.)((.)((.))))";
 let data = createGraphData(sequence, dot_bracket);
 
 // Initialize the links

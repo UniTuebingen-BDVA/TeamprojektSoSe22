@@ -31,7 +31,7 @@ class nussinov{
  * @param {number} val - value for diagonal axis
  * @return {number[][]} Return 2d Matrix of size with val on diagonal axis
  */
-function make2dArray(size:number, val:number):number[][] {
+export function make2dArray(size:number, val:number):number[][] {
     let arr:number[][] = new Array(size);
 
     for(let i = 0; i < size; i++) {
@@ -48,7 +48,7 @@ function make2dArray(size:number, val:number):number[][] {
  * @param {number} len - Length of secondary structure String
  * @return {string[]} Returns Dot-Bracket secondary structure String as Array
  */
-function initialize_sec_struct(len:number):string[]{
+export function initialize_sec_struct(len:number):string[]{
     let arr:string[] = [];
 
     for(let i = 0; i < len; i++){
@@ -215,11 +215,11 @@ function backtrace(nuss: nussinov, pos_i:number, pos_j:number):void{
  * @param {string} sequence - Sequence to apply nussinov
  * @return {nussinov} - Return a Nussinov Object
  */
-function calculate_nussinov(sequence: string):nussinov{
+export function calculate_nussinov(sequence: string):nussinov{
     let nuss = new nussinov(sequence);
     calculate_matrix(nuss);
     backtrace(nuss, 0, nuss.sequence_length-1);
     return nuss;
 }
 
-module.exports = { make2dArray, initialize_sec_struct, calculate_nussinov };
+//module.export = { make2dArray, initialize_sec_struct, calculate_nussinov };
