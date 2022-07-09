@@ -53,6 +53,7 @@
         }
         return data;
         }
+
         // set the dimensions and margins of the graph
         const margin = {top: 30, right: 30, bottom: 30, left: 30},
         width = 300 - margin.left - margin.right,
@@ -86,8 +87,11 @@
             .data(data.nodes)
             .enter().append("g");
 
+        let node_size = 1 / probs.length * 200;
+        let node_distance = 1 / probs.length * 500;
+
         const circle = node.append("circle")
-            .attr("r", 20)
+            .attr("r", node_size)
             .style("fill", "#779eb2");
 
         const label = node.append("svg:text")
@@ -100,14 +104,14 @@
             .force("link", d3.forceLink()                               
                     .id(function(d) { return d.id; })                     
                     .links(data.links)  
-                    .distance(40)                               
+                    .distance(node_distance)                               
                     )
             .force("charge", d3.forceManyBody()
                                 .strength(0)
-                                .distanceMax(60)
+                                .distanceMax(node_distance)
                                 )         
             .force("center", d3.forceCenter(width / 2, height / 2))     
-            .force('collide', d3.forceCollide(d => 40))
+            .force('collide', d3.forceCollide(d => node_distance))
             .on("end", ticked);
 
         // This function is run at each iteration of the force algorithm, updating the nodes position.
