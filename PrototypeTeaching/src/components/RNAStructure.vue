@@ -33,7 +33,7 @@
         const svg = d3.select("#rna_seq")
             .append("svg")
             .call(d3.zoom().on("zoom", function (event, d) {
-                svg.attr("transform", event.transform)}))
+              svg.attr("transform", event.transform)}))
             .attr("viewBox", `0 0 ${width} ${height}`)
             .attr("style", "outline: thin solid black;")
             .append("g")
@@ -65,14 +65,22 @@
         const simulation = d3.forceSimulation(data.nodes)                 
             .force("link", d3.forceLink()                               
                     .id(function(d) { return d.id; })
-                    .links(data.links)                       
+                    .links(data.links)
                     .distance(50)
-                    .strength(1)                           
+                    .strength(1)
                     )
-            .force("charge", d3.forceManyBody().strength(-300))         
-            .force("center", d3.forceCenter(width / 2, height / 2))     
+            .force("charge", d3.forceManyBody())
+            .force("center", d3.forceCenter(width / 2, height / 2))
             .force('collide', d3.forceCollide(40))
-            .on("tick", ticked);
+
+
+        const drag_handler = d3.drag()
+            .on("start", dragstarted)
+            .on("drag", dragged)
+            .on("end", dragended);
+        drag_handler(node);
+
+        simulation.on("tick", ticked);
 
         // This function is run at each iteration of the force algorithm, updating the nodes position.
         function ticked() {
@@ -92,5 +100,22 @@
                 .attr("y", function (d) {
                     return d.y;});
         }
+
+      function dragstarted(event, d) {
+        if (!event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x;
+        d.fy = d.y;
+      }
+
+      function dragged(event, d) {
+        d.fx = event.x;
+        d.fy = event.y;
+      }
+
+      function dragended(event, d) {
+        if (!event.active) simulation.alphaTarget(0);
+        d.fx = null;
+        d.fy = null;
+      }
     });
 </script>
