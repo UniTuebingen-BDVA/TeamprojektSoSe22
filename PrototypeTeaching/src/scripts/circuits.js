@@ -86,7 +86,7 @@ function FindCycle(
             cycle = GetCyclePath(start, end, current_node, parents);
             return cycle;
         }
-        if (destination == parents.get(current_node)) {
+        if (destination === parents.get(current_node)) {
             continue;
         }
         if (!visited.has(destination)) {
@@ -126,7 +126,7 @@ function GetAllCycles(graph, spannigTree) {
 
 function GetCyclePath(start, end, current, parents) {
     let cycle = [end];
-    while (current != start) {
+    while (current !== start) {
         cycle.push(current);
         current = parents.get(current);
     }
