@@ -6,53 +6,16 @@
     import * as d3 from "d3";
     import {meaningfulSeq} from "../common/RNA_Generator";
     import {calculate_nussinov} from "../common/nussinov";
+    import {createGraphData} from "./graph";
 
     const probs = defineProps({
         length: Number
     })
 
     window.addEventListener("load", function(event) {
-        function createGraphData(sequence, dot_bracket){
-        let data = {"nodes": [],
-                    "links": []};
-            
-        for (let i = 0; i < sequence.length; i++){
-            // create node with sequence[i]
-            let new_node = {"id": i,
-                            "name": sequence[i] + (i+1)}
-            data.nodes.push(new_node)
-
-            // set path from sequence[i] to sequence[i+1]
-            let new_link = {"source": i,
-                            "target": i+1,
-                            "type": "old"};
-            data.links.push(new_link)
-            if(i == sequence.length - 1){
-                data.links.pop()
-            }
-            
-            // finds bracket partner by "eliminating" closing brackets, until matching closing bracket is found
-            if (dot_bracket[i] == "("){
-                let k = 0;
-                for (let j = i+1; j < dot_bracket.length; j++){
-                    if(dot_bracket[j] == "("){
-                        k++;
-                    } else if (dot_bracket[j] == ")"){
-                        if (k == 0){
-                            new_link = {"source": i,
-                                        "target": j,
-                                        "type": "new"};
-                            data.links.push(new_link)
-                            break;
-                        } else {
-                            k--;
-                        }
-                    }
-                }
-            }
-        }
-        return data;
-        }
+        const sequence = meaningfulSeq(probs.length);
+        const dot_bracket = calculate_nussinov(sequence).secondary_structure;
+        let data = createGraphData(sequence, dot_bracket);
 
         // set the dimensions and margins of the graph
         const margin = {top: 30, right: 30, bottom: 30, left: 30},
@@ -62,24 +25,20 @@
         // Initialize svg
         const svg = d3.select("#rna_seq")
             .append("svg")
-            //.attr("width", width + margin.left + margin.right)
-            //.attr("height", height + margin.top + margin.bottom)
+            .call(d3.zoom().on("zoom", function (event, d) {
+                svg.attr("transform", event.transform)}))
             .attr("viewBox", `0 0 ${width} ${height}`)
             .attr("style", "outline: thin solid black;")
             .append("g")
             .attr("transform",
-                    `translate(${margin.left}, ${margin.top}) scale(0.7)`);
-
-        const sequence = meaningfulSeq(probs.length);
-        const dot_bracket = calculate_nussinov(sequence).secondary_structure;
-        let data = createGraphData(sequence, dot_bracket);
+                    `translate(${margin.left}, ${margin.top}) scale(0.5)`);
 
         // Initialize the links
         const link = svg
             .selectAll("line")
             .data(data.links)
             .join("line")
-            .attr("stroke", d => d.type=="old" ? "#bbbbbb" : "red")
+            .attr("stroke", d => d.color)
             .style("stroke-width", "8px");
 
         // Initialize the nodes
@@ -87,32 +46,26 @@
             .data(data.nodes)
             .enter().append("g");
 
-        let node_size = 1 / probs.length * 200;
-        let node_distance = 1 / probs.length * 500;
-
         const circle = node.append("circle")
-            .attr("r", node_size)
-            .style("fill", "#779eb2");
+            .attr("r", 20)
+            .style("fill", d => d.color);
 
         const label = node.append("svg:text")
             .attr("text-anchor", "middle")
             .text(d => d.name)
             .attr("stroke", "black");
 
-        // Let's list the force we wanna apply on the network
         const simulation = d3.forceSimulation(data.nodes)                 
             .force("link", d3.forceLink()                               
-                    .id(function(d) { return d.id; })                     
-                    .links(data.links)  
-                    .distance(node_distance)                               
+                    .id(function(d) { return d.id; })
+                    .links(data.links)                       
+                    .distance(50)
+                    .strength(1)                           
                     )
-            .force("charge", d3.forceManyBody()
-                                .strength(0)
-                                .distanceMax(node_distance)
-                                )         
+            .force("charge", d3.forceManyBody().strength(-300))         
             .force("center", d3.forceCenter(width / 2, height / 2))     
-            .force('collide', d3.forceCollide(d => node_distance))
-            .on("end", ticked);
+            .force('collide', d3.forceCollide(40))
+            .on("tick", ticked);
 
         // This function is run at each iteration of the force algorithm, updating the nodes position.
         function ticked() {
