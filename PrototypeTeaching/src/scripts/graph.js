@@ -16,18 +16,18 @@ export function createGraphData(sequence, dot_bracket){
                         "target": i+1,
                         "color": "#bbbbbb"};
         data.links.push(new_link)
-        if(i == sequence.length - 1){
+        if(i === sequence.length - 1){
             data.links.pop()
         }
         
         // finds bracket partner by "eliminating" closing brackets, until matching closing bracket is found
-        if (dot_bracket[i] == "("){
+        if (dot_bracket[i] === "("){
             let k = 0;
             for (let j = i+1; j < dot_bracket.length; j++){
-                if(dot_bracket[j] == "("){
+                if(dot_bracket[j] === "("){
                     k++;
-                } else if (dot_bracket[j] == ")"){
-                    if (k == 0){
+                } else if (dot_bracket[j] === ")"){
+                    if (k === 0){
                         new_link = {"source": i,
                                     "target": j,
                                     "color": "red"};
