@@ -4,17 +4,24 @@
 
 <script setup>
     import * as d3 from "d3";
-    import {meaningfulSeq} from "../common/RNA_Generator";
-    import {calculate_nussinov} from "../common/nussinov";
-    import {createGraphData} from "./graph";
+    import {meaningfulSeq} from "../scripts/RNA_Generator";
+    import {calculate_nussinov} from "../scripts/nussinov";
+    import {createGraphData} from "../scripts/graph";
 
     const probs = defineProps({
-        length: Number
+        length: Number,
+        secondaryStructure: Boolean
     })
-
     window.addEventListener("load", function(event) {
         const sequence = meaningfulSeq(probs.length);
-        const dot_bracket = calculate_nussinov(sequence).secondary_structure;
+        var dot_bracket = "";
+        if(probs.secondaryStructure){
+            dot_bracket = calculate_nussinov(sequence).secondary_structure;
+        } else {
+            for(let i; i < probs.length; i++){
+                dot_bracket += ".";
+            }
+        }
         let data = createGraphData(sequence, dot_bracket);
 
         // set the dimensions and margins of the graph

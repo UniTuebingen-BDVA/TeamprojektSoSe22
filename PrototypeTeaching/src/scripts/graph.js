@@ -41,7 +41,6 @@ export function createGraphData(sequence, dot_bracket){
         }
     }
     let circuits = FindCircuits(data);
-    console.log(circuits);
     //stabilize stems and loops
     for(const c of circuits){
         if(c.length===4){

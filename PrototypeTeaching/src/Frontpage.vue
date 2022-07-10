@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="nImage">
-      <RNAStructure :length=10></RNAStructure>
+      <RNAStructure :length=10 :secondary-structure="true"></RNAStructure>
     </div>
     <!--<img class = "nImage" src="./assets/rna-example.png">-->
   </div>
