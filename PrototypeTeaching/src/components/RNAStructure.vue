@@ -62,16 +62,18 @@
             .text(d => d.name)
             .attr("stroke", "black");
 
-        const simulation = d3.forceSimulation(data.nodes)                 
-            .force("link", d3.forceLink()                               
+        const simulation = d3.forceSimulation(data.nodes)
+            .force("link", d3.forceLink()
                     .id(function(d) { return d.id; })
                     .links(data.links)
-                    .distance(50)
+                    .distance(40)
                     .strength(1)
                     )
-            .force("charge", d3.forceManyBody())
+            .force("charge", d3.forceManyBody()
+                .strength(-500))
             .force("center", d3.forceCenter(width / 2, height / 2))
-            .force('collide', d3.forceCollide(40))
+            .force('collide', d3.forceCollide()
+                .radius(40))
 
 
         const drag_handler = d3.drag()
@@ -92,13 +94,11 @@
 
             circle
                 .attr("cx", function (d) { return d.x; })
-                .attr("cy", function (d) {
-                    return d.y;});
+                .attr("cy", function (d) { return d.y; });
 
             label
                 .attr("x", function (d) { return d.x; })
-                .attr("y", function (d) {
-                    return d.y;});
+                .attr("y", function (d) { return d.y; });
         }
 
       function dragstarted(event, d) {
