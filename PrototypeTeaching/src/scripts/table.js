@@ -8,7 +8,9 @@ document.addEventListener("DOMContentLoaded", function(){
     create_table(seq);
 
     document.querySelector("#table").addEventListener("click", function(event){
-        event.target.innerHTML = parseInt(prompt("Cell entry:"));
+        if (event.target.className == 'cell'){
+            event.target.innerHTML = parseInt(prompt("Cell entry:"));
+        }
     });
 });
 
@@ -58,13 +60,8 @@ function tabulate(data, sequence) {
         })
         .enter()
         .append('td')
-        .attr('id', function (d){
-            if (d == -1){
-                return 'input';
-            }
-            else {
-                return "score";
-            }
+        .attr('class', function (d){
+            return (d == "" ||  d == 0) ? 'cell' : 'head';
         })
         .text(function (d){ return d;});
     return table;
