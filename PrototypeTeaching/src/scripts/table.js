@@ -1,3 +1,17 @@
+function create_table(sequence){
+	let data = fill_initial(get_table(sequence))
+	tabulate(data, sequence)
+}
+
+document.addEventListener("DOMContentLoaded", function(){
+    let seq = "CGUAUACGU";
+    create_table(seq);
+
+    document.querySelector("#table").addEventListener("click", function(event){
+        event.target.innerHTML = parseInt(prompt("Cell entry:"));
+    });
+});
+
 function get_table(sequence){
     let n = sequence.length;
     let data = [];
@@ -54,21 +68,4 @@ function tabulate(data, sequence) {
         })
         .text(function (d){ return d;});
     return table;
-}
-
-
-
-const btn = document.querySelector('#table');
-
-function log(event){
-    // print the event object to console
-    console.log('log:', event.target)
-}
-
-btn.addEventListener('click', log);
-
-
-function create_table(sequence){
-	let data = fill_initial(get_table(sequence))
-	tabulate(data, sequence)
 }
