@@ -9,20 +9,43 @@
     import {createGraphData} from "../scripts/graph";
 
     const probs = defineProps({
-        length: Number,
+        sequence: String,
+        dotBracket: String,
+        length: {
+            type: Number,
+            default: 5
+        },
         secondaryStructure: Boolean
     })
     window.addEventListener("load", function(event) {
-        const sequence = meaningfulSeq(probs.length);
-        var dot_bracket = "";
+        let sequence = "";
+        let dot_bracket = "";
         if(probs.secondaryStructure){
-            dot_bracket = calculate_nussinov(sequence).secondary_structure;
+            if(typeof probs.sequence !== "undefined"){
+                sequence = probs.sequence;
+                if(typeof probs.dotBracket !== "undefined"){
+                    dot_bracket = probs.dotBracket;
+                } else {
+                    dot_bracket = calculate_nussinov(sequence).secondary_structure;
+                }
+            } else {
+                sequence = meaningfulSeq(probs.length);
+                dot_bracket = calculate_nussinov(sequence).secondary_structure;
+            }
+            
         } else {
-            for(let i; i < probs.length; i++){
+            if(typeof probs.sequence !== "undefined"){
+                sequence = probs.sequence;
+
+            } else {
+                sequence = meaningfulSeq(probs.length);
+            }
+            for(let i; i < sequence.length; i++){
                 dot_bracket += ".";
             }
         }
         let data = createGraphData(sequence, dot_bracket);
+        //let data = createGraphData("UCCAGCAGGAAAGC", calculate_nussinov("UCCAGCAGGAAAGC").secondary_structure);
 
         // set the dimensions and margins of the graph
         const margin = {top: 30, right: 30, bottom: 30, left: 30},
