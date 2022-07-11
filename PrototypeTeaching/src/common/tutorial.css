@@ -21,7 +21,7 @@
 .tutorialBox > p {
     margin: 0.25em 0;
 }
-#table{
+#table > table{
     margin: auto;
     max-width: 35%;
     min-width: auto;
