@@ -1,18 +1,9 @@
-function create_table(sequence){
+import * as d3 from "d3";
+
+export function create_table(sequence){
 	let data = fill_initial(get_table(sequence))
 	tabulate(data, sequence)
 }
-
-document.addEventListener("DOMContentLoaded", function(){
-    let seq = "CGUAUACGU";
-    create_table(seq);
-
-    document.querySelector("#table").addEventListener("click", function(event){
-        if (event.target.className == 'cell'){
-            event.target.innerHTML = parseInt(prompt("Cell entry:"));
-        }
-    });
-});
 
 function get_table(sequence){
     let n = sequence.length;
