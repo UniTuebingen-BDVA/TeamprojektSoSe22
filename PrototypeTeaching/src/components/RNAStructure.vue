@@ -17,7 +17,9 @@
         },
         secondaryStructure: Boolean
     })
+
     window.addEventListener("load", function(event) {
+        //Generate sequence and dot-bracket notation
         let sequence = "";
         let dot_bracket = "";
         if(probs.secondaryStructure){
@@ -45,8 +47,7 @@
             }
         }
         let data = createGraphData(sequence, dot_bracket);
-        //let data = createGraphData("UCCAGCAGGAAAGC", calculate_nussinov("UCCAGCAGGAAAGC").secondary_structure);
-
+        
         // set the dimensions and margins of the graph
         const margin = {top: 30, right: 30, bottom: 30, left: 30},
         width = 300 - margin.left - margin.right,
@@ -85,6 +86,7 @@
             .text(d => d.name)
             .attr("stroke", "black");
 
+        // Initialize force simulation
         const simulation = d3.forceSimulation(data.nodes)
             .force("link", d3.forceLink()
                     .id(function(d) { return d.id; })
@@ -98,16 +100,9 @@
             .force('collide', d3.forceCollide()
                 .radius(40))
 
-
-        const drag_handler = d3.drag()
-            .on("start", dragstarted)
-            .on("drag", dragged)
-            .on("end", dragended);
-        drag_handler(node);
-
         simulation.on("tick", ticked);
 
-        // This function is run at each iteration of the force algorithm, updating the nodes position.
+        // Update node position every tick
         function ticked() {
             link
                 .attr("x1", function(d) { return d.source.x; })
@@ -124,21 +119,28 @@
                 .attr("y", function (d) { return d.y; });
         }
 
-      function dragstarted(event, d) {
-        if (!event.active) simulation.alphaTarget(0.3).restart();
-        d.fx = d.x;
-        d.fy = d.y;
-      }
+        // Initialize node drag handler
+        const drag_handler = d3.drag()
+            .on("start", dragstarted)
+            .on("drag", dragged)
+            .on("end", dragended);
+        drag_handler(node);
 
-      function dragged(event, d) {
-        d.fx = event.x;
-        d.fy = event.y;
-      }
+        function dragstarted(event, d) {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+        }
 
-      function dragended(event, d) {
-        if (!event.active) simulation.alphaTarget(0);
-        d.fx = null;
-        d.fy = null;
-      }
+        function dragged(event, d) {
+            d.fx = event.x;
+            d.fy = event.y;
+        }
+
+        function dragended(event, d) {
+            if (!event.active) simulation.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
+        }
     });
 </script>

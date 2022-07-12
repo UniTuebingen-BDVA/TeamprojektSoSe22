@@ -23,7 +23,7 @@ function makeSeq(length: number) {
 // works only for sequences containing between 5 and 150 nucleotides
 // determines if the sequence max_score is above (or equal) the threshold, i.e. meaningful
  export function meaningfulSeq(length: number | string) {
-    let threshold = 0.4;
+    let threshold = 0.3;
     if (length < 5 || length > 150) {
         return console.log("Length must be an Int between 5 and 150");
     } else if (checkIfInt(length)) {
