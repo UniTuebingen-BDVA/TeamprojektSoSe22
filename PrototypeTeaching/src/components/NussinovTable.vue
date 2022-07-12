@@ -2,16 +2,20 @@
 import {create_table} from "../scripts/table.js";
 
 const probs = defineProps({
-    sequence: String
+    sequence: {
+        type:String,
+        required:true
+    }
 });
 
 document.addEventListener("DOMContentLoaded", function(){
-    let seq = probs.sequence;
-    create_table(seq);
+    create_table(probs.sequence);
 
     document.querySelector("#table").addEventListener("click", function(event){
         if (event.target.className == 'cell'){
-            event.target.innerHTML = parseInt(prompt("Cell entry:"));
+            while (isNaN(parseInt(event.target.innerText))){
+                event.target.innerText = parseInt(prompt("Cell entry:"));
+            }
         }
     });
 });
