@@ -15,7 +15,7 @@
     <img class ="nImage" src="../../assets/table.png">
     <div class="nButton">
       <!-- <NussinovButton text="Start" link="../../pages/Levels/Level01FirstStepPage.html"></NussinovButton> -->
-      <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Start'" :link="'../../pages/Levels/Level01FirstStepPage.html'"/>
+      <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Start'" :link="'../../pages/Levels/Level01FirstStep.html'"/>
     </div>
     
   </div>

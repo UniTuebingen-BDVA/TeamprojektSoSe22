@@ -11,7 +11,7 @@ import UniButton from "../../components/UniButton.vue";
       :filled="false"
       :primary-color="'red'"
       :text="'Skip Tutorial'"
-      :link="'../../pages/Levels/LevelStartPage.html'"
+      :link="'../../pages/Levels/LevelStart.html'"
     />
     <div class="tutorialBox">
       <h3>Traceback</h3>
@@ -54,7 +54,7 @@ import UniButton from "../../components/UniButton.vue";
       :filled="false"
       :primary-color="'red'"
       :text="'Next &#x2192;'"
-      :link="'../../pages/Tutorial/TutorialStepperFirstStepPage.html'"
+      :link="'../../pages/Tutorial/NussinovStepperFirst.html'"
     />
   </div>
 </template>

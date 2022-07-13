@@ -18,7 +18,7 @@
     <img class="nImage" src="../../assets/tutorial-sequence.PNG">
     <div class="nButton">
        <!-- <NussinovButton text="Retry?" link="../../pages/Levels/LevelStartPage.html"></NussinovButton> -->
-       <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Retry?'" :link="'../../pages/Levels/LevelStartPage.html'"/>
+       <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Retry?'" :link="'../../pages/Levels/LevelStart.html'"/>
     </div>
         
     </div>

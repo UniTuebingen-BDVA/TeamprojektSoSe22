@@ -22,7 +22,7 @@
     <div class="nButtons">
       <div class="nButton_Next">
        <!-- <NussinovButton text="Next" link="../../pages/Levels/Level01FirstStepPage.html"></NussinovButton> -->
-       <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next'" :link="'../../pages/Levels/Level01FirstStepPage.html'"/>
+       <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next'" :link="'../../pages/Levels/Level01FirstStep.html'"/>
       </div>
     </div>
   </div>

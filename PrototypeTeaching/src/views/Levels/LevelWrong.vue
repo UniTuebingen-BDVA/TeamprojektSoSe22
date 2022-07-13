@@ -21,9 +21,9 @@
       </div>
       <div class="nButtons">
         <!-- <NussinovButton text="Need help?" link="../../pages/Levels/LevelHelpPage.html"></NussinovButton> -->
-        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Need help?'" :link="'../../pages/Levels/LevelHelpPage.html'"/>
+        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Need help?'" :link="'../../pages/Levels/LevelHelp.html'"/>
         <!-- <NussinovButton text="End" link="../../pages/Levels/LevelScorePage.html"></NussinovButton> -->
-        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'End'" :link="'../../pages/Levels/LevelScorePage.html'"/>
+        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'End'" :link="'../../pages/Levels/LevelScore.html'"/>
       </div>
     </div>
   </div>
