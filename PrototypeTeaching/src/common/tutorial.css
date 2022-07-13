@@ -21,7 +21,7 @@
 .tutorialBox > p {
     margin: 0.25em 0;
 }
-.dpMatrix{
+#table > table{
     margin: auto;
     max-width: 35%;
     min-width: auto;
@@ -31,19 +31,32 @@
     border-spacing: 0;
     opacity: 0.7;
 }
-.dpMatrix td,
-.dpMatrix th{
+#table td{
     border: 1px solid #a0a0a0;
+    border-collapse: collapse;
     min-width: 1.5em;
     min-height: 1.5em;
 }
-.dpMatrix th,
-.dpMatrix tr > td:first-of-type {
+#table tr:first-of-type > td,
+#table tr > td:first-of-type {
     font-family: Arial,"Helvetica Narrow",sans-serif;
     font-size: 1.2em;
     font-weight: bold;
 }
 
+#table tr:first-of-type > td:first-of-type{
+    font-style: italic;
+}
+
+#table tr:first-of-type td{
+    border-bottom: 3px solid #a0a0a0;
+}
+
+#table tr td:first-of-type{
+    border-right: 3px solid #a0a0a0;
+}
+
+#table 
 a{
     color: var(--uni-color-red);
     text-decoration: none;
