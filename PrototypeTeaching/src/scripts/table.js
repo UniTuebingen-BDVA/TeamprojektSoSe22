@@ -11,10 +11,10 @@ function get_table(sequence){
     let n = sequence.length;
     let data = [];
     let header = sequence.split("");
-    header.unshift("D", "-");
+    header.unshift("D");
     data.push(header);
     for(let i = 0; i < n; i++){
-        let column = new Array(n+2);
+        let column = new Array(n+1);
         column.fill('');
         column[0] = sequence[i];
         data.push(column);
@@ -25,15 +25,9 @@ function get_table(sequence){
 // fills the initial values, returns the table
 function fill_initial(table){
     let n = table.length;
-    let m = table[0].length;
     for(let i = 1; i < n; i++){
-        for(let j = 1; j < m; j++){
-            if (i == j){
-                table[i][j] = 0;
-                table[i][j+1] = 0;
-            }
+            table[i][i] = 0;
         }
-    }
     return table;
 }
 

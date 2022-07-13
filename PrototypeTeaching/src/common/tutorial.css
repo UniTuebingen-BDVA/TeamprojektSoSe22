@@ -31,8 +31,7 @@
     border-spacing: 0;
     opacity: 0.7;
 }
-#table td,
-#table th{
+#table td{
     border: 1px solid #a0a0a0;
     border-collapse: collapse;
     min-width: 1.5em;
@@ -45,6 +44,11 @@
     font-weight: bold;
 }
 
+#table tr:first-of-type > td:first-of-type{
+    font-style: italic;
+}
+
+#table 
 a{
     color: var(--uni-color-red);
     text-decoration: none;
