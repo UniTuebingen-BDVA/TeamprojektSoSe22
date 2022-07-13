@@ -1,7 +1,7 @@
 <template >
     <div class="game-frame">
         <div class="game">
-            <RNAStructure :length=12 :sequence="'AAAGGGGUUU'" class="rna-structure"/>
+            <RNAStructure :sequence="'AAAGGGGUUU'" class="rna-structure"/>
         </div>
         <div class="help" v-on:click="showHelp">
             <img v-if="!helpActive"  src="../../assets/icon_help.svg" />
