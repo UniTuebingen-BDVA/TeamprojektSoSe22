@@ -2,6 +2,7 @@
   import UniButton from './components/UniButton.vue';
   import NussinovHeader from './components/NussinovHeader.vue';
   import RNAStructure from './components/RNAStructure.vue';
+  import StartButton from './components/StartButton.vue';
 </script>
 
 <template>
@@ -12,6 +13,7 @@
       <p>Learn the key ideas of dynamic programming algorithms <br> and how to use the Nussinov algorithm predict correct RNA-structures</p><br>
       <div class="nButton">
         <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Start Tutorial'" :link="'src/pages/Tutorial/BioBackgroundRNA1.html'"/>
+        <StartButton class="teachingButton" :text="'Testtest'" :length=10></StartButton>
       </div>
     </div>
     <div class="nImage">
