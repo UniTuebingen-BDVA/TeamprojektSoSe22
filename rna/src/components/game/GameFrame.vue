@@ -1,7 +1,7 @@
 <template >
     <div class="game-frame">
         <div class="game">
-
+            <RNAStructure :length=12 :sequence="'AAAGGGGUUU'" class="rna-structure"/>
         </div>
         <div class="help" v-on:click="showHelp">
             <img v-if="!helpActive"  src="../../assets/icon_help.svg" />
@@ -13,6 +13,7 @@
 <script setup>
     import {ref} from 'vue';
     import GameHelp from './GameHelp.vue';
+    import RNAStructure from '../RNAStructure.vue'
 
     const helpActive = ref(false);
     const showHelp = () => helpActive.value = !helpActive.value;
@@ -43,5 +44,13 @@
     .help > img {
         height: 100%;
         object-fit: contain;
+    }
+    .rna-structure {
+        display: flex;
+        max-width: 100%;
+        min-width: 30%;
+        max-height: 100%;
+        width: auto;
+        height: auto;
     }
 </style>
