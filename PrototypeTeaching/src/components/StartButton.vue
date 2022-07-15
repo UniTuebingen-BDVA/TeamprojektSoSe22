@@ -11,11 +11,17 @@
     const start = ref(false);
 </script>
 
+<script>
+    
+</script>
+
 <template>
     <button @click="start = !start" type="button" class="nButton">{{text}}</button>
-    <div v-if="start">Hi</div> <!--Works-->
-    <NussinovTable v-if="start" sequence="AGGA" ></NussinovTable> <!--Doesn't work-->
-    <div v-if="start"><NussinovTable sequence="AGGA" ></NussinovTable></div> <!--Doesn't work-->
+    <div id="table"></div>
+    <div v-if="start">
+        Hi
+        <NussinovTable sequence = "ACACA"> </NussinovTable> 
+    </div>
     
 </template>
 
