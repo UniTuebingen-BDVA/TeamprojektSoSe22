@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import {create_table} from "../scripts/table.js";
+import {onMounted} from "vue";
 
 const probs = defineProps({
     sequence: {
@@ -8,7 +9,7 @@ const probs = defineProps({
     }
 });
 
-document.addEventListener("DOMContentLoaded", function(){
+onMounted(() => {
     create_table(probs.sequence);
 
     document.querySelector("#table").addEventListener("click", function(event){

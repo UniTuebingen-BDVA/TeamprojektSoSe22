@@ -7,6 +7,7 @@
     import {meaningfulSeq} from "../scripts/RNA_Generator";
     import {calculate_nussinov} from "../scripts/nussinov";
     import {createGraphData} from "../scripts/graph";
+    import {onMounted} from "vue";
 
     const probs = defineProps({
         sequence: String,
@@ -18,7 +19,7 @@
         secondaryStructure: Boolean
     })
 
-    window.addEventListener("load", function(event) {
+    onMounted(() => {
         //Generate sequence and dot-bracket notation
         let sequence = "";
         let dot_bracket = "";
