@@ -45,10 +45,12 @@ function is_not_filled(cell){
 //      nussinovMatrix: Array of Arrays (filled nussinovMatrix)
 //  returns:
 //      boolean: false, if not valided, else true
-export function validate(cell, user_input, nussinovMatrix){
+export function validate_fill(cell, nussinovMatrix){
     if (is_not_filled(cell)){
         if(is_cell_valid(cell)){
+            let user_input = parseInt(prompt("Please enter the value for the current cell!"));
             if(! isNaN(user_input) && is_cell_value_correct(cell, user_input, nussinovMatrix)){
+                cell.innerText = user_input;
                 return true;
             }
             else{
