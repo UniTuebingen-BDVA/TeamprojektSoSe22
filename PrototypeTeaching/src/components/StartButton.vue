@@ -19,9 +19,9 @@
 
 <template>
     <button @click="start = !start" v-if="!start" type="button" class="nButton">{{"Start"}}</button>
-    <div class="twoColumns" v-if="start">
-        <div class="nTable"><NussinovTable :sequence = sequence> </NussinovTable> </div>
-        <div class="nImage"><RNAStructure :sequence = sequence :secondary-structure = "false"></RNAStructure></div>
+    <div class="flex-container" v-if="start">
+        <div class="table"><NussinovTable :sequence = sequence> </NussinovTable> </div>
+        <div class="structure"><RNAStructure :sequence = sequence :secondary-structure = "false"></RNAStructure></div>
     </div>
     
 </template>
@@ -29,47 +29,38 @@
 <style scoped>
     @import url('https://fonts.googleapis.com/css?family=Open+Sans');
     .nButton{
-        text-align: center;
-        text-decoration: none;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        width: max-content;
+        height: 40px;
+        font-family: var(--uni-font);
+        padding: 10px;
         font-size: 20px;
         font-weight: 550;
-        transition: color .3s/* all .2s ease-in */;
-        cursor: pointer;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        -webkit-box-sizing: border-box;
-        background-color: var(--uni-color-red);
-        color: white;
+        transition: color .3s;
+        border: solid 2px var(--uni-color-red);
+        background-color: transparent;
+        color: var(--uni-color-red);
     }
     .nButton:hover{
         background-color: var(--uni-color-red-hover);
         color: white;
     }
 
-    .twoColumns{
-        margin-top: 5%;
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: space-between;
-    }
-
-    .nImage{
-        max-width: 40%;
-        min-width: 30%;
-        width: auto;
-        height: auto;
-    }
-    .nTable{
-        margin-top: 5%;
+    .flex-container {
         display: flex;
         flex-wrap: wrap;
-        flex-direction: column;
+        align-items: center;
         justify-content: center;
-        align-items: flex-start;
-        width: 50%;
-        height: 100%;
+    }
+
+    .table {
+        flex: 0 1 60%;
+ 
+    }
+
+    .structure {
+        flex: 0.5 1 40%;
     }
 </style>

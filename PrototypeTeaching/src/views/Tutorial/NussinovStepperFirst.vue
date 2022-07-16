@@ -13,7 +13,7 @@
       <p>Remember, you need this </p>
       <img src="../../assets/nussinov-cases-highlight.PNG">
       <p>Now try it out yourself!</p>
-      <StartButton :length = 6></StartButton>
+      <StartButton :length = 10></StartButton>
       </div>
     <!-- <NussinovButton text="Next &#x2192;" link="../../pages/Tutorial/TutorialStepperEndPage.html"></NussinovButton>  -->
     <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next &#x2192;'" :link="'../../pages/Tutorial/NussinovStepperEnd.html'"/>
