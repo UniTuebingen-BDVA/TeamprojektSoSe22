@@ -24,9 +24,11 @@ function get_table(sequence){
 
 // fills the initial values, returns the table
 function fill_initial(table){
-    let n = table.length;
-    for(let i = 1; i < n; i++){
+    for(let i = 1; i < table.length; i++){
             table[i][i] = 0;
+            if (i +1 < table.length){
+                table[i+1][i] = 0;
+            }
         }
     return table;
 }
