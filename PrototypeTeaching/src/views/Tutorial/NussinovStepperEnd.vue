@@ -2,6 +2,7 @@
   // import NussinovButton from '../../components/NussinovButton.vue';
   import UniButton from '../../components/UniButton.vue';
   import NussinovHeader from '../../components/NussinovHeader.vue';
+  import NussinovTable from '@/components/NussinovTable.vue';
 </script>
 
 <template>
@@ -13,7 +14,7 @@
       <p>Remember, you need this </p>
       <img src="../../assets/nussinov-cases-highlight.PNG">
       <p>Now you can try it out with the sequence GCAGUG</p>
-      <img class="nTable" src="../../assets/tutorial-table-end.JPG">
+      <NussinovTable sequence="GCAGUG"></NussinovTable>
       <p>Finished!</p>
       <img src="../../assets/tutorial-sequence.PNG">
       </div>

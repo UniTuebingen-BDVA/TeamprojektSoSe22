@@ -2,6 +2,7 @@
   // import NussinovButton from '../../components/NussinovButton.vue';
   import UniButton from '../../components/UniButton.vue';
   import NussinovHeader from '../../components/NussinovHeader.vue';
+  import NussinovTable from '@/components/NussinovTable.vue';
 </script>
 
 <template>
@@ -12,7 +13,9 @@
      <p>Structure: </p>
       <p id="border">GUAAGAUC</p>
     </div>
-    <img class ="nImage" src="../../assets/table.png">
+    <div class="table">
+      <NussinovTable sequence="GUAAGAUC"></NussinovTable>
+    </div>
     <div class="nButton">
       <!-- <NussinovButton text="Start" link="../../pages/Levels/Level01FirstStepPage.html"></NussinovButton> -->
       <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Start'" :link="'../../pages/Levels/Level01FirstStep.html'"/>
@@ -54,6 +57,10 @@
     text-align: center;
     border-radius: 2em;
     margin: 3em;
+  }
+
+  .table {
+    align-self: flex-start;
   }
 
 </style>
