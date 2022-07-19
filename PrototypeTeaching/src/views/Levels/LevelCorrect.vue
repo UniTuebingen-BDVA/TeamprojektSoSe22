@@ -2,6 +2,7 @@
   // import NussinovButton from '../../components/NussinovButton.vue';
   import UniButton from '../../components/UniButton.vue';
   import NussinovHeader from '../../components/NussinovHeader.vue';
+  import NussinovTable from '@/components/NussinovTable.vue';
 </script>
 
 <template>
@@ -12,6 +13,7 @@
       <div class="nTableFormula">
         <div class="nTable">
           <h3>Step 2: Try to fill in the next two cells of the matrix.</h3>
+          <!-- <NussinovTable sequence="GUAAGAUC"></NussinovTable> -->
           <img class ="nImage" src="../../assets/table1.2.png">
         </div>
         <div class="nFormula">

@@ -1,7 +1,8 @@
 <script setup lang="ts">
-// import NussinovButton from '../../components/NussinovButton.vue';
-import UniButton from '../../components/UniButton.vue';
-import NussinovHeader from '../../components/NussinovHeader.vue';
+  // import NussinovButton from '../../components/NussinovButton.vue';
+  import UniButton from '../../components/UniButton.vue';
+  import NussinovHeader from '../../components/NussinovHeader.vue';
+  import NussinovTable from '@/components/NussinovTable.vue';
 </script>
 
 <template>
@@ -11,7 +12,7 @@ import NussinovHeader from '../../components/NussinovHeader.vue';
       <div class="nTableFormula">
         <div class="nTable">
           <h3>Step 1: Try to fill in the first cell of the matrix.</h3>
-          <img class ="nImage" src="../../assets/table1.1.png">
+          <NussinovTable sequence="GUAAGAUC"></NussinovTable>
         </div>
         <div class="nFormula">
           <p>Remember that you need this:</p>
