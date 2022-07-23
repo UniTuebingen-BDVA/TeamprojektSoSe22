@@ -74,7 +74,8 @@
         // Initialize the nodes
         const node = svg.selectAll(".node")
             .data(data.nodes)
-            .enter().append("g");
+            .enter().append("g")
+            .on("click", togglenode);
 
         const circle = node.append("circle")
             .attr("r", 20)
@@ -140,6 +141,21 @@
             if (!event.active) simulation.alphaTarget(0);
             d.fx = null;
             d.fy = null;
+        }
+
+        let clickedNodes = []
+
+        function togglenode(event, d) {
+          if (!clickedNodes.includes(d.id)){
+            clickedNodes.push(d.id);
+          }
+          if (clickedNodes.length === 2){
+            console.log("Combine node with index: " + clickedNodes.sort()[0] + ":" + clickedNodes.sort()[1]);
+            clickedNodes = [];
+          }
+
+          console.log("DEBUG: " + clickedNodes);
+
         }
     });
 </script>
