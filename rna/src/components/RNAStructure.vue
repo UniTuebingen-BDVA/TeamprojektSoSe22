@@ -148,9 +148,10 @@
         function togglenode(event, d) {
           if (!clickedNodes.includes(d.id)){
             clickedNodes.push(d.id);
+            clickedNodes.sort()
           }
           if (clickedNodes.length === 2){
-            console.log("Combine node with index: " + clickedNodes.sort()[0] + ":" + clickedNodes.sort()[1]);
+            console.log("Combine node with index: " + clickedNodes[0] + ":" + clickedNodes[1]);
             clickedNodes = [];
           }
 
