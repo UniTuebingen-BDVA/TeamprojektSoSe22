@@ -21,10 +21,12 @@
     import GameHelp from './GameHelp.vue';
     import RNAStructure from '../RNAStructure.vue';
     import {meaningfulSeq} from '../../scripts/RNA_Generator';
+    import {calculate_nussinov} from '../../scripts/nussinov'
 
     // ToDo: Change length and sequence by difficukty
-    let get_sequence = meaningfulSeq(10);
-    let dotBracket = ref('.'.repeat(get_sequence.length));
+    let getSequence = meaningfulSeq(10);
+    let dotBracket = ref('.'.repeat(getSequence.length));
+    const nussinovAnswer = calculate_nussinov(getSequence).secondary_structure.toString();
 
     const helpActive = ref(false);
     const showHelp = () => helpActive.value = !helpActive.value;
