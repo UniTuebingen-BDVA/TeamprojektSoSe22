@@ -17,11 +17,8 @@
     import {meaningfulSeq} from '../../scripts/RNA_Generator';
 
     // ToDo: Change length and sequence by difficukty
-    let get_sequence = meaningfulSeq(10);
-    console.log(get_sequence);
-    let dotBracket = '.'.repeat(get_sequence.length)
-
-    console.log(dotBracket);
+    let get_sequence = ref(meaningfulSeq(10));
+    let dotBracket = ref('.'.repeat(get_sequence.length));
 
     const helpActive = ref(false);
     const showHelp = () => helpActive.value = !helpActive.value;
