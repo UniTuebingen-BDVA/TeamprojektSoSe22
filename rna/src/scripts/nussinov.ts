@@ -74,8 +74,8 @@ function duplicate(matrix_a){
  */
 function get_score(nuss: nussinov, pos_i: number, pos_j: number):void{
     const map = new Map();
-    let cords = [];
-    let values = [];
+    let cords: any[] = [];
+    let values: any[] = [];
 
     //Case 1
     let value = nuss.matrix[pos_i + 1][pos_j];
