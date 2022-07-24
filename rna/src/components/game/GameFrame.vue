@@ -1,7 +1,7 @@
 <template >
     <div class="game-frame">
         <div class="game">
-            <RNAStructure :sequence="'AAAGGGGUUU'" class="rna-structure"/>
+            <RNAStructure :sequence="'AAAGGGGUUU'" :dotBracket="'.........'" :secondaryStructure="true" class="rna-structure"/>
         </div>
         <div class="help" v-on:click="showHelp">
             <img v-if="!helpActive"  src="../../assets/icon_help.svg" />
@@ -13,7 +13,15 @@
 <script setup>
     import {ref} from 'vue';
     import GameHelp from './GameHelp.vue';
-    import RNAStructure from '../RNAStructure.vue'
+    import RNAStructure from '../RNAStructure.vue';
+    import {meaningfulSeq} from '../../scripts/RNA_Generator';
+
+    // ToDo: Change length and sequence by difficukty
+    let get_sequence = meaningfulSeq(10);
+    console.log(get_sequence);
+    let dotBracket = '.'.repeat(get_sequence.length)
+
+    console.log(dotBracket);
 
     const helpActive = ref(false);
     const showHelp = () => helpActive.value = !helpActive.value;
