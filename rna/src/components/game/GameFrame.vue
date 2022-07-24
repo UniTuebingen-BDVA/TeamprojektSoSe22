@@ -1,7 +1,12 @@
 <template >
     <div class="game-frame">
         <div class="game">
-            <RNAStructure :sequence="'AAAGGGGUUU'" :dotBracket="'.........'" :secondaryStructure="true" class="rna-structure"/>
+            <RNAStructure 
+                :sequence="'AAAGGGGUUU'" 
+                :dotBracket="'.........'" 
+                :secondaryStructure="true" 
+                @combine="editDotBracket"
+                class="rna-structure"/>
         </div>
         <div class="help" v-on:click="showHelp">
             <img v-if="!helpActive"  src="../../assets/icon_help.svg" />
@@ -22,6 +27,10 @@
 
     const helpActive = ref(false);
     const showHelp = () => helpActive.value = !helpActive.value;
+
+    function editDotBracket(i){
+        console.log(i);
+    }
 </script>
 <style scoped>
     .game-frame {

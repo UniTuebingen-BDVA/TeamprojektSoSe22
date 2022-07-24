@@ -18,6 +18,10 @@
         secondaryStructure: Boolean
     })
 
+    const emit = defineEmits({
+        combine: Array
+    })
+
     window.addEventListener("load", function(event) {
         //Generate sequence and dot-bracket notation
         let sequence = "";
@@ -152,6 +156,7 @@
           }
           if (clickedNodes.length === 2){
             console.log("Combine node with index: " + clickedNodes[0] + ":" + clickedNodes[1]);
+            emit('combine', clickedNodes);
             clickedNodes = [];
           }
 
@@ -159,4 +164,5 @@
 
         }
     });
+
 </script>
