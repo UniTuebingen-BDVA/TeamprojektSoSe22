@@ -6,6 +6,7 @@
                 :dotBracket="'.........'" 
                 :secondaryStructure="true" 
                 @combine="editDotBracket"
+                :key = "dotBracket"
                 class="rna-structure"/>
         </div>
         <div class="help" v-on:click="showHelp">
@@ -22,7 +23,7 @@
     import {meaningfulSeq} from '../../scripts/RNA_Generator';
 
     // ToDo: Change length and sequence by difficukty
-    let get_sequence = ref(meaningfulSeq(10));
+    let get_sequence = meaningfulSeq(10);
     let dotBracket = ref('.'.repeat(get_sequence.length));
 
     const helpActive = ref(false);
@@ -30,6 +31,9 @@
 
     function editDotBracket(i){
         console.log(i);
+        //check if index was clicked before.
+        //If yes check if other index 2 belongs to index 1
+        //otherwise combine index 1 and 2 in dot bracket notation and reload rna component
     }
 </script>
 <style scoped>
