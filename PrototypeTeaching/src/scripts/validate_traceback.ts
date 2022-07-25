@@ -1,11 +1,20 @@
 
+// validates input by user
+//  parameters:
+//      cell1: HTML Object (Cell)
+//      cell2: HTML Object (Cell)
+//      backtrace_matrix: Array of Arrays (filled with the traceback)
+//  returns:
+//      : nothing
+//  side effects:
+//      colors the cells in red if they are part of the
+//      traceback.
+
+
 export function validate_traceback(cell1, cell2, backtrace_matrix){
     let path = get_path(backtrace_matrix);
     let index_cell1 = get_current_index(cell1)
     let index_cell2 = get_current_index(cell2)
-    //console.log(index_cell1)
-    //console.log(index_cell2)
-    console.log(is_path_valid(index_cell1, index_cell2, path))
     if(is_path_valid(index_cell1, index_cell2, path)){
         cell1.style.backgroundColor = "red";
         cell2.style.backgroundColor = "red";
@@ -13,6 +22,8 @@ export function validate_traceback(cell1, cell2, backtrace_matrix){
     return
 }
 
+
+// checks if two cells are consecutive and part of the path
 function is_path_valid(index_cell1, index_cell2, path){
     for (let i = 0; i < path.length; i++) {
         if(path[i][0][0] == index_cell1.x && path[i][0][1] == index_cell1.y){
@@ -32,12 +43,16 @@ function get_current_index(cell){
 }
 
 
+// wrapper for the path_trace function
 function get_path(backtrace_matrix){
     let path = [];
     path_trace(backtrace_matrix, path, 0, backtrace_matrix.length-1);
     return path;
 }
 
+
+// extracts one path of the backtrace matrix
+// and retruns it as a list of touples.
 
 function path_trace(backtrace_matrix, path, pos_i, pos_j){
     let new_pos = backtrace_matrix[pos_i][pos_j][0];

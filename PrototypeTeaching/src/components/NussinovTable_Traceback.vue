@@ -25,6 +25,7 @@ onMounted(() => {
 
         first_cell = event.target;
 
+        // if the cell was already correct, it's marked with a different color
         if(first_cell.style.backgroundColor == "red"){
           first_cell.style.backgroundColor = "blue";
           return
@@ -37,13 +38,15 @@ onMounted(() => {
         if(first_cell.style.backgroundColor == "lightblue"){
           first_cell.style.backgroundColor = "white";
         }
+
+        // if the cell already correct, it's marked with the red color
+        // (so no progress gets deleted)
         if(first_cell.style.backgroundColor == "blue"){
           first_cell.style.backgroundColor = "red"
         }
 
         validate_traceback(first_cell ,event.target, backtrace_matrix)
-        //console.log(first_cell);
-        //console.log(event.target);
+
         first_cell = "";
 
       }
