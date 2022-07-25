@@ -68,7 +68,7 @@
                     `translate(${margin.left}, ${margin.top}) scale(0.5)`);
 
         // Initialize the links
-        const link = svg
+        let link = svg
             .selectAll("line")
             .data(data.links)
             .join("line")
@@ -76,7 +76,7 @@
             .style("stroke-width", "8px");
 
         // Initialize the nodes
-        const node = svg.selectAll(".node")
+        let node = svg.selectAll(".node")
             .data(data.nodes)
             .enter().append("g")
             .on("click", togglenode);
@@ -150,18 +150,39 @@
         let clickedNodes = []
 
         function togglenode(event, d) {
-          if (!clickedNodes.includes(d.id)){
-            clickedNodes.push(d.id);
+          if (!clickedNodes.includes(d)){
+            clickedNodes.push(d);
             clickedNodes.sort()
           }
           if (clickedNodes.length === 2){
             console.log("Combine node with index: " + clickedNodes[0] + ":" + clickedNodes[1]);
             emit('combine', clickedNodes);
+            update();
             clickedNodes = [];
           }
 
           console.log("DEBUG: " + clickedNodes);
 
+        }
+
+        function update() {
+          link.remove();
+          let newLink = {"source" : clickedNodes[0], "color" : "red","index": data.links.length, "target": clickedNodes[1]}
+          data.links.push(newLink)
+          link = svg
+              .selectAll("line")
+              .data(data.links)
+              .join("line")
+              .attr("stroke", d => d.color)
+              .style("stroke-width", "8px")
+              .lower();
+
+          simulation.nodes(data.nodes).on("tick", ticked);
+          simulation.force("link", d3.forceLink()
+              .id(function(d) { return d.id; })
+              .links(data.links)
+          )
+          simulation.alpha(0.5).restart()
         }
     });
 
