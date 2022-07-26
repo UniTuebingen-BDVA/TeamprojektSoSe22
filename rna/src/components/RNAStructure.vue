@@ -51,6 +51,8 @@
             }
         }
         let data = createGraphData(sequence, dot_bracket);
+
+        console.log(data)
         
         // set the dimensions and margins of the graph
         const margin = {top: 30, right: 30, bottom: 30, left: 30},
@@ -152,12 +154,25 @@
         function togglenode(event, d) {
           if (!clickedNodes.includes(d)){
             clickedNodes.push(d);
-            clickedNodes.sort()
+            clickedNodes = clickedNodes.sort()
           }
           if (clickedNodes.length === 2){
             console.log("Combine node with index: " + clickedNodes[0] + ":" + clickedNodes[1]);
+            let datalinks = data.links
+            clickedNodes = clickedNodes.sort()
+            for (const obj in datalinks) {
+              if (datalinks[obj].source === clickedNodes[0] && datalinks[obj].target === clickedNodes[1] ||
+                  datalinks[obj].source === clickedNodes[1] && datalinks[obj].target === clickedNodes[0]) {
+                removeLink(datalinks[obj].index);
+                console.log(data.links);
+                clickedNodes = [];
+                return
+              }
+            }
             emit('combine', clickedNodes);
             update();
+            console.log(data.links)
+
             clickedNodes = [];
           }
 
@@ -165,10 +180,11 @@
 
         }
 
-        function update() {
+        function removeLink(lindex) {
+          data.links = data.links.filter(el => el.index !== lindex);
+
           link.remove();
-          let newLink = {"source" : clickedNodes[0], "color" : "red","index": data.links.length, "target": clickedNodes[1]}
-          data.links.push(newLink)
+
           link = svg
               .selectAll("line")
               .data(data.links)
@@ -180,9 +196,32 @@
           simulation.nodes(data.nodes).on("tick", ticked);
           simulation.force("link", d3.forceLink()
               .id(function(d) { return d.id; })
-              .links(data.links)
-          )
-          simulation.alpha(0.5).restart()
+              .links(data.links));
+
+          simulation.alpha(0.5).restart();
+        }
+
+        function update() {
+          let newLink = {"source" : clickedNodes[0],
+            "color" : "red",
+            "index": data.links.length,
+            "target": clickedNodes[1]};
+
+          data.links.push(newLink);
+          link = svg
+              .selectAll("line")
+              .data(data.links)
+              .join("line")
+              .attr("stroke", d => d.color)
+              .style("stroke-width", "8px")
+              .lower();
+
+          simulation.nodes(data.nodes).on("tick", ticked);
+          simulation.force("link", d3.forceLink()
+              .id(function(d) { return d.id; })
+              .links(data.links));
+
+          simulation.alpha(0.5).restart();
         }
     });
 
