@@ -25,17 +25,38 @@
 
     // ToDo: Change length and sequence by difficukty
     let getSequence = meaningfulSeq(10);
-    let dotBracket = ref('.'.repeat(getSequence.length));
+    let dotBracket = ('.'.repeat(getSequence.length)).split('');
     const nussinovAnswer = calculate_nussinov(getSequence).secondary_structure.toString();
 
     const helpActive = ref(false);
     const showHelp = () => helpActive.value = !helpActive.value;
 
-    function editDotBracket(i){
-        console.log(i);
-        //check if index was clicked before.
-        //If yes check if other index 2 belongs to index 1
-        //otherwise combine index 1 and 2 in dot bracket notation and reload rna component
+    function editDotBracket(indexes){
+
+        //define Nodes clicked by user
+        let clickedNodes = [];
+        clickedNodes[0] = indexes[0].id; clickedNodes[1] = indexes.id[1]; clickedNodes.sort();
+
+        //check if index are matching brackets
+        if(dotBracket[clickedNodes[0]] === '(' && dotBracket[clickedNodes[1]] === ')'){
+
+            //If yes count if the number of open and closed brackets between them are the same
+            let closedBrackets = 0; let openBrackets = 0;
+            for(i = clickedNodes[0] + 1; i < clickedNodes[1]; i++){
+                (dotBracket[i] === ')') ? closedBrackets+1 : ((dotBracket[i] === '(') ? openBrackets+1 : NaN);
+            }
+            //If so replace brackets with '.' to remove the connection
+            if(closedBrackets == openBrackets){
+                dotBracket[clickedNodes[0]] = '.'; dotBracket[clickedNodes[1]] = '.';
+            }
+        }
+        //check if nodes weren't clicked before
+        else if(dotBracket[clickedNodes[0]] === '.' && dotBracket[clickedNodes[1]] === '.'){
+            dotBracket[clickedNodes[0]] = '('; dotBracket[clickedNodes[1]] = ')';
+        }
+        else{
+            //user clicked something wrong. Do nothing
+        }
     }
 </script>
 <style scoped>
