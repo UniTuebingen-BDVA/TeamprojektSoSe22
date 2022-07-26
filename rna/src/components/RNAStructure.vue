@@ -161,8 +161,10 @@ window.addEventListener("load", function(event) {
       clickedNodes = clickedNodes.sort()
 
       for (const obj in datalinks) {
+        // if a link already exists
         if (datalinks[obj].source.id === clickedNodes[0].id && datalinks[obj].target.id === clickedNodes[1].id ||
             datalinks[obj].source.id === clickedNodes[1].id && datalinks[obj].target.id === clickedNodes[0].id) {
+          // and if the link is red (placed by the user): remove the link
           if (datalinks[obj].color === "red") {
             console.log("remove link")
             removeLink(datalinks[obj].index);
@@ -181,11 +183,7 @@ window.addEventListener("load", function(event) {
 
   }
 
-  function removeLink(lindex) {
-    data.links = data.links.filter(el => el.index !== lindex);
-
-    link.remove();
-
+  function simulateLinks() {
     link = svg
         .selectAll("line")
         .data(data.links)
@@ -202,6 +200,18 @@ window.addEventListener("load", function(event) {
     simulation.alpha(0.5).restart();
   }
 
+  // remove a link between two nodes
+  function removeLink(lindex) {
+    data.links = data.links.filter(el => el.index !== lindex);
+
+    link.remove();
+
+    console.log(data.links)
+
+    simulateLinks()
+  }
+
+  // connect two nodes
   function update() {
     let newLink = {"source" : clickedNodes[0],
       "color" : "red",
@@ -209,20 +219,10 @@ window.addEventListener("load", function(event) {
       "target": clickedNodes[1]};
 
     data.links.push(newLink);
-    link = svg
-        .selectAll("line")
-        .data(data.links)
-        .join("line")
-        .attr("stroke", d => d.color)
-        .style("stroke-width", "8px")
-        .lower();
 
-    simulation.nodes(data.nodes).on("tick", ticked);
-    simulation.force("link", d3.forceLink()
-        .id(function(d) { return d.id; })
-        .links(data.links));
+    console.log(data.links)
 
-    simulation.alpha(0.5).restart();
+    simulateLinks()
   }
 });
 
