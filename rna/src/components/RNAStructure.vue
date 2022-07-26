@@ -1,228 +1,229 @@
 <template>
-    <div id="rna_seq"></div>
+  <div id="rna_seq"></div>
 </template>
 
 <script setup>
-    import * as d3 from "d3";
-    import {meaningfulSeq} from "../scripts/RNA_Generator";
-    import {calculate_nussinov} from "../scripts/nussinov";
-    import {createGraphData} from "../scripts/graph";
+import * as d3 from "d3";
+import {meaningfulSeq} from "../scripts/RNA_Generator";
+import {calculate_nussinov} from "../scripts/nussinov";
+import {createGraphData} from "../scripts/graph";
 
-    const probs = defineProps({
-        sequence: String,
-        dotBracket: String,
-        length: {
-            type: Number,
-            default: 5
-        },
-        secondaryStructure: Boolean
-    })
+const probs = defineProps({
+  sequence: String,
+  dotBracket: String,
+  length: {
+    type: Number,
+    default: 5
+  },
+  secondaryStructure: Boolean
+})
 
-    const emit = defineEmits({
-        combine: Array
-    })
+const emit = defineEmits({
+  combine: Array
+})
 
-    window.addEventListener("load", function(event) {
-        //Generate sequence and dot-bracket notation
-        let sequence = "";
-        let dot_bracket = "";
-        if(probs.secondaryStructure){
-            if(typeof probs.sequence !== "undefined"){
-                sequence = probs.sequence;
-                if(typeof probs.dotBracket !== "undefined"){
-                    dot_bracket = probs.dotBracket;
-                } else {
-                    dot_bracket = calculate_nussinov(sequence).secondary_structure;
-                }
-            } else {
-                sequence = meaningfulSeq(probs.length);
-                dot_bracket = calculate_nussinov(sequence).secondary_structure;
-            }
-            
-        } else {
-            if(typeof probs.sequence !== "undefined"){
-                sequence = probs.sequence;
+window.addEventListener("load", function(event) {
+  //Generate sequence and dot-bracket notation
+  let sequence = "";
+  let dot_bracket = "";
+  if(probs.secondaryStructure){
+    if(typeof probs.sequence !== "undefined"){
+      sequence = probs.sequence;
+      if(typeof probs.dotBracket !== "undefined"){
+        dot_bracket = probs.dotBracket;
+      } else {
+        dot_bracket = calculate_nussinov(sequence).secondary_structure;
+      }
+    } else {
+      sequence = meaningfulSeq(probs.length);
+      dot_bracket = calculate_nussinov(sequence).secondary_structure;
+    }
 
-            } else {
-                sequence = meaningfulSeq(probs.length);
-            }
-            for(let i; i < sequence.length; i++){
-                dot_bracket += ".";
-            }
-        }
-        let data = createGraphData(sequence, dot_bracket);
+  } else {
+    if(typeof probs.sequence !== "undefined"){
+      sequence = probs.sequence;
 
-        console.log(data)
-        
-        // set the dimensions and margins of the graph
-        const margin = {top: 30, right: 30, bottom: 30, left: 30},
-        width = 300 - margin.left - margin.right,
-        height = 300 - margin.top - margin.bottom;
+    } else {
+      sequence = meaningfulSeq(probs.length);
+    }
+    for(let i; i < sequence.length; i++){
+      dot_bracket += ".";
+    }
+  }
+  let data = createGraphData(sequence, dot_bracket);
 
-        // Initialize svg
-        const svg = d3.select("#rna_seq")
-            .append("svg")
-            .call(d3.zoom().on("zoom", function (event, d) {
-              svg.attr("transform", event.transform)}))
-            .attr("viewBox", `0 0 ${width} ${height}`)
-            .append("g")
-            .attr("transform",
-                    `translate(${margin.left}, ${margin.top}) scale(0.5)`);
+  console.log(data)
 
-        // Initialize the links
-        let link = svg
-            .selectAll("line")
-            .data(data.links)
-            .join("line")
-            .attr("stroke", d => d.color)
-            .style("stroke-width", "8px");
+  // set the dimensions and margins of the graph
+  const margin = {top: 30, right: 30, bottom: 30, left: 30},
+      width = 300 - margin.left - margin.right,
+      height = 300 - margin.top - margin.bottom;
 
-        // Initialize the nodes
-        let node = svg.selectAll(".node")
-            .data(data.nodes)
-            .enter().append("g")
-            .on("click", togglenode);
+  // Initialize svg
+  const svg = d3.select("#rna_seq")
+      .append("svg")
+      .call(d3.zoom().on("zoom", function (event, d) {
+        svg.attr("transform", event.transform)}))
+      .attr("viewBox", `0 0 ${width} ${height}`)
+      .append("g")
+      .attr("transform",
+          `translate(${margin.left}, ${margin.top}) scale(0.5)`);
 
-        const circle = node.append("circle")
-            .attr("r", 20)
-            .style("fill", d => d.color);
+  // Initialize the links
+  let link = svg
+      .selectAll("line")
+      .data(data.links)
+      .join("line")
+      .attr("stroke", d => d.color)
+      .style("stroke-width", "8px");
 
-        const label = node.append("svg:text")
-            .attr("text-anchor", "middle")
-            .text(d => d.name)
-            .attr("stroke", "black");
+  // Initialize the nodes
+  let node = svg.selectAll(".node")
+      .data(data.nodes)
+      .enter().append("g")
+      .on("click", togglenode);
 
-        // Initialize force simulation
-        const simulation = d3.forceSimulation(data.nodes)
-            .force("link", d3.forceLink()
-                    .id(function(d) { return d.id; })
-                    .links(data.links)
-                    .distance(40)
-                    .strength(1)
-                    )
-            .force("charge", d3.forceManyBody()
-                .strength(-500))
-            .force("center", d3.forceCenter(width / 2, height / 2))
-            .force('collide', d3.forceCollide()
-                .radius(40))
+  const circle = node.append("circle")
+      .attr("r", 20)
+      .style("fill", d => d.color);
 
-        simulation.on("tick", ticked);
+  const label = node.append("svg:text")
+      .attr("text-anchor", "middle")
+      .text(d => d.name)
+      .attr("stroke", "black");
 
-        // Update node position every tick
-        function ticked() {
-            link
-                .attr("x1", function(d) { return d.source.x; })
-                .attr("y1", function(d) { return d.source.y; })
-                .attr("x2", function(d) { return d.target.x; })
-                .attr("y2", function(d) { return d.target.y; });
+  // Initialize force simulation
+  const simulation = d3.forceSimulation(data.nodes)
+      .force("link", d3.forceLink()
+          .id(function(d) { return d.id; })
+          .links(data.links)
+          .distance(40)
+          .strength(1)
+      )
+      .force("charge", d3.forceManyBody()
+          .strength(-500))
+      .force("center", d3.forceCenter(width / 2, height / 2))
+      .force('collide', d3.forceCollide()
+          .radius(40))
 
-            circle
-                .attr("cx", function (d) { return d.x; })
-                .attr("cy", function (d) { return d.y; });
+  simulation.on("tick", ticked);
 
-            label
-                .attr("x", function (d) { return d.x; })
-                .attr("y", function (d) { return d.y; });
-        }
+  // Update node position every tick
+  function ticked() {
+    link
+        .attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
 
-        // Initialize node drag handler
-        const drag_handler = d3.drag()
-            .on("start", dragstarted)
-            .on("drag", dragged)
-            .on("end", dragended);
-        drag_handler(node);
+    circle
+        .attr("cx", function (d) { return d.x; })
+        .attr("cy", function (d) { return d.y; });
 
-        function dragstarted(event, d) {
-            if (!event.active) simulation.alphaTarget(0.3).restart();
-            d.fx = d.x;
-            d.fy = d.y;
-        }
+    label
+        .attr("x", function (d) { return d.x; })
+        .attr("y", function (d) { return d.y; });
+  }
 
-        function dragged(event, d) {
-            d.fx = event.x;
-            d.fy = event.y;
-        }
+  // Initialize node drag handler
+  const drag_handler = d3.drag()
+      .on("start", dragstarted)
+      .on("drag", dragged)
+      .on("end", dragended);
+  drag_handler(node);
 
-        function dragended(event, d) {
-            if (!event.active) simulation.alphaTarget(0);
-            d.fx = null;
-            d.fy = null;
-        }
+  function dragstarted(event, d) {
+    if (!event.active) simulation.alphaTarget(0.3).restart();
+    d.fx = d.x;
+    d.fy = d.y;
+  }
 
-        let clickedNodes = []
+  function dragged(event, d) {
+    d.fx = event.x;
+    d.fy = event.y;
+  }
 
-        function togglenode(event, d) {
-          if (!clickedNodes.includes(d)){
-            clickedNodes.push(d);
-            clickedNodes = clickedNodes.sort()
+  function dragended(event, d) {
+    if (!event.active) simulation.alphaTarget(0);
+    d.fx = null;
+    d.fy = null;
+  }
+
+  let clickedNodes = []
+
+  function togglenode(event, d) {
+    if (!clickedNodes.includes(d)){
+      clickedNodes.push(d);
+      clickedNodes = clickedNodes.sort()
+    }
+    if (clickedNodes.length === 2){
+      let datalinks = data.links
+      clickedNodes = clickedNodes.sort()
+
+      for (const obj in datalinks) {
+        if (datalinks[obj].source.id === clickedNodes[0].id && datalinks[obj].target.id === clickedNodes[1].id ||
+            datalinks[obj].source.id === clickedNodes[1].id && datalinks[obj].target.id === clickedNodes[0].id) {
+          if (datalinks[obj].color === "red") {
+            console.log("remove link")
+            removeLink(datalinks[obj].index);
           }
-          if (clickedNodes.length === 2){
-            console.log("Combine node with index: " + clickedNodes[0] + ":" + clickedNodes[1]);
-            let datalinks = data.links
-            clickedNodes = clickedNodes.sort()
-            for (const obj in datalinks) {
-              if (datalinks[obj].source === clickedNodes[0] && datalinks[obj].target === clickedNodes[1] ||
-                  datalinks[obj].source === clickedNodes[1] && datalinks[obj].target === clickedNodes[0]) {
-                removeLink(datalinks[obj].index);
-                console.log(data.links);
-                clickedNodes = [];
-                return
-              }
-            }
-            emit('combine', clickedNodes);
-            update();
-            console.log(data.links)
-
-            clickedNodes = [];
-          }
-
-          console.log("DEBUG: " + clickedNodes);
-
+          clickedNodes = [];
+          return;
         }
+      }
+      emit('combine', clickedNodes);
+      update();
+      clickedNodes = [];
+      return;
+    }
 
-        function removeLink(lindex) {
-          data.links = data.links.filter(el => el.index !== lindex);
+    console.log("DEBUG: " + clickedNodes);
 
-          link.remove();
+  }
 
-          link = svg
-              .selectAll("line")
-              .data(data.links)
-              .join("line")
-              .attr("stroke", d => d.color)
-              .style("stroke-width", "8px")
-              .lower();
+  function removeLink(lindex) {
+    data.links = data.links.filter(el => el.index !== lindex);
 
-          simulation.nodes(data.nodes).on("tick", ticked);
-          simulation.force("link", d3.forceLink()
-              .id(function(d) { return d.id; })
-              .links(data.links));
+    link.remove();
 
-          simulation.alpha(0.5).restart();
-        }
+    link = svg
+        .selectAll("line")
+        .data(data.links)
+        .join("line")
+        .attr("stroke", d => d.color)
+        .style("stroke-width", "8px")
+        .lower();
 
-        function update() {
-          let newLink = {"source" : clickedNodes[0],
-            "color" : "red",
-            "index": data.links.length,
-            "target": clickedNodes[1]};
+    simulation.nodes(data.nodes).on("tick", ticked);
+    simulation.force("link", d3.forceLink()
+        .id(function(d) { return d.id; })
+        .links(data.links));
 
-          data.links.push(newLink);
-          link = svg
-              .selectAll("line")
-              .data(data.links)
-              .join("line")
-              .attr("stroke", d => d.color)
-              .style("stroke-width", "8px")
-              .lower();
+    simulation.alpha(0.5).restart();
+  }
 
-          simulation.nodes(data.nodes).on("tick", ticked);
-          simulation.force("link", d3.forceLink()
-              .id(function(d) { return d.id; })
-              .links(data.links));
+  function update() {
+    let newLink = {"source" : clickedNodes[0],
+      "color" : "red",
+      "index": data.links.length,
+      "target": clickedNodes[1]};
 
-          simulation.alpha(0.5).restart();
-        }
-    });
+    data.links.push(newLink);
+    link = svg
+        .selectAll("line")
+        .data(data.links)
+        .join("line")
+        .attr("stroke", d => d.color)
+        .style("stroke-width", "8px")
+        .lower();
+
+    simulation.nodes(data.nodes).on("tick", ticked);
+    simulation.force("link", d3.forceLink()
+        .id(function(d) { return d.id; })
+        .links(data.links));
+
+    simulation.alpha(0.5).restart();
+  }
+});
 
 </script>
