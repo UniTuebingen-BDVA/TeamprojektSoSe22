@@ -22,7 +22,6 @@ function get_current_index(cell){
 
 // checks if input is correct, according to the nussinov algorithm
 function is_cell_value_correct(cell, user_input, nussinovMatrix){
-    console.log(nussinovMatrix);
     let pos = get_current_index(cell);
     pos.x--;
     pos.y--;
@@ -37,6 +36,13 @@ function is_cell_value_correct(cell, user_input, nussinovMatrix){
 // checks if current cell is filled
 function is_not_filled(cell){
     return isNaN(parseInt(cell.innerText))
+}
+
+// checks if last cell is filled
+export function is_entire_table_filled(cell){
+    let table = cell.parentNode.parentNode; //tbody
+    let last_cell = table.rows[1].cells[table.rows.length-1]
+    return ! is_not_filled(last_cell)
 }
 
 // validates input by user
