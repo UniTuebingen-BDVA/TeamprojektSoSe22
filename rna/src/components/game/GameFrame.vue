@@ -20,13 +20,22 @@
     import GameHelp from './GameHelp.vue';
     import RNAStructure from '../RNAStructure.vue';
     import {meaningfulSeq} from '../../scripts/RNA_Generator';
-    import {calculate_nussinov} from '../../scripts/nussinov'
+    import {calculate_nussinov} from '../../scripts/nussinov';
 
     // ToDo: Change length and sequence by difficukty
     let getSequence = meaningfulSeq(10);
     let dotBracket = ('.'.repeat(getSequence.length)).split('');
     let dotBracketStr = ('.'.repeat(getSequence.length));
-    const nussinovAnswer = calculate_nussinov(getSequence).secondary_structure.toString();
+    const nussinovAnswer = calculate_nussinov(getSequence).secondary_structure;
+    const gamestate = {
+        correctAnswer: [], 
+        userAnswer: [],
+        usedSequence: String
+    };
+
+    const emit = defineEmits({
+        gamestate: Object
+    })
 
     const helpActive = ref(false);
     const showHelp = () => helpActive.value = !helpActive.value;
@@ -57,6 +66,11 @@
         else{
             //user clicked something wrong. Do nothing
         }
+        //put user dotBracket in Gamestate and emit to active game
+        gamestate.userAnswer = dotBracket;
+        gamestate.correctAnswer = nussinovAnswer;
+        gamestate.usedSequence = getSequence;
+        emit('gamestate', gamestate);
         console.log(dotBracket);
     }
 </script>

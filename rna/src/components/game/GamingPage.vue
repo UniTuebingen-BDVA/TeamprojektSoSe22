@@ -1,7 +1,15 @@
 <template>
     <div class="game-page">
-        <ActiveGame v-if="!gameend" @stateChange="endGame"/>
-        <EndScreen v-if="gameend" @stateChange="restartGame"/>
+        <ActiveGame 
+            v-if="!gameend" 
+            @stateChange="endGame"
+        />
+        <EndScreen 
+            v-if="gameend" 
+            @stateChange="restartGame"  
+            :key="gamestate"
+            :gamestate="gamestate"
+        />
     </div>
 </template>
 <script setup>
@@ -12,9 +20,22 @@ import ActiveGame from './ActiveGame.vue';
 import EndScreen from './EndScreen.vue';
 
 const gameend = ref(false);
+let gamestate = {
+    userAnswer: [], 
+    correctAnswer: [],
+    usedSequence: String
+}
 
-const endGame = ()=> gameend.value = true;
+const endGame = (state)=> {
+    gameend.value = true
+    gamestate.userAnswer = state.userAnswer;
+    gamestate.correctAnswer = state.correctAnswer;
+    gamestate.usedSequence = state.usedSequence;
+/*     console.log('here');
+    console.log('emited', state); */
+};
 const restartGame = ()=> gameend.value = false;
+
 
 </script>
 
