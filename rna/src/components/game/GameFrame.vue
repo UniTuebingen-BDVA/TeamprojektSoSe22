@@ -2,11 +2,10 @@
     <div class="game-frame">
         <div class="game">
             <RNAStructure 
-                :sequence="'AAAGGGGUUU'" 
-                :dotBracket="'.........'" 
+                :sequence="getSequence" 
+                :dotBracket="dotBracketStr" 
                 :secondaryStructure="true" 
                 @combine="editDotBracket"
-                :key = "dotBracket"
                 class="rna-structure"/>
         </div>
         <div class="help" v-on:click="showHelp">
@@ -36,14 +35,14 @@
 
         //define Nodes clicked by user
         let clickedNodes = [];
-        clickedNodes[0] = indexes[0].id; clickedNodes[1] = indexes.id[1]; clickedNodes.sort();
+        clickedNodes[0] = indexes[0].id; clickedNodes[1] = indexes[1].id; clickedNodes.sort();
 
         //check if index are matching brackets
         if(dotBracket[clickedNodes[0]] === '(' && dotBracket[clickedNodes[1]] === ')'){
 
             //If yes count if the number of open and closed brackets between them are the same
             let closedBrackets = 0; let openBrackets = 0;
-            for(i = clickedNodes[0] + 1; i < clickedNodes[1]; i++){
+            for(let i = clickedNodes[0] + 1; i < clickedNodes[1]; i++){
                 (dotBracket[i] === ')') ? closedBrackets+1 : ((dotBracket[i] === '(') ? openBrackets+1 : NaN);
             }
             //If so replace brackets with '.' to remove the connection
@@ -58,6 +57,7 @@
         else{
             //user clicked something wrong. Do nothing
         }
+        console.log(dotBracket);
     }
 </script>
 <style scoped>
