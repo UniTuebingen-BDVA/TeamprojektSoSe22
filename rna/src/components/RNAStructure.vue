@@ -52,7 +52,7 @@ window.addEventListener("load", function(event) {
   }
   let data = createGraphData(sequence, dot_bracket);
 
-  console.log(data)
+ /*  console.log(data) */
 
   // set the dimensions and margins of the graph
   const margin = {top: 30, right: 30, bottom: 30, left: 30},
@@ -159,7 +159,6 @@ window.addEventListener("load", function(event) {
     if (clickedNodes.length === 2){
       let datalinks = data.links
       clickedNodes = clickedNodes.sort()
-
       for (const obj in datalinks) {
         // if a link already exists
         if (datalinks[obj].source.id === clickedNodes[0].id && datalinks[obj].target.id === clickedNodes[1].id ||
@@ -167,6 +166,7 @@ window.addEventListener("load", function(event) {
           // and if the link is red (placed by the user): remove the link
           if (datalinks[obj].color === "red") {
             console.log("remove link")
+            emit('combine', clickedNodes);
             removeLink(datalinks[obj].index);
           }
           clickedNodes = [];
@@ -179,7 +179,7 @@ window.addEventListener("load", function(event) {
       return;
     }
 
-    console.log("DEBUG: " + clickedNodes);
+/*     console.log("DEBUG: " + clickedNodes); */
 
   }
 
@@ -206,7 +206,7 @@ window.addEventListener("load", function(event) {
 
     link.remove();
 
-    console.log(data.links)
+    /* console.log(data.links) */
 
     simulateLinks()
   }
@@ -220,7 +220,7 @@ window.addEventListener("load", function(event) {
 
     data.links.push(newLink);
 
-    console.log(data.links)
+    /* console.log(data.links) */
 
     simulateLinks()
   }
