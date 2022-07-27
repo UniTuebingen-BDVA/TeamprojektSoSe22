@@ -2,7 +2,7 @@
 import {create_table} from "../scripts/table";
 import {onMounted} from "vue";
 import {calculate_nussinov} from "../scripts/nussinov"
-import {validate_fill} from "../scripts/validate_fill"; 
+import {is_entire_table_filled, validate_fill} from "../scripts/validate_fill"; 
 
 const probs = defineProps({
     sequence: {
@@ -11,13 +11,25 @@ const probs = defineProps({
     }
 });
 
+let isFilled = false;
+
 onMounted(() => {
     create_table(probs.sequence);
     let nussinovMatrix = calculate_nussinov(probs.sequence).matrix;
 
     document.querySelector("#table").addEventListener("click", function(event){
         if (event.target.className == 'cell'){
-            validate_fill(event.target, nussinovMatrix);
+
+            // fill stage
+            if(!isFilled){
+                validate_fill(event.target, nussinovMatrix);
+                isFilled = is_entire_table_filled(event.target);
+            }
+            
+            // traceback stage 
+            else {
+
+            }
         }
     });
 });
