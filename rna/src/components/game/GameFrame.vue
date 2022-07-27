@@ -26,6 +26,7 @@
     // ToDo: Change length and sequence by difficukty
     let getSequence = meaningfulSeq(10);
     let dotBracket = ('.'.repeat(getSequence.length)).split('');
+    let dotBracketStr = ('.'.repeat(getSequence.length));
     const nussinovAnswer = calculate_nussinov(getSequence).secondary_structure.toString();
 
     const helpActive = ref(false);
