@@ -7,10 +7,19 @@
         length: {
             type: Number,
             default: 5
+        },
+        sequence: {
+            type: String,
+            default: ""
         }
     })
+    let sequence = ref("");
     const start = ref(false);
-    const sequence = ref(meaningfulSeq(probs.length));
+    if (probs.sequence == "") {
+        sequence = ref(meaningfulSeq(probs.length));
+    } else {
+        sequence = ref(probs.sequence);
+    }
 </script>
 
 <script>

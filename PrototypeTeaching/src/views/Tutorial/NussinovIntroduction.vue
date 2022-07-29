@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// import NussinovButton from "../../components/NussinovButton.vue";
 import NussinovHeader from "../../components/NussinovHeader.vue";
 import UniButton from "../../components/UniButton.vue";
 </script>
@@ -21,8 +20,7 @@ import UniButton from "../../components/UniButton.vue";
         the Nussinov algorithm.
       </p>
       <p>
-        If you already know the algorithm, just click on
-        <a href="../../pages/Levels/LevelStart.html">Skip Tutorial</a> this
+        If you already know the algorithm, just click on Skip Tutorial, as this
         will take you directly to the exercises.
       </p>
       <br />
@@ -85,21 +83,3 @@ import UniButton from "../../components/UniButton.vue";
 </template>
 
 <style scoped></style>
-
-<!--
-Was ich alles machen muss:
-1. Starter Page
-Wilkommen beim Nussinov Tutorial:
-Hier bekommst du Schritt für Schritt die einzlnen Komponenten des Nussinov Algorithmus erklärt.
-Wenn du den Algorithmus bereits kennst, klicke einfach auf Skip.. so gelangst du direkt zu den Übungen.
-
-Der Nussinov ist ein recht einfacher dynamischer programmier Algrithmus, der für eine gegebene Sequenz deren Secundärstruktur bestimmen kann.
-Dabei besteht das Ziel darin, eine dynamische programmier Tabelle zu füllen, mithilfe deren man die Secundärstruktur bestimmt.
-
-Er besteht aus 3 hauptschritten:
-Der Inizialisierung
-Der Recursion
-Dem Traceback
-
-
--->

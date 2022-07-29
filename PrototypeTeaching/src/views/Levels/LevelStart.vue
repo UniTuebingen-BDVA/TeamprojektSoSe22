@@ -1,5 +1,4 @@
 <script setup lang="ts">
-  // import NussinovButton from '../../components/NussinovButton.vue';
   import UniButton from '../../components/UniButton.vue';
   import NussinovHeader from '../../components/NussinovHeader.vue';
 </script>
@@ -10,18 +9,15 @@
     <h1>Select your level:</h1>
     <div class="nText">
       <div class="nParagraph">
-        <!-- <NussinovButton text="Level 1" link="../../pages/Levels/Level01StartPage.html"></NussinovButton> -->
-        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Level1'" :link="'../../pages/Levels/Level01Start.html'"/>
+        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Beginner'" :link="'../../pages/Levels/Level01Start.html'"/>
         <p>Starter Level: short and easy structures. In this level you have a helper.</p>   
       </div>
       <div class="nParagraph">
-        <!-- <NussinovButton text="Level 2" link=""></NussinovButton> -->
-        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Level 2'"/>
-        <p>Medium level: longer and more complex structures. In this level the helper helps less than in Level 1.</p> 
+        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Intermediate'" :link="'../../pages/Levels/Level02Start.html'"/>
+        <p>Medium level: longer and more complex structures. You have still the helper.</p> 
       </div>
       <div class="nParagraph">
-        <!-- <NussinovButton text="Level 3" link=""></NussinovButton> -->
-        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Level 3'"/>
+        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Expert'" :link="'../../pages/Levels/Level03Start.html'"/>
         <p>Hard level: long and complex structures. In this level you have no helper.</p>   
       </div>
     </div>
@@ -29,13 +25,13 @@
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Open+Sans'); /*May move all imports to central CSS file?*/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
   .nBody{
     display: flex;
     justify-content: space-between;
     font-family: var(--uni-font);
     flex-direction: column;
-    margin-top: 3em;
+    margin-top: 5em;
   }
   .nText{
     display: flex;
@@ -44,7 +40,6 @@
     justify-content: space-evenly;
     font-family: var(--uni-font);
     align-items: left;
-    /* padding-left: 10em; */
     letter-spacing: 0.3em;
     line-height: 4em;
   }
