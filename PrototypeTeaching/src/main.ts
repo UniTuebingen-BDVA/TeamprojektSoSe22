@@ -4,7 +4,6 @@ import Frontpage from './Frontpage.vue';
 import Level from './views/Levels/LevelStart.vue';
 import Level1 from './views/Levels/Level01Start.vue';
 import Level1_1 from './views/Levels/Level01FirstStep.vue';
-import Level1_traceback from './views/Levels/Level01Traceback.vue'
 import Level_right from './views/Levels/LevelCorrect.vue';
 import Level_wrong from './views/Levels/LevelWrong.vue';
 import Level_help from './views/Levels/LevelHelp.vue';
@@ -29,7 +28,6 @@ createApp(Frontpage).mount('#app');
 createApp(Level).mount('#level');
 createApp(Level1).mount('#level1');
 createApp(Level1_1).mount('#level1_1');
-createApp(Level1_traceback).mount('#level1_traceback')
 createApp(Level_right).mount('#level_right');
 createApp(Level_wrong).mount('#level_wrong');
 createApp(Level_help).mount('#level_help');
