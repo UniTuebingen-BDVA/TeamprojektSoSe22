@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// import NussinovButton from "../../components/NussinovButton.vue";
 import UniButton from "../../components/UniButton.vue";
 import NussinovHeader from "../../components/NussinovHeader.vue";
 </script>
@@ -28,22 +27,22 @@ import NussinovHeader from "../../components/NussinovHeader.vue";
       <p>With the RNA <b>AUGAC</b> it would look like this.</p>
       <p><img src="../../assets/TutorialMatrix_Initialisation_real.gif" /></p>
     </div>
-    <!--<NussinovButton text="Next &#x2192;" link="../../pages/Tutorial/TutorialRecursionPage.html"></NussinovButton>-->
-    <!--<NussinovButton text="Back &#x2192;" link="javascript:history.back()"></NussinovButton>-->
-    <UniButton
-      class="teachingButton"
-      :filled="false"
-      :primary-color="'red'"
-      :text="'&#8592; Back'"
-      :link="'javascript:history.back()'"
-    />
-    <UniButton
-      class="teachingButton"
-      :filled="false"
-      :primary-color="'red'"
-      :text="'Next &#x2192;'"
-      :link="'../../pages/Tutorial/NussinovRecursion.html'"
-    />
+    <div class="flex">
+      <UniButton
+        class="teachingButton"
+        :filled="false"
+        :primary-color="'red'"
+        :text="'&#8592; Back'"
+        :link="'javascript:history.back()'"
+      />
+      <UniButton
+        class="teachingButton"
+        :filled="false"
+        :primary-color="'red'"
+        :text="'Next &#x2192;'"
+        :link="'../../pages/Tutorial/NussinovRecursion.html'"
+      />
+    </div>
   </div>
 </template>
 
@@ -57,10 +56,3 @@ img {
   margin: auto;
 }
 </style>
-
-<!--
- Der este Schritt besteht darin, eine Tabelle zu erstellen, wobei die Anzahl der Reihen und Spalten gleich der Länge q der RNA Sequenz sein sollte.
- Anschließend werden die Zellen (i,i) für i = 1 bis q und (i, i-1) für i = 2 bis q, mit Nullen gefüllt.
- Mit der RNA AUGAC würde dies so aussehen.
-
--->

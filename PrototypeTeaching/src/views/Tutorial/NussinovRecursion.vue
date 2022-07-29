@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// import NussinovButton from "../../components/NussinovButton.vue";
 import NussinovHeader from "../../components/NussinovHeader.vue";
 import UniButton from "../../components/UniButton.vue";
 </script>
@@ -111,20 +110,22 @@ import UniButton from "../../components/UniButton.vue";
       <br />
       <p>We have to repeat this step until we reach the upper right corner.</p>
     </div>
-    <UniButton
-      class="teachingButton"
-      :filled="false"
-      :primary-color="'red'"
-      :text="'&#8592; Back'"
-      :link="'javascript:history.back()'"
-    />
-    <UniButton
-      class="teachingButton"
-      :filled="false"
-      :primary-color="'red'"
-      :text="'Next &#x2192;'"
-      :link="'../../pages/Tutorial/NussinovTraceback.html'"
-    />
+    <div class="flex">
+      <UniButton
+        class="teachingButton"
+        :filled="false"
+        :primary-color="'red'"
+        :text="'&#8592; Back'"
+        :link="'javascript:history.back()'"
+      />
+      <UniButton
+        class="teachingButton"
+        :filled="false"
+        :primary-color="'red'"
+        :text="'Next &#x2192;'"
+        :link="'../../pages/Tutorial/NussinovTraceback.html'"
+      />
+    </div>
   </div>
 </template>
 
@@ -167,17 +168,3 @@ li {
   padding: 0.5em;
 }
 </style>
-
-<!--
-  Nun geht es darum die Tabelle zu füllen.
-  Hierfür betrachten wir jede Zelle einzeln und gehen diese in einer definierten Reihenfolge durch.
-
-  Um den Score einer Zelle zu erhalten, müssen wir vier verschiedene Fälle betrachten.
-
-  1. Wir fügen eine ungepaarte Base (i) an den Anfang der Struktur hinzu.
-  2. Wir fügen eine ungepaarte Base (j) an das Ende der Struktur hinzu.
-  3. wir paaren die Basen (i,j) und fügen diese der Struktur hinzu. In diesem Fall wird der Score um 1 erhöht.
-     Basen Paare werden zwischen (A, U) (G, C) und (G, U)
-  4. wir kombinieren zwei optimale substructuren, die wir bereits aus den zuvorigen Rechnungen kennen.
-
--->

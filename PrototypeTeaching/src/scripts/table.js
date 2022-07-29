@@ -24,11 +24,40 @@ function get_table(sequence){
 
 // fills the initial values, returns the table
 function fill_initial(table){
-    let n = table.length;
-    for(let i = 1; i < n; i++){
+    for(let i = 1; i < table.length; i++){
             table[i][i] = 0;
+            if (i +1 < table.length){
+                table[i+1][i] = 0;
+            }
         }
     return table;
+}
+
+
+// calls functions to render a filled table
+export function create_filled_table(sequence, nussinovMatrix){
+    let data = add_seq_to_table(sequence, nussinovMatrix)
+    tabulate(data, sequence)
+}
+
+// adds the header and sequence name to a matrix
+function add_seq_to_table(sequence, nussinovMatrix){
+
+    for (let i = 2; i < sequence.length; i++) {
+        for (let j = 0; j < i-1; j++) {
+            nussinovMatrix[i][j] = "";
+        }
+    }
+    let n = sequence.length;
+    let data = nussinovMatrix
+    let header = sequence.split("");
+    header.unshift("D");
+    data.unshift(header);
+    for(let i = 0; i < n; i++){
+        data[i+1].unshift(sequence[i])
+    }
+    console.log(data)
+    return data;
 }
 
 // renders table at the object with the id "table"
@@ -50,7 +79,7 @@ function tabulate(data) {
         .enter()
         .append('td')
         .attr('class', function (d){
-            return (d == "" ||  d == 0) ? 'cell' : 'head';
+            return (d == "" ||  typeof(d) == "number") ? 'cell' : 'head';
         })
         .text(function (d){ return d;});
     return table;

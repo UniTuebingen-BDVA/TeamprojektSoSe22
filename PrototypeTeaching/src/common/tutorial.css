@@ -3,6 +3,11 @@
     width: 65%;
     margin: 10% auto;
 }
+.tutorialBody .flex{
+    display: flex;
+    justify-content: space-between;
+}
+
 .tutorialBody .teachingButton:nth-last-of-type(1){
     float: right;
 }

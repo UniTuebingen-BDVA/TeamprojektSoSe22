@@ -42,20 +42,22 @@ import UniButton from "../../components/UniButton.vue";
         />
       </p>
     </div>
-    <UniButton
-      class="teachingButton"
-      :filled="false"
-      :primary-color="'red'"
-      :text="'&#8592; Back'"
-      :link="'javascript:history.back()'"
-    />
-    <UniButton
-      class="teachingButton"
-      :filled="false"
-      :primary-color="'red'"
-      :text="'Next &#x2192;'"
-      :link="'../../pages/Tutorial/NussinovStepperFirst.html'"
-    />
+    <div class="flex">
+      <UniButton
+        class="teachingButton"
+        :filled="false"
+        :primary-color="'red'"
+        :text="'&#8592; Back'"
+        :link="'javascript:history.back()'"
+      />
+      <UniButton
+        class="teachingButton"
+        :filled="false"
+        :primary-color="'red'"
+        :text="'Next &#x2192;'"
+        :link="'../../pages/Tutorial/NussinovStepperFirst.html'"
+      />
+    </div>
   </div>
 </template>
 

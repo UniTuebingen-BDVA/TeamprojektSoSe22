@@ -8,15 +8,15 @@
   <NussinovHeader></NussinovHeader>
   <div class="tutorialBody">
     <div class="tutorialBox">
-      <h3>You chose: Beginner</h3>
+      <h3>You chose: Expert</h3>
       <div class="structure">
       <p>Structure: </p>
-        <p id="border">GACUC</p>
+        <p id="border">Random</p>
       </div>
       <p>Remember, you need this </p>
       <img src="../../assets/nussinov-cases.PNG">
 
-      <StartButton :sequence="'GACUC'"></StartButton>
+      <StartButton :length=8></StartButton>
     </div>
     <!--<div class="flex">
         <UniButton

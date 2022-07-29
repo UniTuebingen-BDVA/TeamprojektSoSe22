@@ -25,7 +25,8 @@ function makeSeq(length: number) {
  export function meaningfulSeq(length: number | string) {
     let threshold = 0.3;
     if (length < 5 || length > 150) {
-        return console.log("Length must be an Int between 5 and 150");
+        console.log("Length must be an Int between 5 and 150")
+        return "";
     } else if (checkIfInt(length)) {
         length = +length as number;
         while(true) {
@@ -36,7 +37,8 @@ function makeSeq(length: number) {
             }
         }
     } else {
-        return console.log("Length must be an Int between 5 and 150");;
+        console.log("Length must be an Int between 5 and 150")
+        return "";
     }
 }
 
