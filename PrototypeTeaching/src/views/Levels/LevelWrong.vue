@@ -2,7 +2,7 @@
   // import NussinovButton from '../../components/NussinovButton.vue';
   import UniButton from '../../components/UniButton.vue';
   import NussinovHeader from '../../components/NussinovHeader.vue';
-  import NussinovTable from '@/components/NussinovTable.vue';
+  import NussinovTable from '../../components/NussinovTable.vue';
 </script>
 
 <template>
