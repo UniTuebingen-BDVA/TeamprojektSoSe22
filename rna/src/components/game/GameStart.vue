@@ -1,8 +1,8 @@
 <template lang="">
     <div class="game-start-menu">
-        <UniButton class="start-buttons" :primary-color="'red'" :filled="false" :text="'Easy'"/>
-        <UniButton class="start-buttons" :primary-color="'red'" :filled="false" :text="'Medium'"/>
-        <UniButton class="start-buttons" :primary-color="'red'" :filled="false" :text="'Hard'"/>
+        <UniButton class="start-buttons" :primary-color="'red'" :filled="false" :text="'Easy'" v-on:click="$emit('gamestart',1)"/>
+        <UniButton class="start-buttons" :primary-color="'red'" :filled="false" :text="'Medium'" v-on:click="$emit('gamestart',2)"/>
+        <UniButton class="start-buttons" :primary-color="'red'" :filled="false" :text="'Hard'" v-on:click="$emit('gamestart',3)"/>
     </div>
 </template>
 <script setup>

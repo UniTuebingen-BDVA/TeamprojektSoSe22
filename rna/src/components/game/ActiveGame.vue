@@ -1,7 +1,7 @@
 <template>
     <div>
-        <GameStart/>
-        <GameFrame @gamestate="updateGamestate"/>
+        <GameStart @gamestart="changeDifficulty"/>
+        <GameFrame @gamestate="updateGamestate" :key="gameDifficulty"/>
         <div class="turn-in">
             <UniButton 
                 :primary-color="'red'" 
@@ -14,6 +14,7 @@
     </div>
 </template>
 <script setup>
+    import {ref} from 'vue';
     import GameStart from './GameStart.vue';
     import GameFrame from './GameFrame.vue';
     import UniButton from '../UniButton.vue';
@@ -24,11 +25,17 @@
         usedSequence: String
     };
 
+    let gameDifficulty = ref(0);
+
     const emit = defineEmits({
         gamestate: Object,
-        stateChange: Object
+        stateChange: Object,
+        gameDifficulty: Number
     })
 
+    function changeDifficulty(x){
+        gameDifficulty.value = x;
+    }
 
     function updateGamestate(updates){
         gamestate.userAnswer = updates.userAnswer;
