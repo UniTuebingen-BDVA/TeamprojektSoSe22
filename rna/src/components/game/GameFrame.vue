@@ -27,6 +27,7 @@
     let dotBracket = ('.'.repeat(getSequence.length)).split('');
     let dotBracketStr = ('.'.repeat(getSequence.length));
     const nussinovAnswer = calculate_nussinov(getSequence).secondary_structure;
+    
     const gamestate = {
         correctAnswer: [], 
         userAnswer: [],
@@ -83,7 +84,7 @@
         border-color: var(--uni-color-gold);
         border-width: 3px;
         border-radius: 10px;
-        background-color: #f3f3f3;
+        background-color: var(--secondary-color);
         position: relative;
     }
     .game {

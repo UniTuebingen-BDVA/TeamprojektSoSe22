@@ -26,8 +26,8 @@ const props = defineProps({
         <div>
             <div class="frame">
                 <RNAStructure 
-                    :sequence="'CGUUCAAGAC'" 
-                    :dotBracket="'...(.)....'" 
+                    :sequence="gamestate.usedSequence" 
+                    :dotBracket="gamestate.userAnswer.join('')" 
                     :secondaryStructure="true"
                     class="rna-structure" 
                 />

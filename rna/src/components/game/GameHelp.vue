@@ -18,8 +18,8 @@
         height: 100%;
         width: 80%;
         position: absolute;
-        top: 0
-        
+        top: 0;
+        background: var(--secondary-color);
     }
 
 

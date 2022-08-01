@@ -31,8 +31,6 @@ const endGame = (state)=> {
     gamestate.userAnswer = state.userAnswer;
     gamestate.correctAnswer = state.correctAnswer;
     gamestate.usedSequence = state.usedSequence;
-/*     console.log('here');
-    console.log('emited', state); */
 };
 const restartGame = ()=> gameend.value = false;
 
