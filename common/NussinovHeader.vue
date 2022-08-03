@@ -6,11 +6,11 @@
     <div class="nHeader">
         <logo></logo>
         <div class="nTitle">
-            <a href="/index.html">Teaching Nussinov</a>
+            <a href="./index.html">Teaching Nussinov</a>
         </div>
         <div class="nPages">
-            <a href="/PrototypeTeaching/src/pages/Tutorial/BioBackgroundRNA1.html">Teaching</a> <!-- Add Link here-->
-            <a href="/rna/game.html">Gaming</a> <!-- Add Link here -->
+            <a href="./PrototypeTeaching/src/pages/Tutorial/BioBackgroundRNA1.html">Teaching</a> <!-- Add Link here-->
+            <a href="./rna/game.html">Gaming</a> <!-- Add Link here -->
         </div>
     </div>
 </template>
