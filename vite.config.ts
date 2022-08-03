@@ -6,6 +6,14 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  build: {
+    rollupOptions: {
+      input: {
+        main: 'index.html',
+        rna:'./rna/game.html',
+      }
+    }
+  },
   plugins: [vue(), vueJsx()],
   assetsInclude: ['**/*.PNG'],
   resolve: {
