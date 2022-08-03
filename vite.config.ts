@@ -27,7 +27,7 @@ export default defineConfig({
         LevelWrong: levels_path + 'LevelWrong.html',
 
         // importing tutorial
-        BioBackgroundRNA1: './PrototypeTeaching/src/pages/Tutorial/BioBackgroundRNA1.html',
+        BioBackgroundRNA1: tutorial_path + 'BioBackgroundRNA1.html',
         BioBackgroundRNA2: tutorial_path + 'BioBackgroundRNA2.html',
         BioBackgroundRNA3: tutorial_path + 'BioBackgroundRNA3.html',
         NussinovInitialization: tutorial_path + 'NussinovInitialization.html',
