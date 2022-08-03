@@ -25,6 +25,6 @@ git commit -m 'deploy'
 # change username accordingly
 # may use UniTuebingen-BDVA/TeamprojektSoSe22 instead
 
-git push -f git@github.com:marcel-iv/TeamprojektSoSe22.git main:gh-pages
+git push -f git@github.com:Kabooni/TeamprojektSoSe22.git main:gh-pages
 
 cd -
