@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import NussinovHeader from "../../components/NussinovHeader.vue";
+import NussinovHeader from "../../../../common/NussinovHeader.vue";
 import UniButton from "../../components/UniButton.vue";
 </script>
 

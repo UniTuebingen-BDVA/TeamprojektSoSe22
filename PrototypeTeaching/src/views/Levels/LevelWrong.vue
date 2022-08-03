@@ -1,7 +1,7 @@
 <script setup lang="ts">
   // import NussinovButton from '../../components/NussinovButton.vue';
   import UniButton from '../../components/UniButton.vue';
-  import NussinovHeader from '../../components/NussinovHeader.vue';
+  import NussinovHeader from '../../../../common/NussinovHeader.vue';
   import NussinovTable from '../../components/NussinovTable.vue';
 </script>
 

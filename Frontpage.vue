@@ -1,6 +1,6 @@
 <script setup lang="ts">
   import UniButton from './PrototypeTeaching/src/components/UniButton.vue';
-  import NussinovHeader from './PrototypeTeaching/src/components/NussinovHeader.vue';
+  import NussinovHeader from './common/NussinovHeader.vue';
   import RNAStructure from './PrototypeTeaching/src/components/RNAStructure.vue';
 </script>
 

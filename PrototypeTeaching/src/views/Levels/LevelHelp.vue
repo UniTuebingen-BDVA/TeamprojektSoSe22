@@ -1,7 +1,6 @@
 <script setup lang="ts">
-  // import NussinovButton from '../../components/NussinovButton.vue';
   import UniButton from '../../components/UniButton.vue';
-  import NussinovHeader from '../../components/NussinovHeader.vue';
+  import NussinovHeader from '../../../../common/NussinovHeader.vue';
 </script>
 
 <template>
@@ -21,7 +20,6 @@
     </div>
     <div class="nButtons">
       <div class="nButton_Next">
-       <!-- <NussinovButton text="Next" link="../../pages/Levels/Level01FirstStepPage.html"></NussinovButton> -->
        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next'" :link="'../../pages/Levels/Level01FirstStep.html'"/>
       </div>
     </div>
