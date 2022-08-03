@@ -10,7 +10,7 @@
     <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Skip Tutorial'" :link="'../../pages/Levels/LevelStart.html'"/>
     <div class="tutorialBox">
       <p>Remember, you need this </p>
-      <img src="../../assets/nussinov-cases.PNG">
+      <img src="../../assets/nussinov-cases.png">
       <p>Now try it out yourself!</p>
       <StartButton :length = 6></StartButton>
       </div>

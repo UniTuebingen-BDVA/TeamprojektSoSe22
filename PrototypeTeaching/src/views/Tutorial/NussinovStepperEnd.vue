@@ -9,7 +9,7 @@
     <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Skip Tutorial'" :link="'../../pages/Levels/LevelStart.html'"/>
     <div class="tutorialBox">
       <p>Finished!</p>
-      <img src="../../assets/tutorial-sequence.PNG">
+      <img src="../../assets/tutorial-sequence.png">
       </div>
       <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next &#x2192;'" :link="'../../pages/Levels/LevelStart.html'"/>
   </div>

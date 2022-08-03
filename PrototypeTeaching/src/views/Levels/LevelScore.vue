@@ -14,7 +14,7 @@
                 <p id="border1"></p>
             </div> 
         </div>
-    <img class="nImage" src="../../assets/tutorial-sequence.PNG">
+    <img class="nImage" src="../../assets/tutorial-sequence.png">
     <div class="nButton">
        <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Retry?'" :link="'../../pages/Levels/LevelStart.html'"/>
     </div>

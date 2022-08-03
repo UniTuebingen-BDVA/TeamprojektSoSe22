@@ -14,7 +14,7 @@
         <p id="border">Random</p>
       </div>
       <p>Remember, you need this </p>
-      <img src="../../assets/nussinov-cases.PNG">
+      <img src="../../assets/nussinov-cases.png">
 
       <StartButton :length=8></StartButton>
     </div>
