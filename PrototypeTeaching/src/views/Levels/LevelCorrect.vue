@@ -1,8 +1,7 @@
 <script setup lang="ts">
-  // import NussinovButton from '../../components/NussinovButton.vue';
-  import UniButton from '../../components/UniButton.vue';
-  import NussinovHeader from '../../components/NussinovHeader.vue';
-  import NussinovTable from '@/components/NussinovTable.vue';
+  import UniButtonLink from '../../components/UniButtonLink.vue';
+  import NussinovHeader from '../../../../common/NussinovHeader.vue';
+  import NussinovTable from '../../components/NussinovTable.vue';
 </script>
 
 <template>
@@ -13,7 +12,6 @@
       <div class="nTableFormula">
         <div class="nTable">
           <h3>Step 2: Try to fill in the next two cells of the matrix.</h3>
-          <!-- <NussinovTable sequence="GUAAGAUC"></NussinovTable> -->
           <img class ="nImage" src="../../assets/table1.2.png">
         </div>
         <div class="nFormula">
@@ -22,17 +20,15 @@
         </div>
       </div>
       <div class="nButtons">
-        <!-- <NussinovButton text="Need help?" link="../../pages/Levels/LevelHelpPage.html"></NussinovButton> -->
-        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Need help?'" :link="'../../pages/Levels/LevelHelp.html'"/>
-        <!-- <NussinovButton text="Next" link="../../pages/Levels/LevelWrongPage.html"></NussinovButton> -->
-        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next'" :link="'../../pages/Levels/LevelWrong.html'"/>
+        <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Need help?'" :link="'../../pages/Levels/LevelHelp.html'"/>
+        <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next'" :link="'../../pages/Levels/LevelWrong.html'"/>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Open+Sans'); /*May move all imports to central CSS file?*/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 .nBody{
   display: flex;
   justify-content: space-between;

@@ -1,8 +1,7 @@
 <template >
-    <img src="../assets/rna_logo.png"/>
+    <img src="./rna_logo.png"/>
 </template>
-<script setup>
-
+<script setup lang="ts">
 </script>
 <style scoped>
     img {

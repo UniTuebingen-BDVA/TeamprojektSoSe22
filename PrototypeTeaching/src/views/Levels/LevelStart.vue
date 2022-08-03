@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import UniButton from '../../components/UniButton.vue';
-  import NussinovHeader from '../../components/NussinovHeader.vue';
+  import UniButtonLink from '../../components/UniButtonLink.vue';
+  import NussinovHeader from '../../../../common/NussinovHeader.vue';
 </script>
 
 <template>
@@ -9,15 +9,15 @@
     <h1>Select your level:</h1>
     <div class="nText">
       <div class="nParagraph">
-        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Beginner'" :link="'../../pages/Levels/Level01Start.html'"/>
+        <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Beginner'" :link="'../../pages/Levels/Level01Start.html'"/>
         <p>Starter Level: short and easy structures. In this level you have a helper.</p>   
       </div>
       <div class="nParagraph">
-        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Intermediate'" :link="'../../pages/Levels/Level02Start.html'"/>
+        <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Intermediate'" :link="'../../pages/Levels/Level02Start.html'"/>
         <p>Medium level: longer and more complex structures. You have still the helper.</p> 
       </div>
       <div class="nParagraph">
-        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Expert'" :link="'../../pages/Levels/Level03Start.html'"/>
+        <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Expert'" :link="'../../pages/Levels/Level03Start.html'"/>
         <p>Hard level: long and complex structures. In this level you have no helper.</p>   
       </div>
     </div>

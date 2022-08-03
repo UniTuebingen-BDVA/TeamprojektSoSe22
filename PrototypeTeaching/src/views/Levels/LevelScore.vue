@@ -1,7 +1,6 @@
 <script setup lang="ts">
-  // import NussinovButton from '../../components/NussinovButton.vue';
-  import UniButton from '../../components/UniButton.vue';
-  import NussinovHeader from '../../components/NussinovHeader.vue';
+  import UniButtonLink from '../../components/UniButtonLink.vue';
+  import NussinovHeader from '../../../../common/NussinovHeader.vue';
 </script>
 
 <template>
@@ -17,8 +16,7 @@
         </div>
     <img class="nImage" src="../../assets/tutorial-sequence.PNG">
     <div class="nButton">
-       <!-- <NussinovButton text="Retry?" link="../../pages/Levels/LevelStartPage.html"></NussinovButton> -->
-       <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Retry?'" :link="'../../pages/Levels/LevelStart.html'"/>
+       <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Retry?'" :link="'../../pages/Levels/LevelStart.html'"/>
     </div>
         
     </div>

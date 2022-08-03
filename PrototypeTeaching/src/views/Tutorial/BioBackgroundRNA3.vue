@@ -1,12 +1,12 @@
 <script setup lang="ts">
-  import UniButton from '../../components/UniButton.vue';
-  import NussinovHeader from '../../components/NussinovHeader.vue';
+  import UniButtonLink from '../../components/UniButtonLink.vue';
+  import NussinovHeader from '../../../../common/NussinovHeader.vue';
 </script>
 
 <template>
   <NussinovHeader></NussinovHeader>
   <div class="tutorialBody">
-    <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Skip Tutorial'" :link="'../../pages/Levels/LevelStart.html'"/>
+    <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Skip Tutorial'" :link="'../../pages/Levels/LevelStart.html'"/>
     <div class="tutorialBox">
       <p>
         So, what is RNA used for? <br>
@@ -21,7 +21,7 @@
         growing polypeptide chain, following the sequence given by the mRNA.</li>
       </ol>
     </div>
-    <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next &#x2192;'" :link="'../../pages/Tutorial/BioBackgroundRNA2.html'"/>
+    <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next &#x2192;'" :link="'../../pages/Tutorial/BioBackgroundRNA2.html'"/>
   </div>
   
 </template>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import UniButton from '../../components/UniButton.vue';
-  import NussinovHeader from '../../components/NussinovHeader.vue';
+  import UniButtonLink from '../../components/UniButtonLink.vue';
+  import NussinovHeader from '../../../../common/NussinovHeader.vue';
   import StartButton from '../../components/StartButton.vue';
 </script>
 
@@ -19,14 +19,14 @@
       <StartButton :sequence="'GACUC'"></StartButton>
     </div>
     <!--<div class="flex">
-        <UniButton
+        <UniButtonLink
           class="teachingButton"
           :filled ="false"
           :primary-color="'red'"
           :text="'Need help?'"
           :link="'../../pages/Levels/LevelHelp.html'"
         />
-        <UniButton
+        <UniButtonLink
           class="teachingButton"
           :filled="false"
           :primary-color="'red'"

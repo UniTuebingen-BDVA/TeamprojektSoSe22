@@ -1,20 +1,20 @@
 <script setup lang="ts">
-  import UniButton from '../../components/UniButton.vue';
-  import NussinovHeader from '../../components/NussinovHeader.vue';
+  import UniButtonLink from '../../components/UniButtonLink.vue';
+  import NussinovHeader from '../../../../common/NussinovHeader.vue';
   import StartButton from '../../components/StartButton.vue';
 </script>
 
 <template>
   <NussinovHeader></NussinovHeader>
   <div class="tutorialBody">
-    <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Skip Tutorial'" :link="'../../pages/Levels/LevelStart.html'"/>
+    <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Skip Tutorial'" :link="'../../pages/Levels/LevelStart.html'"/>
     <div class="tutorialBox">
       <p>Remember, you need this </p>
       <img src="../../assets/nussinov-cases.PNG">
       <p>Now try it out yourself!</p>
       <StartButton :length = 6></StartButton>
       </div>
-    <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next &#x2192;'" :link="'../../pages/Tutorial/NussinovStepperEnd.html'"/>
+    <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next &#x2192;'" :link="'../../pages/Tutorial/NussinovStepperEnd.html'"/>
   </div>
   
 </template>
