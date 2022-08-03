@@ -1,8 +1,9 @@
 <script setup lang="ts">
     import NussinovTable from "./NussinovTable.vue";
     import RNAStructure from "./RNAStructure.vue";
-    import { meaningfulSeq } from "../scripts/RNA_Generator";
-    import { ref} from 'vue'
+    import { meaningfulSeq } from "../../../common/RNA_Generator";
+    import { ref} from 'vue';
+    
     const probs = defineProps({
         length: {
             type: Number,

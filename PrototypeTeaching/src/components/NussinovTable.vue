@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { create_table } from "../scripts/table";
 import { onMounted } from "vue";
-import { calculate_nussinov } from "../scripts/nussinov"
+import { calculate_nussinov } from "../../../common/nussinov"
 import { is_entire_table_filled, validate_fill } from "../scripts/validate_fill";
 import {validate_traceback} from "../scripts/validate_traceback";
 

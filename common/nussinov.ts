@@ -221,5 +221,3 @@ export function calculate_nussinov(sequence: string):nussinov{
     backtrace(nuss, 0, nuss.sequence_length-1);
     return nuss;
 }
-
-//module.export = { make2dArray, initialize_sec_struct, calculate_nussinov };

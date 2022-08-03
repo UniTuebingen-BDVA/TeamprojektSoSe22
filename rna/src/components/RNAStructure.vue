@@ -4,9 +4,9 @@
 
 <script setup>
 import * as d3 from "d3";
-import {meaningfulSeq} from "../scripts/RNA_Generator";
-import {calculate_nussinov} from "../scripts/nussinov";
-import {createGraphData} from "../scripts/graph";
+import {meaningfulSeq} from "../../../common/RNA_Generator";
+import {calculate_nussinov} from "../../../common/nussinov";
+import {createGraphData} from "../../../common/graph";
 
 const probs = defineProps({
   sequence: String,
