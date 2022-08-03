@@ -9,6 +9,7 @@ let tutorial_path = './PrototypeTeaching/src/pages/Tutorial/';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/TeamprojektSoSe22/',
   build: {
     rollupOptions: {
       input: {
