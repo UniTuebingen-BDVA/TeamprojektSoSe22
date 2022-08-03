@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import NussinovHeader from "../../../../common/NussinovHeader.vue";
-import UniButton from "../../components/UniButton.vue";
+import UniButtonLink from "../../components/UniButtonLink.vue";
 </script>
 
 <template>
   <NussinovHeader></NussinovHeader>
   <div class="tutorialBody">
-    <UniButton
+    <UniButtonLink
       class="teachingButton"
       :filled="false"
       :primary-color="'red'"
@@ -72,7 +72,7 @@ import UniButton from "../../components/UniButton.vue";
         </ul>
       </div>
     </div>
-    <UniButton
+    <UniButtonLink
       class="teachingButton"
       :filled="false"
       :primary-color="'red'"

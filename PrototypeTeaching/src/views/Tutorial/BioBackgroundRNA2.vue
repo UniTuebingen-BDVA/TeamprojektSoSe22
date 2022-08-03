@@ -1,12 +1,12 @@
 <script setup lang="ts">
-  import UniButton from '../../components/UniButton.vue';
+  import UniButtonLink from '../../components/UniButtonLink.vue';
   import NussinovHeader from '../../../../common/NussinovHeader.vue';
 </script>
 
 <template>
   <NussinovHeader></NussinovHeader>
   <div class="tutorialBody">
-    <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Skip Tutorial'" :link="'../../pages/Levels/LevelStart.html'"/>
+    <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Skip Tutorial'" :link="'../../pages/Levels/LevelStart.html'"/>
     <div class="tutorialBox">
       <p>
         At last, and most importantly, you should know some things about the RNA molecule structure itself. <br>
@@ -21,7 +21,7 @@
       <img class="nImage" src="../../assets/rna-structure-motifs.jpg">
       Great job reading everything! Now we can continue with the nussinov algorithm.
     </div>
-    <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next &#x2192;'" :link="'../../pages/Tutorial/NussinovIntroduction.html'"/>
+    <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next &#x2192;'" :link="'../../pages/Tutorial/NussinovIntroduction.html'"/>
   </div>
 
 </template>

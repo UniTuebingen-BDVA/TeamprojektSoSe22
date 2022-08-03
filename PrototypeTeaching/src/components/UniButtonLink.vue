@@ -5,12 +5,9 @@
 </template>
 <script lang="ts">
     function openLink(link:string|undefined){
-        if (link === undefined){
-            window.location.href = ".";
-        } else {
-            window.location.href=link;
+        if (link !== undefined){
+            window.location.href = link;
         }
-        
     }
 </script>
 <script setup lang="ts">

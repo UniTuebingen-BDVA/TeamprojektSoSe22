@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import UniButton from './PrototypeTeaching/src/components/UniButton.vue';
+  import UniButtonLink from './PrototypeTeaching/src/components/UniButtonLink.vue';
   import NussinovHeader from './common/NussinovHeader.vue';
   import RNAStructure from './PrototypeTeaching/src/components/RNAStructure.vue';
 </script>
@@ -11,8 +11,8 @@
       <h1>Welcome to <br> Serious Game  for <span>Nussinov</span></h1>
       <p>Learn the key ideas of dynamic programming algorithms <br> and how to use the Nussinov algorithm predict correct RNA-structures</p><br>
       <div class="nButton">
-        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Start Tutorial'" :link="'./PrototypeTeaching/src/pages/Tutorial/BioBackgroundRNA1.html'"/>
-        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Try the game'" :link="'./rna/game.html'"/>
+        <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Start Tutorial'" :link="'./PrototypeTeaching/src/pages/Tutorial/BioBackgroundRNA1.html'"/>
+        <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Try the game'" :link="'./rna/game.html'"/>
       </div>
     </div>
     <div class="nImage">
@@ -48,12 +48,12 @@
     height: 100%;
     padding-left: 10%;
     letter-spacing: 0.3em;
-    line-height: 2.1875em; /* 35px */
+    line-height: 2.1875em;
   }
 
   .nText > h1{
     color: #333333;
-    font-size: 2.5em; /* 40px */
+    font-size: 2.5em;
     font-weight: 100;
   }
   .nText > h1 > span{
@@ -61,7 +61,7 @@
     font-weight: 600;
   }
   .nText > p{
-    font-size: 1.0625em; /* 17px */
+    font-size: 1.0625em;
     font-weight: 100;
     color: #999999;
   }

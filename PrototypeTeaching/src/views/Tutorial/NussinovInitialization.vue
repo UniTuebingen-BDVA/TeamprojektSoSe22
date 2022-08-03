@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import UniButton from "../../components/UniButton.vue";
+import UniButtonLink from "../../components/UniButtonLink.vue";
 import NussinovHeader from "../../../../common/NussinovHeader.vue";
 </script>
 
 <template>
   <NussinovHeader></NussinovHeader>
   <div class="tutorialBody">
-    <UniButton
+    <UniButtonLink
       class="teachingButton"
       :filled="false"
       :primary-color="'red'"
@@ -28,14 +28,14 @@ import NussinovHeader from "../../../../common/NussinovHeader.vue";
       <p><img src="../../assets/TutorialMatrix_Initialisation_real.gif" /></p>
     </div>
     <div class="flex">
-      <UniButton
+      <UniButtonLink
         class="teachingButton"
         :filled="false"
         :primary-color="'red'"
         :text="'&#8592; Back'"
         :link="'javascript:history.back()'"
       />
-      <UniButton
+      <UniButtonLink
         class="teachingButton"
         :filled="false"
         :primary-color="'red'"

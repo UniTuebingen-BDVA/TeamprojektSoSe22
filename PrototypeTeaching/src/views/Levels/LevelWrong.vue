@@ -1,6 +1,5 @@
 <script setup lang="ts">
-  // import NussinovButton from '../../components/NussinovButton.vue';
-  import UniButton from '../../components/UniButton.vue';
+  import UniButtonLink from '../../components/UniButtonLink.vue';
   import NussinovHeader from '../../../../common/NussinovHeader.vue';
   import NussinovTable from '../../components/NussinovTable.vue';
 </script>
@@ -22,17 +21,15 @@
         </div>
       </div>
       <div class="nButtons">
-        <!-- <NussinovButton text="Need help?" link="../../pages/Levels/LevelHelpPage.html"></NussinovButton> -->
-        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Need help?'" :link="'../../pages/Levels/LevelHelp.html'"/>
-        <!-- <NussinovButton text="End" link="../../pages/Levels/LevelScorePage.html"></NussinovButton> -->
-        <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'End'" :link="'../../pages/Levels/LevelScore.html'"/>
+        <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Need help?'" :link="'../../pages/Levels/LevelHelp.html'"/>
+        <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'End'" :link="'../../pages/Levels/LevelScore.html'"/>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Open+Sans'); /*May move all imports to central CSS file?*/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
 .nBody{
   display: flex;
   justify-content: space-between;

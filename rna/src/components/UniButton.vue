@@ -24,7 +24,7 @@
             return "inverted-red";
         }
         if(!filled && primaryColor == "gold"){
-            return "iverted-gold";
+            return "inverted-gold";
         }
         if(!filled && primaryColor == "black"){
             return "inverted-black";

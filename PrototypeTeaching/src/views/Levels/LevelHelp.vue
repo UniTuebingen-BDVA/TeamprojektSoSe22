@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import UniButton from '../../components/UniButton.vue';
+  import UniButtonLink from '../../components/UniButtonLink.vue';
   import NussinovHeader from '../../../../common/NussinovHeader.vue';
 </script>
 
@@ -20,14 +20,14 @@
     </div>
     <div class="nButtons">
       <div class="nButton_Next">
-       <UniButton class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next'" :link="'../../pages/Levels/Level01FirstStep.html'"/>
+       <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next'" :link="'../../pages/Levels/Level01FirstStep.html'"/>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Open+Sans'); /*May move all imports to central CSS file?*/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
   .nBody{
   display: flex;
   justify-content: space-between;
