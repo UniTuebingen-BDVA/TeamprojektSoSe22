@@ -6,11 +6,11 @@
     <div class="nHeader">
         <logo></logo>
         <div class="nTitle">
-            <a href="TeamprojektSoSe22/index.html">Teaching Nussinov</a>
+            <a href="~/TeamprojektSoSe22/index.html">Teaching Nussinov</a>
         </div>
         <div class="nPages">
-            <a href="TeamprojektSoSe22/PrototypeTeaching/src/pages/Tutorial/BioBackgroundRNA1.html">Teaching</a> <!-- Add Link here-->
-            <a href="TeamprojektSoSe22/rna/game.html">Gaming</a> <!-- Add Link here -->
+            <a href="~/TeamprojektSoSe22/PrototypeTeaching/src/pages/Tutorial/BioBackgroundRNA1.html">Teaching</a> <!-- Add Link here-->
+            <a href="~/TeamprojektSoSe22/rna/game.html">Gaming</a> <!-- Add Link here -->
         </div>
     </div>
 </template>
