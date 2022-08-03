@@ -1,5 +1,5 @@
 module.exports = {
     publicPath: process.env.NODE_ENV === 'production'
-      ? '/TeamprojektSoSe22/'
+      ? '/UniTuebingen-BDVA/TeamprojektSoSe22/'
       : '/'
   }
