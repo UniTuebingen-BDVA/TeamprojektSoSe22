@@ -19,8 +19,8 @@
     import {ref} from 'vue';
     import GameHelp from './GameHelp.vue';
     import RNAStructure from '../RNAStructure.vue';
-    import {meaningfulSeq} from '../../scripts/RNA_Generator';
-    import {calculate_nussinov} from '../../scripts/nussinov';
+    import {meaningfulSeq} from '../../../../common/RNA_Generator';
+    import {calculate_nussinov} from '../../../../common/nussinov';
 
     // ToDo: Change length and sequence by difficukty
     let getSequence = meaningfulSeq(10);
