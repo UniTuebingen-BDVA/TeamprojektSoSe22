@@ -13,8 +13,8 @@
 
 export function validate_traceback(cell1, cell2, backtrace_matrix){
     let path = get_path(backtrace_matrix);
-    let index_cell1 = get_current_index(cell1)
-    let index_cell2 = get_current_index(cell2)
+    let index_cell1 = get_current_index(cell1);
+    let index_cell2 = get_current_index(cell2);
     if(is_path_valid(index_cell1, index_cell2, path)){
         cell1.style.backgroundColor = "red";
         cell2.style.backgroundColor = "red";
@@ -80,4 +80,13 @@ function path_trace(backtrace_matrix, path, pos_i, pos_j){
         }
     }
 
+}
+export function is_traceback_finished(backtrace_matrix){
+    let traceback = get_path(backtrace_matrix);
+    if(traceback[-1].style.backgroundColor == "red"){
+        return true;
+    }
+    else{
+        return false;
+    }
 }

@@ -13,6 +13,7 @@ const probs = defineProps({
 });
 
 let isFilled = false;
+let isTracebackfinished = false;
 
 onMounted(() => {
     create_table(probs.sequence);
@@ -62,6 +63,10 @@ onMounted(() => {
 
                 }
             };
+            if(!isTracebackfinished){
+                validate_traceback(first_cell, event.target, nussinovBacktrace);
+                isTracebackfinished = is_traceback_finished(event.target);
+            }
         }
     });
 });
@@ -69,6 +74,7 @@ onMounted(() => {
 </script>
 
 <template>
+    <div v-if="isTracebackfinished"> You are done! </div>
     <div id="table"></div>
 </template>
 
