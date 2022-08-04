@@ -2,8 +2,8 @@
 import { create_table } from "../scripts/table";
 import { onMounted } from "vue";
 import { calculate_nussinov } from "../../../common/nussinov"
-import { is_entire_table_filled, validate_fill } from "../scripts/validate_fill";
-import {validate_traceback} from "../scripts/validate_traceback";
+import { is_entire_table_filled, validate_fill, get_current_index } from "../scripts/validate_fill";
+import { validate_traceback } from "../scripts/validate_traceback";
 
 const probs = defineProps({
     sequence: {
@@ -13,7 +13,7 @@ const probs = defineProps({
 });
 
 let isFilled = false;
-let isTracebackfinished = false;
+let isTracebackFinished = false;
 
 onMounted(() => {
     create_table(probs.sequence);
@@ -22,8 +22,16 @@ onMounted(() => {
     let nussinovBacktrace = nussinov.backtrace;
     let first_cell = "";
 
-    document.querySelector("#table").addEventListener("click", function (event) {
-        if (event.target.className == 'cell') {
+    let table = document.querySelector("#table")?.querySelector("tbody");
+
+    console.log(table);
+    //should be list of lists in the future
+    // list of clicked and accepted traceback cells
+    let path = [ table.rows[1].cells[table.rows.length-1] ];
+
+    table.addEventListener("click", function (event) {
+        console.log(isTracebackFinished);
+        if (event.target.className == 'cell' && !isTracebackFinished) {
 
             // fill stage
             if (!isFilled) {
@@ -40,7 +48,7 @@ onMounted(() => {
                     // if the cell was already correct, it's marked with a different color
                     if (first_cell.style.backgroundColor == "red") {
                         first_cell.style.backgroundColor = "blue";
-                        return
+                        return;
                     }
 
                     first_cell.style.backgroundColor = "lightblue";
@@ -57,16 +65,22 @@ onMounted(() => {
                         first_cell.style.backgroundColor = "red"
                     }
 
-                    validate_traceback(first_cell, event.target, nussinovBacktrace)
-
+                    if (validate_traceback(first_cell, event.target, nussinovBacktrace)){
+                        // adds current valid cell to path
+                        path.push(event.target); 
+                        let pos = get_current_index(event.target);
+                        
+                        // diagonal is reached => stop traceback
+                        // IGNORES BIFURCATION, this is naive implementation only
+                        console.log(pos);
+                        if (pos.x === pos.y){
+                            isTracebackFinished = true;
+                            console.log(path);
+                        }
+                    }
                     first_cell = "";
-
                 }
             };
-            if(!isTracebackfinished){
-                validate_traceback(first_cell, event.target, nussinovBacktrace);
-                isTracebackfinished = is_traceback_finished(event.target);
-            }
         }
     });
 });
@@ -74,7 +88,10 @@ onMounted(() => {
 </script>
 
 <template>
-    <div v-if="isTracebackfinished"> You are done! </div>
+    <div v-if="isTracebackFinished">
+        you are done!
+    </div>
+
     <div id="table"></div>
 </template>
 

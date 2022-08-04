@@ -18,8 +18,9 @@ export function validate_traceback(cell1, cell2, backtrace_matrix){
     if(is_path_valid(index_cell1, index_cell2, path)){
         cell1.style.backgroundColor = "red";
         cell2.style.backgroundColor = "red";
+        return true;
     }
-    return
+    return false;
 }
 
 
