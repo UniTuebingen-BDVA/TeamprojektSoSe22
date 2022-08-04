@@ -34,7 +34,6 @@
     margin-left: 2em;
     align-items: center;
 }
-
 .nBox {
     background-color: var(--uni-color-white);
     width: 20em;
@@ -45,11 +44,11 @@
     margin-top: 5%;   
 }
 .nImage {
+    align-items: right;
     height: 10em;
     width: 15em;
     margin-top: 5%;
     margin-bottom: 5%;
-
 }
 .nButton {
     margin-left: 0;
@@ -57,7 +56,6 @@
 .border {
     margin-left: 3em;
 }
-
 #border {
     background-color: lightgrey;
     border-radius: 2em;
@@ -65,7 +63,6 @@
     width: 15em;
     position: absolute;
 }
-
 #border1 {
     background-color: lightgreen;
     border-radius: 2em;

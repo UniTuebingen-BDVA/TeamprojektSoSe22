@@ -54,6 +54,7 @@
     margin: 3em;
   }
   img {
+    mix-blend-mode: multiply;
     display: block;
     max-width: 65%;
     max-height: 25%;
