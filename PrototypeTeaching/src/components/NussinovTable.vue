@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import { create_table } from "../scripts/table";
 import { onMounted } from "vue";
 import { calculate_nussinov } from "../../../common/nussinov"
 import { is_entire_table_filled, validate_fill, get_current_index } from "../scripts/validate_fill";
-import { validate_traceback } from "../scripts/validate_traceback";
+import { validate_traceback} from "../scripts/validate_traceback";
 
 const probs = defineProps({
     sequence: {
@@ -13,7 +14,7 @@ const probs = defineProps({
 });
 
 let isFilled = false;
-let isTracebackFinished = false;
+let isTracebackFinished = ref(false); 
 
 onMounted(() => {
     create_table(probs.sequence);
@@ -30,8 +31,8 @@ onMounted(() => {
     let path = [ table.rows[1].cells[table.rows.length-1] ];
 
     table.addEventListener("click", function (event) {
-        console.log(isTracebackFinished);
-        if (event.target.className == 'cell' && !isTracebackFinished) {
+        //console.log(isTracebackFinished);
+        if (event.target.className == 'cell' && isTracebackFinished.value !== true) {
 
             // fill stage
             if (!isFilled) {
@@ -74,7 +75,7 @@ onMounted(() => {
                         // IGNORES BIFURCATION, this is naive implementation only
                         console.log(pos);
                         if (pos.x === pos.y){
-                            isTracebackFinished = true;
+                            isTracebackFinished.value = true;
                             console.log(path);
                         }
                     }
@@ -88,11 +89,13 @@ onMounted(() => {
 </script>
 
 <template>
-    <div v-if="isTracebackFinished">
-        you are done!
-    </div>
-
+<div>
     <div id="table"></div>
+    <div id="tracebackDone" v-if="isTracebackFinished">
+        You are done!
+    </div>
+</div>
+
 </template>
 
 <style scoped>
