@@ -1,128 +1,62 @@
-<script setup>
-import Highscore from './Highscore.vue';
-import YoursFrame from './YoursFrame.vue';
-import SolutionFrame from './SolutionFrame.vue';
-import UniButton from '../UniButton.vue';
-import RNAStructure from '../RNAStructure.vue';
-
-const props = defineProps({
-    gamestate: Object
-})
-</script>
-
-
-
 <template>
-    <div class="EndScreen">
-        <h2>Your solution matches </h2>
-            <div class="accordance">...%</div> 
-        <h2>with the algorithm.</h2>
-        
+  <div class="game-frame">
+    <div class="game">
+      <RNAStructure
+          :sequence="getSequence"
+          :dotBracket="dotBracketStr"
+          :secondaryStructure="true"
+          class="rna-structure"/>
     </div>
-
-    
-    
-    <div class="frames">
-        <div>
-            <div class="frame">
-                <RNAStructure 
-                    :sequence="gamestate.usedSequence" 
-                    :dotBracket="gamestate.userAnswer.join('')" 
-                    :secondaryStructure="true"
-                    class="rna-structure" 
-                />
-            </div>
-        <h2>Your solution</h2>
-        </div>
-        
-        
-        
-        <div>
-            <div class="frame">
-                <RNAStructure 
-                    :sequence="gamestate.usedSequence" 
-                    :dotBracket="gamestate.correctAnswer.join('')" 
-                    :secondaryStructure="true"
-                    class="rna-structure" 
-                />
-            </div>
-        <h2>Nussinov Algorithm</h2>
-        </div>
-        
-        
-    
-    </div>
-    
-    <Highscore />
-
-    <div class="AbButton">
-        <UniButton :primary-color="'red'" :filled="true" :text="'Retry?'" class="general-buttons" v-on:click="$emit('stateChange', false)"/>
-    </div>
-    
+  </div>
 </template>
 
+<script setup>
+import RNAStructure from '../RNAStructure.vue';
+import {meaningfulSeq} from '../../../../common/RNA_Generator';
+import {calculate_nussinov} from '../../../../common/nussinov';
 
-
+let getSequence = meaningfulSeq(10);
+let dotBracket = ('.'.repeat(getSequence.length)).split('');
+let dotBracketStr = ('.'.repeat(getSequence.length));
+console.log(getSequence)
+console.log(dotBracketStr)
+</script>
 
 <style scoped>
-
-.EndScreen{
-    
-    text-align: center;
-    width: auto;
-    justify-content: space-between;
-}
-
-.accordance{
-    color: var(--uni-color-gold);
-    font-size: 2.5em;
-}
-.rna-structure {
-    display: flex;
-    max-width: 100%;
-    min-width: 30%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-}
-.general-buttons {
-        height: 40px;
-        width: 140px;
-        margin-bottom: 20px;
+    .game-frame {
+      height: 70vh;
+      width: 100%;
+      padding: 0 1em 0 1em;
+      border-style: solid;
+      border-color: var(--uni-color-gold);
+      border-width: 3px;
+      border-radius: 10px;
+      background-color: var(--secondary-color);
+      position: relative;
     }
-
-.AbButton{
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.frames{
-    display: flex;
-    justify-content: center;
-}
-
-h2{
-    display: flex;
-    justify-content: center;
-    
-    
-}
-.frame{
-    width: 600px;
-    height: 550px;
-    margin-right: 10px;
-    border-style: solid;
-    border-color: var(--uni-color-gold);
-    border-width: 3px;
-    border-radius: 10px;
-    background-color: #f3f3f3;
-}   
-p{
-    font-weight: 800;
-    font-size: 14pt;
-}
-    
+    .game {
+      height: 100%;
+      width: 100%;
+    }
+    .help {
+      height: 20px;
+      position: absolute;
+      top:0;
+      right:0;
+      cursor: pointer;
+    }
+    .help > img {
+      height: 100%;
+      object-fit: contain;
+    }
+    .rna-structure {
+      display: flex;
+      max-width: 100%;
+      min-width: 30%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+    }
 </style>
 
 
