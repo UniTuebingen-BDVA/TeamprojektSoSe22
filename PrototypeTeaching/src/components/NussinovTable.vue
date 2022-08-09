@@ -89,7 +89,7 @@ function dotBracket(crtNode:PathNode, crtString:string){
         return crtString;
     }
 
-function addBasePair(str:string, pos:pos){
+function addBasePair(str:string, pos:pos):string{
     if (pos.x > pos.y){
         str = setCharAt(str, pos.y - 1, ')');
         str = setCharAt(str, pos.x - 1, '(');
@@ -101,8 +101,16 @@ function addBasePair(str:string, pos:pos){
     }
 }
 
-function setCharAt(str:string, pos:number, char:string){
+function setCharAt(str:string, pos:number, char:string):string{
     return (str.substring(0, pos) + char + str.substring(pos+1));
+}
+
+function fillTable(nMatrix, tbody, seq:string){
+    for (let i = 0; i < seq.length; i++){
+        for (let j = 0; j < seq.length; j++){
+            tbody.rows[i+1].cells[j+1].innerText = nMatrix[i][j];
+        }
+    }
 }
 
 // initial value: crtNode = HeadNode
@@ -138,6 +146,10 @@ onMounted(() => {
 
     // when multiple options are available: use array of PathNodes instead
     let headNode = new PathNode(table!.rows[1].cells[table!.rows.length-1]);
+
+    // FOR TESTING PURPOSES
+    fillTable(nussinovMatrix, table, probs.sequence);
+    isFilled = true;
 
 
     table!.addEventListener("click", function (event) {
