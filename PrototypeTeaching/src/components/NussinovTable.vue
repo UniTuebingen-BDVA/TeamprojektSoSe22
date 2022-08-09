@@ -49,15 +49,14 @@ class PathNode{
         if (crtNode.cell === prevNode.cell){
             if (crtNode.left === undefined){
                 crtNode.left = this;
-                return true;
             } else if (crtNode.right === undefined){
                 crtNode.right = this;
-                return true;
             }
         } else {
             if (crtNode.left != undefined){
                 this.addNode(crtNode.left, prevNode);
-            } else if (crtNode.right != undefined){
+            } 
+            if (crtNode.right != undefined){
                 this.addNode(crtNode.right, prevNode);
             }
             return false;
@@ -65,6 +64,23 @@ class PathNode{
     }
 }
 
+// alternative solution with worse efficiency, and harder to understand
+// initial crtNode should be HeadNode
+// edits a high-scope variable, that should be set to true before invoking the function
+
+// additional possible check: use score similar to single-solution
+function isDone(crtNode:PathNode|undefined){
+    if (crtNode != undefined){
+        console.log(crtNode);
+        if (crtNode.left === undefined && crtNode.right === undefined && crtNode.pos.x != crtNode.pos.y){
+            console.log(crtNode);
+            //tailEndsCorrect = false;
+        } else {
+            isDone(crtNode.left);
+            isDone(crtNode.right);
+        }
+    }
+}
 // initial values should be: crtNode = headNode, crtString = .....
 function dotBracket(crtNode:PathNode, crtString:string){
         if (crtNode.left !== undefined){
@@ -112,26 +128,6 @@ function fillTable(nMatrix, tbody, seq:string){
             tbody.rows[i+1].cells[j+1].innerText = nMatrix[i][j];
         }
     }
-}
-
-// initial value: crtNode = HeadNode
-function isDone(crtNode:PathNode){
-    if (crtNode.left !== undefined){
-        return isDone(crtNode.left);
-    } else if (crtNode.pos.x !== crtNode.pos.y){
-        console.log(crtNode);
-        return false;
-    }
-
-    if (crtNode.right !== undefined){
-        return isDone(crtNode.right);
-    } else if (crtNode.pos.x !== crtNode.pos.y){
-        console.log(crtNode);
-        return false;
-    }
-
-    console.log(crtNode);
-    return true;
 }
 
 onMounted(() => {
@@ -212,7 +208,7 @@ onMounted(() => {
                         //isTracebackFinished.value = isDone(headNode);
                         console.log(isTracebackFinished.value);
                         if (isTracebackFinished.value){
-                            console.log(headNode);
+                            console.log(dotBracket_str);
                             dotBracket_str = dotBracket(headNode, dotBracket_str);
                             console.log(dotBracket_str);
                         }
