@@ -12,8 +12,6 @@
 
 <script setup>
 import { ref } from "vue";
-import GameStart from "./GameStart.vue";
-import GameFrame from "./GameFrame.vue";
 import ActiveGame from "./ActiveGame.vue";
 import EndScreen from "./EndScreen.vue";
 
