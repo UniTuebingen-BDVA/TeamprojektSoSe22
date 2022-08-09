@@ -1,11 +1,11 @@
 <template>
   <div class="game-page">
-    <ActiveGame v-if="!gameend" @stateChange="endGame" />
+    <ActiveGame v-if="!gameEnd" @stateChange="endGame" />
     <EndScreen
-      v-if="gameend"
+      v-if="gameEnd"
       @stateChange="restartGame"
-      :key="gamestate"
-      :gamestate="gamestate"
+      :key="gameState"
+      :gamestate="gameState"
     />
   </div>
 </template>
@@ -15,20 +15,20 @@ import { ref } from "vue";
 import ActiveGame from "./ActiveGame.vue";
 import EndScreen from "./EndScreen.vue";
 
-const gameend = ref(false);
-let gamestate = {
+const gameEnd = ref(false);
+let gameState = {
   userAnswer: [],
   correctAnswer: [],
   usedSequence: String,
 };
 
 const endGame = (state) => {
-  gameend.value = true;
-  gamestate.userAnswer = state.userAnswer;
-  gamestate.correctAnswer = state.correctAnswer;
-  gamestate.usedSequence = state.usedSequence;
+  gameEnd.value = true;
+  gameState.userAnswer = state.userAnswer;
+  gameState.correctAnswer = state.correctAnswer;
+  gameState.usedSequence = state.usedSequence;
 };
-const restartGame = () => (gameend.value = false);
+const restartGame = () => (gameEnd.value = false);
 </script>
 
 <style scoped>
