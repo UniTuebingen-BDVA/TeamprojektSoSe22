@@ -18,9 +18,7 @@ let isTracebackFinished = ref(false);
 
 // ISSUES:
 // may move to different file to improve clarity
-// bifurcation sometimes causes issues with isDone()
-//  in particular, accepts when left branch accepts, and right branch rejects
-// bifurcation always causes issues with dotBracket()
+// edit file accordingly if single-/multi-solution is used
 
 class pos{
     x:number;
@@ -143,7 +141,7 @@ onMounted(() => {
     let table = document.querySelector("#table")!.querySelector("tbody");
 
     // when multiple options are available: use array of PathNodes instead
-    let headNode = new PathNode(table!.rows[1].cells[table!.rows.length-1]);
+    // let headNode = new PathNode(table!.rows[1].cells[table!.rows.length-1]);
 
     // FOR TESTING PURPOSES
     fillTable(nussinovMatrix, table, probs.sequence);
@@ -161,7 +159,7 @@ onMounted(() => {
 
             // traceback stage 
             else {
-                headNode.value = nussinov.max_score;
+                //headNode.value = nussinov.max_score;
                 if (first_cell == "") {
 
                     first_cell = event.target;
@@ -190,28 +188,25 @@ onMounted(() => {
                         let crtNode = new PathNode(event.target!);
                         let prevNode = new PathNode(first_cell!);
 
-                        crtNode.addNode(headNode, prevNode);
-                        //console.log(headNode);
+                        //crtNode.addNode(headNode, prevNode);
                         console.log("CrtNode: " + crtNode.pos.x + ", " + crtNode.pos.y);
                         console.log("PrevNode: " + prevNode.pos.x + ", " + prevNode.pos.y);
                         if ((crtNode.pos.x == prevNode.pos.x + 1) && (crtNode.pos.y == prevNode.pos.y - 1)){
                             console.log("Pairing detected.");
                             dotBracket_str = addBasePair(dotBracket_str, prevNode.pos);
-                            ++pairCounter;
+                            pairCounter++;
                         }
                         console.log(pairCounter);
                         if (pairCounter == maxScore){
                             isTracebackFinished.value = true;
-                        } else {
-                            isTracebackFinished.value = false;
                         }
-                        //isTracebackFinished.value = isDone(headNode);
-                        console.log(isTracebackFinished.value);
-                        if (isTracebackFinished.value){
-                            console.log(dotBracket_str);
-                            dotBracket_str = dotBracket(headNode, dotBracket_str);
-                            console.log(dotBracket_str);
-                        }
+                        // isTracebackFinished.value = isDone(headNode);
+                        // console.log(isTracebackFinished.value);
+                        // if (isTracebackFinished.value){
+                        //     console.log(dotBracket_str);
+                        //     dotBracket_str = dotBracket(headNode, dotBracket_str);
+                        //     console.log(dotBracket_str);
+                        // }
                     }
                     first_cell = "";
                 }
