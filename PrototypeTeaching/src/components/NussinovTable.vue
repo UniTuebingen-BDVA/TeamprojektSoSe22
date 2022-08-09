@@ -200,6 +200,7 @@ onMounted(() => {
                         console.log("PrevNode: " + prevNode.pos.x + ", " + prevNode.pos.y);
                         if ((crtNode.pos.x == prevNode.pos.x + 1) && (crtNode.pos.y == prevNode.pos.y - 1)){
                             console.log("Pairing detected.");
+                            dotBracket_str = addBasePair(dotBracket_str, prevNode.pos);
                             ++pairCounter;
                         }
                         console.log(pairCounter);
