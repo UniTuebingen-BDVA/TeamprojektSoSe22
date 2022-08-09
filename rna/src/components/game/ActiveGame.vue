@@ -1,14 +1,14 @@
 <template>
   <div>
     <GameStart @gamestart="changeDifficulty" />
-    <GameFrame @gamestate="updateGamestate" :key="gameDifficulty" />
+    <GameFrame @gamestate="updateGameState" :key="gameDifficulty" />
     <div class="turn-in">
       <UniButton
         :primary-color="'red'"
         :filled="true"
         :text="'Submit'"
         class="turn-in-btn"
-        v-on:click="$emit('stateChange', gamestate)"
+        v-on:click="$emit('stateChange', gameState)"
       />
     </div>
   </div>
@@ -20,7 +20,7 @@ import GameStart from "./GameStart.vue";
 import GameFrame from "./GameFrame.vue";
 import UniButton from "../UniButton.vue";
 
-const gamestate = {
+const gameState = {
   correctAnswer: [],
   userAnswer: [],
   usedSequence: String,
@@ -29,7 +29,7 @@ const gamestate = {
 let gameDifficulty = ref(0);
 
 const emit = defineEmits({
-  gamestate: Object,
+  gameState: Object,
   stateChange: Object,
   gameDifficulty: Number,
 });
@@ -38,10 +38,10 @@ function changeDifficulty(x) {
   gameDifficulty.value = x;
 }
 
-function updateGamestate(updates) {
-  gamestate.userAnswer = updates.userAnswer;
-  gamestate.correctAnswer = updates.correctAnswer;
-  gamestate.usedSequence = updates.usedSequence;
+function updateGameState(updates) {
+  gameState.userAnswer = updates.userAnswer;
+  gameState.correctAnswer = updates.correctAnswer;
+  gameState.usedSequence = updates.usedSequence;
 }
 </script>
 
