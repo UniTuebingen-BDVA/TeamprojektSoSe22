@@ -12,6 +12,7 @@ const probs = defineProps({
     }
 });
 
+let pairCounter = 0;
 let isFilled = false;
 let isTracebackFinished = ref(false); 
 
@@ -137,6 +138,7 @@ onMounted(() => {
 
     create_table(probs.sequence);
     let nussinov = calculate_nussinov(probs.sequence);
+    let maxScore = nussinov.max_score;
     let nussinovMatrix = nussinov.matrix;
     let nussinovBacktrace = nussinov.backtrace;
     let first_cell:string|EventTarget|null = "";
@@ -193,8 +195,20 @@ onMounted(() => {
                         let prevNode = new PathNode(first_cell!);
 
                         crtNode.addNode(headNode, prevNode);
-                        console.log(headNode);
-                        isTracebackFinished.value = isDone(headNode);
+                        //console.log(headNode);
+                        console.log("CrtNode: " + crtNode.pos.x + ", " + crtNode.pos.y);
+                        console.log("PrevNode: " + prevNode.pos.x + ", " + prevNode.pos.y);
+                        if ((crtNode.pos.x == prevNode.pos.x + 1) && (crtNode.pos.y == prevNode.pos.y - 1)){
+                            console.log("Pairing detected.");
+                            ++pairCounter;
+                        }
+                        console.log(pairCounter);
+                        if (pairCounter == maxScore){
+                            isTracebackFinished.value = true;
+                        } else {
+                            isTracebackFinished.value = false;
+                        }
+                        //isTracebackFinished.value = isDone(headNode);
                         console.log(isTracebackFinished.value);
                         if (isTracebackFinished.value){
                             console.log(headNode);
