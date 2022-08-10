@@ -313,7 +313,6 @@ window.addEventListener("load", function (event) {
     });
     console.log(links);
     if (links.length > 0) {
-      console.log(links[0].source);
       //Check if link is exact, then it needs to be true, so it can be removed
       if (ids.includes(links[0].source.id) && ids.includes(links[0].target.id)) {
         return true;
