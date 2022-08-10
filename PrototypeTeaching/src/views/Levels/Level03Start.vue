@@ -34,11 +34,21 @@
           :link="'../../pages/Levels/Level01FirstStep.html'"
         />
       </div>-->
+    <UniButtonLink
+      class="teachingButton leftButton"
+      :filled="false"
+      :primary-color="'red'"
+      :text="'Return to Level Selector'"
+      :link="'../../pages/Levels/LevelStart.html'"
+    />
   </div>
 </template>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+  .leftButton{
+    float:left !important;
+  }
   .structure{
     display: flex;
     align-items: center;
