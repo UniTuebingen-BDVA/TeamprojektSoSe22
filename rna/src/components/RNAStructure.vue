@@ -176,6 +176,10 @@ window.addEventListener("load", function (event) {
   }
 
   let clickedNodes = [];
+  let heightmap = [];
+  for (let i = 0; i < sequence.length; i++){
+    heightmap.push(0);
+  }
 
   function togglenode(event, d) {
     if (!clickedNodes.includes(d)) {
@@ -198,6 +202,7 @@ window.addEventListener("load", function (event) {
             console.log("remove link");
             emit("combine", clickedNodes);
             removeLink(datalinks[obj].index);
+            decreaseHeightmap(clickedNodes);
           }
           clickedNodes = [];
           return;
@@ -205,10 +210,10 @@ window.addEventListener("load", function (event) {
       }
       emit("combine", clickedNodes);
       update();
+      increaseHeightmap(clickedNodes);
       clickedNodes = [];
       return;
-    }
-    if (!checkLinks(clickedNodes)){
+    } else if (clickedNodes.length === 2 && !checkLinks(clickedNodes)) {
       console.log("[DEBUG] Connection failed, one links already exists");
       clickedNodes = [];
     }
@@ -266,6 +271,32 @@ window.addEventListener("load", function (event) {
     simulateLinks();
   }
 
+  function decreaseHeightmap(links) {
+    const ids = [];
+    for (const elem in links) {
+      ids.push(links[elem].id);
+      ids.sort();
+    }
+    console.log(ids);
+    for (let i = ids[0] + 1; i < ids[1]; i++) {
+      heightmap[i] -= 1;
+    }
+    console.log(heightmap);
+  }
+
+  function increaseHeightmap(links) {
+    const ids = [];
+    for (const elem in links) {
+      ids.push(links[elem].id);
+      ids.sort();
+    }
+
+    for (let i = ids[0] + 1; i < ids[1]; i++) {
+      heightmap[i] += 1;
+    }
+    console.log(heightmap);
+  }
+
   function checkLinks(links) {
     //get all links
     const ids = [];
@@ -280,7 +311,16 @@ window.addEventListener("load", function (event) {
         (ids.includes(el.source.id) || ids.includes(el.target.id))
       );
     });
-    return links.length > 0 ? false : true;
+    console.log(links);
+    if (links.length > 0) {
+      console.log(links[0].source);
+      //Check if link is exact, then it needs to be true, so it can be removed
+      if (ids.includes(links[0].source.id) && ids.includes(links[0].target.id)) {
+        return true;
+      }
+      return false;
+    }
+    return true;
   }
 });
 </script>
