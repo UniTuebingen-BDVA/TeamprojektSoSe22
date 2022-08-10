@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { create_table } from "../scripts/table";
 import { onMounted, ref } from "vue";
-import { calculate_nussinov } from "../../../common/nussinov"
+import { calculate_nussinov } from '../../../common/nussinov';
 import { is_entire_table_filled, validate_fill, get_current_index } from "../scripts/validate_fill";
 import { validate_traceback} from "../scripts/validate_traceback";
 import RNAStructure from "./RNAStructure.vue";
@@ -235,32 +235,44 @@ onMounted(() => {
 </script>
 
 <template>
-<div>
-    <div id="table"></div>
-    <div id="tracebackDone" v-if="isTracebackFinished">
-        You are done!        
+<div class="flex-container">
+    <div class="tableScreen">
+        <p id="tracebackDone" v-if="isTracebackFinished">You are done!</p>
+        <div id="table"></div>
     </div>
+
     <div class="finishScreen">
         <p v-if="isTracebackFinished">The secondary-structure of this sequence is: </p>
         <RNAStructure :key="res.finishScreen" :sequence="probs.sequence" :secondary-structure="true" :dotBracket=res.dotBracket></RNAStructure>
     </div>
-    
-    
 </div>
 
 </template>
 
 <style scoped>
+.flex-container {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: center;
+}
+.tableScreen{
+    flex: 0 1 50%;
+}
+.finishScreen{
+    flex: 0.5 1 50%;
+}
+.flex-container > div {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+}
+
 #tracebackDone {
     margin-top: 2em;
     color: black;
     position: relative;
     text-align: center;
     
-}
-.finishScreen {
-    width: 22em;
-    height: 20em;
-    margin: 5em;
 }
 </style>
