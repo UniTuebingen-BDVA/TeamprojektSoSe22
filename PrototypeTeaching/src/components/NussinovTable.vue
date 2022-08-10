@@ -4,6 +4,12 @@ import { onMounted, ref } from "vue";
 import { calculate_nussinov } from "../../../common/nussinov"
 import { is_entire_table_filled, validate_fill, get_current_index } from "../scripts/validate_fill";
 import { validate_traceback} from "../scripts/validate_traceback";
+import RNAStructure from "./RNAStructure.vue";
+
+let pairCounter = 0;
+let isFilled = false;
+let isTracebackFinished = ref(false);
+
 
 const probs = defineProps({
     sequence: {
@@ -12,9 +18,18 @@ const probs = defineProps({
     }
 });
 
-let pairCounter = 0;
-let isFilled = false;
-let isTracebackFinished = ref(false); 
+let res = {
+    finishScreen: false.toString(),
+    sequence: probs.sequence,
+    dotBracket: ".".repeat(probs.sequence.length)
+};
+
+function updateResult(seq, dotBracket, finishScreen){
+    console.log("Result has been updated, new dotBracket is:" + dotBracket);
+    res.sequence = seq;
+    res.dotBracket = dotBracket;
+    res.finishScreen = finishScreen;
+};
 
 // ISSUES:
 // may move to different file to improve clarity
@@ -199,6 +214,8 @@ onMounted(() => {
                         console.log(pairCounter);
                         if (pairCounter == maxScore){
                             isTracebackFinished.value = true;
+                            res.dotBracket = dotBracket_str;
+                            updateResult(probs.sequence, dotBracket_str, true.toString());
                         }
                         // isTracebackFinished.value = isDone(headNode);
                         // console.log(isTracebackFinished.value);
@@ -220,6 +237,7 @@ onMounted(() => {
 <template>
 <div>
     <div id="table"></div>
+    <RNAStructure :key="res.finishScreen" :sequence="probs.sequence" :secondary-structure="true" :dotBracket=res.dotBracket></RNAStructure>
     <div id="tracebackDone" v-if="isTracebackFinished">
         You are done!
     </div>
