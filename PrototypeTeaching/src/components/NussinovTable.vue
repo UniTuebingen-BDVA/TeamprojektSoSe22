@@ -237,13 +237,30 @@ onMounted(() => {
 <template>
 <div>
     <div id="table"></div>
-    <RNAStructure :key="res.finishScreen" :sequence="probs.sequence" :secondary-structure="true" :dotBracket=res.dotBracket></RNAStructure>
     <div id="tracebackDone" v-if="isTracebackFinished">
-        You are done!
+        You are done!        
     </div>
+    <div class="finishScreen">
+        <p v-if="isTracebackFinished">The secondary-structure of this sequence is: </p>
+        <RNAStructure :key="res.finishScreen" :sequence="probs.sequence" :secondary-structure="true" :dotBracket=res.dotBracket></RNAStructure>
+    </div>
+    
+    
 </div>
 
 </template>
 
 <style scoped>
+#tracebackDone {
+    margin-top: 2em;
+    color: black;
+    position: relative;
+    text-align: center;
+    
+}
+.finishScreen {
+    width: 22em;
+    height: 20em;
+    margin: 5em;
+}
 </style>
