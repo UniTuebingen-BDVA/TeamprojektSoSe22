@@ -16,7 +16,6 @@ import Tutorial_BB_1 from './PrototypeTeaching/src/views/Tutorial/BioBackgroundR
 import Tutorial_BB_2 from './PrototypeTeaching/src/views/Tutorial/BioBackgroundRNA3.vue';
 import Tutorial_BB_3 from './PrototypeTeaching/src/views/Tutorial/BioBackgroundRNA2.vue';
 import Tutorial_3 from './PrototypeTeaching/src/views/Tutorial/NussinovStepperFirst.vue';
-import Tutorial_4 from './PrototypeTeaching/src/views/Tutorial/NussinovStepperEnd.vue';
 import Tutorial_Introduction from './PrototypeTeaching/src/views/Tutorial/NussinovIntroduction.vue';
 import Tutorial_Initialization from './PrototypeTeaching/src/views/Tutorial/NussinovInitialization.vue';
 import Tutorial_Recursion from './PrototypeTeaching/src/views/Tutorial/NussinovRecursion.vue';
@@ -42,7 +41,6 @@ createApp(Tutorial_BB_1).mount('#tutorial_BB_1');
 createApp(Tutorial_BB_2).mount('#tutorial_BB_2');
 createApp(Tutorial_BB_3).mount('#tutorial_BB_3');
 createApp(Tutorial_3).mount('#tutorial_3');
-createApp(Tutorial_4).mount('#tutorial_4');
 
 createApp(Tutorial_Introduction).mount('#tutorial_introduction');
 createApp(Tutorial_Initialization).mount('#tutorial_initialization');
