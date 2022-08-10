@@ -203,6 +203,13 @@ window.addEventListener("load", function (event) {
     else if (base1 + base2 === "UA"){
       return true
     }
+    else if (base1 + base2 === "UG"){
+      return true
+    }
+    else if (base1 + base2 === "GU"){
+      return true
+    }
+
 
     return false
   }
@@ -238,11 +245,11 @@ window.addEventListener("load", function (event) {
       if (rightbasepair(clickedNodes)){ //canonoical basepair?
         emit("combine", clickedNodes);
         update();
+        increaseHeightmap(clickedNodes);
       }
       else {
         console.log("no canonical basepair")
       }
-      increaseHeightmap(clickedNodes);
       clickedNodes = [];
       return;
     } else if (clickedNodes.length === 2 && !checkLinks(clickedNodes)) {
