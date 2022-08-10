@@ -253,16 +253,17 @@ onMounted(() => {
 .flex-container {
     display: flex;
     flex-wrap: nowrap;
-    align-items: flex-start;
-    justify-content: center;
+    align-items: baseline;
+    justify-content: space-evenly;
 }
 .tableScreen{
-    flex: 0 1 50%;
+    flex: 0 1 30%;
 }
 .finishScreen{
     flex: 0.5 1 50%;
 }
 .flex-container > div {
+    margin: 0% 2.5%;
     display: flex;
     flex-direction: column;
     align-self: flex-start;
