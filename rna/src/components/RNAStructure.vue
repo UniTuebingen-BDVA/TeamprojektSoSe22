@@ -311,7 +311,10 @@ window.addEventListener("load", function (event) {
         (ids.includes(el.source.id) || ids.includes(el.target.id))
       );
     });
-    console.log(links);
+    //Check if Nodes are on same level to check for crossing overs
+    if (heightmap[ids[0]] !== heightmap[ids[1]]) {
+      return false;
+    }
     if (links.length > 0) {
       //Check if link is exact, then it needs to be true, so it can be removed
       if (ids.includes(links[0].source.id) && ids.includes(links[0].target.id)) {
