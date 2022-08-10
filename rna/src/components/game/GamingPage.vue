@@ -13,7 +13,7 @@
 <script setup>
 import { ref } from "vue";
 import ActiveGame from "./ActiveGame.vue";
-import EndScreen from "./EndScreen-old.vue";
+import EndScreen from "./EndScreen.vue";
 
 const gameEnd = ref(false);
 let gameState = {
