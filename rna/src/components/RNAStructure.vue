@@ -20,6 +20,7 @@ const probs = defineProps({
 
 const emit = defineEmits({
   combine: Array,
+  privateError: String,
 });
 
 window.addEventListener("load", function (event) {
@@ -313,6 +314,7 @@ window.addEventListener("load", function (event) {
     });
     //Check if Nodes are on same level to check for crossing overs
     if (heightmap[ids[0]] !== heightmap[ids[1]]) {
+      emit("privateError", "wrong Input");
       return false;
     }
     if (links.length > 0) {
