@@ -159,8 +159,8 @@ onMounted(() => {
     // let headNode = new PathNode(table!.rows[1].cells[table!.rows.length-1]);
 
     // FOR TESTING PURPOSES
-    fillTable(nussinovMatrix, table, probs.sequence);
-    isFilled = true;
+    //fillTable(nussinovMatrix, table, probs.sequence);
+    isFilled = false;
 
 
     table!.addEventListener("click", function (event) {
