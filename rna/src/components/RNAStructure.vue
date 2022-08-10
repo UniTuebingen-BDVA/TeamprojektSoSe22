@@ -182,6 +182,32 @@ window.addEventListener("load", function (event) {
     heightmap.push(0);
   }
 
+  // checks if two clicked nodes are a canonical basepair
+  function rightbasepair(links) {
+    let base1 = links[0]["name"];
+    let base2 = links[1]["name"];
+
+    base1 = base1.substring(0, base1.length-1);
+    base2 = base2.substring(0, base2.length-1);
+    console.log(base1 + base2)
+
+    if (base1 + base2 === "CG"){
+      return true
+    }
+    else if (base1 + base2 === "GC"){
+      return true
+    }
+    else if (base1 + base2 === "AU"){
+      return true
+    }
+    else if (base1 + base2 === "UA"){
+      return true
+    }
+
+    return false
+  }
+
+
   function togglenode(event, d) {
     if (!clickedNodes.includes(d)) {
       clickedNodes.push(d);
@@ -209,8 +235,13 @@ window.addEventListener("load", function (event) {
           return;
         }
       }
-      emit("combine", clickedNodes);
-      update();
+      if (rightbasepair(clickedNodes)){ //canonoical basepair?
+        emit("combine", clickedNodes);
+        update();
+      }
+      else {
+        console.log("no canonical basepair")
+      }
       increaseHeightmap(clickedNodes);
       clickedNodes = [];
       return;
