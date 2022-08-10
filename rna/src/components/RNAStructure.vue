@@ -182,7 +182,7 @@ window.addEventListener("load", function (event) {
       clickedNodes.push(d);
       clickedNodes = clickedNodes.sort();
     }
-    if (clickedNodes.length === 2) {
+    if (clickedNodes.length === 2 && checkLinks(clickedNodes)) {
       let datalinks = data.links;
       clickedNodes = clickedNodes.sort();
       for (const obj in datalinks) {
@@ -207,6 +207,10 @@ window.addEventListener("load", function (event) {
       update();
       clickedNodes = [];
       return;
+    }
+    if (!checkLinks(clickedNodes)){
+      console.log("[DEBUG] Connection failed, one links already exists");
+      clickedNodes = [];
     }
 
     /*     console.log("DEBUG: " + clickedNodes); */
@@ -260,6 +264,23 @@ window.addEventListener("load", function (event) {
     /* console.log(data.links) */
 
     simulateLinks();
+  }
+
+  function checkLinks(links) {
+    //get all links
+    const ids = [];
+    for (const elem in links) {
+      ids.push(links[elem].id);
+    }
+
+    // Check if Node has already a link
+    links = data.links.filter((el) => {
+      return (
+        el.color === "red" &&
+        (ids.includes(el.source.id) || ids.includes(el.target.id))
+      );
+    });
+    return links.length > 0 ? false : true;
   }
 });
 </script>
