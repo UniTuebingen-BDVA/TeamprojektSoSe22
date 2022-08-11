@@ -26,7 +26,6 @@ let res = {
 };
 
 function updateResult(seq, dotBracket, finishScreen){
-    console.log("Result has been updated, new dotBracket is:" + dotBracket);
     res.sequence = seq;
     res.dotBracket = dotBracket;
     res.finishScreen = finishScreen;
@@ -94,14 +93,10 @@ onMounted(() => {
                         let prevNode = new PathNode(first_cell!);
 
                         //crtNode.addNode(headNode, prevNode);
-                        console.log("CrtNode: " + crtNode.pos.x + ", " + crtNode.pos.y);
-                        console.log("PrevNode: " + prevNode.pos.x + ", " + prevNode.pos.y);
                         if ((crtNode.pos.x == prevNode.pos.x + 1) && (crtNode.pos.y == prevNode.pos.y - 1)){
-                            console.log("Pairing detected.");
                             dotBracket_str = addBasePair(dotBracket_str, prevNode.pos);
                             pairCounter++;
                         }
-                        console.log(pairCounter);
                         if (pairCounter == maxScore){
                             isTracebackFinished.value = true;
                             res.dotBracket = dotBracket_str;
