@@ -9,14 +9,23 @@
             <a href="/TeamprojektSoSe22/index.html">Teaching Nussinov</a>
         </div>
         <div class="nPages">
-            <a href="/TeamprojektSoSe22/PrototypeTeaching/src/pages/Tutorial/BioBackgroundRNA1.html">Teaching</a> <!-- Add Link here-->
-            <a href="/TeamprojektSoSe22/rna/game.html">Gaming</a> <!-- Add Link here -->
+            <a href="/TeamprojektSoSe22/PrototypeTeaching/src/pages/Tutorial/BioBackgroundRNA1.html">Teaching</a>
+            <a href="/TeamprojektSoSe22/rna/game.html">Gaming</a>
         </div>
     </div>
+
+    <a class="git-icon" href="https://github.com/UniTuebingen-BDVA/TeamprojektSoSe22/">
+        <img src="../common/GitHub-Mark-64px.png">
+    </a>
 </template>
 
 <style scoped>
     @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap');
+    .git-icon{
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+    }
     .nHeader{
         position: fixed;
         z-index: 1000;
