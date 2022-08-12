@@ -1,6 +1,7 @@
 <script setup lang="ts">
   import UniButtonLink from '../../components/UniButtonLink.vue';
   import NussinovHeader from '../../../../common/NussinovHeader.vue';
+  import RNAStructure from '../../components/RNAStructure.vue';
 </script>
 
 <template>
@@ -14,7 +15,7 @@
                 <p id="border1"></p>
             </div> 
         </div>
-    <img class="nImage" src="../../assets/tutorial-sequence.png">
+    <RNAStructure class="rnaBox" :secondary-structure="true" :sequence="'GCAGUG'" :dot-bracket="'.((.))'"></RNAStructure>
     <div class="nButton">
        <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Retry?'" :link="'../../pages/Levels/LevelStart.html'"/>
     </div>
@@ -24,6 +25,9 @@
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+.rnaBox{
+    width: 30%;
+}
 
 .nBody{
     display: flex;
