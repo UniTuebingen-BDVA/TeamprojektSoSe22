@@ -17,6 +17,11 @@ const probs = defineProps({
     sequence: {
         type: String,
         required: true
+    },
+    helper: {
+        type: Boolean,
+        required: false,
+        default: true
     }
 });
 
@@ -63,8 +68,9 @@ onMounted(() => {
                 if (first_cell == "") {
 
                     first_cell = event.target;
-                    helper_active(first_cell);
-
+                    if (probs.helper){
+                        helper_active(first_cell);
+                    }
                     // if the cell was already correct, it's marked with a different color
                     if (first_cell!.style.backgroundColor == "red") {
                         first_cell!.style.backgroundColor = "blue";
@@ -72,9 +78,6 @@ onMounted(() => {
                     }
 
                     first_cell!.style.backgroundColor = "lightblue";
-
-                    
-
                 }
                 else {
                     if (first_cell!.style.backgroundColor == "lightblue") {
@@ -87,7 +90,10 @@ onMounted(() => {
                         first_cell!.style.backgroundColor = "red";
                     }
 
-                    helper_inactive(table);
+                    if (probs.helper){
+                        helper_inactive(table);
+                    }
+                    
                     if (validate_traceback(first_cell, event.target, nussinovBacktrace)){
                         let crtNode = new PathNode(event.target!);
                         let prevNode = new PathNode(first_cell!);

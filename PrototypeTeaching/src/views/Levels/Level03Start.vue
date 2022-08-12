@@ -16,7 +16,7 @@
       <p>Remember, you need this </p>
       <img src="../../assets/nussinov-cases.png">
 
-      <StartButton :length=8></StartButton>
+      <StartButton :length=8 :helper="false"></StartButton>
     </div>
     <!--<div class="flex">
         <UniButtonLink
