@@ -4,7 +4,8 @@ import { onMounted, ref } from "vue";
 import { calculate_nussinov } from '../../../common/nussinov';
 import { is_entire_table_filled, validate_fill } from "../scripts/validate_fill";
 import { validate_traceback} from "../scripts/validate_traceback";
-import { PathNode, addBasePair } from "../scripts/traceback_binary_tree";
+import { PathNode, addBasePair, fillTable } from "../scripts/traceback_binary_tree";
+import { helper_active, helper_inactive } from "../scripts/helper";
 import RNAStructure from "./RNAStructure.vue";
 
 let pairCounter = 0;
@@ -43,6 +44,11 @@ onMounted(() => {
 
     let table = document.querySelector("#table")!.querySelector("tbody");
 
+    // DEBUG ONLY
+
+    fillTable(nussinovMatrix, table, probs.sequence);
+    isFilled = true;
+
     table!.addEventListener("click", function (event) {
         if (event.target!.className == 'cell' && !isTracebackFinished.value) {
 
@@ -57,6 +63,7 @@ onMounted(() => {
                 if (first_cell == "") {
 
                     first_cell = event.target;
+                    helper_active(first_cell);
 
                     // if the cell was already correct, it's marked with a different color
                     if (first_cell!.style.backgroundColor == "red") {
@@ -66,10 +73,12 @@ onMounted(() => {
 
                     first_cell!.style.backgroundColor = "lightblue";
 
+                    
+
                 }
                 else {
                     if (first_cell!.style.backgroundColor == "lightblue") {
-                        first_cell!.style.backgroundColor = "white";
+                        first_cell!.style.backgroundColor = "transparent";
                     }
 
                     // if the cell already correct, it's marked with the red color
@@ -78,6 +87,7 @@ onMounted(() => {
                         first_cell!.style.backgroundColor = "red";
                     }
 
+                    helper_inactive(table);
                     if (validate_traceback(first_cell, event.target, nussinovBacktrace)){
                         let crtNode = new PathNode(event.target!);
                         let prevNode = new PathNode(first_cell!);
@@ -91,6 +101,7 @@ onMounted(() => {
                             updateResult(probs.sequence, dotBracket_str, true.toString());
                         }
                     }
+                    
                     first_cell = "";
                 }
             };

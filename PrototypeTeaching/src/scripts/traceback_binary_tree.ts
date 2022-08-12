@@ -110,7 +110,7 @@ function setCharAt(str:string, pos:number, char:string):string{
 
 // fills the dp matrix, useful for debugging traceback stage etc.
 // to prevent being stuck in fill phase, set isFilled to true
-function fillTable(nMatrix, tbody, seq:string):void{
+export function fillTable(nMatrix, tbody, seq:string):void{
     for (let i = 0; i < seq.length; i++){
         for (let j = 0; j < seq.length; j++){
             tbody.rows[i+1].cells[j+1].innerText = nMatrix[i][j];
