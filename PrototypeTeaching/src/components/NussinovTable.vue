@@ -25,16 +25,11 @@ let res = {
     dotBracket: ".".repeat(probs.sequence.length)
 };
 
-function updateResult(seq, dotBracket, finishScreen){
+function updateResult(seq:string, dotBracket:string, finishScreen:string){
     res.sequence = seq;
     res.dotBracket = dotBracket;
     res.finishScreen = finishScreen;
 };
-
-// ISSUES:
-// may move to different file to improve clarity
-// edit file accordingly if single-/multi-solution is used
-
 
 onMounted(() => {
 
@@ -48,10 +43,6 @@ onMounted(() => {
 
     let table = document.querySelector("#table")!.querySelector("tbody");
 
-    // when multiple options are available: use array of PathNodes instead
-    // let headNode = new PathNode(table!.rows[1].cells[table!.rows.length-1]);
-
-
     table!.addEventListener("click", function (event) {
         if (event.target!.className == 'cell' && !isTracebackFinished.value) {
 
@@ -63,7 +54,6 @@ onMounted(() => {
 
             // traceback stage 
             else {
-                //headNode.value = nussinov.max_score;
                 if (first_cell == "") {
 
                     first_cell = event.target;
@@ -92,14 +82,12 @@ onMounted(() => {
                         let crtNode = new PathNode(event.target!);
                         let prevNode = new PathNode(first_cell!);
 
-                        //crtNode.addNode(headNode, prevNode);
                         if ((crtNode.pos.x == prevNode.pos.x + 1) && (crtNode.pos.y == prevNode.pos.y - 1)){
                             dotBracket_str = addBasePair(dotBracket_str, prevNode.pos);
                             pairCounter++;
                         }
                         if (pairCounter == maxScore){
                             isTracebackFinished.value = true;
-                            res.dotBracket = dotBracket_str;
                             updateResult(probs.sequence, dotBracket_str, true.toString());
                         }
                     }

@@ -1,5 +1,6 @@
 import { get_current_index } from "../scripts/validate_fill";
 
+// represents the position of a cell within a table, or similar matrix
 class pos{
     x:number;
     y:number;
@@ -9,6 +10,8 @@ class pos{
     }
 }
 
+// represents cell within the table as an element to be used for traceback
+// works as a binary tree
 export class PathNode{
     cell:HTMLTableCellElement;
     left:PathNode|undefined;
@@ -62,6 +65,7 @@ function isDone(crtNode:PathNode|undefined){
 }
 
 // initial values should be: crtNode = headNode, crtString = .....
+// given a head node, returns the corresponding dot bracket notation
 function dotBracket(crtNode:PathNode, crtString:string):string{
         if (crtNode.left !== undefined){
             if (crtNode.value - crtNode.left.value === 1){
@@ -86,6 +90,7 @@ function dotBracket(crtNode:PathNode, crtString:string):string{
         return crtString;
     }
 
+// adds a base pair in given dot bracket structure at given position, returns new dot bracket
 export function addBasePair(str:string, pos:pos):string{
     if (pos.x > pos.y){
         str = setCharAt(str, pos.y - 1, ')');
@@ -98,6 +103,7 @@ export function addBasePair(str:string, pos:pos):string{
     }
 }
 
+// helper function, sets char at certain position in string
 function setCharAt(str:string, pos:number, char:string):string{
     return (str.substring(0, pos) + char + str.substring(pos+1));
 }
