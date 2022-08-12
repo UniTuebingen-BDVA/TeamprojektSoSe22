@@ -34,7 +34,6 @@ export default defineConfig({
         NussinovInitialization: tutorial_path + 'NussinovInitialization.html',
         NussinovIntroduction: tutorial_path + 'NussinovIntroduction.html',
         NussinovRecursion: tutorial_path + 'NussinovRecursion.html',
-        NussinovStepperEnd: tutorial_path + 'NussinovStepperEnd.html',
         NussinovStepperFirst: tutorial_path + 'NussinovStepperFirst.html',
         NussinovTraceback: tutorial_path + 'NussinovTraceback.html'
 
