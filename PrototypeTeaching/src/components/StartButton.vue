@@ -31,7 +31,7 @@
     <button @click="start = !start" v-if="!start" type="button" class="nButton">{{"Start"}}</button>
     <div class="flex-container" v-if="start">
         <div class="table"><NussinovTable :sequence = sequence> </NussinovTable> </div>
-        <div class="structure"><RNAStructure :sequence = sequence :secondary-structure = "false"></RNAStructure></div>
+        <!-- <div class="structure"><RNAStructure :sequence = sequence :secondary-structure = "false"></RNAStructure></div> -->
     </div>
     
 </template>

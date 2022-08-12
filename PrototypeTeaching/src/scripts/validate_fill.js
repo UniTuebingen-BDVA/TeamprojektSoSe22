@@ -14,7 +14,7 @@ function is_cell_valid(cell){
 }
 
 // gets current index of given cell (inside HTML table)
-function get_current_index(cell){
+export function get_current_index(cell){
     let x = cell.closest("tr").rowIndex;
     let y = cell.cellIndex;
     return {x: x, y: y};

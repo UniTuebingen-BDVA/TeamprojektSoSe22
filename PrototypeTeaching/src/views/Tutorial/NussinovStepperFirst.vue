@@ -14,13 +14,14 @@
       <p>Now try it out yourself!</p>
       <StartButton :length = 6></StartButton>
       </div>
-    <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next &#x2192;'" :link="'../../pages/Tutorial/NussinovStepperEnd.html'"/>
+    <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Try it out!'" :link="'../../pages/Levels/LevelStart.html'"/>
   </div>
   
 </template>
 
 <style scoped>
     img {
+        mix-blend-mode: multiply;
         display: block;
         max-width: 65%;
         max-height: 25%;

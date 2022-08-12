@@ -54,15 +54,17 @@
   justify-content: right;
   margin-top: 5%;
 }
+img{
+  mix-blend-mode: multiply;
+}
 .nImage {
   height: 20em;
   width: 25em;
-  align: left;
 }
 .nImage_formula {
   height: 11em;
   width: 40em;
-  align: right;
+  align-items: right;
 }
 .nFormula {
   display: flex;
