@@ -13,6 +13,7 @@ let isTracebackFinished = ref(false);
 let rowCounter = 0;
 let x = -1;
 let y = 0;
+let cell_step_back: any;
 
 
 const probs = defineProps({
@@ -38,6 +39,39 @@ function updateResult(seq:string, dotBracket:string, finishScreen:string){
     res.finishScreen = finishScreen;
 };
 
+function updateCellIndex(oldx:number,oldy:number, seq:string){
+    if (oldy === seq.length-1) {
+        rowCounter++;
+        oldx = -1;
+        oldy = rowCounter;
+    }
+    x = ++oldx;
+    y = ++oldy;
+}
+
+function updateTracebackColor(table, traceback){
+    //Connect arrow
+    if (table!.rows[traceback[0][0][0] + 1].cells[traceback[0][0][1] + 1].style.backgroundColor === "blue" &&
+        table!.rows[traceback[0][1][0] + 1].cells[traceback[0][1][1] + 1].style.backgroundColor === "") {
+        table!.rows[traceback[0][1][0] + 1].cells[traceback[0][1][1] + 1].style.backgroundColor = "red";
+        cell_step_back = traceback.shift()[0];
+        if (traceback.length == 0) {
+            table!.rows[cell_step_back[0] + 1].cells[cell_step_back[1] + 1].style.backgroundColor = "red";
+            isTracebackFinished.value = true;
+        }
+    } else {
+        //Start traceback
+        if (table!.rows[traceback[0][0][0] + 1].cells[traceback[0][0][1] + 1].style.backgroundColor === "") {
+            table!.rows[traceback[0][0][0] + 1].cells[traceback[0][0][1] + 1].style.backgroundColor = "blue";
+        }
+        //Cleanup last arrow
+        else {
+            table!.rows[traceback[0][0][0] + 1].cells[traceback[0][0][1] + 1].style.backgroundColor = "blue";
+            table!.rows[cell_step_back[0] + 1].cells[cell_step_back[1] + 1].style.backgroundColor = "red";
+        }
+    }
+}
+
 onMounted(() => {
 
     create_table(probs.sequence);
@@ -59,8 +93,9 @@ onMounted(() => {
 
                 // fill stage
                 if (!isFilled) {
-                    validate_fill(event.target, nussinovMatrix);
-                    isFilled = is_entire_table_filled(event.target);
+                    validate_fill(event.target, nussinovMatrix).then(function(value) {
+                        isFilled = is_entire_table_filled(event.target);
+                    });
                 }
 
                 // traceback stage 
@@ -111,36 +146,13 @@ onMounted(() => {
         stepper.addEventListener("click", function (event) {
             if(!isTracebackFinished.value) {
                 if (!isFilled){
-                    if (y === probs.sequence.length-1) {
-                        rowCounter++;
-                        x = -1;
-                        y = rowCounter;
-                    }
-                    y++;
-                    x++;
+                    updateCellIndex(x,y,probs.sequence);
                     table!.rows[x+1].cells[y+1].innerText = nussinovMatrix[x][y].toString(); //Update cell x, y
                     if(rowCounter === probs.sequence.length-2) {
                         isFilled = true;
-                        table!.rows[traceback[0][0][0]+1].cells[traceback[0][0][1]+1].style.backgroundColor = "blue";
                     }
                 } else {
-                    if(table!.rows[traceback[0][0][0]+1].cells[traceback[0][0][1]+1].style.backgroundColor == "red"){
-                        table!.rows[traceback[0][0][0]+1].cells[traceback[0][0][1]+1].style.backgroundColor = "blue";
-                    } else {
-                        table!.rows[traceback[0][0][0]+1].cells[traceback[0][0][1]+1].style.backgroundColor = "red";
-                    }
-
-                    if(traceback.length == 1) {
-                        isTracebackFinished.value = true;
-                    }
-                        
-                    if(traceback[0].length !== 1) {
-                        traceback[0].shift();
-                        table!.rows[traceback[0][0][0]+1].cells[traceback[0][0][1]+1].style.backgroundColor = "red";
-                    } else {
-                        traceback.shift();
-                    }
-                    
+                    updateTracebackColor(table,traceback);
                 }
             }
 
@@ -162,7 +174,7 @@ onMounted(() => {
         <RNAStructure :key="res.finishScreen" :sequence="probs.sequence" :secondary-structure="true" :dotBracket=res.dotBracket></RNAStructure>
     </div>
     <div id="stepper">
-        <button v-if="probs.isStepper" type="button" class="nButton">{{"Next Step"}}</button>
+        <button v-if="probs.isStepper && !isTracebackFinished" type="button" class="nButton">{{"Next Step"}}</button>
     </div>
 </div>
 
