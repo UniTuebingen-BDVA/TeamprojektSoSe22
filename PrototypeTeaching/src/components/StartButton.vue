@@ -12,6 +12,10 @@
         sequence: {
             type: String,
             default: ""
+        },
+        withStepper: {
+            type: Boolean,
+            default: false
         }
     })
     let sequence = ref("");
@@ -29,8 +33,8 @@
 
 <template>
     <button @click="start = !start" v-if="!start" type="button" class="nButton">{{"Start"}}</button>
-    <div class="flex-container" v-if="start">
-        <div class="table"><NussinovTable :sequence = sequence> </NussinovTable> </div>
+    <div v-if="start">
+        <NussinovTable :sequence = sequence :is-stepper=probs.withStepper> </NussinovTable>
         <!-- <div class="structure"><RNAStructure :sequence = sequence :secondary-structure = "false"></RNAStructure></div> -->
     </div>
     

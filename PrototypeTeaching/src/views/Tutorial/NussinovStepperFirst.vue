@@ -12,7 +12,7 @@
       <p>Remember, you need this </p>
       <img src="../../assets/nussinov-cases.png">
       <p>Now try it out yourself!</p>
-      <StartButton :length = 6></StartButton>
+      <StartButton :length = 6 :with-stepper="true"></StartButton>
       </div>
     <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Try it out!'" :link="'../../pages/Levels/LevelStart.html'"/>
   </div>
