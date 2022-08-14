@@ -4,7 +4,7 @@ import { onMounted, ref } from "vue";
 import { calculate_nussinov } from '../../../common/nussinov';
 import { is_entire_table_filled, validate_fill } from "../scripts/validate_fill";
 import { validate_traceback, get_path} from "../scripts/validate_traceback";
-import { PathNode, addBasePair } from "../scripts/traceback_binary_tree";
+import { PathNode, pos, addBasePair } from "../scripts/traceback_binary_tree";
 import RNAStructure from "./RNAStructure.vue";
 
 let pairCounter = 0;
@@ -27,6 +27,7 @@ const probs = defineProps({
     }
 });
 
+let dotBracket_str = ".".repeat(probs.sequence.length);
 let res = {
     finishScreen: false.toString(),
     sequence: probs.sequence,
@@ -49,7 +50,11 @@ function updateCellIndex(oldx:number,oldy:number, seq:string){
     y = ++oldy;
 }
 
-function updateTracebackColor(table, traceback){
+function updateTraceback(table, traceback){
+    //Update dot-bracket
+    if ((traceback[0][0][0] == traceback[0][1][0] - 1) && (traceback[0][0][1] == traceback[0][1][1] + 1)) {
+        dotBracket_str = addBasePair(dotBracket_str, new pos(traceback[0][0][0], traceback[0][0][1]));
+    }
     //Connect arrow
     if (table!.rows[traceback[0][0][0] + 1].cells[traceback[0][0][1] + 1].style.backgroundColor === "blue" &&
         table!.rows[traceback[0][1][0] + 1].cells[traceback[0][1][1] + 1].style.backgroundColor === "") {
@@ -58,6 +63,7 @@ function updateTracebackColor(table, traceback){
         if (traceback.length == 0) {
             table!.rows[cell_step_back[0] + 1].cells[cell_step_back[1] + 1].style.backgroundColor = "red";
             isTracebackFinished.value = true;
+            updateResult(probs.sequence, dotBracket_str, true.toString());
         }
     } else {
         //Start traceback
@@ -80,9 +86,7 @@ onMounted(() => {
     let nussinovMatrix = nussinov.matrix;
     let nussinovBacktrace = nussinov.backtrace;
     let traceback: any[] = get_path(nussinovBacktrace);
-    console.log(traceback);
     let first_cell:string|EventTarget|null = "";
-    let dotBracket_str = ".".repeat(probs.sequence.length);
 
     let table = document.querySelector("#table")!.querySelector("tbody");
     let stepper = document.querySelector("#stepper")!;
@@ -152,7 +156,7 @@ onMounted(() => {
                         isFilled = true;
                     }
                 } else {
-                    updateTracebackColor(table,traceback);
+                    updateTraceback(table,traceback);
                 }
             }
 
@@ -195,6 +199,10 @@ onMounted(() => {
         border: solid 2px var(--uni-color-red);
         background-color: transparent;
         color: var(--uni-color-red);
+    }
+        .nButton:hover{
+        background-color: var(--uni-color-red-hover);
+        color: white;
     }
 .flex-container {
     display: flex;
