@@ -40,22 +40,23 @@ function updateResult(seq:string, dotBracket:string, finishScreen:string){
 onMounted(() => {
 
     create_table(probs.sequence);
-    let nussinov = calculate_nussinov(probs.sequence);
-    let maxScore = nussinov.max_score;
-    let nussinovMatrix = nussinov.matrix;
-    let nussinovBacktrace = nussinov.backtrace;
-    let first_cell:string|EventTarget|null = "";
-    let dotBracket_str = ".".repeat(probs.sequence.length);
+    let nussinov:nussinov = calculate_nussinov(probs.sequence);
+    let maxScore:number = nussinov.max_score;
+    let nussinovMatrix:number[][] = nussinov.matrix;
+    let nussinovBacktrace:number[][] = nussinov.backtrace;
+    let first_cell:HTMLTableCellElement|null = null;
+    let crt_cell:HTMLTableCellElement;
+    let dotBracket_str:string = ".".repeat(probs.sequence.length);
 
-    let table = document.querySelector("#table")!.querySelector("tbody");
+    let table:HTMLTableSectionElement = document.querySelector("#table")!.querySelector("tbody")!;
 
     // DEBUG ONLY
-
     fillTable(nussinovMatrix, table, probs.sequence);
     isFilled = true;
 
-    table!.addEventListener("click", function (event) {
-        if (event.target!.className == 'cell' && !isTracebackFinished.value) {
+    table.addEventListener("click", function (event) {
+        crt_cell = event.target!;
+        if (crt_cell.className == 'cell' && !isTracebackFinished.value) {
 
             // fill stage
             if (!isFilled) {
@@ -65,9 +66,9 @@ onMounted(() => {
 
             // traceback stage 
             else {
-                if (first_cell == "") {
+                if (first_cell === null) {
 
-                    first_cell = event.target;
+                    first_cell = crt_cell;
                     if (probs.helper){
                         helper_active(first_cell, table);
                     }
@@ -94,8 +95,8 @@ onMounted(() => {
                         helper_inactive(table);
                     }
                     
-                    if (validate_traceback(first_cell, event.target, nussinovBacktrace)){
-                        let crtNode = new PathNode(event.target!);
+                    if (validate_traceback(first_cell, crt_cell, nussinovBacktrace)){
+                        let crtNode = new PathNode(crt_cell);
                         let prevNode = new PathNode(first_cell!);
 
                         if ((crtNode.pos.x == prevNode.pos.x + 1) && (crtNode.pos.y == prevNode.pos.y - 1)){
@@ -108,7 +109,7 @@ onMounted(() => {
                         }
                     }
                     
-                    first_cell = "";
+                    first_cell = null;
                 }
             };
         }
