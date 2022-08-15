@@ -1,7 +1,7 @@
 import { get_current_index } from "../scripts/validate_fill";
 
 // represents the position of a cell within a table, or similar matrix
-class pos{
+export class pos{
     x:number;
     y:number;
     constructor(x:number, y:number){

@@ -69,7 +69,7 @@ onMounted(() => {
 
                     first_cell = event.target;
                     if (probs.helper){
-                        helper_active(first_cell);
+                        helper_active(first_cell, table);
                     }
                     // if the cell was already correct, it's marked with a different color
                     if (first_cell!.style.backgroundColor == "red") {
