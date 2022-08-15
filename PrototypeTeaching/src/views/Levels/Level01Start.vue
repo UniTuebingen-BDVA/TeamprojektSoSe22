@@ -14,7 +14,7 @@
         <p id="border">GACUC</p>
       </div>
       <p>Remember, you need this </p>
-      <img src="../../assets/nussinov-cases.png">
+      <img src="../../assets/nussinov-cases_colored.png">
 
       <StartButton :sequence="'GACUC'"></StartButton>
     </div>
