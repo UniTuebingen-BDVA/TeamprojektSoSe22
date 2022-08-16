@@ -1,6 +1,5 @@
 <script setup lang="ts">
     import NussinovTable from "./NussinovTable.vue";
-    import RNAStructure from "./RNAStructure.vue";
     import { meaningfulSeq } from "../../../common/RNA_Generator";
     import { ref} from 'vue';
     
@@ -18,6 +17,11 @@
             default: false
         }
     })
+
+    const emit = defineEmits<{
+        (event: 'updateImage2', id: number): void
+    }>()
+
     let sequence = ref("");
     const start = ref(false);
     if (probs.sequence == "") {
@@ -25,17 +29,16 @@
     } else {
         sequence = ref(probs.sequence);
     }
-</script>
 
-<script>
-    
+    function changeImage(i:number){
+        emit("updateImage2", i);
+    }
 </script>
 
 <template>
     <button @click="start = !start" v-if="!start" type="button" class="nButton">{{"Start"}}</button>
     <div v-if="start">
-        <NussinovTable :sequence = sequence :is-stepper=probs.withStepper> </NussinovTable>
-        <!-- <div class="structure"><RNAStructure :sequence = sequence :secondary-structure = "false"></RNAStructure></div> -->
+        <NussinovTable :sequence = sequence :is-stepper=probs.withStepper @updateImage="(i) => changeImage(i)"> </NussinovTable>
     </div>
     
 </template>

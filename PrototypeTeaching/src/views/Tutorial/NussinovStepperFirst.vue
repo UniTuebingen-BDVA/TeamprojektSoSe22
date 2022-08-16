@@ -2,6 +2,13 @@
   import UniButtonLink from '../../components/UniButtonLink.vue';
   import NussinovHeader from '../../../../common/NussinovHeader.vue';
   import StartButton from '../../components/StartButton.vue';
+  import { ref } from 'vue';
+
+  let image = ref('../../assets/nussinov-cases.png');
+
+  function updateImage(id){
+    image.value = '../../assets/nussinov-cases_' + id + '.jpg';
+  }
 </script>
 
 <template>
@@ -10,9 +17,9 @@
     <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Skip Tutorial'" :link="'../../pages/Levels/LevelStart.html'"/>
     <div class="tutorialBox">
       <p>Remember, you need this </p>
-      <img src="../../assets/nussinov-cases.png">
+      <img :src="image">
       <p>Now try it out yourself!</p>
-      <StartButton :length = 6 :with-stepper="true"></StartButton>
+      <StartButton :length = 6 :with-stepper="true" @update-image2="(i) => updateImage(i)"></StartButton>
       </div>
     <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Try it out!'" :link="'../../pages/Levels/LevelStart.html'"/>
   </div>

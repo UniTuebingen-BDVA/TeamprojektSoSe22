@@ -15,6 +15,11 @@ let x = -1;
 let y = 0;
 let cell_step_back: any;
 
+//For emitting the image id, ergo which nussinov case is present at the moment
+const emit = defineEmits<{
+  (event: 'updateImage', id: number): void
+}>()
+
 
 const probs = defineProps({
     sequence: {
@@ -40,6 +45,7 @@ function updateResult(seq:string, dotBracket:string, finishScreen:string){
     res.finishScreen = finishScreen;
 };
 
+//Get the next cell in the table
 function updateCellIndex(oldx:number,oldy:number, seq:string){
     if (oldy === seq.length-1) {
         rowCounter++;
@@ -50,6 +56,20 @@ function updateCellIndex(oldx:number,oldy:number, seq:string){
     y = ++oldy;
 }
 
+//Find which nussinov case is present at the moment
+function findNewCase(traceback){
+    if(traceback[0][0][0] == traceback[0][1][0] - 1 && traceback[0][0][1] == traceback[0][1][1]){
+        emit("updateImage", 1);
+    } else if(traceback[0][0][0] == traceback[0][1][0] && traceback[0][0][1] == traceback[0][1][1] + 1){
+        emit("updateImage", 2);
+    } else if(traceback[0][0][0] == traceback[0][1][0] - 1 && traceback[0][0][1] == traceback[0][1][1] + 1){
+        emit("updateImage", 3);
+    } else{
+        emit("updateImage", 4);
+    }
+}
+
+//Update stepper traceback
 function updateTraceback(table, traceback){
     //Update dot-bracket
     if ((traceback[0][0][0] == traceback[0][1][0] - 1) && (traceback[0][0][1] == traceback[0][1][1] + 1)) {
@@ -66,6 +86,7 @@ function updateTraceback(table, traceback){
             updateResult(probs.sequence, dotBracket_str, true.toString());
         }
     } else {
+        findNewCase(traceback);
         //Start traceback
         if (table!.rows[traceback[0][0][0] + 1].cells[traceback[0][0][1] + 1].style.backgroundColor === "") {
             table!.rows[traceback[0][0][0] + 1].cells[traceback[0][0][1] + 1].style.backgroundColor = "blue";
@@ -74,6 +95,7 @@ function updateTraceback(table, traceback){
         else {
             table!.rows[traceback[0][0][0] + 1].cells[traceback[0][0][1] + 1].style.backgroundColor = "blue";
             table!.rows[cell_step_back[0] + 1].cells[cell_step_back[1] + 1].style.backgroundColor = "red";
+        
         }
     }
 }
