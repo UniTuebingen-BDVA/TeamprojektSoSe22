@@ -27,16 +27,16 @@ console.log(foundBasepairs);
 </script>
 
 <template>
-  <div className="EndScreen">
+  <div class="EndScreen">
     <h2>
       You found {{ foundBasepairs }} of {{ possibleBasepairs }} Basepairs with
       the algorithm.
     </h2>
   </div>
 
-  <div className="frames">
+  <div class="frames">
     <div>
-      <div className="frame">
+      <div class="frame">
         <RNAStructure
           :sequence="gamestate.usedSequence"
           :dotBracket="gamestate.userAnswer.join('')"
@@ -48,7 +48,7 @@ console.log(foundBasepairs);
     </div>
 
     <div>
-      <div className="frame">
+      <div class="frame">
         <RNAStructure
           :sequence="gamestate.usedSequence"
           :dotBracket="gamestate.correctAnswer.join('')"
@@ -62,7 +62,7 @@ console.log(foundBasepairs);
 
   <Highscore />
 
-  <div className="AbButton">
+  <div class="AbButton">
     <UniButton
       :primary-color="'red'"
       :filled="true"
@@ -78,11 +78,6 @@ console.log(foundBasepairs);
   text-align: center;
   width: auto;
   justify-content: space-between;
-}
-
-.accordance {
-  color: var(--uni-color-gold);
-  font-size: 2.5em;
 }
 
 .rna-structure {
