@@ -7,8 +7,6 @@ import GamingPage from './components/game/GamingPage.vue';
 
 <template>
   <NussinovHeader />
-  <!-- ToDo: Landing Page -->
-  <!-- ToDo: Learning Page -->
   <GamingPage />
 </template>
 
