@@ -43,11 +43,6 @@ function updateGameState(updates) {
   gameState.correctAnswer = updates.correctAnswer;
   gameState.usedSequence = updates.usedSequence;
 }
-
-function createError(error) {
-  const errorMessage = error;
-  console.log("Triggert");
-}
 </script>
 
 <style scoped>
