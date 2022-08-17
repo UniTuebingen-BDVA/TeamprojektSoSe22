@@ -1,7 +1,6 @@
 <template>
   <div>
     <GameStart @gamestart="changeDifficulty" />
-    <h1 @privateError="createError">Error: {{ errorMessage }}</h1>
     <GameFrame @gamestate="updateGameState" :key="gameDifficulty" />
     <div class="turn-in">
       <UniButton
