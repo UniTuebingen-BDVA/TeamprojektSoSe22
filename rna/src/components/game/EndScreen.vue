@@ -7,7 +7,7 @@ const props = defineProps({
   gamestate: Object,
 });
 
-console.log(props.gamestate)
+console.log(props.gamestate);
 
 let foundBasepairs = 0;
 let possibleBasepairs = 0;
@@ -23,12 +23,15 @@ for (const index in props.gamestate.userAnswer) {
   }
 }
 console.log(possibleBasepairs);
-console.log(foundBasepairs)
+console.log(foundBasepairs);
 </script>
 
 <template>
   <div className="EndScreen">
-    <h2>You found {{foundBasepairs}} of {{possibleBasepairs}} Basepairs with the algorithm.</h2>
+    <h2>
+      You found {{ foundBasepairs }} of {{ possibleBasepairs }} Basepairs with
+      the algorithm.
+    </h2>
   </div>
 
   <div className="frames">
