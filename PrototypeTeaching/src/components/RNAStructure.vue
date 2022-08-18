@@ -57,6 +57,7 @@ onMounted(() => {
     .select("#rna_seq")
     .append("svg")
     .call(
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       d3.zoom().on("zoom", function (event, d) {
         svg.attr("transform", event.transform);
       })
