@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import UniButtonLink from '../../components/UniButtonLink.vue';
-  import NussinovHeader from '../../../../common/NussinovHeader.vue';
-  import NussinovTable from '../../components/NussinovTable.vue';
+import UniButtonLink from "../../components/UniButtonLink.vue";
+import NussinovHeader from "../../../../common/NussinovHeader.vue";
+import NussinovTable from "../../components/NussinovTable.vue";
 </script>
 
 <template>
@@ -15,20 +15,32 @@
         </div>
         <div class="nFormula">
           <p>Remember that you need this:</p>
-          <img class="nImage_formula" src="../../assets/nussinov-cases.png">
+          <img class="nImage_formula" src="../../assets/nussinov-cases.png" />
         </div>
       </div>
       <div class="nButtons">
-        <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Need help?'" :link="'../../pages/Levels/LevelHelp.html'"/>
-        <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next'" :link="'../../pages/Levels/LevelCorrect.html'"/>
+        <UniButtonLink
+          class="teachingButton"
+          :filled="false"
+          :primary-color="'red'"
+          :text="'Need help?'"
+          :link="'../../pages/Levels/LevelHelp.html'"
+        />
+        <UniButtonLink
+          class="teachingButton"
+          :filled="false"
+          :primary-color="'red'"
+          :text="'Next'"
+          :link="'../../pages/Levels/LevelCorrect.html'"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-.nBody{
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+.nBody {
   display: flex;
   justify-content: space-between;
   font-family: var(--uni-font);
@@ -41,13 +53,13 @@
   align-items: stretch;
   flex-direction: column;
   justify-content: flex-start;
-} 
+}
 .nTableFormula {
-  display:flex;
+  display: flex;
   flex-direction: row;
   justify-content: space-around;
   margin-top: 3%;
- }
+}
 .nButtons {
   display: flex;
   flex-direction: row;
@@ -71,5 +83,4 @@
   flex-direction: column;
   align-items: flex-start;
 }
-
 </style>

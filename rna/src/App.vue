@@ -1,8 +1,6 @@
 <script setup>
-
-import NussinovHeader from '../../common/NussinovHeader.vue'
-import GamingPage from './components/game/GamingPage.vue';
-
+import NussinovHeader from "../../common/NussinovHeader.vue";
+import GamingPage from "./components/game/GamingPage.vue";
 </script>
 
 <template>
