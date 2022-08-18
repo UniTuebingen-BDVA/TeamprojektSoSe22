@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import NussinovTable from "./NussinovTable.vue";
-import RNAStructure from "./RNAStructure.vue";
 import { meaningfulSeq } from "../../../common/RNA_Generator";
 import { ref } from "vue";
 
