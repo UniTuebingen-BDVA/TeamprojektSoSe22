@@ -1,12 +1,17 @@
 <template>
-  <div id="rna_seq"></div>
+  <div :id="'rna_seq' + this.id"></div>
 </template>
 
 <script setup>
 import * as d3 from "d3";
+import { v4 as uuidv4 } from "uuid";
 import { meaningfulSeq } from "../../../common/RNA_Generator";
 import { calculate_nussinov } from "../../../common/nussinov";
 import { createGraphData } from "../../../common/graph";
+
+const id = uuidv4();
+console.log(id);
+console.log("#rna_seq" + id);
 
 const probs = defineProps({
   sequence: String,
@@ -50,8 +55,7 @@ window.addEventListener("load", function (event) {
     }
   }
   let data = createGraphData(sequence, dot_bracket);
-  console.log("Tried do something")
-
+  console.log("Tried do something");
 
   // set the dimensions and margins of the graph
   const margin = { top: 30, right: 30, bottom: 30, left: 30 },
@@ -60,7 +64,7 @@ window.addEventListener("load", function (event) {
 
   // Initialize svg
   const svg = d3
-    .select("#rna_seq")
+    .select("#rna_seq" + id)
     .append("svg")
     .call(
       d3.zoom().on("zoom", function (event, d) {
@@ -178,7 +182,7 @@ window.addEventListener("load", function (event) {
 
   let clickedNodes = [];
   let heightmap = [];
-  for (let i = 0; i < sequence.length; i++){
+  for (let i = 0; i < sequence.length; i++) {
     heightmap.push(0);
   }
 
@@ -187,33 +191,26 @@ window.addEventListener("load", function (event) {
     let base1 = links[0]["name"];
     let base2 = links[1]["name"];
 
-    base1 = base1.substring(0, base1.length-1);
-    base2 = base2.substring(0, base2.length-1);
-    console.log(base1 + base2)
+    base1 = base1.substring(0, base1.length - 1);
+    base2 = base2.substring(0, base2.length - 1);
+    console.log(base1 + base2);
 
-    if (base1 + base2 === "CG"){
-      return true
-    }
-    else if (base1 + base2 === "GC"){
-      return true
-    }
-    else if (base1 + base2 === "AU"){
-      return true
-    }
-    else if (base1 + base2 === "UA"){
-      return true
-    }
-    else if (base1 + base2 === "UG"){
-      return true
-    }
-    else if (base1 + base2 === "GU"){
-      return true
+    if (base1 + base2 === "CG") {
+      return true;
+    } else if (base1 + base2 === "GC") {
+      return true;
+    } else if (base1 + base2 === "AU") {
+      return true;
+    } else if (base1 + base2 === "UA") {
+      return true;
+    } else if (base1 + base2 === "UG") {
+      return true;
+    } else if (base1 + base2 === "GU") {
+      return true;
     }
 
-
-    return false
+    return false;
   }
-
 
   function togglenode(event, d) {
     if (!clickedNodes.includes(d)) {
@@ -242,13 +239,13 @@ window.addEventListener("load", function (event) {
           return;
         }
       }
-      if (rightbasepair(clickedNodes)){ //canonoical basepair?
+      if (rightbasepair(clickedNodes)) {
+        //canonoical basepair?
         emit("combine", clickedNodes);
         update();
         increaseHeightmap(clickedNodes);
-      }
-      else {
-        console.log("no canonical basepair")
+      } else {
+        console.log("no canonical basepair");
       }
       clickedNodes = [];
       return;
@@ -357,7 +354,10 @@ window.addEventListener("load", function (event) {
     }
     if (links.length > 0) {
       //Check if link is exact, then it needs to be true, so it can be removed
-      if (ids.includes(links[0].source.id) && ids.includes(links[0].target.id)) {
+      if (
+        ids.includes(links[0].source.id) &&
+        ids.includes(links[0].target.id)
+      ) {
         return true;
       }
       return false;
