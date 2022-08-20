@@ -1,5 +1,5 @@
 <template>
-  <div :id="'rna_seq' + this.id"></div>
+  <div :id="'rna_seq' + id"></div>
 </template>
 
 <script setup>
