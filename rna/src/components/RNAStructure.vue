@@ -11,8 +11,6 @@ import { createGraphData } from "../../../common/graph";
 import { onMounted } from "vue";
 
 const id = uuidv4();
-console.log(id);
-console.log("#rna_seq" + id);
 
 const probs = defineProps({
   sequence: String,
@@ -26,7 +24,6 @@ const probs = defineProps({
 
 const emit = defineEmits({
   combine: Array,
-  privateError: String,
 });
 
 onMounted(() => {
@@ -56,7 +53,6 @@ onMounted(() => {
     }
   }
   let data = createGraphData(sequence, dot_bracket);
-  console.log("Tried do something");
 
   // set the dimensions and margins of the graph
   const margin = { top: 30, right: 30, bottom: 30, left: 30 },
@@ -194,7 +190,6 @@ onMounted(() => {
 
     base1 = base1.substring(0, base1.length - 1);
     base2 = base2.substring(0, base2.length - 1);
-    console.log(base1 + base2);
 
     if (base1 + base2 === "CG") {
       return true;
@@ -231,7 +226,6 @@ onMounted(() => {
         ) {
           // and if the link is red (placed by the user): remove the link
           if (datalinks[obj].color === "red") {
-            console.log("remove link");
             emit("combine", clickedNodes);
             removeLink(datalinks[obj].index);
             decreaseHeightmap(clickedNodes);
@@ -245,16 +239,11 @@ onMounted(() => {
         emit("combine", clickedNodes);
         update();
         increaseHeightmap(clickedNodes);
-      } else {
-        console.log("no canonical basepair");
       }
       clickedNodes = [];
     } else if (clickedNodes.length === 2 && !checkLinks(clickedNodes)) {
-      console.log("[DEBUG] Connection failed, one links already exists");
       clickedNodes = [];
     }
-
-    /*     console.log("DEBUG: " + clickedNodes); */
   }
 
   function simulateLinks() {
@@ -286,8 +275,6 @@ onMounted(() => {
 
     link.remove();
 
-    /* console.log(data.links) */
-
     simulateLinks();
   }
 
@@ -302,8 +289,6 @@ onMounted(() => {
 
     data.links.push(newLink);
 
-    /* console.log(data.links) */
-
     simulateLinks();
   }
 
@@ -313,11 +298,9 @@ onMounted(() => {
       ids.push(links[elem].id);
       ids.sort();
     }
-    console.log(ids);
     for (let i = ids[0] + 1; i < ids[1]; i++) {
       heightmap[i] -= 1;
     }
-    console.log(heightmap);
   }
 
   function increaseHeightmap(links) {
@@ -330,7 +313,6 @@ onMounted(() => {
     for (let i = ids[0] + 1; i < ids[1]; i++) {
       heightmap[i] += 1;
     }
-    console.log(heightmap);
   }
 
   function checkLinks(links) {
@@ -349,7 +331,6 @@ onMounted(() => {
     });
     //Check if Nodes are on same level to check for crossing overs
     if (heightmap[ids[0]] !== heightmap[ids[1]]) {
-      emit("privateError", "wrong Input");
       return false;
     }
     if (links.length > 0) {
