@@ -85,7 +85,6 @@ function editDotBracket(indexes) {
   gamestate.correctAnswer = nussinovAnswer;
   gamestate.usedSequence = getSequence;
   emit("gamestate", gamestate);
-  console.log(dotBracket);
 }
 </script>
 <style scoped>
