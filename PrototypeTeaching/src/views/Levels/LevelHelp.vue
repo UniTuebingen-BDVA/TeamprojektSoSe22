@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import UniButtonLink from '../../components/UniButtonLink.vue';
-  import NussinovHeader from '../../../../common/NussinovHeader.vue';
+import UniButtonLink from "../../components/UniButtonLink.vue";
+import NussinovHeader from "../../../../common/NussinovHeader.vue";
 </script>
 
 <template>
@@ -10,25 +10,31 @@
       <div class="nTableFormula">
         <div class="nTable">
           <h3>Compare these values.</h3>
-          <img class ="nImage" src="../../assets/table_help.png">
+          <img class="nImage" src="../../assets/table_help.png" />
         </div>
         <div class="nFormula">
-          <p>Remember that you need this: </p>
-          <img class="nImage_formula" src="../../assets/nussinov-cases.png">
+          <p>Remember that you need this:</p>
+          <img class="nImage_formula" src="../../assets/nussinov-cases.png" />
         </div>
       </div>
     </div>
     <div class="nButtons">
       <div class="nButton_Next">
-       <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Next'" :link="'../../pages/Levels/Level01FirstStep.html'"/>
+        <UniButtonLink
+          class="teachingButton"
+          :filled="false"
+          :primary-color="'red'"
+          :text="'Next'"
+          :link="'../../pages/Levels/Level01FirstStep.html'"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-  .nBody{
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+.nBody {
   display: flex;
   justify-content: space-between;
   font-family: var(--uni-font);
@@ -47,14 +53,14 @@
   flex-direction: row;
   justify-content: space-around;
   margin-top: 3%;
- }
+}
 .nButtons {
   display: flex;
   flex-direction: row;
   justify-content: right;
   margin-top: 5%;
 }
-img{
+img {
   mix-blend-mode: multiply;
 }
 .nImage {
@@ -76,6 +82,4 @@ img{
   flex-direction: column;
   align-items: left;
 }
-
 </style>
-

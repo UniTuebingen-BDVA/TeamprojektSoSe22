@@ -1,7 +1,7 @@
 <script setup lang="ts">
-  import UniButtonLink from '../../components/UniButtonLink.vue';
-  import NussinovHeader from '../../../../common/NussinovHeader.vue';
-  import NussinovTable from '../../components/NussinovTable.vue';
+import UniButtonLink from "../../components/UniButtonLink.vue";
+import NussinovHeader from "../../../../common/NussinovHeader.vue";
+import NussinovTable from "../../components/NussinovTable.vue";
 </script>
 
 <template>
@@ -13,24 +13,36 @@
         <div class="nTable">
           <h3>Step 2: Try to fill in the next two cells of the matrix.</h3>
           <!-- <NussinovTable sequence="GUAAGAUC"></NussinovTable> -->
-          <img class ="nImage" src="../../assets/table1.2.png">
+          <img class="nImage" src="../../assets/table1.2.png" />
         </div>
         <div class="nFormula">
           <p>Remember that you need this:</p>
-          <img class="nImage_formula" src="../../assets/nussinov-cases.png">
+          <img class="nImage_formula" src="../../assets/nussinov-cases.png" />
         </div>
       </div>
       <div class="nButtons">
-        <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Need help?'" :link="'../../pages/Levels/LevelHelp.html'"/>
-        <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'End'" :link="'../../pages/Levels/LevelScore.html'"/>
+        <UniButtonLink
+          class="teachingButton"
+          :filled="false"
+          :primary-color="'red'"
+          :text="'Need help?'"
+          :link="'../../pages/Levels/LevelHelp.html'"
+        />
+        <UniButtonLink
+          class="teachingButton"
+          :filled="false"
+          :primary-color="'red'"
+          :text="'End'"
+          :link="'../../pages/Levels/LevelScore.html'"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Open+Sans');
-.nBody{
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+.nBody {
   display: flex;
   justify-content: space-between;
   font-family: var(--uni-font);
@@ -45,11 +57,11 @@
   justify-content: flex-start;
 }
 .nTableFormula {
-  display:flex;
+  display: flex;
   flex-direction: row;
   justify-content: space-around;
   margin-top: 0;
- }
+}
 .nButtons {
   display: flex;
   flex-direction: row;
@@ -80,5 +92,5 @@
   color: var(--uni-color-red);
   font-weight: bold;
   font-size: 1.5em;
-} 
+}
 </style>
