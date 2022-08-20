@@ -7,8 +7,6 @@ const props = defineProps({
   gamestate: Object,
 });
 
-console.log(props.gamestate);
-
 let foundBasepairs = 0;
 let possibleBasepairs = 0;
 
@@ -22,8 +20,6 @@ for (const index in props.gamestate.userAnswer) {
     foundBasepairs += 1;
   }
 }
-console.log(possibleBasepairs);
-console.log(foundBasepairs);
 </script>
 
 <template>
