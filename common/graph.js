@@ -5,7 +5,13 @@ export function createGraphData(sequence, dot_bracket) {
 
   for (let i = 0; i < sequence.length; i++) {
     // create node with sequence[i]
-    let new_node = { id: i, name: sequence[i] + i, color: "#779eb2" };
+
+    // let new_node = { id: i, name: sequence[i] + i, color: "#779eb2" };
+    let new_node = {id: i, name: sequence[i] + i};
+    if (sequence[i] === "A") new_node.color = "#0f37a6";
+    else if (sequence[i] === "U") new_node.color = "#6789e6";
+    else if (sequence[i] === "G") new_node.color = "#115906";
+    else if (sequence[i] === "C") new_node.color = "#41b52f";
     data.nodes.push(new_node);
 
     // set path from sequence[i] to sequence[i+1]
