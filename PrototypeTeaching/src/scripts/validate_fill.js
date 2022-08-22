@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2';
+
 // checks if current cell is valid to be filled out (only diagonals & upper triangle matrix)
 function is_cell_valid(cell) {
   let table = cell.parentNode.parentNode.parentNode;
@@ -51,32 +53,60 @@ export function is_entire_table_filled(cell) {
 //      nussinovMatrix: Array of Arrays (filled nussinovMatrix)
 //  returns:
 //      boolean: false, if not valided, else true
-export function validate_fill(cell, nussinovMatrix) {
-  if (is_not_filled(cell)) {
-    if (is_cell_valid(cell)) {
-      let user_input = parseInt(
-        prompt("Please enter the value for the current cell!")
-      );
-      if (
-        !isNaN(user_input) &&
-        is_cell_value_correct(cell, user_input, nussinovMatrix)
-      ) {
-        cell.innerText = user_input;
-        return true;
-      } else {
-        alert(
-          "Your value was incorrect, please check the equation and try again!"
-        );
-        return false;
-      }
+export async function validate_fill(cell, nussinovMatrix){
+    if (is_not_filled(cell)){
+        if(is_cell_valid(cell)){
+            const {value: user_input } = await Swal.fire({
+                title: 'Please enter the value for the current cell!',
+                input: 'number',
+                showCancelButton: true,
+                inputAttributes: {
+                    min: 0
+                },
+                inputValidator: (value) => {
+                    if (!value) {
+                        return 'Please enter a number!';
+                    }
+                    else if (value < 0) {
+                        return 'Are you sure it can be negative?';
+                    }
+                }
+            })
+
+            //If clicked on cancel button or outside of alert
+            if(typeof user_input === "undefined"){
+                return false;
+            }
+
+            if((!isNaN(user_input)) && is_cell_value_correct(cell, user_input, nussinovMatrix)){
+                cell.innerText = user_input;
+                return true;
+            }
+            else{
+                Swal.fire({
+                    title: 'Oops...',
+                    text: 'Your value was incorrect, please check the equation and try again!',
+                    icon: 'error',
+                    confirmButtonText: 'Got it'
+                  })
+                return false;
+            }
+        } else {
+            Swal.fire({
+                title: 'Oops...',
+                text: 'This cell cannot be filled yet, remember you can only fill cells along the diagonal in the upper triangle matrix!',
+                icon: 'error',
+                confirmButtonText: 'Got it'
+              })
+            return false;
+        }
     } else {
-      alert(
-        "This cell cannot be filled yet, remember you can only fill cells along the diagonal in the upper triangle matrix!"
-      );
-      return false;
+        Swal.fire({
+            title: 'Oops...',
+            text: 'This cell is already filled, choose a different cell!',
+            icon: 'error',
+            confirmButtonText: 'Got it'
+          })
+        return false;
     }
-  } else {
-    alert("This cell is already filled, choose a different cell!");
-    return false;
-  }
 }

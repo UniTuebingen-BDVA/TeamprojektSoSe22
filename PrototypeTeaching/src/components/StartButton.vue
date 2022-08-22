@@ -12,12 +12,21 @@
             type: String,
             default: ""
         },
+        withStepper: {
+            type: Boolean,
+            default: false
+        },
         helper: {
             type: Boolean,
             required: false,
             default: true
         }
     })
+
+    const emit = defineEmits<{
+        (event: 'updateImage2', id: number): void
+    }>()
+
     let sequence = ref("");
     const start = ref(false);
     if (probs.sequence == "") {
@@ -25,14 +34,16 @@
     } else {
         sequence = ref(probs.sequence);
     }
-</script>
 
-<script></script>
+    function changeImage(i:number){
+        emit("updateImage2", i);
+    }
+</script>
 
 <template>
     <button @click="start = !start" v-if="!start" type="button" class="nButton">{{"Start"}}</button>
-    <div class="flex-container" v-if="start">
-        <div class="table"><NussinovTable :sequence = sequence :helper="probs.helper"> </NussinovTable> </div>
+    <div v-if="start">
+        <NussinovTable :sequence = sequence :helper="probs.helper" :is-stepper=probs.withStepper @updateImage="(i) => changeImage(i)"> </NussinovTable>
     </div>
     
 </template>

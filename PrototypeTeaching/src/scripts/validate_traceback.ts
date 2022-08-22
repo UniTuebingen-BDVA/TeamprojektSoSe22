@@ -41,10 +41,10 @@ function get_current_index(cell) {
 }
 
 // wrapper for the path_trace function
-function get_path(backtrace_matrix) {
-  const path = [];
-  path_trace(backtrace_matrix, path, 0, backtrace_matrix.length - 1);
-  return path;
+export function get_path(backtrace_matrix){
+    let path = [];
+    path_trace(backtrace_matrix, path, 0, backtrace_matrix.length-1);
+    return path;
 }
 
 // extracts one path of the backtrace matrix
