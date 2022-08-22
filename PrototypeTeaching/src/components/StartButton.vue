@@ -1,39 +1,40 @@
 <script setup lang="ts">
-import NussinovTable from "./NussinovTable.vue";
-import { meaningfulSeq } from "../../../common/RNA_Generator";
-import { ref } from "vue";
-
-const probs = defineProps({
-  length: {
-    type: Number,
-    default: 5,
-  },
-  sequence: {
-    type: String,
-    default: "",
-  },
-});
-let sequence = ref("");
-const start = ref(false);
-if (probs.sequence == "") {
-  sequence = ref(meaningfulSeq(probs.length));
-} else {
-  sequence = ref(probs.sequence);
-}
+    import NussinovTable from "./NussinovTable.vue";
+    import { meaningfulSeq } from "../../../common/RNA_Generator";
+    import { ref} from 'vue';
+    
+    const probs = defineProps({
+        length: {
+            type: Number,
+            default: 5
+        },
+        sequence: {
+            type: String,
+            default: ""
+        },
+        helper: {
+            type: Boolean,
+            required: false,
+            default: true
+        }
+    })
+    let sequence = ref("");
+    const start = ref(false);
+    if (probs.sequence == "") {
+        sequence = ref(meaningfulSeq(probs.length));
+    } else {
+        sequence = ref(probs.sequence);
+    }
 </script>
 
 <script></script>
 
 <template>
-  <button @click="start = !start" v-if="!start" type="button" class="nButton">
-    {{ "Start" }}
-  </button>
-  <div class="flex-container" v-if="start">
-    <div class="table">
-      <NussinovTable :sequence="sequence"> </NussinovTable>
+    <button @click="start = !start" v-if="!start" type="button" class="nButton">{{"Start"}}</button>
+    <div class="flex-container" v-if="start">
+        <div class="table"><NussinovTable :sequence = sequence :helper="probs.helper"> </NussinovTable> </div>
     </div>
-    <!-- <div class="structure"><RNAStructure :sequence = sequence :secondary-structure = "false"></RNAStructure></div> -->
-  </div>
+    
 </template>
 
 <style scoped>

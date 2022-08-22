@@ -15,6 +15,8 @@ import StartButton from "../../components/StartButton.vue";
       :link="'../../pages/Levels/LevelStart.html'"
     />
     <div class="tutorialBox">
+      <p>Remember, you need this </p>
+      <img src="../../assets/nussinov-cases_colored.png">
       <p>Now try it out yourself!</p>
       <p>Remember, you need this</p>
       <img src="../../assets/nussinov-cases.png" />

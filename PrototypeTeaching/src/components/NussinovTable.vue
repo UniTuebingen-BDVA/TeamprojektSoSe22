@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import { create_table } from "../scripts/table";
 import { onMounted, ref } from "vue";
-import { calculate_nussinov } from "../../../common/nussinov";
-import {
-  is_entire_table_filled,
-  validate_fill,
-} from "../scripts/validate_fill";
-import { validate_traceback } from "../scripts/validate_traceback";
-import { PathNode, addBasePair } from "../scripts/traceback_binary_tree";
+import { calculate_nussinov } from '../../../common/nussinov';
+import { is_entire_table_filled, validate_fill } from "../scripts/validate_fill";
+import { validate_traceback} from "../scripts/validate_traceback";
+import { PathNode, addBasePair} from "../scripts/traceback_binary_tree";
+import { helper_active, helper_inactive } from "../scripts/helper";
 import RNAStructure from "./RNAStructure.vue";
 
 let pairCounter = 0;
@@ -15,10 +13,15 @@ let isFilled = false;
 let isTracebackFinished = ref(false);
 
 const probs = defineProps({
-  sequence: {
-    type: String,
-    required: true,
-  },
+    sequence: {
+        type: String,
+        required: true
+    },
+    helper: {
+        type: Boolean,
+        required: false,
+        default: true
+    }
 });
 
 let res = {
@@ -56,18 +59,21 @@ onMounted(() => {
       else {
         if (first_cell == "") {
           first_cell = event.target;
-
+                    if (probs.helper){
+                        helper_active(first_cell, table);
+                    }
           // if the cell was already correct, it's marked with a different color
           if (first_cell!.style.backgroundColor == "red") {
             first_cell!.style.backgroundColor = "blue";
             return;
           }
 
-          first_cell!.style.backgroundColor = "lightblue";
-        } else {
-          if (first_cell!.style.backgroundColor == "lightblue") {
-            first_cell!.style.backgroundColor = "white";
-          }
+                    first_cell!.style.backgroundColor = "lightblue";
+                }
+                else {
+                    if (first_cell!.style.backgroundColor == "lightblue") {
+                        first_cell!.style.backgroundColor = "transparent";
+                    }
 
           // if the cell already correct, it's marked with the red color
           // (so no progress gets deleted)
@@ -75,9 +81,13 @@ onMounted(() => {
             first_cell!.style.backgroundColor = "red";
           }
 
-          if (validate_traceback(first_cell, event.target, nussinovBacktrace)) {
-            let crtNode = new PathNode(event.target!);
-            let prevNode = new PathNode(first_cell!);
+                    if (probs.helper){
+                        helper_inactive(table);
+                    }
+                    
+                    if (validate_traceback(first_cell, event.target, nussinovBacktrace)){
+                        let crtNode = new PathNode(event.target!);
+                        let prevNode = new PathNode(first_cell!);
 
             if (
               crtNode.pos.x == prevNode.pos.x + 1 &&

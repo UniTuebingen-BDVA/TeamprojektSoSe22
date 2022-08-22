@@ -1,13 +1,13 @@
 import { get_current_index } from "../scripts/validate_fill";
 
 // represents the position of a cell within a table, or similar matrix
-class pos {
-  x: number;
-  y: number;
-  constructor(x: number, y: number) {
-    this.x = x;
-    this.y = y;
-  }
+export class pos{
+    x:number;
+    y:number;
+    constructor(x:number, y:number){
+        this.x = x;
+        this.y = y;
+    }
 }
 
 // represents cell within the table as an element to be used for traceback
@@ -116,10 +116,10 @@ function setCharAt(str: string, pos: number, char: string): string {
 
 // fills the dp matrix, useful for debugging traceback stage etc.
 // to prevent being stuck in fill phase, set isFilled to true
-function fillTable(nMatrix, tbody, seq: string): void {
-  for (let i = 0; i < seq.length; i++) {
-    for (let j = 0; j < seq.length; j++) {
-      tbody.rows[i + 1].cells[j + 1].innerText = nMatrix[i][j];
+export function fillTable(nMatrix, tbody, seq:string):void{
+    for (let i = 0; i < seq.length; i++){
+        for (let j = 0; j < seq.length; j++){
+            tbody.rows[i+1].cells[j+1].innerText = nMatrix[i][j];
+        }
     }
-  }
 }
