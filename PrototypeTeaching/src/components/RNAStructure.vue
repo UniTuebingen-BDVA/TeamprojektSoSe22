@@ -81,7 +81,13 @@ onMounted(() => {
   const circle = node
     .append("circle")
     .attr("r", 20)
-    .style("fill", (d) => d.color);
+    .style("fill", function(d) {
+      if (d.name[0] == "A") return "#0f37a6";
+      else if (d.name[0] == "U") return "#6789e6";
+      else if (d.name[0] == "G") return "#115906";
+      else if (d.name[0] == "C") return "#41b52f";
+      else return "transparent";
+      });
 
   const label = node
     .append("svg:text")
