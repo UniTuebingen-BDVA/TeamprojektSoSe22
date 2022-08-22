@@ -1,43 +1,100 @@
-// validates input by user
-//  parameters:
-//      cell1: HTML Object (Cell)
-//      cell2: HTML Object (Cell)
-//      backtrace_matrix: Array of Arrays (filled with the traceback)
-//  returns:
-//      : nothing
-//  side effects:
-//      colors the cells in red if they are part of the
-//      traceback.
-
-export function validate_traceback(cell1, cell2, backtrace_matrix) {
-  const path = get_path(backtrace_matrix);
-  const index_cell1 = get_current_index(cell1);
-  const index_cell2 = get_current_index(cell2);
-  if (is_path_valid(index_cell1, index_cell2, path)) {
+/**
+ * validates input by user
+ * @param {Cell}  cell1 - HTML Object (Cell)
+ * @param {Cell} cell2 - HTML Object (Cell)
+ * @param {Traceback_obj[]} all_optimal_solutions - array of all optimal solutions as Traceback_obj
+ * @return {{Traceback_obj[], boolean}} array of all solutions, that could be part of the user traceback
+ * and a boolean if a hit was found.
+ * @effects : colors the cells in red if they are part of the traceback.
+ */
+export function validate_traceback(cell1, cell2, all_optimal_solutions){
+  let index_cell1 = get_current_index(cell1)
+  let index_cell2 = get_current_index(cell2)
+  let result = is_path_valid(index_cell1, index_cell2, all_optimal_solutions)
+  console.log(index_cell1, index_cell2);
+  if(result.found_hit){
+    console.log("found hit")
     cell1.style.backgroundColor = "red";
     cell2.style.backgroundColor = "red";
-    return true;
   }
-  return false;
+  return result
 }
 
-// checks if two cells are consecutive and part of the path
-function is_path_valid(index_cell1, index_cell2, path) {
-  for (let i = 0; i < path.length; i++) {
-    if (path[i][0][0] == index_cell1.x && path[i][0][1] == index_cell1.y) {
-      if (path[i][1][0] == index_cell2.x && path[i][1][1] == index_cell2.y) {
-        return true;
+/**
+ * checks if two cells are consecutive and part of a path of all optimal solutions
+ * @param {Cell}  index_cell1 - HTML Object (Cell)
+ * @param {Cell} index_cell2 - HTML Object (Cell)
+ * @param {Traceback_obj[]} all_optimal_solutions - array of all optimal solutions as Traceback_obj
+ * @return {{Traceback_obj[], boolean}} array of all solutions, that could be part of the user traceback,
+ * and a boolean.
+ */
+function is_path_valid(index_cell1, index_cell2, all_optimal_solutions){
+  let output = false;
+  let found_hit = false;
+  let no_hits = [];
+  let hits   = [];
+  let number_of_optimal_solutions = all_optimal_solutions.length
+
+  for (let j = 0; j < number_of_optimal_solutions; j++) {
+    let path = all_optimal_solutions[j].traceback_path;
+    // DEBUG
+    // console.log(all_optimal_solutions);
+    // console.log(index_cell1, index_cell2);
+
+    for (let i = 0; i < path.length; i++) {
+
+      if(path[i][0][0] == index_cell1.x && path[i][0][1] == index_cell1.y){
+        if(path[i][1][0] == index_cell2.x && path[i][1][1] == index_cell2.y){
+          output = true;
+          if(!found_hit){
+            hits.push(all_optimal_solutions[j])
+          }
+
+
+
+          let traceback_puffer = all_optimal_solutions[j].traceback_puffer
+
+          for (let k = 0; k < all_optimal_solutions[j].traceback_puffer.length; k++) {
+            if(traceback_puffer[k][0] == index_cell1.x && traceback_puffer[k][1] == index_cell1.y
+                || traceback_puffer[k][0] == index_cell2.x && traceback_puffer[k][1] == index_cell2.y){
+
+              traceback_puffer.splice(k,1);
+              k--;
+            }
+          }
+
+          // path.splice(i,1);
+          found_hit = true;
+          // DEBUG
+          // console.log(hits)
+        }
+
       }
     }
+
+    if(!found_hit){
+      no_hits.push(all_optimal_solutions[j]);
+    }
+    found_hit = false;
   }
-  return false;
+
+  if(output){
+    return {output_hits: hits,found_hit: true}
+  }else {
+    return {output_hits: no_hits,found_hit: false};
+  }
+
 }
 
-// gets current index of given cell (inside HTML table)
-function get_current_index(cell) {
-  const x = cell.closest("tr").rowIndex - 1;
-  const y = cell.cellIndex - 1;
-  return { x: x, y: y };
+export function extract_cells_from_solutions(solutions):void{
+  for (let i = 0; i < solutions.length; i++) {
+    let traceback = solutions[i];
+    for (let j = 1; j < traceback.traceback_path.length; j++) {
+      traceback.traceback_puffer.push(traceback.traceback_path[j][1]);
+    }
+    traceback.traceback_puffer.push((traceback.traceback_path[0][0]));
+    traceback.traceback_puffer.push((traceback.traceback_path[0][1]));
+  }
 }
 
 // wrapper for the path_trace function
@@ -82,11 +139,10 @@ function path_trace(backtrace_matrix, path, pos_i, pos_j) {
     }
   }
 }
-export function is_traceback_finished(backtrace_matrix) {
-  const traceback = get_path(backtrace_matrix);
-  if (traceback[-1].style.backgroundColor == "red") {
-    return true;
-  } else {
-    return false;
-  }
+
+// gets current index of given cell (inside HTML table)
+export function get_current_index(cell){
+  let x = cell.closest("tr").rowIndex -1;
+  let y = cell.cellIndex -1;
+  return {x: x, y: y};
 }

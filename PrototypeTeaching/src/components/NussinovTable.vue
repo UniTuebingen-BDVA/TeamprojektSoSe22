@@ -3,7 +3,7 @@ import { create_table } from "../scripts/table";
 import { onMounted, ref } from "vue";
 import { calculate_nussinov } from '../../../common/nussinov';
 import { is_entire_table_filled, validate_fill } from "../scripts/validate_fill";
-import { validate_traceback, get_path} from "../scripts/validate_traceback";
+import { validate_traceback, get_path, extract_cells_from_solutions} from "../scripts/validate_traceback";
 import { PathNode, pos, addBasePair} from "../scripts/traceback_binary_tree";
 import { helper_active, helper_inactive } from "../scripts/helper";
 import RNAStructure from "./RNAStructure.vue";
@@ -107,7 +107,7 @@ function updateTraceback(table, traceback){
 
 onMounted(() => {
   create_table(probs.sequence);
-  let nussinov = calculate_nussinov(probs.sequence);
+  let nussinov = calculate_nussinov(probs.sequence, false);
   let maxScore = nussinov.max_score;
   let nussinovMatrix = nussinov.matrix;
   let nussinovBacktrace = nussinov.backtrace;
@@ -115,7 +115,13 @@ onMounted(() => {
   let first_cell: string | EventTarget | null = "";
   let dotBracket_str = ".".repeat(probs.sequence.length);
 
-    let table = document.querySelector("#table")!.querySelector("tbody");
+  let all_optimal_solutions = nussinov.all_tracebacks;
+  extract_cells_from_solutions(all_optimal_solutions);
+
+  let choosen_solution;
+
+
+  let table = document.querySelector("#table")!.querySelector("tbody");
     let stepper = document.querySelector("#stepper")!;
 
     if(!probs.isStepper) {
@@ -153,25 +159,30 @@ onMounted(() => {
               // (so no progress gets deleted)
               if (first_cell!.style.backgroundColor == "blue") {
                 first_cell!.style.backgroundColor = "red";
-          }
+              }
 
                     if (probs.helper){
                         helper_inactive(table);
                         }
-                    
-                        if (validate_traceback(first_cell, event.target, nussinovBacktrace)) {
-                            let crtNode = new PathNode(event.target!);
-                            let prevNode = new PathNode(first_cell!);
 
-                            if ((crtNode.pos.x == prevNode.pos.x + 1) && (crtNode.pos.y == prevNode.pos.y - 1)) {
-                                dotBracket_str = addBasePair(dotBracket_str, prevNode.pos);
-                                pairCounter++;
-                            }
-                            if (pairCounter == maxScore) {
-                                isTracebackFinished.value = true;
-                                updateResult(probs.sequence, dotBracket_str, true.toString());
-                            }
+                        console.log("I am here")
+                        console.log(all_optimal_solutions)
+                        console.log(first_cell, event.target)
+                        let validate_traceback_output = validate_traceback(first_cell, event.target, all_optimal_solutions)
+                        all_optimal_solutions = validate_traceback_output.output_hits;
+
+
+                      if(all_optimal_solutions.length == 1){
+
+                        if(all_optimal_solutions[0].traceback_puffer.length == 0){
+
+                          choosen_solution = all_optimal_solutions[0];
+                          isTracebackFinished.value = true;
+                          updateResult(probs.sequence, choosen_solution.secondary_structure.join(""), true.toString());
+                          console.log("Finished", choosen_solution)
+
                         }
+                      }
                         first_cell = "";
                     }
                 };
