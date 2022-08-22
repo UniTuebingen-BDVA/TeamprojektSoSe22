@@ -9,7 +9,7 @@
   <div class="nBody">
     <div class="nText">
       <h1>Welcome to <br><span>Teaching Nussinov</span></h1>
-      <p>Learn the key ideas of dynamic programming algorithms <br> and how to use the Nussinov algorithm predict correct RNA-structures</p><br>
+      <p>Learn the key ideas of dynamic programming algorithms <br> and how to use the Nussinov algorithm to correctly predict RNA structures</p><br>
       <div class="nButton">
         <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Start Tutorial'" :link="'./PrototypeTeaching/src/pages/Tutorial/BioBackgroundRNA1.html'"/>
         <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Try the game'" :link="'./rna/game.html'"/>

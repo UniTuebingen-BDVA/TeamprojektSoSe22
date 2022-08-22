@@ -49,11 +49,6 @@ onMounted(() => {
 
     let table = document.querySelector("#table")!.querySelector("tbody");
 
-    // DEBUG ONLY
-
-    fillTable(nussinovMatrix, table, probs.sequence);
-    isFilled = true;
-
     table!.addEventListener("click", function (event) {
         if (event.target!.className == 'cell' && !isTracebackFinished.value) {
 
