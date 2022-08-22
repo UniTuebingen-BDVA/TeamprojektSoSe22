@@ -1,7 +1,7 @@
 import { get_current_index } from "./validate_fill";
 import { pos } from "./traceback_binary_tree"
 
-export function helper_active(cell:HTMLTableCellElement, table:HTMLTableSectionElement){
+export function helper_active(cell:HTMLTableCellElement, table:HTMLTableElement){
     let pos:pos = get_current_index(cell);
     if (pos.y > pos.x){
         // case 1
@@ -30,7 +30,7 @@ export function helper_active(cell:HTMLTableCellElement, table:HTMLTableSectionE
     }   
 }
 
-export function helper_inactive(table:HTMLTableSectionElement){
+export function helper_inactive(table:HTMLTableElement){
     for (let i = 1; i < table.rows.length; i++){
         for (let j = 1; j < table.rows[0].cells.length; j++){
             let crt_cell = table.rows[i].cells[j];
