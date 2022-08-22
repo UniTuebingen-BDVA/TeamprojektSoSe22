@@ -45,7 +45,7 @@ import StartButton from "../../components/StartButton.vue";
       class="teachingButton"
       :filled="false"
       :primary-color="'red'"
-      :text="'Next &#x2192;'"
+      :text="'Next level'"
       :link="'../../pages/Levels/Level03Start.html'"
     />
   </div>

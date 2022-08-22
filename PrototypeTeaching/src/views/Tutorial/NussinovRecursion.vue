@@ -44,20 +44,20 @@ import UniButtonLink from "../../components/UniButtonLink.vue";
         </li>
       </ol>
       <p>
-        For each cell we calculate we have to check all 4 cases and look for the
-        case that gives us the maximum score
+        For each cell that we calculate we have to check all 4 cases and look for the
+        case that gives us the maximum score.
       </p>
       <p>
         In addition, we have to remember how we got the score for each cell.
         This is important for the Traceback. If there are more than one maxima,
-        you can either choose one ore try to remember all of them. The Nussinov
-        algorithem computes a set of optimal structures
+        you can either choose one or try to remember all of them. The Nussinov
+        algorithm computes a set of optimal structures.
       </p>
       <br />
       <p><img class="centerImg" src="../../assets/Recursion_formula.png" /></p>
       <p>Let's go through each case and see how this looks on an example.</p>
-      <p>Given the Sequence ACCUGGA we now compute the score of Ɣ(2,6)</p>
-      <p>We first look only at the first 3 cases</p>
+      <p>Given the Sequence <b>ACCUGGA</b> we now compute the score of Ɣ(2,6)</p>
+      <p>At first we only look at the first 3 cases</p>
 
       <br />
 
@@ -68,10 +68,10 @@ import UniButtonLink from "../../components/UniButtonLink.vue";
         />
 
         <ul>
-          <li style="color: green">Case1: Ɣ(i + 1, j) = Ɣ(3,6) = 1</li>
-          <li style="color: deepskyblue">Case2: Ɣ(i, j - 1) = Ɣ(2,5) = 1</li>
+          <li style="color: green">Case 1: Ɣ(i + 1, j) = Ɣ(3,6) = 1</li>
+          <li style="color: deepskyblue">Case 2: Ɣ(i, j - 1) = Ɣ(2,5) = 1</li>
           <li style="color: darkred">
-            Case3: Ɣ( i + 1, j - 1) + δ(i,j) = Ɣ(3,5) + δ(2,6) = 1 + 1 = 2
+            Case 3: Ɣ( i + 1, j - 1) + δ(i,j) = Ɣ(3,5) + δ(2,6) = 1 + 1 = 2
           </li>
         </ul>
       </div>
@@ -83,7 +83,7 @@ import UniButtonLink from "../../components/UniButtonLink.vue";
         Case 4 is a special case because it includes a additional variable k
         which runs between i and j.
       </p>
-      <p>So for cell Ɣ(2,6) we have a k 3, 4 and 5</p>
+      <p>So for cell Ɣ(2,6) there are 3 possibilities for k which are 3, 4 and 5.</p>
       <p>Thats why we have to compute multiple scores for this case.</p>
 
       <br />
@@ -93,13 +93,13 @@ import UniButtonLink from "../../components/UniButtonLink.vue";
 
         <ul>
           <li style="color: green">
-            Ɣ(i, k1) + Ɣ(k1+1, j)= Ɣ(2,3) Ɣ(4, 6)= 0 + 1
+            Ɣ(i, k1) + Ɣ(k1+1, j)= Ɣ(2,3) Ɣ(4, 6)= 0 + 1 = 1
           </li>
           <li style="color: deepskyblue">
-            Ɣ(i, k2) + Ɣ(k2+1, j)= Ɣ(2,4) Ɣ(5, 6)= 1 + 0
+            Ɣ(i, k2) + Ɣ(k2+1, j)= Ɣ(2,4) Ɣ(5, 6)= 1 + 0 = 1
           </li>
           <li style="color: darkred">
-            Ɣ(i, k3) + Ɣ(k3+1, j)= Ɣ(2,5) Ɣ(6, 6)= 1 + 0
+            Ɣ(i, k3) + Ɣ(k3+1, j)= Ɣ(2,5) Ɣ(6, 6)= 1 + 0 = 1
           </li>
         </ul>
       </div>

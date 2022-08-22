@@ -15,16 +15,16 @@ import StartButton from "../../components/StartButton.vue";
       :link="'../../pages/Levels/LevelStart.html'"
     />
     <div class="tutorialBox">
+      <p>Now try it out yourself!</p>
       <p>Remember, you need this</p>
       <img src="../../assets/nussinov-cases.png" />
-      <p>Now try it out yourself!</p>
       <StartButton :length="6"></StartButton>
     </div>
     <UniButtonLink
       class="teachingButton"
       :filled="false"
       :primary-color="'red'"
-      :text="'Try it out!'"
+      :text="'Select another level'"
       :link="'../../pages/Levels/LevelStart.html'"
     />
   </div>

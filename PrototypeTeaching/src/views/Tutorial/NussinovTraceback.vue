@@ -16,7 +16,7 @@ import UniButtonLink from "../../components/UniButtonLink.vue";
     <div class="tutorialBox">
       <h3>Traceback</h3>
       <p style="display: flex">
-        For the Traceback, we have to start in the top right corner an go
+        For the Traceback, we have to start in the top right corner and go
         through the table.<br />
         We just go from one cell to the cell from where we got the score.<br />
         Every time we got the score from case 3, we pair the two bases.<br />
@@ -41,6 +41,11 @@ import UniButtonLink from "../../components/UniButtonLink.vue";
           src="../../assets/TutorialExample_Traceback.png"
         />
       </p>
+      <p>Note that the minimal loop length is also an important parameter for 
+      good secondary structure predictions because loops always have a 
+      destabalizing effect on the structure whereas helicals have a stabalizing 
+      effect.</p> <br>
+      <p>Now the tutorial is finished and you can test your knownledge on the next page!</p>
     </div>
     <div class="flex">
       <UniButtonLink

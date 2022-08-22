@@ -25,7 +25,7 @@ import UniButtonLink from "../../components/UniButtonLink.vue";
       </p>
       <br />
       <p>
-        The Nussinov is a fairly simple dynamic programming algorithm that, can
+        The Nussinov is a fairly simple dynamic programming algorithm that can
         determine the secondary structure of a given RNA.<br />
         The goal is to fill a dynamic programming table, which is used to
         determine the secondary structure.

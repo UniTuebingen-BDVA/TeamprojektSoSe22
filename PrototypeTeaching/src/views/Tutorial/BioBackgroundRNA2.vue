@@ -21,7 +21,9 @@ import NussinovHeader from "../../../../common/NussinovHeader.vue";
         which also makes up its primary structure. <br />
         The next step is a little more complicated. Like in DNA, each nucleobase
         has a complementary base with which it can form a pair, in fact, adenine
-        always wants to bind to a uracil base and guanine to a cytosine base.
+        always wants to bind to a uracil base and guanine to a cytosine base. 
+        Sometimes guanine and uracil and adenine and cytosine form a pair which 
+        is known as a wobble-pair. These pairs are often called non-watson-crick-pairings.
         <br />
         As DNA is double-stranded, all nucleobases are already bound, but in a
         single-stranded RNA molecule this is not possible that easily. The RNA
