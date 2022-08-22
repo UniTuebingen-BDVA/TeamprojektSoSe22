@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 import Frontpage from "./Frontpage.vue";
 import Game from "./rna/src/App.vue";
+import legalNotice from "./PrototypeTeaching/src/views/legalNotice.vue";
 
 import Level from "./PrototypeTeaching/src/views/Levels/LevelStart.vue";
 import Level1 from "./PrototypeTeaching/src/views/Levels/Level01Start.vue";
@@ -26,6 +27,7 @@ import "./PrototypeTeaching/src/common/style.css";
 
 createApp(Frontpage).mount("#app");
 createApp(Game).mount("#game"); //from you gaming guys
+createApp(legalNotice).mount("#legalNotice");
 
 createApp(Level).mount("#level");
 createApp(Level1).mount("#level1");
