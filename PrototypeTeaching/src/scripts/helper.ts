@@ -1,17 +1,20 @@
 import { get_current_index } from "./validate_fill";
 import { pos } from "./traceback_binary_tree"
 
-export function helper_active(cell:HTMLTableCellElement, table:HTMLTableElement){
+export function helper_active(cell:HTMLTableCellElement, table:HTMLTableSectionElement){
     let pos:pos = get_current_index(cell);
     if (pos.y > pos.x){
         // case 1
-        table.rows[pos.x + 1].cells[pos.y].style.backgroundColor = "#45350a";
+        let case1_cell:HTMLTableCellElement = table.rows[pos.x + 1].cells[pos.y];
+        case1_cell.style.backgroundColor = case1_cell.style.backgroundColor == "red" ? "red" : "#45350a";
     
         // case 2
-        table.rows[pos.x].cells[pos.y - 1].style.backgroundColor = "#b4a069";
+        let case2_cell:HTMLTableCellElement = table.rows[pos.x].cells[pos.y - 1];
+        case2_cell.style.backgroundColor = case2_cell.style.backgroundColor == "red" ? "red" : "#b4a069";
 
         // case 3
-        table.rows[pos.x + 1].cells[pos.y - 1].style.backgroundColor = "#ab8316";
+        let case3_cell:HTMLTableCellElement = table.rows[pos.x + 1].cells[pos.y - 1];
+        case3_cell.style.backgroundColor = case3_cell.style.background == "red" ? "red" : "#ab8316";
         
         // case 4 [Bifurcation]
         let color:string = "#808080";
@@ -30,7 +33,7 @@ export function helper_active(cell:HTMLTableCellElement, table:HTMLTableElement)
     }   
 }
 
-export function helper_inactive(table:HTMLTableElement){
+export function helper_inactive(table:HTMLTableSectionElement){
     for (let i = 1; i < table.rows.length; i++){
         for (let j = 1; j < table.rows[0].cells.length; j++){
             let crt_cell = table.rows[i].cells[j];
