@@ -135,57 +135,48 @@ onMounted(() => {
                     });
                 }
 
-      // traceback stage
-      else {
-        if (first_cell == "") {
-          first_cell = event.target;
-                    if (probs.helper){
-                        helper_active(first_cell, table);
-                    }
-          // if the cell was already correct, it's marked with a different color
-          if (first_cell!.style.backgroundColor == "red") {
-            first_cell!.style.backgroundColor = "blue";
-            return;
-          }
+                // traceback stage
+                else {
+                    if (first_cell == "") {
+                        first_cell = event.target;
+                        if (probs.helper){
+                            helper_active(first_cell, table);
+                        }
+                        // if the cell was already correct, it's marked with a different color
+                        if (first_cell!.style.backgroundColor == "red") {
+                            first_cell!.style.backgroundColor = "blue";
+                            return;
+                        }
 
                         first_cell!.style.backgroundColor = "lightblue";
-                    }
-                    else {
+                    } else {
                         if (first_cell!.style.backgroundColor == "lightblue") {
                             first_cell!.style.backgroundColor = "transparent";
                         }
 
-              // if the cell already correct, it's marked with the red color
-              // (so no progress gets deleted)
-              if (first_cell!.style.backgroundColor == "blue") {
-                first_cell!.style.backgroundColor = "red";
-              }
-
-                    if (probs.helper){
-                        helper_inactive(table);
+                        // if the cell already correct, it's marked with the red color
+                        // (so no progress gets deleted)
+                        if (first_cell!.style.backgroundColor == "blue") {
+                            first_cell!.style.backgroundColor = "red";
                         }
 
-                        console.log("I am here")
-                        console.log(all_optimal_solutions)
-                        console.log(first_cell, event.target)
-                        let validate_traceback_output = validate_traceback(first_cell, event.target, all_optimal_solutions)
+                        if (probs.helper){
+                            helper_inactive(table);
+                        }
+                        let validate_traceback_output = validate_traceback(first_cell, event.target, all_optimal_solutions);
                         all_optimal_solutions = validate_traceback_output.output_hits;
 
 
-                      if(all_optimal_solutions.length == 1){
-
-                        if(all_optimal_solutions[0].traceback_puffer.length == 0){
-
-                          choosen_solution = all_optimal_solutions[0];
-                          isTracebackFinished.value = true;
-                          updateResult(probs.sequence, choosen_solution.secondary_structure.join(""), true.toString());
-                          console.log("Finished", choosen_solution)
-
+                        if(all_optimal_solutions.length == 1){
+                            if(all_optimal_solutions[0].traceback_puffer.length == 0){
+                                choosen_solution = all_optimal_solutions[0];
+                                isTracebackFinished.value = true;
+                                updateResult(probs.sequence, choosen_solution.secondary_structure.join(""), true.toString());
+                            }
                         }
-                      }
                         first_cell = "";
                     }
-                };
+                }
             }
         });
     } else {
@@ -201,7 +192,6 @@ onMounted(() => {
                     updateTraceback(table,traceback);
                 }
             }
-
         });
     }
 });
@@ -234,24 +224,24 @@ onMounted(() => {
 
 <style scoped>
 .nButton{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: max-content;
-        height: 40px;
-        font-family: var(--uni-font);
-        padding: 10px;
-        font-size: 20px;
-        font-weight: 550;
-        transition: color .3s;
-        border: solid 2px var(--uni-color-red);
-        background-color: transparent;
-        color: var(--uni-color-red);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: max-content;
+    height: 40px;
+    font-family: var(--uni-font);
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 550;
+    transition: color .3s;
+    border: solid 2px var(--uni-color-red);
+    background-color: transparent;
+    color: var(--uni-color-red);
     }
-        .nButton:hover{
-        background-color: var(--uni-color-red-hover);
-        color: white;
-    }
+.nButton:hover{
+    background-color: var(--uni-color-red-hover);
+    color: white;
+}
 .flex-container {
     display: flex;
     flex-wrap: wrap;
@@ -265,16 +255,16 @@ onMounted(() => {
     flex: 0.5 1 30%;
 }
 .flex-container > div {
-  margin: 0% 2.5%;
-  display: flex;
-  flex-direction: column;
-  align-self: flex-start;
+    margin: 0% 2.5%;
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
 }
 
 #tracebackDone {
-  margin-top: 2em;
-  color: black;
-  position: relative;
-  text-align: center;
+    margin-top: 2em;
+    color: black;
+    position: relative;
+    text-align: center;
 }
 </style>

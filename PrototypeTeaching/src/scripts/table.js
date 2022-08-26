@@ -54,7 +54,6 @@ function add_seq_to_table(sequence, nussinovMatrix) {
   for (let i = 0; i < n; i++) {
     data[i + 1].unshift(sequence[i]);
   }
-  console.log(data);
   return data;
 }
 

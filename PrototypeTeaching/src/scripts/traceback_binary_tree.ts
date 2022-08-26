@@ -53,13 +53,11 @@ export class PathNode {
 // additional possible check: use score similar to single-solution
 function isDone(crtNode: PathNode | undefined) {
   if (crtNode != undefined) {
-    console.log(crtNode);
     if (
       crtNode.left === undefined &&
       crtNode.right === undefined &&
       crtNode.pos.x != crtNode.pos.y
     ) {
-      console.log(crtNode);
       //tailEndsCorrect = false; //must correspond to a known previously initialized variable
     } else {
       isDone(crtNode.left);

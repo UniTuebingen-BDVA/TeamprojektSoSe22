@@ -8,16 +8,14 @@
  * @effects : colors the cells in red if they are part of the traceback.
  */
 export function validate_traceback(cell1, cell2, all_optimal_solutions){
-  let index_cell1 = get_current_index(cell1)
-  let index_cell2 = get_current_index(cell2)
-  let result = is_path_valid(index_cell1, index_cell2, all_optimal_solutions)
-  console.log(index_cell1, index_cell2);
+  let index_cell1 = get_current_index(cell1);
+  let index_cell2 = get_current_index(cell2);
+  let result = is_path_valid(index_cell1, index_cell2, all_optimal_solutions);
   if(result.found_hit){
-    console.log("found hit")
     cell1.style.backgroundColor = "red";
     cell2.style.backgroundColor = "red";
   }
-  return result
+  return result;
 }
 
 /**
@@ -33,7 +31,7 @@ function is_path_valid(index_cell1, index_cell2, all_optimal_solutions){
   let found_hit = false;
   let no_hits = [];
   let hits   = [];
-  let number_of_optimal_solutions = all_optimal_solutions.length
+  let number_of_optimal_solutions = all_optimal_solutions.length;
 
   for (let j = 0; j < number_of_optimal_solutions; j++) {
     let path = all_optimal_solutions[j].traceback_path;
@@ -79,7 +77,7 @@ function is_path_valid(index_cell1, index_cell2, all_optimal_solutions){
   }
 
   if(output){
-    return {output_hits: hits,found_hit: true}
+    return {output_hits: hits,found_hit: true};
   }else {
     return {output_hits: no_hits,found_hit: false};
   }

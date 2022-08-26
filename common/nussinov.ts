@@ -306,7 +306,6 @@ function next_gen_traceback(traceback: Traceback_obj):void{
       traceback.secondary_structure[pos[1]] = ")";
     }
   }
-  console.log(traceback.secondary_structure.join(""));
 }
 
 /**
@@ -410,7 +409,6 @@ export function calculate_nussinov(sequence: string, single_structure = true):nu
 
   let number_of_optimal_solutions = nuss.all_tracebacks.length;
 
-  console.log(nuss.sequence);
 
   for (let i = 0; i < number_of_optimal_solutions; i++) {
     next_gen_traceback(nuss.all_tracebacks[i]);
