@@ -43,9 +43,10 @@ import UniButtonLink from "../../components/UniButtonLink.vue";
       </p>
       <p>Note that the minimal loop length is also an important parameter for 
       good secondary structure predictions because loops always have a 
-      destabalizing effect on the structure whereas helicals have a stabalizing 
+      destabilizing effect on the structure whereas helicals have a stabilizing 
       effect.</p> <br>
-      <p>Now the tutorial is finished and you can test your knownledge on the next page!</p>
+      <p>On the next page you will find a stepper which shows you  how to fill the table. 
+      If you don't want to see this you can click the Button "Try it out!" to skip this part.</p>
     </div>
     <div class="flex">
       <UniButtonLink
