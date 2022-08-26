@@ -41,7 +41,7 @@ import NussinovHeader from "../../../../common/NussinovHeader.vue";
       :filled="false"
       :primary-color="'red'"
       :text="'Next &#x2192;'"
-      :link="'../../pages/Tutorial/BioBackgroundRNA3.html'"
+      :link="'../../pages/Tutorial/BioBackgroundRNA2.html'"
     />
   </div>
 </template>

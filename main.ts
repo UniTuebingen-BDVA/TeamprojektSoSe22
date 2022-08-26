@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import Frontpage from "./Frontpage.vue";
 import Game from "./rna/src/App.vue";
-import legalNotice from "./PrototypeTeaching/src/views/legalNotice.vue";
+import legalNotice from "./common/legalNotice.vue";
 
 import Level from "./PrototypeTeaching/src/views/Levels/LevelStart.vue";
 import Level1 from "./PrototypeTeaching/src/views/Levels/Level01Start.vue";
@@ -14,8 +14,8 @@ import Level_help from "./PrototypeTeaching/src/views/Levels/LevelHelp.vue";
 import score from "./PrototypeTeaching/src/views/Levels/LevelScore.vue";
 
 import Tutorial_BB_1 from "./PrototypeTeaching/src/views/Tutorial/BioBackgroundRNA1.vue";
-import Tutorial_BB_2 from "./PrototypeTeaching/src/views/Tutorial/BioBackgroundRNA3.vue";
-import Tutorial_BB_3 from "./PrototypeTeaching/src/views/Tutorial/BioBackgroundRNA2.vue";
+import Tutorial_BB_2 from "./PrototypeTeaching/src/views/Tutorial/BioBackgroundRNA2.vue";
+import Tutorial_BB_3 from "./PrototypeTeaching/src/views/Tutorial/BioBackgroundRNA3.vue";
 import Tutorial_3 from "./PrototypeTeaching/src/views/Tutorial/NussinovStepperFirst.vue";
 import Tutorial_Introduction from "./PrototypeTeaching/src/views/Tutorial/NussinovIntroduction.vue";
 import Tutorial_Initialization from "./PrototypeTeaching/src/views/Tutorial/NussinovInitialization.vue";

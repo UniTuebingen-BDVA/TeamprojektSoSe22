@@ -15,37 +15,34 @@ import NussinovHeader from "../../../../common/NussinovHeader.vue";
     />
     <div class="tutorialBox">
       <p>
-        So, what is RNA used for? <br />
-        Actually, there are three types of RNA, which have all different
-        functions and structures, but are all important in the synthesis of
-        proteins.
+        At last, and most importantly, you should know some things about the RNA
+        molecule structure itself. <br />
+        As said, the molecule is basically a linear sequence of its nucleotides,
+        which also makes up its primary structure. <br />
+        The next step is a little more complicated. Like in DNA, each nucleobase
+        has a complementary base with which it can form a pair, in fact, adenine
+        always wants to bind to a uracil base and guanine to a cytosine base.
+        Sometimes guanine and uracil and adenine and cytosine form a pair which
+        is known as a wobble-pair. These pairs are often called non-watson-crick-pairings.
+        <br />
+        As DNA is double-stranded, all nucleobases are already bound, but in a
+        single-stranded RNA molecule this is not possible that easily. The RNA
+        strand itself folds between complementary regions and this folding is
+        called the secondary structure of the molecule. <br />
+        Of course, it is highly unlikely that these folds will be a perfect
+        match like in DNA, and in reality, many different structures can be
+        found like helices, bulges, loops, and junctions.
       </p>
-      <ol>
-        <li>
-          The messenger RNA (mRNA) carries a copy of the genetic code from the
-          DNA, which basically contains the instructions to build a protein.
-          This copy is now brought to the ribosomes in the cytoplasm.
-        </li>
-        <li>
-          The ribosomes themselves are made up of another type of RNA, the
-          ribosomal RNA (rRNA). The ribosomes are composed of a large and small
-          subunit, each of which is made up of its own specific rRNA molecules.
-          These molecules act as the site of protein synthesis.
-        </li>
-        <li>
-          The transfer RNA (tRNA) is an essential part of this process, and
-          responsible for carrying amino acids to the ribosome surface. There it
-          will be bound to the growing polypeptide chain, following the sequence
-          given by the mRNA.
-        </li>
-      </ol>
+      <img class="nImage" src="../../assets/rna-structure-motifs.jpg" />
+      Great job reading everything! Now we can continue with the nussinov
+      algorithm.
     </div>
     <UniButtonLink
       class="teachingButton"
       :filled="false"
       :primary-color="'red'"
       :text="'Next &#x2192;'"
-      :link="'../../pages/Tutorial/BioBackgroundRNA2.html'"
+      :link="'../../pages/Tutorial/NussinovIntroduction.html'"
     />
   </div>
 </template>
@@ -55,7 +52,7 @@ import NussinovHeader from "../../../../common/NussinovHeader.vue";
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 70%;
   mix-blend-mode: multiply;
 }
 </style>

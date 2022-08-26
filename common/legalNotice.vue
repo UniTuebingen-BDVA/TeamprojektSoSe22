@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import NussinovHeader from "../../../common/NussinovHeader.vue";
+import NussinovHeader from "./NussinovHeader.vue";
 </script>
 
 <template>

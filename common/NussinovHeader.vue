@@ -18,22 +18,22 @@ import Logo from "./Logo.vue";
         <img src="../common/GitHub-Mark-64px.png">
     </a>
 
-  <a class="legalNotice" href="/TeamprojektSoSe22/PrototypeTeaching/src/pages/legalNotice.html">
-    <img src="/PrototypeTeaching/src/assets/legalNoticeIcon.png" width="70" height="70">
-  </a>
+    <a class="legalNotice" href="/TeamprojektSoSe22/common/legalNotice.html">
+      <img src="/common/legalNoticeIcon.png" width="70" height="70">
+    </a>
 </template>
 
 <style scoped>
     @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap');
-    .legalNotice {
-      position: fixed;
-      bottom: 10px;
-      left: 10px;
-    }
     .git-icon{
         position: fixed;
         bottom: 10px;
         right: 10px;
+    }
+    .legalNotice {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
     }
     .nHeader{
         position: fixed;
