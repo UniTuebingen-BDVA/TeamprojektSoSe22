@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import NussinovHeader from "../../../common/NussinovHeader.vue";
+import NussinovHeader from "./NussinovHeader.vue";
 </script>
 
 <template>
@@ -31,7 +31,7 @@ import NussinovHeader from "../../../common/NussinovHeader.vue";
       <a href="https://de.m.wikipedia.org/wiki/Datei:Document_icon_%28the_Noun_Project_27904%29.svg" title="document icon">Legal Notice Icon</a> <br>
       Picture on "BioBackgroundRNA1.html":
       <a href="https://www.coursehero.com/study-guides/microbiology/structure-and-function-of-rna/" title="DNA/RNA"> Picture of DNA/RNA</a> <br>
-      Picture on "BioBackgroundRNA2.html":
+      Picture on "BioBackgroundRNA3.html":
       <a href="https://www.gene-quantification.de/rna-integrity5.html" title="RNA secondary structure">RNA secondary structure</a> <br>
       <br> <br>
 
