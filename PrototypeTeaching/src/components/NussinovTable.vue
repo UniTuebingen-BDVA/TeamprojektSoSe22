@@ -1,19 +1,18 @@
 <script setup lang="ts">
 import { create_table } from "../scripts/table";
 import { onMounted, ref } from "vue";
-import { calculate_nussinov } from '../../../common/nussinov';
+import { calculate_nussinov, nussinov } from '../../../common/nussinov';
 import { is_entire_table_filled, validate_fill } from "../scripts/validate_fill";
 import { validate_traceback, get_path, extract_cells_from_solutions} from "../scripts/validate_traceback";
-import { PathNode, pos, addBasePair} from "../scripts/traceback_binary_tree";
+import { pos, addBasePair} from "../scripts/traceback_binary_tree";
 import { helper_active, helper_inactive } from "../scripts/helper";
 import RNAStructure from "./RNAStructure.vue";
 
-let pairCounter = 0;
-let isFilled = false;
+let isFilled:boolean = false;
 let isTracebackFinished = ref(false);
-let rowCounter = 0;
-let x = -1;
-let y = 0;
+let rowCounter:number = 0;
+let x:number = -1;
+let y:number = 0;
 let cell_step_back: any;
 
 //For emitting the image id, ergo which nussinov case is present at the moment
@@ -37,14 +36,14 @@ const probs = defineProps({
     }
 });
 
-let dotBracket_str = ".".repeat(probs.sequence.length);
+let dotBracket_str:string = ".".repeat(probs.sequence.length);
 let res = {
   finishScreen: false.toString(),
   sequence: probs.sequence,
   dotBracket: ".".repeat(probs.sequence.length),
 };
 
-function updateResult(seq: string, dotBracket: string, finishScreen: string) {
+function updateResult(seq:string, dotBracket:string, finishScreen:string) {
   res.sequence = seq;
   res.dotBracket = dotBracket;
   res.finishScreen = finishScreen;
@@ -62,7 +61,7 @@ function updateCellIndex(oldx:number,oldy:number, seq:string){
 }
 
 //Find which nussinov case is present at the moment
-function findNewCase(traceback){
+function findNewCase(traceback:any[]){
     if(traceback[0][0][0] == traceback[0][1][0] - 1 && traceback[0][0][1] == traceback[0][1][1]){
         emit("updateImage", 1);
     } else if(traceback[0][0][0] == traceback[0][1][0] && traceback[0][0][1] == traceback[0][1][1] + 1){
@@ -75,7 +74,7 @@ function findNewCase(traceback){
 }
 
 //Update stepper traceback
-function updateTraceback(table, traceback){
+function updateTraceback(table:HTMLTableSectionElement, traceback:any[]){
     //Update dot-bracket
     if ((traceback[0][0][0] == traceback[0][1][0] - 1) && (traceback[0][0][1] == traceback[0][1][1] + 1)) {
         dotBracket_str = addBasePair(dotBracket_str, new pos(traceback[0][0][0], traceback[0][0][1]));
@@ -106,41 +105,39 @@ function updateTraceback(table, traceback){
 }
 
 onMounted(() => {
-  create_table(probs.sequence);
-  let nussinov = calculate_nussinov(probs.sequence, false);
-  let maxScore = nussinov.max_score;
-  let nussinovMatrix = nussinov.matrix;
-  let nussinovBacktrace = nussinov.backtrace;
-  let traceback: any[] = get_path(nussinovBacktrace);
-  let first_cell: string | EventTarget | null = "";
-  let dotBracket_str = ".".repeat(probs.sequence.length);
+    create_table(probs.sequence);
+    let nussinov:nussinov = calculate_nussinov(probs.sequence, false);
+    let nussinovMatrix:number[][] = nussinov.matrix;
+    let nussinovBacktrace:number[][] = nussinov.backtrace;
+    let traceback = get_path(nussinovBacktrace);
+    let first_cell:HTMLTableCellElement|null = null;
+    let all_optimal_solutions:any[] = nussinov.all_tracebacks;
+    extract_cells_from_solutions(all_optimal_solutions);
 
-  let all_optimal_solutions = nussinov.all_tracebacks;
-  extract_cells_from_solutions(all_optimal_solutions);
+    let chosen_solution:any;
+    let crt_cell:HTMLTableCellElement;
 
-  let choosen_solution;
-
-
-  let table = document.querySelector("#table")!.querySelector("tbody");
+    let table = document.querySelector("#table")!.querySelector("tbody");
     let stepper = document.querySelector("#stepper")!;
 
     if(!probs.isStepper) {
         table!.addEventListener("click", function (event) {
-            if (event.target!.className == 'cell' && !isTracebackFinished.value) {
+            crt_cell = event.target as HTMLTableCellElement;
+            if (crt_cell.className == 'cell' && !isTracebackFinished.value) {
 
                 // fill stage
                 if (!isFilled) {
-                    validate_fill(event.target, nussinovMatrix).then(function(value) {
-                        isFilled = is_entire_table_filled(event.target);
+                    validate_fill(crt_cell, nussinovMatrix).then(function() {
+                        isFilled = is_entire_table_filled(crt_cell);
                     });
                 }
 
                 // traceback stage
                 else {
-                    if (first_cell == "") {
-                        first_cell = event.target;
+                    if (first_cell === null) {
+                        first_cell = crt_cell;
                         if (probs.helper){
-                            helper_active(first_cell, table);
+                            helper_active(first_cell, table!);
                         }
                         // if the cell was already correct, it's marked with a different color
                         if (first_cell!.style.backgroundColor == "red") {
@@ -161,20 +158,20 @@ onMounted(() => {
                         }
 
                         if (probs.helper){
-                            helper_inactive(table);
+                            helper_inactive(table!);
                         }
-                        let validate_traceback_output = validate_traceback(first_cell, event.target, all_optimal_solutions);
+                        let validate_traceback_output = validate_traceback(first_cell, crt_cell, all_optimal_solutions);
                         all_optimal_solutions = validate_traceback_output.output_hits;
 
 
                         if(all_optimal_solutions.length == 1){
                             if(all_optimal_solutions[0].traceback_puffer.length == 0){
-                                choosen_solution = all_optimal_solutions[0];
+                                chosen_solution = all_optimal_solutions[0];
                                 isTracebackFinished.value = true;
-                                updateResult(probs.sequence, choosen_solution.secondary_structure.join(""), true.toString());
+                                updateResult(probs.sequence, chosen_solution.secondary_structure.join(""), true.toString());
                             }
                         }
-                        first_cell = "";
+                        first_cell = null;
                     }
                 }
             }
@@ -189,7 +186,7 @@ onMounted(() => {
                         isFilled = true;
                     }
                 } else {
-                    updateTraceback(table,traceback);
+                    updateTraceback(table!,traceback);
                 }
             }
         });

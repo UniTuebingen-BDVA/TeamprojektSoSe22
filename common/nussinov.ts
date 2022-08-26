@@ -95,7 +95,7 @@ class Traceback_obj{
  * Class for Nussinov implementation
  * @param {string} input_sequence - RNA Sequence to use for the Nussinov algorithm
  */
-class nussinov{
+export class nussinov{
   sequence: string;
   sequence_length: number;
   matrix: number[][];
