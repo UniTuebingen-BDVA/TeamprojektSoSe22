@@ -17,15 +17,10 @@ export default defineConfig({
         rna: "./rna/game.html",
 
         // importing levels
-        level01FirstStep: levels_path + "Level01FirstStep.html",
         Level01Start: levels_path + "Level01Start.html",
         Level02Start: levels_path + "Level02Start.html",
         Level03Start: levels_path + "Level03Start.html",
-        LevelCorrect: levels_path + "LevelCorrect.html",
-        LevelHelp: levels_path + "LevelHelp.html",
-        LevelScore: levels_path + "LevelScore.html",
         LevelStart: levels_path + "LevelStart.html",
-        LevelWrong: levels_path + "LevelWrong.html",
 
         // importing tutorial
         BioBackgroundRNA1: tutorial_path + "BioBackgroundRNA1.html",

@@ -18,22 +18,6 @@ import StartButton from "../../components/StartButton.vue";
 
       <StartButton :sequence="'GACGCUAC'"></StartButton>
     </div>
-    <!--<div class="flex">
-        <UniButtonLink
-          class="teachingButton"
-          :filled ="false"
-          :primary-color="'red'"
-          :text="'Need help?'"
-          :link="'../../pages/Levels/LevelHelp.html'"
-        />
-        <UniButtonLink
-          class="teachingButton"
-          :filled="false"
-          :primary-color="'red'"
-          :text="'Next &#x2192;'"
-          :link="'../../pages/Levels/Level01FirstStep.html'"
-        />
-      </div>-->
     <UniButtonLink
       class="teachingButton leftButton"
       :filled="false"
