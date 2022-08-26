@@ -58,6 +58,7 @@ export async function validate_fill(cell, nussinovMatrix){
         if(is_cell_valid(cell)){
             const {value: user_input } = await Swal.fire({
                 title: 'Please enter the value for the current cell!',
+                customClass: 'inputPrompt',
                 input: 'number',
                 showCancelButton: true,
                 inputAttributes: {
@@ -85,6 +86,7 @@ export async function validate_fill(cell, nussinovMatrix){
             else{
                 Swal.fire({
                     title: 'Oops...',
+                    customClass: 'inputPrompt',
                     text: 'Your value was incorrect, please check the equation and try again!',
                     icon: 'error',
                     confirmButtonText: 'Got it'
@@ -94,6 +96,7 @@ export async function validate_fill(cell, nussinovMatrix){
         } else {
             Swal.fire({
                 title: 'Oops...',
+                customClass: 'inputPrompt',
                 text: 'This cell cannot be filled yet, remember you can only fill cells along the diagonal in the upper triangle matrix!',
                 icon: 'error',
                 confirmButtonText: 'Got it'
@@ -103,6 +106,7 @@ export async function validate_fill(cell, nussinovMatrix){
     } else {
         Swal.fire({
             title: 'Oops...',
+            customClass: 'inputPrompt',
             text: 'This cell is already filled, choose a different cell!',
             icon: 'error',
             confirmButtonText: 'Got it'

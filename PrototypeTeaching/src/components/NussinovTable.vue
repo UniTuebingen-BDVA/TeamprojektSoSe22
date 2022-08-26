@@ -218,7 +218,12 @@ onMounted(() => {
 </div>
 
 </template>
-
+<style>
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+.inputPrompt > h2{
+    font-family: var(--uni-font);
+}
+</style>
 <style scoped>
 .nButton{
     display: flex;
