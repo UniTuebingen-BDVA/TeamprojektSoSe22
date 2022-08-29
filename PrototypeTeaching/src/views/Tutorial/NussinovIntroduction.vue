@@ -1,6 +1,44 @@
 <script setup lang="ts">
 import NussinovHeader from "../../../../common/NussinovHeader.vue";
 import UniButtonLink from "../../components/UniButtonLink.vue";
+import { onMounted } from "vue";
+import step_1_gif from "../../assets/TutorialMatrix_Initialisation.gif";
+import step_1_img from "../../assets/off-state-init.png";
+
+import step_2_gif from "../../assets/TutorialMatrix_Recursion.gif";
+import step_2_img from "../../assets/off-state-rec.png";
+
+import step_3_gif from "../../assets/TutorialMatrix_Traceback.gif";
+import step_3_img from "../../assets/off-state-trc.png";
+
+onMounted(() => {
+  document.getElementById("step_1")?.addEventListener('mouseenter', function(event){
+    let crt_elem:HTMLImageElement = event.target as HTMLImageElement;
+    crt_elem.src = step_1_gif;
+  });
+  document.getElementById("step_1")?.addEventListener('mouseleave', function(event){
+    let crt_elem:HTMLImageElement = event.target as HTMLImageElement;
+    crt_elem.src = step_1_img;
+  });
+
+  document.getElementById("step_2")?.addEventListener('mouseenter', function(event){
+    let crt_elem:HTMLImageElement = event.target as HTMLImageElement;
+    crt_elem.src = step_2_gif;
+  });
+  document.getElementById("step_2")?.addEventListener('mouseleave', function(event){
+    let crt_elem:HTMLImageElement = event.target as HTMLImageElement;
+    crt_elem.src = step_2_img;
+  });
+
+  document.getElementById("step_3")?.addEventListener('mouseenter', function(event){
+    let crt_elem:HTMLImageElement = event.target as HTMLImageElement;
+    crt_elem.src = step_3_gif;
+  });
+  document.getElementById("step_3")?.addEventListener('mouseleave', function(event){
+    let crt_elem:HTMLImageElement = event.target as HTMLImageElement;
+    crt_elem.src = step_3_img;
+  });
+});
 </script>
 
 <template>
@@ -38,9 +76,8 @@ import UniButtonLink from "../../components/UniButtonLink.vue";
               >The initialization</a
             ><br />
             <img
+              id="step_1" 
               src="../../assets/off-state-init.png"
-              onmouseenter="this.src ='../../assets/TutorialMatrix_Initialisation.gif';"
-              onmouseout="this.src = '../../assets/off-state-init.png';"
               alt="Here should be a matrix"
               width="200"
             />
@@ -50,9 +87,8 @@ import UniButtonLink from "../../components/UniButtonLink.vue";
               >The recursion</a
             ><br />
             <img
+              id="step_2" 
               src="../../assets/off-state-rec.png"
-              onmouseenter="this.src ='../../assets/TutorialMatrix_Recursion.gif';"
-              onmouseout="this.src = '../../assets/off-state-rec.png';"
               alt="Here should be a matrix"
               width="200"
             />
@@ -62,9 +98,8 @@ import UniButtonLink from "../../components/UniButtonLink.vue";
               >The traceback</a
             ><br />
             <img
+              id="step_3"
               src="../../assets/off-state-trc.png"
-              onmouseenter="this.src ='../../assets/TutorialMatrix_Traceback.gif';"
-              onmouseout="this.src = '../../assets/off-state-trc.png';"
               alt="Here should be a matrix"
               width="200"
             />
