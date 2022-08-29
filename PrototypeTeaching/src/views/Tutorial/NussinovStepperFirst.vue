@@ -3,11 +3,27 @@
   import NussinovHeader from '../../../../common/NussinovHeader.vue';
   import StartButton from '../../components/StartButton.vue';
   import { ref } from 'vue';
-
-  let image = ref('../../assets/nussinov-cases.png');
+  import image_0 from '../../assets/nussinov-cases.png';
+  import image_1 from '../../assets/nussinov-cases_1.jpg';
+  import image_2 from '../../assets/nussinov-cases_2.jpg';
+  import image_3 from '../../assets/nussinov-cases_3.jpg';
+  import image_4 from '../../assets/nussinov-cases_4.jpg';
 
   function updateImage(id){
-    image.value = '../../assets/nussinov-cases_' + id + '.jpg';
+    switch (id) {
+      case 1:
+        document.getElementById('cases').src = image_1;
+          break;
+      case 2:
+        document.getElementById('cases').src = image_2;
+          break;
+      case 3:
+        document.getElementById('cases').src = image_3;
+          break;
+      case 4:
+        document.getElementById('cases').src = image_4;
+          break;
+    }
   }
 </script>
 
@@ -23,7 +39,7 @@
     />
     <div class="tutorialBox">
       <p>Remember, you need this </p>
-      <img :src="image">
+      <img id='cases' :src=image_0>
       <p>Now try it out yourself!</p>
       <StartButton :length = 6 :with-stepper="true" @update-image2="(i) => updateImage(i)"></StartButton>
       </div>
