@@ -5,11 +5,13 @@
  * @param {number[]} next_position - gives the position of its nodes
  */
 class TracebackChild {
-  traceback: any[][]
+  traceback: number[][]
   bifurcation: boolean;
   next_position: number[];
+  // TracebackNode is an array that stores all Nodes of a child
   nodes: TracebackNode[];
-  constructor(public traceback_input: any[][], public is_bifurcation: boolean, public next_position_input: number[]){
+
+  constructor(public traceback_input: number[][], public is_bifurcation: boolean, public next_position_input: number[]){
     this.traceback = traceback_input;
     this.bifurcation = is_bifurcation;
     this.next_position = next_position_input;
@@ -23,11 +25,13 @@ class TracebackChild {
  * @param {number[]} position - the position of the node
  * @return {TracebackNode[]} returns the TracebackNode.
  */
-function build_nodes(traceback_input:any[][], position:number[]):TracebackNode[]{
+function build_nodes(traceback_input:number[][], position:number[]):TracebackNode[]{
+  // Case if child is a bifurcation
   if(position.length == 4){
     let node_1 = new TracebackNode(traceback_input, false, [position[0], position[1]]);
     let node_2 = new TracebackNode(traceback_input, false, [position[2], position[3]]);
     return [node_1, node_2];
+    // Case if child is no bifurcation
   }else {
     return [new TracebackNode(traceback_input, false, position)];
   }
@@ -40,12 +44,13 @@ function build_nodes(traceback_input:any[][], position:number[]):TracebackNode[]
  * @param {number[]} input_position - position of the node
  */
 class TracebackNode{
-  traceback: any[][];
+  traceback: number[][];
   is_root: boolean;
   position: number[];
+  // TracebackChild is an array that stores all the children of a node.
   children: TracebackChild[];
 
-  constructor(public traceback_input: any[][], public root: boolean, public input_position: number[]) {
+  constructor(public traceback_input: number[][], public root: boolean, public input_position: number[]) {
     this.is_root = root;
     this.traceback = traceback_input;
     this.position = input_position;
@@ -59,12 +64,14 @@ class TracebackNode{
  * @param {number[]} position - the position of the next node that the child is pointing at
  * @return {TracebackChild[]} returns the TracebackChild.
  */
-function build_children(traceback:any[][], position:number[]):TracebackChild[]{
+function build_children(traceback:number[][], position:number[]):TracebackChild[]{
   let new_positions = traceback[position[0]][position[1]];
   let children = [];
   for (let i = 0; i < new_positions.length; i++) {
+    //case if the next position is a bifurcation.
     if(new_positions[i].length == 4){
       children.push(new TracebackChild(traceback, true, new_positions[i]))
+      //case if the next position is not a bifurcation.
     }else
       children.push(new TracebackChild(traceback, false, new_positions[i]))
   }
@@ -77,9 +84,14 @@ function build_children(traceback:any[][], position:number[]):TracebackChild[]{
  * @param {number} sequenze_length - The length of the Sequenze.
  */
 class Traceback_obj{
-  traceback_path: any[][];
+  // Stores the path of the traceback with tuples of coordinates that are consecutive.
+  traceback_path: number[][];
+  // the secondary structure in dot-bracket notation.
   secondary_structure: string[];
-  bifurcation_puffer: any[];
+  // needed for internal calculation of the traceback path.
+  // it caches the bifurcation.
+  bifurcation_puffer: number[][];
+  // is used for the visualization of the traceback.
   traceback_puffer: number[][];
 
   constructor(public sequenze_length: number) {
@@ -95,16 +107,27 @@ class Traceback_obj{
  * Class for Nussinov implementation
  * @param {string} input_sequence - RNA Sequence to use for the Nussinov algorithm
  */
-export class nussinov{
+export class Nussinov{
+  // The sequence
   sequence: string;
+  // The length of the sequence
   sequence_length: number;
+  // The scoring matrix
   matrix: number[][];
+  // All interim results of the scoring matrix
   calculations: any[];
-  backtrace: any[][];
+  // The backtrace matrix
+  // Each cell consists of an array with all position variations that result in the cell's score.
+  backtrace: number[][];
+  // One secondary structure (in dot-bracket notation).
   secondary_structure: string[];
+  // The max score
   max_score: number;
 
+  // All optimal solutions
+  // all_tracebacks consists of an array of Traceback objects (Traceback_obj)
   all_tracebacks: Traceback_obj[];
+  // The traceback tree.
   nTree: any;
 
 
@@ -115,6 +138,7 @@ export class nussinov{
     this.calculations = [];
     this.backtrace = make2dArray(input_sequence.length,-9);
     this.secondary_structure = initialize_sec_struc(input_sequence.length);
+    this.max_score = 0;
 
     this.all_tracebacks = [];
     this.nTree = [];
@@ -128,7 +152,7 @@ export class nussinov{
  * @param {number} val - initial value for every cell
  * @return {number[][]} Return 2d Matrix of size with val in every cell
  */
-function make2dArray(size:number, val:number):number[][]  {
+export function make2dArray(size:number, val:number):number[][]  {
   let arr = new Array(size);
   for(let i = 0; i < size; i++) {
     arr[i] = new Array(size);
@@ -144,7 +168,7 @@ function make2dArray(size:number, val:number):number[][]  {
  * @param {number} len - Length of secondary structure String
  * @return {string[]} Returns Dot-Bracket secondary structure String as Array
  */
-function initialize_sec_struc(len:number):string[]{
+export function initialize_sec_struc(len:number):string[]{
   let arr = [];
   for(let i = 0; i < len; i++){
     arr[i] = ".";
@@ -157,7 +181,7 @@ function initialize_sec_struc(len:number):string[]{
  * @param {any[][]} matrix_a - The matrix that one wants to copy
  * @return {any[][]} - a copy of the matrix a
  */
-function duplicate(matrix_a: any[][]):any[][] {
+export function duplicate(matrix_a: any[][]):any[][] {
   return matrix_a.map(function(arr) {return arr.slice();});
 }
 
@@ -172,9 +196,13 @@ function duplicate(matrix_a: any[][]):any[][] {
  */
 function get_score(nuss: nussinov, pos_i: number, pos_j: number):void{
 
+  // map stores the different coordinates with their score as key.
   const map = new Map();
+  // is used to be able to store all cords with the same value as one entry.
   let cords = [];
+  // is used to store all keys, in order to keep track which key has the highest score.
   let values = [];
+
   //Case 1
   let value = nuss.matrix[pos_i + 1][pos_j];
   if(!map.has(value)){
@@ -182,6 +210,7 @@ function get_score(nuss: nussinov, pos_i: number, pos_j: number):void{
     map.set(value, cords);
     values.push(value);
   }
+
   //Case 2
   value = nuss.matrix[pos_i][pos_j - 1];
   if(map.has(value)){
@@ -211,8 +240,8 @@ function get_score(nuss: nussinov, pos_i: number, pos_j: number):void{
     }
   }
 
-  //Case 4
-  for (let k = pos_i + 1; k < pos_j - 1; k++){ // <= ??
+  //Case 4 bifurcation
+  for (let k = pos_i + 1; k < pos_j - 1; k++){
     value = nuss.matrix[pos_i][k] + nuss.matrix[k + 1][pos_j];
     if(map.has(value)){
       cords = map.get(value);
@@ -225,23 +254,26 @@ function get_score(nuss: nussinov, pos_i: number, pos_j: number):void{
     }
   }
 
-
+  // extracts the max score
   let max = Math.max.apply(null, values);
   nuss.matrix[pos_i][pos_j] = max;
 
+  // stores all intermediate steps
   let a = duplicate(nuss.matrix);
   nuss.calculations.push(a);
 
+  // stores all positions that created the max score in the backtrace matrix.
   nuss.backtrace[pos_i][pos_j] = map.get(max);
 }
 
 /**
  * Funktion that checks for two given Chars {A, U, G, C} if they are canonical.
+ * also wobble base pairs are counted as a match.
  * @param {string} base_i - basepair one
  * @param {string} base_j - basepair two
  * @return {boolean}
  */
-function is_canonical(base_i: string, base_j: string):boolean{
+export function is_canonical(base_i: string, base_j: string):boolean{
   switch(base_i){
     case "A":
       return base_j === "U";
@@ -261,6 +293,8 @@ function is_canonical(base_i: string, base_j: string):boolean{
  * @param {nussinov} nuss - Input Nussinov object
  */
 function calculate_matrix(nuss: nussinov):void{
+
+  // Initializes the Matrix with 0 on the diagonal
   for (let i = 1; i < nuss.sequence_length; i++){
     nuss.matrix[i][i-1] = 0;
   }
@@ -271,15 +305,16 @@ function calculate_matrix(nuss: nussinov):void{
   let a = duplicate(nuss.matrix);
   nuss.calculations.push(a);
 
-
+  // goes through the upper right corner of the matrix and calls for each cell the function
+  // get_score
   for (let n = 1; n < nuss.sequence_length; n++){
     for (let j = n; j < nuss.sequence_length; j++){
       let i = j - n;
       get_score(nuss, i, j);
     }
   }
+  // stores the maximum score with the nussinov class.
   nuss.max_score = nuss.matrix[0][nuss.sequence_length-1];
-
 }
 
 
@@ -289,19 +324,16 @@ function calculate_matrix(nuss: nussinov):void{
  * @param {number} pos_i - first position in Matrix
  * @param {number} pos_j - second position in Matrix
  */
-function next_gen_traceback(traceback: Traceback_obj):void{
+function traceback(traceback: Traceback_obj):void{
   let path = traceback.traceback_path;
   const path_length = path.length;
 
   for (let i = 0; i < path_length; i++) {
     let pos_tuple = path[i];
     let pos = pos_tuple[0]
-    let new_pos = pos_tuple[1];
-    if(new_pos[0] === pos[0]+1 && new_pos[1] === pos[1]-1) {
-
-      // Debug
-      //console.log("This case");
-
+    let next_pos = pos_tuple[1];
+    // checks if consecutive positions are diagonal
+    if(next_pos[0] === pos[0]+1 && next_pos[1] === pos[1]-1) {
       traceback.secondary_structure[pos[0]] = "(";
       traceback.secondary_structure[pos[1]] = ")";
     }
@@ -322,13 +354,10 @@ function extract_tracebacks_from_nTree(nuss:nussinov, node:TracebackNode,
 
   // Case 1: there is no TracebackChild
   if(children_count == 0){
+    // checks if bifurcation_puffer is empty
     if(traceback.bifurcation_puffer.length == 0){
       nuss.all_tracebacks.push(traceback);
     }else {
-
-      //Debug
-      //console.log("Puffer needed")
-
       let next_node = traceback.bifurcation_puffer.pop();
       extract_tracebacks_from_nTree(nuss, next_node, traceback, single_structure);
     }
@@ -353,7 +382,7 @@ function extract_tracebacks_from_nTree(nuss:nussinov, node:TracebackNode,
       }
     }
 
-    // Case 3 there is exactly one TracebackChild or the last TracebackChild of Case 2
+    // Case 1 there is exactly one TracebackChild or the last TracebackChild of Case 2
     let child = node.children[0];
     process_childs(nuss, node, child, traceback, single_structure);
 
@@ -396,25 +425,28 @@ function process_childs(nuss:nussinov, node: TracebackNode, child: TracebackChil
  * @return {nussinov} - Return a Nussinov Object
  */
 export function calculate_nussinov(sequence: string, single_structure = true):nussinov{
-  let nuss = new nussinov(sequence);
+  // creates the nussinov class
+  let nuss = new Nussinov(sequence);
+
+  // calculates the matrix and the backtrace matrix
   calculate_matrix(nuss);
 
+  // creates the tree for the traceback
   nuss.nTree = new TracebackNode(nuss.backtrace, true, [0, sequence.length-1]);
 
+  // creates first traceback_obj for initializing the extraction of all tracebacks.
   let fist_traceback = new Traceback_obj(nuss.sequence_length);
 
-
+  // extracts all tracebacks
   extract_tracebacks_from_nTree(nuss, nuss.nTree, fist_traceback, single_structure);
 
-
-  let number_of_optimal_solutions = nuss.all_tracebacks.length;
-
-
+  // goes through all tracebacks and creates the secondary structure for each.
+  const number_of_optimal_solutions = nuss.all_tracebacks.length;
   for (let i = 0; i < number_of_optimal_solutions; i++) {
-    next_gen_traceback(nuss.all_tracebacks[i]);
+    traceback(nuss.all_tracebacks[i]);
   }
 
+  // stores one secondary structure in the nussinov class.
   nuss.secondary_structure = fist_traceback.secondary_structure;
-
   return nuss;
 }
