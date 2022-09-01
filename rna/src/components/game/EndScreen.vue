@@ -1,5 +1,4 @@
 <script setup>
-import Highscore from "./Highscore.vue";
 import UniButton from "../UniButton.vue";
 import RNAStructure from "../RNAStructure.vue";
 
@@ -55,8 +54,6 @@ for (const index in props.gamestate.userAnswer) {
       <h2>Nussinov Algorithm</h2>
     </div>
   </div>
-
-  <Highscore />
 
   <div class="AbButton">
     <UniButton
