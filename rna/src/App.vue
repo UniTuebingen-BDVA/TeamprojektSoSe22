@@ -9,7 +9,7 @@ import GamingPage from "./components/game/GamingPage.vue";
 </template>
 
 <style>
-#app {
+#game {
   font-family: var(--uni-font);
   color: var(--uni-font-color);
   -webkit-font-smoothing: antialiased;
