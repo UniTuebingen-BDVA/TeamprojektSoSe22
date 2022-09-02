@@ -9,6 +9,7 @@ import { meaningfulSeq } from "../../../common/RNA_Generator";
 import { calculate_nussinov } from "../../../common/nussinov";
 import { createGraphData } from "../../../common/graph";
 import { onMounted } from "vue";
+import Swal from "sweetalert2";
 
 //Unique ID for the d3 svg select
 const id = uuidv4();
@@ -224,6 +225,13 @@ onMounted(() => {
       return true;
     }
 
+    // Give a visual error to the user
+    Swal.fire({
+      title: "That's not possible",
+      text: "You clicked a non canonical basepair!",
+      icon: "error",
+      confirmButtonText: "Okay",
+    });
     return false;
   }
 
@@ -380,6 +388,12 @@ onMounted(() => {
 
     //Check if Nodes are on same level to check for cross over connections
     if (heightmap[ids[0]] !== heightmap[ids[1]]) {
+      Swal.fire({
+        title: "That's not possible",
+        text: "Crossover connections are not allowed!",
+        icon: "error",
+        confirmButtonText: "Okay",
+      });
       return false;
     }
 
@@ -396,9 +410,17 @@ onMounted(() => {
     if (links.length > 0) {
       // Check if the connection between the two clicked Nodes already exists
       // Then return true, so it can be removed
-      return (
-        ids.includes(links[0].source.id) && ids.includes(links[0].target.id)
-      );
+      if (
+        !(ids.includes(links[0].source.id) && ids.includes(links[0].target.id))
+      ) {
+        Swal.fire({
+          title: "That's not possible",
+          text: "One of the bases has already a connection!",
+          icon: "error",
+          confirmButtonText: "Okay",
+        });
+        return false;
+      }
     }
     return true;
   }
