@@ -243,6 +243,7 @@ onMounted(() => {
   function toggleNode(event, d) {
     // Check if node is already clicked
     if (!clickedNodes.includes(d)) {
+      setClickMarker(d);
       clickedNodes.push(d);
       clickedNodes = clickedNodes.sort();
       // Check if 2 Nodes are clicked and they can be combined
@@ -263,6 +264,7 @@ onMounted(() => {
               removeLink(allLinks[i].index);
               decreaseHeightmap(clickedNodes);
             }
+            removeClickMarker(clickedNodes);
             clickedNodes = [];
             return;
           }
@@ -274,12 +276,17 @@ onMounted(() => {
           addLink();
           increaseHeightmap(clickedNodes);
         }
+        removeClickMarker(clickedNodes);
         clickedNodes = [];
       }
       // If Nodes cannot be connected clear the Buffer
       else if (clickedNodes.length === 2 && !checkLinks(clickedNodes)) {
+        removeClickMarker(clickedNodes);
         clickedNodes = [];
       }
+    } else {
+      removeClickMarker(clickedNodes);
+      clickedNodes = [];
     }
   }
 
@@ -423,6 +430,21 @@ onMounted(() => {
       }
     }
     return true;
+  }
+  function setClickMarker(d) {
+    let node = d3.selectAll("g").filter((t) => {
+      return (t !== undefined) && t.name === d.name;
+    })
+    node.style("stroke", "red").style("stroke-width", 2);
+  }
+
+  function removeClickMarker(d) {
+    for (let i = 0; i < d.length; i++) {
+      let node = d3.selectAll("g").filter((t) => {
+        return (t !== undefined) && t.name === d[i].name;
+      })
+      node.style("stroke", "none").style("stroke-width", 1);
+    }
   }
 });
 </script>
