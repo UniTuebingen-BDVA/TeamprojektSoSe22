@@ -290,7 +290,6 @@ onMounted(() => {
     }
   }
 
-  // Function to reload the simulation after changing the connections
   /**
    * Updates the Links in the Simulation and restart the force simulation to apply the changes
    */
@@ -317,7 +316,6 @@ onMounted(() => {
     simulation.alpha(0.5).restart();
   }
 
-  // remove a link between two nodes
   /**
    * Removes a link from the data by given index
    * @param linkIndex index of the link to remove
@@ -431,14 +429,25 @@ onMounted(() => {
     }
     return true;
   }
+
+  /**
+   * Sets a visuell marker (a border) on the clicked Node
+   * @param d clicked Node
+   */
   function setClickMarker(d) {
+    // Extract the clicked node out of all nodes
     let node = d3.selectAll("g").filter((t) => {
       return (t !== undefined) && t.name === d.name;
     })
     node.style("stroke", "red").style("stroke-width", 2);
   }
 
+  /**
+   * Removes the visuell marker of a set of nodes
+   * @param d array of clicked nodes
+   */
   function removeClickMarker(d) {
+    // Extract the clicked nodes
     for (let i = 0; i < d.length; i++) {
       let node = d3.selectAll("g").filter((t) => {
         return (t !== undefined) && t.name === d[i].name;
