@@ -57,6 +57,7 @@ onMounted(() => {
       dot_bracket += ".";
     }
   }
+  // Generate Graph Data
   let data = createGraphData(sequence, dot_bracket);
 
   // set the dimensions and margins of the graph
@@ -283,7 +284,6 @@ onMounted(() => {
     }
   }
 
-  // Function to reload the simulation after changing the connections
   /**
    * Updates the Links in the Simulation and restart the force simulation to apply the changes
    */
@@ -310,7 +310,7 @@ onMounted(() => {
     simulation.alpha(0.5).restart();
   }
 
-  // remove a link between two nodes
+
   /**
    * Removes a link from the data by given index
    * @param linkIndex index of the link to remove
