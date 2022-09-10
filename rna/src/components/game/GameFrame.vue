@@ -6,6 +6,7 @@
         :dotBracket="dotBracketStr"
         :secondaryStructure="true"
         @combine="editDotBracket"
+        @init="initGamestate"
         class="rna-structure"
       />
     </div>
@@ -30,10 +31,11 @@ let dotBracketStr = ".".repeat(getSequence.length);
 const nussinovAnswer = calculate_nussinov(getSequence).secondary_structure;
 
 const gamestate = {
-  correctAnswer: [],
-  userAnswer: [],
-  usedSequence: String,
+  correctAnswer: nussinovAnswer,
+  userAnswer: dotBracket,
+  usedSequence: getSequence,
 };
+emit("gamestate", gamestate);
 
 const emit = defineEmits({
   gamestate: Object,

@@ -43,6 +43,8 @@ import NussinovHeader from "./NussinovHeader.vue";
       <a href="https://d3js.org" title="D3.js">D3.js</a> <br>
       Vue.js:
       <a href="https://vuejs.org" title="Vue.js">Vue.js</a> <br>
+      Sweetalert2:
+      <a href="https://sweetalert2.github.io/" title="SweetAlert2.js">SweetAlert2.js</a> <br>
       <br> <br>
       all links as of 10.09.2022 <br>
     </p>

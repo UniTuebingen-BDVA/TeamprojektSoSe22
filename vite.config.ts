@@ -15,6 +15,7 @@ export default defineConfig({
       input: {
         main: "index.html",
         rna: "./rna/game.html",
+        legal: "./common/legalNotice.html",
 
         // importing levels
         Level01Start: levels_path + "Level1.html",
