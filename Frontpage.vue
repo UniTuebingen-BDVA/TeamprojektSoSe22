@@ -27,9 +27,7 @@ import RNAStructure from "./teaching/src/components/RNAStructure.vue";
         />
       </div>
     </div>
-    <div class="nImage">
-      <RNAStructure :length="12" :secondary-structure="true"></RNAStructure>
-    </div>
+    <img class="nImage" src="./common/sars-cov-2-mrna-vaccine.png" />
   </div>
 </template>
 <style scoped>
@@ -42,6 +40,7 @@ import RNAStructure from "./teaching/src/components/RNAStructure.vue";
 }
 
 .nImage {
+  margin-right: 1.25%;
   max-width: 40%;
   min-width: 30%;
   width: auto;

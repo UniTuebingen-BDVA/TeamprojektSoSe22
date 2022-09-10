@@ -29,6 +29,8 @@ import NussinovHeader from "./NussinovHeader.vue";
       <a href="https://www.flaticon.com/de/kostenlose-icons/rna" title="rna Icons">Rna Icons erstellt von Freepik - Flaticon</a> <br>
       Legal Notice Icon:
       <a href="https://de.m.wikipedia.org/wiki/Datei:Document_icon_%28the_Noun_Project_27904%29.svg" title="document icon">Legal Notice Icon</a> <br>
+      Frontpage image:
+      <a href="https://pdb101.rcsb.org/sci-art/goodsell-gallery/sars-cov-2-mrna-vaccine" title="SARS-CoV-2 mRNA Vaccine">SARS-CoV-2 mRNA Vaccine</a> <br>
       Picture on "BioBackgroundRNA1.html":
       <a href="https://www.coursehero.com/study-guides/microbiology/structure-and-function-of-rna/" title="DNA/RNA"> Picture of DNA/RNA</a> <br>
       Picture on "BioBackgroundRNA3.html":
@@ -42,7 +44,7 @@ import NussinovHeader from "./NussinovHeader.vue";
       Vue.js:
       <a href="https://vuejs.org" title="Vue.js">Vue.js</a> <br>
       <br> <br>
-      all links as of 22.08.2022 <br>
+      all links as of 10.09.2022 <br>
     </p>
   </div>
 
