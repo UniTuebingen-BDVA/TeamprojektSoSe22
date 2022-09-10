@@ -20,7 +20,7 @@ export default defineConfig({
         Level01Start: levels_path + "Level1.html",
         Level02Start: levels_path + "Level2.html",
         Level03Start: levels_path + "Level3.html",
-        LevelStart: levels_path + "LevelStart.html",
+        LevelStart: levels_path + "Start.html",
 
         // importing tutorial
         BioBackgroundRNA1: tutorial_path + "BioBackgroundRNA1.html",
