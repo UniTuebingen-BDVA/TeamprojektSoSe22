@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import UniButtonLink from "./PrototypeTeaching/src/components/UniButtonLink.vue";
+import UniButtonLink from "./teaching/src/components/UniButtonLink.vue";
 import NussinovHeader from "./common/NussinovHeader.vue";
-import RNAStructure from "./PrototypeTeaching/src/components/RNAStructure.vue";
+import RNAStructure from "./teaching/src/components/RNAStructure.vue";
 </script>
 
 <template>
@@ -16,7 +16,7 @@ import RNAStructure from "./PrototypeTeaching/src/components/RNAStructure.vue";
           :filled="false"
           :primary-color="'red'"
           :text="'Start Tutorial'"
-          :link="'./PrototypeTeaching/src/pages/Tutorial/BioBackgroundRNA1.html'"
+          :link="'./teaching/src/pages/Tutorial/BioBackgroundRNA1.html'"
         />
         <UniButtonLink
           class="teachingButton"

@@ -3,22 +3,22 @@ import Frontpage from "./Frontpage.vue";
 import Game from "./rna/src/App.vue";
 import legalNotice from "./common/legalNotice.vue";
 
-import Level from "./PrototypeTeaching/src/views/Levels/LevelStart.vue";
-import Level1 from "./PrototypeTeaching/src/views/Levels/Level01Start.vue";
-import Level2 from "./PrototypeTeaching/src/views/Levels/Level02Start.vue";
-import Level3 from "./PrototypeTeaching/src/views/Levels/Level03Start.vue";
+import Level from "./teaching/src/views/Levels/LevelStart.vue";
+import Level1 from "./teaching/src/views/Levels/Level01Start.vue";
+import Level2 from "./teaching/src/views/Levels/Level02Start.vue";
+import Level3 from "./teaching/src/views/Levels/Level03Start.vue";
 
-import Tutorial_BB_1 from "./PrototypeTeaching/src/views/Tutorial/BioBackgroundRNA1.vue";
-import Tutorial_BB_2 from "./PrototypeTeaching/src/views/Tutorial/BioBackgroundRNA2.vue";
-import Tutorial_BB_3 from "./PrototypeTeaching/src/views/Tutorial/BioBackgroundRNA3.vue";
-import Tutorial_3 from "./PrototypeTeaching/src/views/Tutorial/NussinovStepperFirst.vue";
-import Tutorial_Introduction from "./PrototypeTeaching/src/views/Tutorial/NussinovIntroduction.vue";
-import Tutorial_Initialization from "./PrototypeTeaching/src/views/Tutorial/NussinovInitialization.vue";
-import Tutorial_Recursion from "./PrototypeTeaching/src/views/Tutorial/NussinovRecursion.vue";
-import Tutorial_Traceback from "./PrototypeTeaching/src/views/Tutorial/NussinovTraceback.vue";
+import Tutorial_BB_1 from "./teaching/src/views/Tutorial/BioBackgroundRNA1.vue";
+import Tutorial_BB_2 from "./teaching/src/views/Tutorial/BioBackgroundRNA2.vue";
+import Tutorial_BB_3 from "./teaching/src/views/Tutorial/BioBackgroundRNA3.vue";
+import Tutorial_3 from "./teaching/src/views/Tutorial/NussinovStepperFirst.vue";
+import Tutorial_Introduction from "./teaching/src/views/Tutorial/NussinovIntroduction.vue";
+import Tutorial_Initialization from "./teaching/src/views/Tutorial/NussinovInitialization.vue";
+import Tutorial_Recursion from "./teaching/src/views/Tutorial/NussinovRecursion.vue";
+import Tutorial_Traceback from "./teaching/src/views/Tutorial/NussinovTraceback.vue";
 
-import "./PrototypeTeaching/src/common/tutorial.css";
-import "./PrototypeTeaching/src/common/style.css";
+import "./teaching/src/common/tutorial.css";
+import "./teaching/src/common/style.css";
 
 createApp(Frontpage).mount("#app");
 createApp(Game).mount("#game");

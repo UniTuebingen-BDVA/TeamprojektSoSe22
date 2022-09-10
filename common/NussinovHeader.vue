@@ -9,7 +9,7 @@ import Logo from "./Logo.vue";
             <a href="/TeamprojektSoSe22/index.html">Teaching Nussinov</a>
         </div>
         <div class="nPages">
-            <a href="/TeamprojektSoSe22/PrototypeTeaching/src/pages/Tutorial/BioBackgroundRNA1.html">Teaching</a>
+            <a href="/TeamprojektSoSe22/teaching/src/pages/Tutorial/BioBackgroundRNA1.html">Teaching</a>
             <a href="/TeamprojektSoSe22/rna/game.html">Gaming</a>
         </div>
     </div>

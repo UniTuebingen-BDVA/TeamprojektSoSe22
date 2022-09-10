@@ -4,8 +4,8 @@ import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 
-const levels_path = "./PrototypeTeaching/src/pages/Levels/";
-const tutorial_path = "./PrototypeTeaching/src/pages/Tutorial/";
+const levels_path = "./teaching/src/pages/Levels/";
+const tutorial_path = "./teaching/src/pages/Tutorial/";
 
 // https://vitejs.dev/config/
 export default defineConfig({
