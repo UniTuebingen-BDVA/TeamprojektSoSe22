@@ -11,7 +11,7 @@ import UniButtonLink from "../../components/UniButtonLink.vue";
       :filled="false"
       :primary-color="'red'"
       :text="'Skip Tutorial'"
-      :link="'../../pages/Levels/LevelStart.html'"
+      :link="'../../pages/Levels/Start.html'"
     />
     <div class="tutorialBox">
       <h3>Traceback</h3>
@@ -30,7 +30,7 @@ import UniButtonLink from "../../components/UniButtonLink.vue";
       </p>
       <p>
         To annotate base pairs one can use the
-        <a href="https://www.google.com/search?q=dot%20bracket%20notation%20rna"
+        <a href="https://www.tbi.univie.ac.at/RNA/ViennaRNA/doc/html/rna_structure_notations.html"
           >dot bracket notation.</a
         >
       </p>

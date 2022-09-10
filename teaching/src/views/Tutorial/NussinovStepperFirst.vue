@@ -19,7 +19,7 @@
       :filled="false"
       :primary-color="'red'"
       :text="'Skip Tutorial'"
-      :link="'../../pages/Levels/LevelStart.html'"
+      :link="'../../pages/Levels/Start.html'"
     />
     <div class="tutorialBox">
       <p>Remember, you need this </p>
@@ -27,7 +27,7 @@
       <p>Now try it out yourself!</p>
       <StartButton :length = 6 :with-stepper="true" @update-image2="(i) => updateImage(i)"></StartButton>
       </div>
-    <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Try it out!'" :link="'../../pages/Levels/LevelStart.html'"/>
+    <UniButtonLink class="teachingButton" :filled ="false" :primary-color="'red'" :text="'Try it out!'" :link="'../../pages/Levels/Start.html'"/>
   </div>
 </template>
 

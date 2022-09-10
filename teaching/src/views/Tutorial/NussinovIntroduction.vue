@@ -49,7 +49,7 @@ onMounted(() => {
       :filled="false"
       :primary-color="'red'"
       :text="'Skip Tutorial'"
-      :link="'../../pages/Levels/LevelStart.html'"
+      :link="'../../pages/Levels/Start.html'"
     />
     <div class="tutorialBox">
       <h3>Welcome to the Nussinov Tutorial:</h3>

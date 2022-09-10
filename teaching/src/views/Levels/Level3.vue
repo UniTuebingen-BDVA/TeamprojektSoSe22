@@ -23,7 +23,7 @@ import StartButton from "../../components/StartButton.vue";
       :filled="false"
       :primary-color="'red'"
       :text="'Return to Level Selector'"
-      :link="'../../pages/Levels/LevelStart.html'"
+      :link="'../../pages/Levels/Start.html'"
     />
   </div>
 </template>

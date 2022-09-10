@@ -8,29 +8,29 @@ import StartButton from "../../components/StartButton.vue";
   <NussinovHeader></NussinovHeader>
   <div class="tutorialBody">
     <div class="tutorialBox">
-      <h3>You chose: Intermediate</h3>
+      <h3>You chose: Beginner</h3>
       <div class="structure">
         <p>Structure:</p>
-        <p id="border">GACGCUAC</p>
+        <p id="border">GACUC</p>
       </div>
       <p>Remember, you need this </p>
       <img src="../../assets/nussinov-cases_colored.png">
 
-      <StartButton :sequence="'GACGCUAC'"></StartButton>
+      <StartButton :sequence="'GACUC'"></StartButton>
     </div>
     <UniButtonLink
       class="teachingButton leftButton"
       :filled="false"
       :primary-color="'red'"
       :text="'Return to Level Selector'"
-      :link="'../../pages/Levels/LevelStart.html'"
+      :link="'../../pages/Levels/Start.html'"
     />
     <UniButtonLink
       class="teachingButton"
       :filled="false"
       :primary-color="'red'"
       :text="'Next level'"
-      :link="'../../pages/Levels/Level03Start.html'"
+      :link="'../../pages/Levels/Level2.html'"
     />
   </div>
 </template>

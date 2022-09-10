@@ -14,7 +14,7 @@ import NussinovHeader from "../../../../common/NussinovHeader.vue";
           :filled="false"
           :primary-color="'red'"
           :text="'Beginner'"
-          :link="'../../pages/Levels/Level01Start.html'"
+          :link="'../../pages/Levels/Level1.html'"
         />
         <p>
           Starter Level: short and easy structures.  <br>
@@ -28,7 +28,7 @@ import NussinovHeader from "../../../../common/NussinovHeader.vue";
           :filled="false"
           :primary-color="'red'"
           :text="'Intermediate'"
-          :link="'../../pages/Levels/Level02Start.html'"
+          :link="'../../pages/Levels/Level2.html'"
         />
         <p>
           Medium level: longer and more complex structures. You still have a
@@ -41,7 +41,7 @@ import NussinovHeader from "../../../../common/NussinovHeader.vue";
           :filled="false"
           :primary-color="'red'"
           :text="'Expert'"
-          :link="'../../pages/Levels/Level03Start.html'"
+          :link="'../../pages/Levels/Level3.html'"
         />
         <p>
           Hard level: long and complex structures. <br>

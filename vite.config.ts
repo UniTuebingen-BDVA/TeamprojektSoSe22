@@ -17,9 +17,9 @@ export default defineConfig({
         rna: "./rna/game.html",
 
         // importing levels
-        Level01Start: levels_path + "Level01Start.html",
-        Level02Start: levels_path + "Level02Start.html",
-        Level03Start: levels_path + "Level03Start.html",
+        Level01Start: levels_path + "Level1.html",
+        Level02Start: levels_path + "Level2.html",
+        Level03Start: levels_path + "Level3.html",
         LevelStart: levels_path + "LevelStart.html",
 
         // importing tutorial

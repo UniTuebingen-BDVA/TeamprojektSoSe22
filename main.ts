@@ -3,10 +3,10 @@ import Frontpage from "./Frontpage.vue";
 import Game from "./rna/src/App.vue";
 import legalNotice from "./common/legalNotice.vue";
 
-import Level from "./teaching/src/views/Levels/LevelStart.vue";
-import Level1 from "./teaching/src/views/Levels/Level01Start.vue";
-import Level2 from "./teaching/src/views/Levels/Level02Start.vue";
-import Level3 from "./teaching/src/views/Levels/Level03Start.vue";
+import Level from "./teaching/src/views/Levels/Start.vue";
+import Level1 from "./teaching/src/views/Levels/Level1.vue";
+import Level2 from "./teaching/src/views/Levels/Level2.vue";
+import Level3 from "./teaching/src/views/Levels/Level3.vue";
 
 import Tutorial_BB_1 from "./teaching/src/views/Tutorial/BioBackgroundRNA1.vue";
 import Tutorial_BB_2 from "./teaching/src/views/Tutorial/BioBackgroundRNA2.vue";
